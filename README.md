@@ -84,8 +84,7 @@ How Bedrock Linux Works
 
 Bedrock's magic is based around filesystem and PATH manipulation.
 
-Chroot
-~~~~~~
+### Chroot
 
 A chroot changes the apparent filesystem layout from the point of view of
 programs running within it. Specifically, it makes a chosen directory appear to
@@ -114,8 +113,7 @@ client, via chroot, the program can be tricked into thinking that is running in
 its native Linux distribution. It would read the proper libraries and support
 programs and, for the most part, just work. 
 
-Bind Mounts
-~~~~~~~~~~~
+### Bind Mounts
 
 Linux can take mountable devices (such as usb sticks) and make their
 filesystems accessible at any folder on the (virtual) filesystem. Mounting usb
@@ -139,8 +137,7 @@ filesystem from the point of view of any program to ensure they have access to
 the files they need to run properly while ensuring the system feels integrated
 and unified.
 
-PATH
-~~~~
+### PATH
 
 Programs read your $PATH environmental variable to see where to look for
 executables, and your $LD_LIBRARY_PATH for libraries. For example, with
@@ -164,8 +161,7 @@ Due to Bedrock's unusual goals, several unusual design choices were made. These
 choices were the reason Bedrock Linux needs to be its own distribution rather
 than simply a system grafted onto another Linux distribution.
 
-Simplicity
-~~~~~~~~~~
+### Simplicity
 
 Understanding Bedrock's filesystem layout (with the chroots, bind mounts, and
 dynamic $PATH) can be quite confusing. Additionally, no user-friend standalone
@@ -183,8 +179,7 @@ Syslinux is significantly easier to setup and maintain by hand, and thus is the
 "official" choice for Bedrock. However, GRUB should work fine, if the user
 wants to figure out how to install and manage it himself. 
 
-Minimalism and Deferring Features
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Minimalism and Deferring Features
 
 Most major Linux distributions have much larger and more experienced teams.
 Where directly comparable, they are most likely better than the Bedrock Linux
@@ -193,8 +188,7 @@ to use functionality from a client rather than Bedrock Linux itself. If
 something can be deferred to a client it will be; Bedrock Linux only does what
 it has to do to enable the integration of other Linux distributions.
 
-Statically-linked Executables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Statically-linked Executables
 
 Typically, most executables refer to other libraries for their components. If
 this is done at runtime, this is known as dynamic linking. By contrast, one can
@@ -224,22 +218,21 @@ It should be noted that statically linked compiling is frowned upon by many
 very people who are knowledgeable on the subject. For example, [Red Hat is
 staunchly against it](https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Developer_Guide/lib.compatibility.static.html):
 
-Static linking is emphatically discouraged for all Red Hat Enterprise
-Linux releases. Static linking causes far more problems than it solves,
-and should be avoided at all costs. 
+> Static linking is emphatically discouraged for all Red Hat Enterprise
+> Linux releases. Static linking causes far more problems than it solves,
+> and should be avoided at all costs.
 
 [Another link](http://www.akkadia.org/drepper/no_static_linking.html):
 
-Conclusion: Never use static linking!
+> Conclusion: Never use static linking!
 
 The Bedrock Linux developer believes that Bedrock's unique situation creates a
 justifiable exemption, but do your own research.
 
 It should be noted that another Linux-distribution-in-progress, [stali from suckless](http://dl.suckless.org/stali/clt2010/stali.html)
-, also makes heavy use of static compilition. 
+, also makes heavy use of static compilition.
 
-Manual Client Init Scripts
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Manual Client Init Scripts
 
 Most Linux distributions automatically manage the programs which are run at
 startup and shutdown, but Bedrock Linux will not be one of them for the
@@ -256,8 +249,7 @@ to determine the launch order from all of the possible systems it will run into
 seems far to challenging of a project. Thus, Bedrock Linux requires manually
 setting which programs from which client's init is launched when. 
 
-Self-sufficient Booting
-~~~~~~~~~~~~~~~~~~~~~~~
+### Self-sufficient Booting
 
 The Bedrock Linux developer feels strongly that
 
@@ -275,28 +267,24 @@ client take over.
 Package choices
 ---------------
 
-Kernel: Linux
-~~~~~~~~~~~~~
+### Kernel: Linux
 
 No other operating system kernel has such a great variety of userland options
 which could benefit from Bedrock's unique userland sharing system.
 
-Bootloader: Syslinux
-~~~~~~~~~~~~~~~~~~~~
+### Bootloader: Syslinux
 
 This is the simplest bootloader the Bedrock Linux developer knows of. Setting
 it up is just a handful of commands.
 
-Userland: Busybox
-~~~~~~~~~~~~~~~~~
+### Userland: Busybox
 
 Busybox is an all-in-one solution for a minimal(/embedded) Linux userland. It
 is significantly smaller and easier to set up than most of its alternatives.
 Statically-linking it is relatively common, and it can be found in many Linux
 distribution client repositories statically-compiled.
 
-Chroot: Capchroot
-~~~~~~~~~~~~~~~~~
+### Chroot: Capchroot
 
 The standard chroot command requires root. If setuid'd it is quite possible to
 use chroot to escalate privileges. Thus, Bedrock Linux requires a specialized
@@ -306,8 +294,7 @@ to compile statically. Instead, Bedrock Linux uses a little-known program
 called capchroot. This still requires some patches to be compiled statically
 linked against glibc, but is otherwise ideal.
 
-Shell scripts
-~~~~~~~~~~~~~
+### Shell scripts
 
 Additionally, Bedrock Linux uses some of its own shell scripts (using busybox's
 /bin/sh) for things such as booting and integrating the system. Since busybox
@@ -316,8 +303,7 @@ was already chosen, using its shell scripting option was an obvious choice.
 Bedrock Linux scripts
 ---------------------
 
-brc
-~~~
+### brc
 
 brc is a front-end for capchroot and is the main way users will manually run
 commands from clients. For example, brc fedora firefox will run Fedora's
@@ -325,30 +311,26 @@ firefox, even if the firefox command would normally default to another client's
 firefox. brc will detect when preparation for setting up a client is needed and
 automatically default to running a shell if no arguments are given.
 
-brs
-~~~
+### brs
 
 brs will set up clients. This can be set to run automatically to avoid any
 delay that would occure when trying to run brc to access a not-yet-setup
 client.
 
-brp
-~~~
+### brp
 
 Early versions of Bedrock Linux would try to detect if you tried to run a
 command which isn't available and, on the fly, attempt to find the command in a
 client. This proved to slow. Instead, Bedrock's brp command will hash the
 available commands from within the client is run in.
 
-brl
-~~~
+### brl
 
 The brl command will run its argument in all available clients. If, for
 example, you want to test to ensure that all of your clients have internet
 access, you ccould run the following: brl ping -c 1 google.com
 
-bru
-~~~
+### bru
 
 Updating all of the clients is a very common task, and so bru was created to
 make it a simple one. bru can be used to update all of the clients in a single
