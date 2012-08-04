@@ -12,6 +12,14 @@ software aimed only for the ever popular Ubuntu will run smoothly - all at the
 same time, in the same distribution - Bedrock Linux will provide a means to
 achieve this.
 
+See [the official Bedrock Linux
+webpage](http://opensource.osu.edu/~paradigm/bedrock/) for installation
+instructions, FAQ, known issues, etc.
+
+The Perfect Linux Distribution
+------------------------------
+
+
 So you've decided to give this Linux thing a try. Which Linux distribution
 should you choose? Do you want...
 
