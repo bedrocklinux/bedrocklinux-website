@@ -72,21 +72,21 @@
 				</ol>
 				<li><a href="#Download core Bedrock Linux component sources">Download core Bedrock Linux component sources</a></li>
 				<ol>
-					<li><a href="#Linux Kernel">Linux Kernel</a></li>
-					<li><a href="#Busybox">Busybox</a></li>
-					<li><a href="#Syslinux">Syslinux</a></li>
-					<li><a href="#Capchroot">Capchroot</a></li>
-					<li><a href="#Fsck">Fsck</a></li>
-					<li><a href="#Bedrock Linux Scripts">Bedrock Linux Scripts</a></li>
+					<li><a href="#DOWNLOAD Linux Kernel">Linux Kernel</a></li>
+					<li><a href="#DOWNLOAD Busybox">Busybox</a></li>
+					<li><a href="#DOWNLOAD Syslinux">Syslinux</a></li>
+					<li><a href="#DOWNLOAD Capchroot">Capchroot</a></li>
+					<li><a href="#DOWNLOAD Fsck">Fsck</a></li>
+					<li><a href="#DOWNLOAD Bedrock Linux Scripts">Bedrock Linux Scripts</a></li>
 				</ol>
 				<li><a href="#Compile core Bedrock Linux components">Compile core Bedrock Linux components</a></li>
 				<ol>
-					<li><a href="#Linux Kernel">Linux Kernel</a></li>
-					<li><a href="#Busybox">Busybox</a></li>
-					<li><a href="#Syslinux">Syslinux</a></li>
-					<li><a href="#Capchroot">Capchroot</a></li>
-					<li><a href="#Fsck">Fsck</a></li>
-					<li><a href="#Bedrock Linux scripts">Bedrock Linux scripts</a></li>
+					<li><a href="#COMPILE Linux Kernel">Linux Kernel</a></li>
+					<li><a href="#COMPILE Busybox">Busybox</a></li>
+					<li><a href="#COMPILE Syslinux">Syslinux</a></li>
+					<li><a href="#COMPILE Capchroot">Capchroot</a></li>
+					<li><a href="#COMPILE Fsck">Fsck</a></li>
+					<li><a href="#COMPILE Bedrock Linux Scripts">Bedrock Linux Scripts</a></li>
 				</ol>
 				<li><a href="#Configuration files">Configuration files</a></li>
 				<ol>
@@ -267,7 +267,7 @@
 				Download the source code to the various core components of
 				Bedrock Linux to <code>/mnt/bedrock/usr/src</code>.
 			</p>
-			<h3 id="Linux Kernel">Linux Kernel</h3>
+			<h3 id="DOWNLOAD Linux Kernel">Linux Kernel</h3>
 			<p>
 				The Linux kernel can be downloaded from: <a
 				href="https://www.kernel.org/">https://www.kernel.org/</a>.  If
@@ -279,14 +279,14 @@
 				Linux 2.6.32 - either that or anything newer than it should
 				work.
 			</p>
-			<h3 id="Busybox">Busybox</h3>
+			<h3 id="DOWNLOAD Busybox">Busybox</h3>
 			<p>
 				Busybox can be downloaded from: <a
 				href="http://www.busybox.net/">http://www.busybox.net/</a>.
 				1.0alpha1 was tested successfully with busybox 1.19.4, but
 				newer versions should work.
 			</p>
-			<h3 id="Syslinux">Syslinux</h3>
+			<h3 id="DOWNLOAD Syslinux">Syslinux</h3>
 			<p>
 				If you want Bedrock Linux to have its own bootloader (as
 				opposed to dual-booting from another Linux distribution and
@@ -311,7 +311,7 @@
 				to find another bootloader which supports (U)EFI and figure out
 				how to set it up yourself.
 			</p>
-			<h3 id="Capchroot">Capchroot</h3>
+			<h3 id="DOWNLOAD Capchroot">Capchroot</h3>
 			<p>
 				Capchroot can be downloaded from: <a
 				href="https://dev.archlinux.org/~thomas/capchroot/">https://dev.archlinux.org/~thomas/capchroot/</a>.
@@ -328,7 +328,7 @@
 				1.0alpha1 was tested with capchroot 0.1.  Newer versions of
 				capchroot may not necessarily work with these instructions.
 			</p>
-			<h3 id="Fsck">Fsck</h3>
+			<h3 id="DOWNLOAD Fsck">Fsck</h3>
 			<p>
 				You can download fsck for ext2, ext3 and ext4 at: <a
 				href="http://e2fsprogs.sourceforge.net/">http://e2fsprogs.sourceforge.net/</a>
@@ -340,7 +340,7 @@
 				1.0alpha1 was tested with e2fsprogs 1.42.4, but newer versions
 				should work fine.
 			</p>
-			<h3 id="Bedrock Linux Scripts">Bedrock Linux Scripts</h3>
+			<h3 id="DOWNLOAD Bedrock Linux Scripts">Bedrock Linux Scripts</h3>
 			<p>
 				Download the Bedrock Linux scripts from <a
 				href=bedrock-scripts-1.0alpha1.tar.gz>here</a>.
@@ -420,7 +420,7 @@
 				Debian-based system, as root:
 			</p>
 			<pre class="rcmd">apt-get install libcap-dev libcap2-bin</pre>
-			<h3 id="Linux Kernel">Linux Kernel</h3>
+			<h3 id="COMPILE Linux Kernel">Linux Kernel</h3>
 			<p>
 				These instructions are not intended to be complete or
 				sufficient for everyone.  It may be advisable to supplement
@@ -695,7 +695,7 @@
 				name of the directory which contains the Linux kernel's source
 				code without the <code>/mnt/bedrock</code> prefix.
 			</p>
-			<h3 id="Busybox">Busybox</h3>
+			<h3 id="COMPILE Busybox">Busybox</h3>
 			<p>
 				Change to the directory in which you placed the source code packages.
 			</p>
@@ -859,7 +859,7 @@
 				busybox from outside can see and use but it can't from inside
 				and copy them over.
 			</p>
-			<h3 id="Syslinux">Syslinux</h3>
+			<h3 id="COMPILE Syslinux">Syslinux</h3>
 			<p>
 				Again, as a reminder, "syslinux" is the name of a project which
 				contains several bootloaders, one of which is also called
@@ -1032,7 +1032,7 @@ EOF
 				example, to customize the menu provided by menu.c32, see <a
 				href="http://www.syslinux.org/wiki/index.php/Comboot/menu.c32">here</a>.
 			</p>
-			<h3 id="Capchroot">Capchroot</h3>
+			<h3 id="COMPILE Capchroot">Capchroot</h3>
 			<p>
 				Change to the directory in which you placed the source code
 				packages.
@@ -1076,7 +1076,7 @@ EOF
 				on capchroot so that it can allow non-root users to chroot.
 			</p>
 			<pre class="rcmd">setcap cap_sys_chroot=ep /mnt/bedrock/opt/bedrock/bin/capchroot</pre>
-			<h3 id="Fsck">Fsck</h3>
+			<h3 id="COMPILE Fsck">Fsck</h3>
 			<p>
 				Change to the directory in which you placed the source code
 				packages.
@@ -1119,7 +1119,7 @@ EOF
 				<li>cp e2fsck/e2fsck /mnt/bedrock/sbin/fsck.ext3</li>
 				<li>cp e2fsck/e2fsck /mnt/bedrock/sbin/fsck.ext4</li>
 			</ul>
-			<h2 id="Bedrock Linux scripts">Bedrock Linux scripts</h2>
+			<h2 id="COMPILE Bedrock Linux Scripts">Bedrock Linux Scripts</h2>
 			<p>
 				Unpackage the Bedrock Linux scripts over the soon-to-be Bedrock
 				Linux root.
@@ -1200,7 +1200,7 @@ EOF
 				Chroot into Bedrock Linux (as root):
 			</p>
 			<pre class="rcmd">chroot /mnt/bedrock /bin/sh</pre>
-			<h3 id="Add users">Add users</h3>
+			COMP<h3 id="Add users">Add users</h3>
 			<p>
 			Create the global user-management files (as root):
 			</p>
