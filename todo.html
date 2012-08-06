@@ -51,6 +51,18 @@
 			<h2>Open TODO</h2>
 			<ul>
 				<li>
+					<strong>Known Issue</strong>: Spaces in things to be
+					chrooted cannot be properly escaped or quoted.
+				<ul>
+					<li>
+						This is probably an issue with capchroot as opposed to
+						any wrappers passing informatino to capchroot.  Will
+						have to investigate improving capchroot's parser and
+						then submit back to upstream.
+					</li>
+				</ul>
+				</li>
+				<li>
 				<strong>Known Issue</strong>: /etc/ file sync issue.
 				<ul>
 					<li>
@@ -164,6 +176,9 @@
 				</li>
 				<li>
 					Create VM image to demo
+				</li>
+				<li>
+					Investiate systemd to replace init system
 				</li>
 				<li>
 					Contact pacman devs, bug reporting failure to abort if
