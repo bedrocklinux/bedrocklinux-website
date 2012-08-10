@@ -72,7 +72,12 @@
 				<ol>
 					<li><a href="#ARCH Installation">Installation</a></li>
 					<li><a href="#ARCH Known issues">Known issues</a></li>
-					<li><a href="#Troubleshooting">Troubleshooting</a></li>
+					<li><a href="#ARCH Troubleshooting">Troubleshooting</a></li>
+				</ol>
+				<li><a href="#Fedora">Fedora</a></li>
+				<ol>
+					<li><a href="#FEDORA Installation">Installation</a></li>
+					<li><a href="#FEDORA Troubleshooting">Troubleshooting</a></li>
 				</ol>
 			</ol>
 
@@ -246,8 +251,10 @@
 				via using <code>brc</code> for each command or <code>brc</code>
 				to open a shell in the client and run it from the shell):
 			</p>
-			<pre class="rcmd">dpkg-divert --local --rename --add /sbin/initctl</pre>
-			<pre class="rcmd">ln -s /bin/true /sbin/initctl</pre>
+				<ul class="rcmd">
+					<li>dpkg-divert --local --rename --add /sbin/initctl</li>
+					<li>ln -s /bin/true /sbin/initctl</li>
+				</ul>
 			<p>
 				Locales:
 			</p>
@@ -393,15 +400,18 @@
 				</li>
 				<li>
 					<p>
-						If you did not bind-mount <code>/tmp/archbootstrap/arch</code>,
-						move <code>/tmp/archbootstrap/arch</code> to where you would
-						like the Arch client to reside.
+						If you did not bind-mount
+						<code>/tmp/archbootstrap/arch</code>, move
+						<code>/tmp/archbootstrap/arch</code> to where you would
+						like the Arch client to reside.  Otherwise, unmount it
+						so it is no longer accessible within
+						<code>/tmp/archbootstrap</code>.
 					</p>
 					<pre class="rcmd">mv /tmp/archbootstrap/arch <code class=changethis>PATH</code></pre>
 				</li>
 				<li>
 					<p>
-						Delete the temporary archbootstrap directory:
+						Clean up the temporary archbootstrap directory:
 					</p>
 					<pre class="rcmd">rm -rf /tmp/archbootstrap</pre>
 				</li>
@@ -422,7 +432,7 @@
 				using bind mounts to attempt to share such directories.  Simply
 				copy the contents across manually when required.
 			</p>
-			<h3 id="Troubleshooting">Troubleshooting</h3>
+			<h3 id="ARCH Troubleshooting">Troubleshooting</h3>
 			<p>
 				Pacman filesystem errors:
 			</p>
