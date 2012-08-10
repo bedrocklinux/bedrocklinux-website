@@ -756,10 +756,13 @@
 			</p>
 			<p>
 				At the moment, there is no list of exactly what parts of
-				busybox Bedrock Linux requires.  Unless you really need to
-				shave a few hundred kilobytes off the disk usage, it may simply
-				be easiest to install just about everything in Applets (ie,
-				everything not under "Busybox Settings --->").
+				busybox Bedrock Linux requires.  If you are worried that you
+				might leave something out which Bedrock Linux requires, a
+				viable strategy could be to simply be easiest to install just
+				about everything in Applets (ie, everything not under "Busybox
+				Settings --->").  This is not required, and if you're familiar
+				with what is typically expected in a Linux distribution, you're
+				free to limit busybox's applets to simply that.
 			</p>
 			<p>
 			To compile, run:
@@ -954,7 +957,7 @@
 			<p>
 				To be able to poweroff from the boot menu (or commandline), copy <code>poweroff.com</code>:
 			</p>
-			<div class="command">cp modules/poweroff.com /mnt/bedrock/boot/extlinux</div>
+			<pre class="cmd">cp modules/poweroff.com /mnt/bedrock/boot/extlinux</pre>
 			<p>
 				Note that on <code>poweroff.com</code> does not seem to work
 				across all computers.
@@ -1126,7 +1129,7 @@ EOF
 			</p>
 			<ul class="rcmd">
 				<li>cd /mnt/bedrock</li>
-				<li>tar xvf usr/src/bedrock-scripts-0.1.tar.gz</li>
+				<li>tar xvf usr/src/bedrock-scripts-1.0alpha1.tar.gz</li>
 			</ul>
 			<p>
 			This will install the following:
@@ -1200,7 +1203,7 @@ EOF
 				Chroot into Bedrock Linux (as root):
 			</p>
 			<pre class="rcmd">chroot /mnt/bedrock /bin/sh</pre>
-			COMP<h3 id="Add users">Add users</h3>
+			<h3 id="Add users">Add users</h3>
 			<p>
 			Create the global user-management files (as root):
 			</p>
@@ -1335,6 +1338,19 @@ EOF
 				later choose to use udev instead of mdev, it too may have
 				certain expections about available groups.  It may be wise to
 				reference the group numbers other distributions use.
+			</p>
+			<p>
+				You may exit the chroot.  At this point, the core of Bedrock
+				Linux is finished installing, and the system should be
+				bootable.  The rest of these instructions can be done from
+				within or without of the chroot, from the installer host or
+				from Bedrock itself.  However, remember that there may be some
+				difficulties getting network access from the core of Bedrock
+				without a client yet installed.  Moreover, be careful about the
+				paths described in the following instructions, as the exact
+				paths will change depending on whether or not you are in the
+				installer host, within the chroot, from the core of Bedrock, or
+				from a client.
 			</p>
 			<h2 id="Configure">Configure</h2>
 			<p>
