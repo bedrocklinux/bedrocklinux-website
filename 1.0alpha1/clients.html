@@ -446,6 +446,110 @@
 				(which would be a fair assumption in almost every case except
 				Bedrock Linux).
 			</p>
+			<h2 id="Fedora">Fedora</h2>
+			<h3 id="FEDORA Installation">Installation</h3>
+			<p>
+				The essentials of Fedora can be installed through the 2.X
+				branch of a program called "febootstrap".  Febootstrap is very
+				similar in spirit to debootstrap, simply intended for creating
+				Fedora systems rather than Debian.  Note that a 3.X branch was
+				created which is intended to create "supermin appliances"; use
+				the 2.X branch instead.  This may be difficult to find in the
+				repositories of any given Linux distribution, and thus it may
+				be required to compile it from source.
+			</p>
+			<p>
+				Instructions:
+			</p>
+			<ol>
+				<li>
+					<p>
+						Boot or brc into a Linux distribution which will be
+						used to compile febootstrap and then later use
+						febootstrap.  Note that while most of the requirements
+						for febootstrap are fairly standard, it does require
+						yum, which is in many but not all of the major Linux
+						distribution's repositories - chosing one of the
+						distributions which do will make things easier.
+					</p>
+				</li>
+				<li>
+					<p>
+						Download the latest febootstrap 2.X source from <a
+						href="http://people.redhat.com/~rjones/febootstrap/">here</a> to <code>/tmp</code>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Untar the package.
+						<ul class="cmd">
+							<li>cd /tmp</li>
+							<li>tar xvf febootstrap-<code class="changethis">VERSION</code>.tar.gz</li>
+						</ul>
+					</p>
+				</li>
+				<li>
+					<p>
+						Configure things.  You may be warned you are missing
+						requirements - install them and try again.
+						<ul class="cmd">
+							<li>cd /tmp/febootstrap-<code class="changethis">VERSION</code></li>
+							<li>./configuure</li>
+						</ul>
+					</p>
+				</li>
+				<li>
+					<p>
+						Compile febootstrap.  <pre class="cmd">make</pre> If
+						you receive an error about <code>-all-static</code>,
+						note that at least one person who had such an error
+						reported some succes compiling febootstrap by
+						commenting out the line containing <code>init_LDFLAGS =
+						-all-static</code> from <code>/tmp/febootstrap-<code
+						class="changethis">VERSION</code>/helper/Makefile</code>
+						and replacing it with <code>init_LDFLAGS =
+						-static</code>.
+					</p>
+				</li>
+				<li>
+					<p>
+						There is no need to properly install febootstrap, as it
+						will run from <code>/tmp/febootstrap-<code>
+						<class="changethis">VERSION</code></code> just fine.
+						Use febootstrap to download and set up the target
+						client Linux distribution.
+					</p>
+					<pre class="rcmd">./febootstrap fedora-<code class="changethis">RELEASE-NUMBER</code><code class="changethis">PATH</code></pre>
+					<p>
+						For example, to install Fedora 15 (lovelock) to /var/chroot/lovelock:
+					</p>
+					<pre class="rcmd">./febootstrap fedora-15 /var/chroot/lovelock/</pre>
+					<p>
+						It may take a bit to download and unpackage the various
+						components.
+					</p>
+				</li>
+				<li>
+					<p>
+						Clean up the temporary febootstrap directory:
+					</p>
+					<pre class="rcmd">rm -rf /tmp/febootstrap-<code class=changethis">VERSION</code></pre>
+				</li>
+			</ol>
+			<h3 id="FEDORA Troubleshooting">Troubleshooting</h3>
+			<p>
+				Febootstrap does not seem to include the fedora-release
+				package.  This is troublesome, as the package utilized to
+				access the Fedora repositories.  To resolve this, download the
+				fedora-release package for the given release (e.g.:
+				<code>fedora-release-15.noarch.rpm</code>), and install it
+				thusly (from within the fedora client, via brc):
+			</p>
+			<pre class="rcmd">rpm -i fedora-<code class="changethis">VERSION</code>.noarch.rpm</pre>
+			<p>
+				You should then be able to use <code>yum</code> to access
+				Fedora's repositories as one normally would.
+			</p>
 		</div>
 
 		<!-- footer -->
@@ -471,4 +575,3 @@
 		</div>
 	</body>
 </html>
-</p>
