@@ -841,8 +841,11 @@
 				Note that, depending on the libraries used when compiling
 				busybox, it may not be completely statically linked.  For
 				example, it may be lacking the ability to resolve DNS
-				information.  Try to see you can successfully use busybox to
-				ping, for example:
+				information.  Before testing this, copy
+				<code>/etc/resolv.conf</code> from your host into
+				<code>/mnt/bedrock/etc/</code>, as this file is required to
+				resolve DNS.  Once that is done, you can try to see you can
+				successfully use busybox to ping:
 			</p>
 			<pre class="rcmd">chroot /mnt/bedrock /bin/busybox ping google.com</pre>
 			<p>
