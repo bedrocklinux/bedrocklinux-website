@@ -464,6 +464,28 @@
 			<ol>
 				<li>
 					<p>
+						If you have access to a Linux distribution which has
+						febootstrap 2.X in its repositories, your you can find
+						a febootstrap 2.X package which will work in a
+						distribution to which you have access, install it and
+						run the following command, at which point you will be
+						done installing Fedora as a client (ie, you can skip
+						the rest of the steps below).  Otherwise, you will have
+						to skip this step and following all of the following
+						steps.
+					</p>
+					<pre class="rcmd">febootstrap fedora-<code class="changethis">RELEASE-NUMBER</code><code class="changethis">PATH</code></pre>
+					<p>
+						For example, to install Fedora 15 (lovelock) to /var/chroot/lovelock:
+					</p>
+					<pre class="rcmd">febootstrap fedora-15 /var/chroot/lovelock/</pre>
+					<p>
+						It may take a bit to download and unpackage the various
+						components.
+					</p>
+				</li>
+				<li>
+					<p>
 						Boot or brc into a Linux distribution which will be
 						used to compile febootstrap and then later use
 						febootstrap.  Note that while most of the requirements
