@@ -382,12 +382,12 @@
 				</li>
 				<li>
 					<p>
-						Pacman checks if enough free space is available before
-						unpackaging things by checking <code>/etc/mtab</code>.
-						Create a <code>/etc/mtab</code> for it by copying
-						<code>/proc/mounts</code>:
+						By default, pacman checks if enough free space is
+						available before unpackaging things.  However, the
+						chroot and heavily-used bindmount environment seem to
+						confuse it.  Comment out <code>CheckSpace</code> from
+						<code>/tmp/archbootstrap/etc/pacman.conf</code>
 					</p>
-					<pre class="cmd">cp /proc/mounts /tmp/archbootstrap/etc/mtab</pre>
 				</li>
 				<li>
 					<p>
@@ -444,7 +444,10 @@
 				attempting.  This seems to be caused by pacman assuming that
 				the mount points it sees are the same as the ones init sees
 				(which would be a fair assumption in almost every case except
-				Bedrock Linux).
+				Bedrock Linux).  You can configure pacman to not check for free
+				disk space by commenting out <code>CheckSpace</code> from
+				<code><code
+				class="changethis">/path/to/chroot</code>/etc/pacman.conf</code>
 			</p>
 			<h2 id="Fedora">Fedora</h2>
 			<h3 id="FEDORA Installation">Installation</h3>
