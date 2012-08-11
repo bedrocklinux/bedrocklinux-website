@@ -449,6 +449,28 @@
 				<code><code
 				class="changethis">/path/to/chroot</code>/etc/pacman.conf</code>
 			</p>
+			<p>
+				/dev/fd errors:
+			</p>
+			<p>
+				If you receive errors along these lines:
+			</p>
+			<code>/dev/fd/<code class="changethis">N</code>: No such file or directory</code>
+			<p>
+				where <code class="changethis">N</code> is a number, this is
+				most likely due to the fact that the device manager you are
+				using is not setting up /dev/fd as some Arch programs expect.
+				This can be solved (for the current session) by running:
+			</p>
+			<ul class="rcmd">
+				<li>rm /dev/fd</li>
+				<li>ln -s /proc/self/fd /dev</li>
+			</ul>
+			<p>
+				To solve this permanently, one could simply add those two lines
+				to <code>/etc/rc.local</code> in the core Bedrock such that it
+				is run every time Bedrock Linux is booted.
+			</p>
 			<h2 id="Fedora">Fedora</h2>
 			<h3 id="FEDORA Installation">Installation</h3>
 			<p>
