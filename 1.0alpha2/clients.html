@@ -561,16 +561,20 @@
 				<li>
 					<p>
 						There is no need to properly install febootstrap, as it
-						will run from <code>/tmp/febootstrap-<code>
-						<class="changethis">VERSION</code></code> just fine.
-						Use febootstrap to download and set up the target
-						client Linux distribution.
+						will run from <code>/tmp/febootstrap-<code
+						class="changethis">VERSION</code></code> just fine.
+						However, it does depend on executables which are found
+						within <code>/tmp/febootstrap<code
+						class="changethis">VERSION</code></code>  to be present
+						within the <code>PATH</code>.  Use febootstrap to
+						download and set up the target client Linux
+						distribution.
 					</p>
-					<pre class="rcmd">./febootstrap fedora-<code class="changethis">RELEASE-NUMBER</code><code class="changethis">PATH</code></pre>
+					<pre class="rcmd">PATH="$PATH:/tmp/febootstrap-<code class="changethis">VERSION</code>" ./febootstrap fedora-<code class="changethis">RELEASE-NUMBER</code><code class="changethis">PATH</code></pre>
 					<p>
 						For example, to install Fedora 17 (beefy miracle) to /var/chroot/beefy:
 					</p>
-					<pre class="rcmd">./febootstrap fedora-17 /var/chroot/beefy/</pre>
+					<pre class="rcmd">PATH="$PATH:/tmp/febootstrap-<code class="changethis">VERSION</code>" ./febootstrap fedora-17 /var/chroot/beefy/</pre>
 					<p>
 						It may take a bit to download and unpackage the various
 						components.
