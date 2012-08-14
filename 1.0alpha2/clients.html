@@ -268,13 +268,19 @@
 			</p>
 			<h3 id="DEBIAN Troubleshooting">Troubleshooting</h3>
 			<p>
-			If you get an error about <code>statoverride</code> when using
-			<code>apt/dpkg</code>, it can most likely be resolved by deleting
-			the contents of <code>/var/lib/dpkg/statoverride</code> (from
-			within the client - ie, <code><code
-					class=changethis>/path/to/chroot</code>/var/lib/dpkg/statoverride</code>
-			from outside).  Leave an empty file there.  This seems to occur due
-			to the fact an expected daemon is not running.
+				If you get an error about <code>statoverride</code> when using
+				<code>apt/dpkg</code>, it can most likely be resolved by deleting
+				the contents of <code>/var/lib/dpkg/statoverride</code> (from
+				within the client - ie, <code><code
+						class=changethis>/path/to/chroot</code>/var/lib/dpkg/statoverride</code>
+				from outside).  Leave an empty file there.  This seems to occur due
+				to the fact an expected daemon is not running.
+			</p>
+			<p>
+				If you have difficulty sharing /etc/resolv.conf in Ubuntu, note
+				that it creates a symlink for that file directing elsewhere.
+				It should be safe to remove the symlink and just create an
+				empty file in its place
 			</p>
 			<h2 id="Arch Linux">Arch Linux</h2>
 			<h3 id="ARCH Installation">Installation</h3>
