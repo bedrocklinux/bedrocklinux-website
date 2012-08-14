@@ -1124,6 +1124,11 @@ EOF
 			</ul>
 			<h2 id="COMPILE Bedrock Linux Scripts">Bedrock Linux Scripts</h2>
 			<p>
+				First, ensure that root owns the tarball, as there have been
+				some permission issues reported on some systems otherwise.
+			</p>
+			<pre class="rcmd">chown root:root /mnt/bedrock/usr/src/bedrock-userland-1.0alpha2.tar.gz</pre>
+			<p>
 				Unpackage the Bedrock Linux scripts over the soon-to-be Bedrock
 				Linux root.
 			</p>
