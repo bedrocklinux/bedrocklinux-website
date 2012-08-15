@@ -392,8 +392,13 @@
 						available before unpackaging things.  However, the
 						chroot and heavily-used bindmount environment seem to
 						confuse it.  Comment out <code>CheckSpace</code> from
-						<code>/tmp/archbootstrap/etc/pacman.conf</code>
+						<code>/tmp/archbootstrap/etc/pacman.conf</code>.
+						Despite doing that, however, it might still want to
+						check to the filesystem mounts.  To ensure it doesn't
+						error and abort when doing so, make the mount
+						information available:
 					</p>
+					<pre class="rcmd">cp /proc/mounts /tmp/archbootstrap/etc/mtab</pre>
 				</li>
 				<li>
 					<p>
