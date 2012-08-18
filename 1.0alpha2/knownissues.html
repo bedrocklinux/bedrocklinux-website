@@ -52,7 +52,7 @@
 
 			<h1>Bedrock Linux 1.0alpha2 "Momo" Known issues</h1>
 			<ol>
-				<li><a href="#The Perfect Linux Distribution">The Perfect Linux Distribution</a></li>
+				<li><a href="#No Hostname">No Hostname</a></li>
 				<li><a href="#/etc/ file sync issue">/etc/ file sync issue</a></li>
 				<li><a href="#Difficulty Statically Compiling">Difficulty Statically Compiling</a></li>
 				<li><a href="#Man pages do not work across clients">Man pages do not work across clients</a></li>
@@ -62,6 +62,19 @@
 
 			<!-- actual main content -->
 
+			<h2 id="No Hostname">No Hostname</h2>
+			<p>
+				If your system does not have a hostname despite having <a
+					href="install.html#Hostname">created the hostname file</a>,
+				this is due to a simple oversite which should be remedied in
+				the next release.  If you would like to fix it on your own, it
+				should be relatively easy.  Simply add the following to your
+				/etc/rc.local file:
+			</p>
+			<code>/bin/hostname $(/bin/cat /etc/hostname)</code>
+			<p>
+				The next time you boot you should have a proper hostname.
+			</p>
 			<h2 id="/etc/ file sync issue">/etc/ file sync issue</h2>
 			<p>
 				The bind mount sharing system does not allow moving or
