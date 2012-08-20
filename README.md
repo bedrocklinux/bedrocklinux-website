@@ -13,7 +13,7 @@ same time, in the same distribution - Bedrock Linux will provide a means to
 achieve this.
 
 See [the official Bedrock Linux
-webpage](http://opensource.osu.edu/~paradigm/bedrock/) for installation
+webpage](bedrocklinux.org) for installation
 instructions, FAQ, known issues, etc.
 
 The Perfect Linux Distribution
