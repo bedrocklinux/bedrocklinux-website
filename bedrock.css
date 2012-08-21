@@ -31,6 +31,7 @@ body{
 /* header; includes logo and nav block */
 
 #header{
+	list-style-type: none;
 	background-color: #222222;
 	padding: 7.5px;
 	border: 1px solid #6094db;
@@ -38,6 +39,13 @@ body{
 	height: 85px;
 	margin-top: 1em;
 }
+#header li{
+	display: inline;
+}
+#nav{
+	line-height: 180%;
+}
+
 /* logo */
 #logo{
 	/* text size/color/shape */
@@ -62,20 +70,6 @@ body{
 #logoshrinkwrap{
 	margin-top: -14px;
 	margin-left: 10px;
-}
-/* nav block */
-#navvert{
-	list-style-type: none;
-	line-height: 200%;
-	margin-top: -4pt;
-}
-#navhoriz{
-	list-style-type: none;
-	font-weight: bold;
-}
-#navhoriz li{
-	display: inline;
-	margin-right: 12px;
 }
 
 /* footer */
