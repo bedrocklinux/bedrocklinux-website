@@ -154,7 +154,7 @@
 					The development team most likely tested against Ubuntu, and
 					so the situation was resolved by using Ubuntu's X11 (and
 					only that from Ubuntu, with the majority of the rest of the
-					system remained Debian).  Just as Debian was overly old for
+					system remained Debian).  Just as Debian was too old for
 					Quake Live at its release, Arch Linux users later faced the
 					flip side of that coin: their cutting-edge libraries were
 					causing issues with Quake Live.  One way this was resolved
@@ -185,6 +185,8 @@
 					compatibility issues, and Ubuntu users never benefited from
 					the period of time when Sage was available from a
 					repository.
+                    <!--This last sentence doesn't make sense.  Not sure what
+                    you wanted it to mean though.-->
 				</li>
 			</ul>
 			<h2 id="How Bedrock Linux Works">How Bedrock Linux Works</h2>
@@ -197,7 +199,7 @@
 				A <em>chroot</em> changes the apparent filesystem layout from
 				the point of view of programs running within it.  Specifically,
 				it makes a chosen directory appear to be the root of the
-				filesystem.  Think of it prepending a given string to the
+				filesystem.  Think of it as prepending a given string to the
 				beginning of every filesystem call.  For example:
 			</p>
 			<ul>
@@ -240,8 +242,8 @@
 			</ul>
 			<p>
 				Bedrock Linux retains within its own filesystem the full
-				filesystems of other Linux , each in their own directory.
-				These other Linux distributions are refered to as
+				filesystems of other Linux distros, each in their own directory.
+				These other Linux distributions are referred to as
 				<em>clients</em>.  If one would like to run a program from any
 				given client, via chroot, the program can be tricked into
 				thinking that is running in its native Linux distribution.  It
@@ -257,7 +259,7 @@
 				typical, but not required - just about any directory will work.
 				Linux can also mount virtual filesystems, such as
 				<code>/proc</code> and <code>/sys</code>. These do not actually
-				exist on the harddrive - they are simply a nice abstraction
+				exist on the hard drive - they are simply a nice abstraction.
 			</p>
 			<p>
 				Moreover, Linux can <em>bind mount</em> just about any
@@ -404,7 +406,7 @@
 					than it solves, and should be avoided at all costs.
 				</blockquote>
 			<p>
-				<a href="http://www.akkadia.org/drepper/no_static_linking.html">Another link:</a>
+				<a href="http://www.akkadia.org/drepper/no_static_linking.html">Ulrich Drepper closed an essay with:</a>
 			</p>
 				<blockquote>
 					Conclusion: Never use static linking!
@@ -437,7 +439,7 @@
 				clients conflict (which CUPS daemon should run, if multiple are
 				available?).  Additionally, an automated way to determine the
 				launch order from all of the possible systems it will run into
-				seems far to challenging of a project.  Thus, Bedrock Linux
+				seems far too challenging of a project.  Thus, Bedrock Linux
 				requires manually setting which programs from which client's
 				init is launched when.
 			</p>
@@ -451,7 +453,7 @@
 					</li>
 					<li>
 						Bedrock Linux should be able to boot even if a client
-						unexpectedly break.
+						unexpectedly breaks.
 					</li>
 				</ul>
 				This means that if one would like a client to do something
@@ -523,13 +525,13 @@
 				command which isn't available and, on the fly, attempt to find the
 				command in a client. This proved to slow. Instead, Bedrock's
 				<code>brp</code> command will hash the available commands from
-				within the client is run in.
+				within the client it is run in.
 			</p>
 			<h3 id="brl">brl</h3>
 			<p>
 				The <code>brl</code> command will run its argument in all available
 				clients. If, for example, you want to test to ensure that all of
-				your clients have internet access, you ccould run the following:
+				your clients have internet access, you could run the following:
 				<code>brl ping -c 1 google.com</code>
 			</p>
 			<h3 id="bru">bru</h3>
@@ -565,6 +567,8 @@
 					<code>/var/local/brpath/zsh</code>, and when Debian will
 					attempt to its own local version of the shell at
 					<code>/bin/zsh</code>.
+                    <!--The last sentence doesn't make sense and I'm not sure
+                    what you meant.-->
 				</li>
 			</ul>
 			<p>
