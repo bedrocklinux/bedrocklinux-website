@@ -174,19 +174,18 @@
 					Arch Linux's X11 with Debian's Compiz.
 				</li>
 				<li>
-					Arch Linux was one of the few Linux distributions with the
+					Arch Linux is one of the few Linux distributions with the
 					mathematics program Sage available in its repository.
 					However, for a period of time Sage was dropped from the
 					repository due to compatibility issues with Arch Linux.
 					Sage is only pre-packaged for and tested against a handful
-					of Linux distributions, one of which is Ubuntu.  Thus all
-					Bedrock Linux users had to do was to download it for
-					Ubuntu.  Arch Linux users had to struggle with the
-					compatibility issues, and Ubuntu users never benefited from
-					the period of time when Sage was available from a
-					repository.
-                    <!--This last sentence doesn't make sense.  Not sure what
-                    you wanted it to mean though.-->
+					of Linux distributions, one of which is Ubuntu.  Thus, when
+					Sage mathematics was dropped for a period of time from the
+					Arch Linux repository, all Bedrock Linux users had to do
+					was to download it for Ubuntu.  When it was returned, it
+					was trivial to again get it from the Arch Linux repository.
+					Arch Linux temporarily lost access to Sage, and Ubuntu
+					users never benefited having Sage in a repository.
 				</li>
 			</ul>
 			<h2 id="How Bedrock Linux Works">How Bedrock Linux Works</h2>
@@ -561,15 +560,17 @@
 					removes the client?
 				</li>
 				<li>
-					<code>/etc/passwd</code> requires the full path to shells.
-					The full path to the shell could easily change depending on
-					which client is running it.  The core Bedrock Linux may
-					attempt to run a shell from Debian at
-					<code>/var/local/brpath/zsh</code>, and when Debian will
-					attempt to its own local version of the shell at
-					<code>/bin/zsh</code>.
-                    <!--The last sentence doesn't make sense and I'm not sure
-                    what you meant.-->
+					The typical Unix system used to determine which shell to
+					run requires the full page to shells to be set within
+					<code>/etc/passwd</code>.  However, this path will likely
+					change depending on which client is attempting to run the
+					shell.  For example, the core Bedrock Linux see
+					<code>zsh</code> located at
+					<code>/var/local/brpath/zsh</code>, but a Debian client
+					will see the same <code>zsh</code> located at
+					<code>/bin/zsh</code>.  Having two differing paths for zsh
+					like this will not work with a single login and the
+					traditional Unix <code>/etc/passwd</code> system.
 				</li>
 			</ul>
 			<p>
