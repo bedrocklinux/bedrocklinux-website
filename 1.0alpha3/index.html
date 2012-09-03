@@ -58,24 +58,49 @@
 				run Debian's xterm within Arch's xorg, the top most branch of
 				the tree below would be followed.  Note that mounts such as
 				<code>/proc</code> and <code>/home</code> must each be set up
-				either fourteen or fifteen times in the example below.
+				about fourty times in the example below.
 			</p>
 <pre>Bedrock
+  ↳ Arch
+  |  ↳ Arch
+  |  |   ↳ Arch
+  |  |   ↳ Debian
+  |  |   ↳ Bedrock
+  |  ↳ Bedrock
+  |  |   ↳ Arch
+  |  |   ↳ Debian
+  |  |   ↳ Bedrock
+  |  ↳ Bedrock
+  |      ↳ Arch
+  |      ↳ Debian
+  |      ↳ Bedrock
   ↳ Debian
   |  ↳ Arch
   |  |   ↳ Arch
   |  |   ↳ Debian
   |  |   ↳ Bedrock
   |  ↳ Bedrock
-  |      ↳ Debian
+  |  |   ↳ Arch
+  |  |   ↳ Debian
+  |  |   ↳ Bedrock
+  |  ↳ Bedrock
   |      ↳ Arch
-  ↳ Arch
-     ↳ Debian
+  |      ↳ Debian
+  |      ↳ Bedrock
+  ↳ Bedrock
+     ↳ Arch
      |   ↳ Arch
+     |   ↳ Debian
      |   ↳ Bedrock
      ↳ Bedrock
+     |   ↳ Arch
+     |   ↳ Debian
+     |   ↳ Bedrock
+     ↳ Bedrock
+         ↳ Arch
          ↳ Debian
-         ↳ Arch</pre>
+         ↳ Bedrock
+</pre>
 			<p>
 				Real-world use of Momo can easily result in hundreds of
 				thousands of mount points.  Since it is not possible to predict
@@ -192,24 +217,17 @@ Bedrock
 			</ul>
 			<p>
 				Rather than having the <code>BRPATH</code> contain many small
-				scripts which call <code>brc</code>, it will contain symlinks
+				scripts which call <code>brc</code>, it will be structured such
+				that a sub-directory for every client which contain symlinks
 				(with the name of the executable desired to be run) which point
-				to symlinks (with the name of the client from which the
-				executable should be run) which will point to the new
-				<code>brc</code>.  <code>brc</code> will detect how it was
-				called and run the desired command accordingly.  For example:
+				the new <code>brc</code>.  <code>brc</code> will detect how it
+				was called and run the desired command accordingly.  For
+				example:
 			</p>
 <pre class="file">
-/usr/local/brbin/
-    startx  → /usr/local/brclients/arch
-    busybox → /usr/local/brclients/bedrock
-/usr/local/brsbin/
-    gparted → /usr/local/brclients/debian
-/usr/local/brclients/
-    bedrock → /opt/bedrock/bin/brc
-    debian  → /opt/bedrock/bin/brc
-    arch    → /opt/bedrock/bin/brc
-/opt/bedrock/bin/brc
+/usr/local/brbin/arch/startx     → /opt/bedrock/bin/brc
+/usr/local/brbin/bedrock/busybox → /opt/bedrock/bin/brc
+/usr/local/brsbin/debian/gparted → /opt/bedrock/bin/brc
 </pre>
 			<p>
 				<code>brp</code> will create this structure, just as it created
