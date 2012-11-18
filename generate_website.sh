@@ -69,36 +69,29 @@ awk -F\" '
 BEGIN{
 	ITEMCOUNTER='$NUMBER_OF_ITEMS'
 }
-!/^$/&&(IN_SUMMARY==1){
-	if(substr($0,0,3)=="<p>" && substr($0,length($0)-3)=="</p>"){
-		IN_SUMMARY=0
-		print "\t\t\t"substr($0,4,length($0)-7)
-		print "\t\t</content>"
-		print "\t</entry>"
-	}else if(substr($0,0,3)=="<p>"){
-		print "\t\t\t"substr($0,4)
-	}else if(substr($0,length($0)-3)=="</p>"){
-		IN_SUMMARY=0
-		print "\t\t\t"substr($0,0,length($0)-4)
-		print "\t\t</content>"
-		print "\t</entry>"
-	}else{
-		print "\t\t\t"$0
-	}
-}
 /^<h2 id=/{
 	URL="http://bedrocklinux.org/news.html#"$2
 	TITLE=substr($3,2,length($3)-6)
+	if(IN_CONTENT==1){
+		print "\t\t</content>"
+		print "\t</entry>"
+	}
+	IN_CONTENT=0
+}
+!/^$/&&(IN_CONTENT==1){
+	gsub(/</,"\\&lt;",$0)
+	gsub(/>/,"\\&gt;",$0)
+	print "\t\t\t"$0
 }
 /^<p><small>[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]<\/small><\/p>/{
 	DATE=substr($0,11,10)
 	print "\t<entry>"
 	print "\t\t<id>http://bedrocklinux.org/news/"ITEMCOUNTER"</id>"
 	print "\t\t<title>"TITLE"</title>"
-	print "\t\t<link>"URL"</link>"
+	print "\t\t<link href=\""URL"\"/>"
 	print "\t\t<updated>"DATE"</updated>"
 	print "\t\t<content type=\"html\">"
-	IN_SUMMARY=1
+	IN_CONTENT=1
 	ITEMCOUNTER=ITEMCOUNTER-1
 }
 ' ../html/news.html >> $OUTFILE
