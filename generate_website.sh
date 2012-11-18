@@ -73,14 +73,14 @@ BEGIN{
 	if(substr($0,0,3)=="<p>" && substr($0,length($0)-3)=="</p>"){
 		IN_SUMMARY=0
 		print "\t\t\t"substr($0,4,length($0)-7)
-		print "\t\t</summary>"
+		print "\t\t</content>"
 		print "\t</entry>"
 	}else if(substr($0,0,3)=="<p>"){
 		print "\t\t\t"substr($0,4)
 	}else if(substr($0,length($0)-3)=="</p>"){
 		IN_SUMMARY=0
 		print "\t\t\t"substr($0,0,length($0)-4)
-		print "\t\t</summary>"
+		print "\t\t</content>"
 		print "\t</entry>"
 	}else{
 		print "\t\t\t"$0
@@ -97,7 +97,7 @@ BEGIN{
 	print "\t\t<title>"TITLE"</title>"
 	print "\t\t<link>"URL"</link>"
 	print "\t\t<updated>"DATE"</updated>"
-	print "\t\t<summary>"
+	print "\t\t<content type="html">"
 	IN_SUMMARY=1
 	ITEMCOUNTER=ITEMCOUNTER-1
 }
