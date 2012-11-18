@@ -49,7 +49,7 @@ done
 
 # generate atom.xml
 OUTFILE="../html/atom.xml"
-LASTUPDATE=$(awk '/^<p><small>[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]<\/small><\/p>$/{print substr($0,11,10);exit}' ../html/news.html)
+LASTUPDATE=$(gawk '/^<p><small>[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]<\/small><\/p>$/{print substr($0,11,10);exit}' ../html/news.html)
 NUMBER_OF_ITEMS=$(grep -c "<h2 id" ../html/news.html)
 
 cat << EOF >$OUTFILE
@@ -65,7 +65,7 @@ cat << EOF >$OUTFILE
 
 EOF
 
-awk -F\" '
+gawk -F\" '
 BEGIN{
 	ITEMCOUNTER='$NUMBER_OF_ITEMS'
 }
