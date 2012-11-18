@@ -1,0 +1,173 @@
+/* simonlc's recommendations */
+
+@font-face{
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:700;
+	src:local("Open Sans Bold"),local("OpenSans-Bold"),url(http://themes.googleusercontent.com/static/fonts/opensans/v6/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format("woff")
+}
+@font-face{
+	font-family:'Open Sans';
+	font-style:italic;
+	font-weight:400;
+	src:local("Open Sans Italic"),local("OpenSans-Italic"),url(http://themes.googleusercontent.com/static/fonts/opensans/v6/xjAJXh38I15wypJXxuGMBobN6UDyHWBl620a-IRfuBk.woff) format("woff")
+}
+@font-face{
+	font-family:'Open Sans';
+	font-style:normal;
+	font-weight:400;
+	src:local("Open Sans"),local("OpenSans"),url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format("woff")
+}
+@font-face{
+	font-family:'Ubuntu Mono';
+	font-style:normal;
+	font-weight:400;
+	src:local("Ubuntu Mono"),local("UbuntuMono-Regular"),url(http://themes.googleusercontent.com/static/fonts/ubuntumono/v3/ViZhet7Ak-LRXZMXzuAfkYbN6UDyHWBl620a-IRfuBk.woff) format("woff")
+}
+html{
+	background:#141414;
+	font-family:'Open Sans', sans-serif;
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust:100%
+}
+img{
+	max-width:100%;
+	border-radius:3px
+}
+::-moz-selection{
+	color:#fff;
+	background:#268bd2
+}
+::selection{
+	color:#fff;
+	background:#268bd2
+}
+a:link,a:visited{
+	color:#268bd2;
+	text-decoration:none
+}
+a:focus{
+	color:#ddd;
+	outline:thin dotted
+}
+a:hover,a:active{
+	color:#ddd;
+	outline:0
+}
+h1,h2,h3,h4,h5,h6{
+	color:#f8f8f8;
+	line-height:1.2;
+	text-shadow:1px 1px 0 rgba(0,0,0,0.1)
+}
+h1{
+	margin:1.07em 0 1.5rem;
+	font-size:2rem
+}
+h2{
+	margin:1.33em 0 1.5rem;
+	font-size:1.777rem
+}
+h3{
+	margin:1.8em 0 1.5rem;
+	font-size:1.5rem
+}
+h4{
+	margin:2.15em 0 1.5rem;
+	font-size:1.333rem
+}
+p,ul,ol{
+	padding:0;
+	margin:0 0 1rem 0
+}
+ul ul,ol ol{
+	padding:0 0 0 1.5rem
+}
+time{
+	font-style:italic;
+	color:#aaa
+}
+abbr[title]{
+	border-bottom:1px dotted #aaa;
+	font-size:0.938em;
+	line-height:0
+}
+b,strong{
+	color:#c4c4c4;
+	font-weight:700
+}
+/* didn't like simonlc's choice here - probably an oversite */
+code,kbd,pre,samp{
+	/*color:#c4c4c4;*/
+	color:#ff0069;
+	/*background:#e9e9e9;*/
+	font-family:'Ubuntu Mono', monospace, serif;
+	line-height:0
+}
+pre{
+	border-radius:3px;
+	line-height:1.5rem;
+	padding:0 1.5rem;
+	margin:1.5rem -1.5rem
+}
+body{
+	color:#ddd;
+	max-width:33rem;
+	padding:0 1.5rem;
+	margin:0 auto;
+	line-height:1.5rem
+}
+#nav{
+	list-style:none
+}
+#logo{
+	margin:1.5rem 0;
+	font-size:0.75rem
+}
+#logo>a>pre{
+	font-family:monospace, serif;
+	line-height:1.2;
+	background:none;
+	color:#fff
+}
+@media only screen and (max-width: 30em){
+	html{
+		font-size:0.938rem
+	}
+
+}
+@media only screen and (min-width: 60em){
+	html{
+		font-size:1.063rem
+	}
+	body{
+		max-width:53.4rem
+	}
+	header,footer{
+		max-width:35%;
+		float:left;
+		position:fixed
+	}
+	footer{
+		bottom:1px
+	}
+	section{
+		max-width:65%;
+		float:right
+	}
+	h1:first-child{
+		margin-top:1.5rem
+	}
+
+}
+@media only screen and (min-width: 80em){
+	html{
+		font-size:1.188rem
+	}
+
+}
+
+/* stuff paradigm added */
+
+small{
+	color: #999;
+}

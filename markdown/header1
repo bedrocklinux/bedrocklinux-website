@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang=en>
+	<meta charset=utf-8>
+	<title>TITLEGOESHERE</title>
+	<meta name=viewport content="width=device-width">
+	<link rel=alternate type=application/atom+xml title="Bedrock Linux Feed" href=RELATIVEPATH/atom.xml>
+	<link rel=stylesheet href=RELATIVEPATH/bedrock.css><body>
+		<header>
+		<h1 id=logo><a href=RELATIVEPATH/><pre>__          __             __
+\ \_________\ \____________\ \___
+ \  _ \  _\ _  \  _\ __ \ __\   /
+  \___/\__/\__/ \_\ \___/\__/\_\_\</pre>
+		</a></h1>
