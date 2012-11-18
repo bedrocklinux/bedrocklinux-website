@@ -19,9 +19,10 @@ anyways, the relevant information follows:
 
 - First line of a .md file should be "Title: &lt;title&gt;", where "&lt;title&gt;" is what
   you would like the website title to be.
-- Second line of a .md file should be "Nav: &lt;nav&gt;", where "&lt;nav&gt;" directs to
-  the file which contains the nav bar that will be used.  This should just be a
-  simple a simple unordered list of URLs.  It is dumped verbatim into the html.
+- Second line of a .md file should be "Nav: &lt;nav&gt;", where "&lt;nav&gt;"
+  directs to the file which contains the nav bar that will be used.  This will
+  also be treated as markdown; however, all unordered lists will be given the
+  id="nav"
 - To add an "id", "class", etc section within an opening tag, start the very
   beginning of the relevant section with a "{...}", where the "..." will be
   placed accordingly.  For example, '## {id="website_overhaul"} Website

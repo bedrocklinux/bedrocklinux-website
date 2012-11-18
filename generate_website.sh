@@ -20,22 +20,18 @@ do
 	DIRNAME=$(dirname $PAGE)
 	TITLE=$(cat $PAGE | sed -n 's/^Title:[ ]\+//p')
 	NAVFILE=$(cat $PAGE | sed -n 's/^Nav:[ ]\+//p')
-	if [ $DIRNAME = "." ]
-	then
-		RELATIVEPATH="."
-	else
-		RELATIVEPATH=$(echo $DIRNAME | sed 's/[^\/]\+/../g')
-	fi
+	RELATIVEPATH=$(echo $DIRNAME | sed 's/[^\/]\+/../g' | sed 's/^.//')
 
 	cat header1 |\
 		sed "s/TITLEGOESHERE/$TITLE/" |\
-		sed "s/RELATIVEPATH/$RELATIVEPATH/"              > $OUTFILE
-	cat $NAVFILE                                        >> $OUTFILE
-	cat header2                                         >> $OUTFILE
+		sed "s,RELATIVEPATH,$RELATIVEPATH," > $OUTFILE
+	markdown $DIRNAME/$NAVFILE |\
+		sed 's/<ul>/<ul id=nav>/' >> $OUTFILE
+	cat header2 >> $OUTFILE
 	sed '1,2d' $PAGE |\
 		markdown |\
 		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' >> $OUTFILE
-	cat footer                                          >> $OUTFILE
+	cat footer >> $OUTFILE
 done
 
 # copy non-page files
@@ -102,4 +98,4 @@ BEGIN{
 }
 ' ../html/news.html >> $OUTFILE
 
-echo '</feed>'                                                     >> $OUTFILE
+echo '</feed>' >> $OUTFILE
