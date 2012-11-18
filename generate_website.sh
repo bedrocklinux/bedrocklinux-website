@@ -97,7 +97,7 @@ BEGIN{
 	print "\t\t<title>"TITLE"</title>"
 	print "\t\t<link>"URL"</link>"
 	print "\t\t<updated>"DATE"</updated>"
-	print "\t\t<content type="html">"
+	print "\t\t<content type=\"html\">"
 	IN_SUMMARY=1
 	ITEMCOUNTER=ITEMCOUNTER-1
 }
