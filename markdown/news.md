@@ -47,7 +47,7 @@ release should be simpler and faster.
 
 Bedrock Linux is now at its own domain: bedrocklinux.org
 
-## {id="linux_action_show"} Bedrock Linux mentioned on Linux Action Show
+## {id="linux\_action\_show"} Bedrock Linux mentioned on Linux Action Show
 <small>2012-08-14</small>
 
 Bedrock Linux is on [the Linux Action Show](

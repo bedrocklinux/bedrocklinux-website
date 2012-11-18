@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<title>Bedrock Linux 1.0alpha2 Changelog</title>
+<meta name=viewport content="width=device-width">
+<link rel=alternate type=application/atom+xml title="Bedrock Linux Feed" href=./..//atom.xml>
+<link rel=stylesheet href=./..//bedrock.css><body>
+<header>
+<h1 id=logo><a href=./..//><pre>__          __             __
+\ \_________\ \____________\ \___
+ \  _ \  _\ _  \  _\ __ \ __\   /
+  \___/\__/\__/ \_\ \___/\__/\_\_\</pre>
+</a></h1>
+<ul id=nav>
+<li><a href="../index.html">Home</a></li>
+</ul>
+
+<p>Bedrock Linux 1.0alpha2 Momo</p>
+
+<ul id=nav>
+<li><a href="index.html">Root Momo page</a></li>
+<li><a href="changelog.html">Changelog</a></li>
+<li><a href="upgrade.html">Upgrading instructions</a></li>
+<li><a href="backports.html">Backported features</a></li>
+<li><a href="systemrequirements.html">System Requirements</a></li>
+<li><a href="knownissues.html">Known Issues</a></li>
+<li><a href="install.html">Installation instructions</a></li>
+<li><a href="clients.html">Client setup instructions</a></li>
+<li><a href="configure.html">Configuration instructions</a></li>
+<li><a href="commands.html">Command overview</a></li>
+</ul>
+
+</header>
+<section>
+		<div id=main>
+			<h1>Bedrock Linux 1.0alpha2 "Momo" Changelog</h1>
+			<p>
+				The following changes were made from Bedrock Linux 1.0alpha1 Appa:
+			</p>
+			<ul>
+				<li>
+					fixed (harmless) mount warnings on boot (<code>rcS</code>, <code>brc</code>)
+				</li>
+				<li>
+					support for static <code>/dev</code> (<code>rcS</code>, <code>rc.conf</code>)
+				</li>
+				<li>
+					fixed (harmless) warnings during /tmp cleanup on boot and shutdown (<code>rcS</code>, <code>rcK</code>)
+				</li>
+				<li>
+					switched <code>TIMEZONE</code> to <code>TZ</code> to avoid confusion (<code>rcS</code>, <code>rc.conf</code>, <code>profile</code>)
+				</li>
+				<li>
+					If using <code>udev</code>, support setting which client's <code>udev</code> via <code>UDEV_CLIENT</code> (<code>rcS</code>, <code>rc.conf</code>)
+				</li>
+				<li>
+					<code>rc.local</code> is now run before <code>brs</code> during boot (<code>rcS</code>)
+				</li>
+				<li>
+					Bedrock Linux ASCII logo on echoed on boot and shutdown (<code>rcS</code>,<code>rcK</code>)
+				</li>
+				<li>
+					Unmounting during shutdown prints remaining mount points to unmount. (<code>rcK</code>)
+				</li>
+				<li>
+					added hashbang line to <code>rcK.clients</code> (<code>rcK.clients</code>)
+				</li>
+				<li>
+					improved comments in <code>/etc/fstab</code>
+				</li>
+				<li>
+					added <code>PATH</code> warning in <code>rc.local</code>
+				</li>
+				<li>
+					fixed space quote/escaping issue (<code>brc</code>,<code>brp</code>,<code>brl</code>)
+				</li>
+				<li>
+					improved <code>brw</code> speed, and added ability to store values to disk to further improve speed substancially.
+				</li>
+				<li>
+					added explanation and examples to <code>brclients.conf</code>
+				</li>
+				<li>
+					<code>brp</code> now recognizes <code>BR_CREATE_MISSING</code>
+				</li>
+				<li>
+					<code>brp</code> previously created unnecessarily long paths in the <code>brpath</code> executable wrappers.  Fixed.
+				</li>
+				<li>
+					<code>bru</code> now properly accepts stdin
+				</li>
+				<li>
+					<code>bru</code> now has a <code>-y</code> flag to automatically respond "y" to every prompt
+				</li>
+			</ul>
+		</div>
+
+</section>
+<footer>
+<p>© <a href=/>Bedrock Linux</a> 2012
+</footer>
+</html>

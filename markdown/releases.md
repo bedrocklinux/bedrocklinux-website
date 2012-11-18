@@ -12,7 +12,7 @@ Upcoming Releases
 Current Release
 ---------------
 
-[1.0alpha2 "Momo" (released on 2012/08/13)](1.0alpha3/)
+[1.0alpha2 "Momo" (released on 2012/08/13)](1.0alpha2/)
 
 Past Releases
 -------------

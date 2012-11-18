@@ -171,3 +171,38 @@ body{
 small{
 	color: #999;
 }
+
+pre.cmd:before{
+	content: "$ ";
+}
+pre.rcmd{
+	color:#aa0055;
+}
+pre.rcmd:before{
+	content: "# ";
+}
+code.changethis{
+	color:#888800;
+}
+code.changethis:before{
+	content: "<"
+}
+code.changethis:after{
+	content: ">"
+}
+ul.cmd{
+	list-style-type:none;
+	font-family:'Ubuntu Mono', monospace, serif;
+	color:#00aa55;
+}
+ul.cmd li:before{
+	content: "$ ";
+}
+ul.rcmd{
+	list-style-type:none;
+	font-family:'Ubuntu Mono', monospace, serif;
+	color:#aa0055;
+}
+ul.rcmd li:before{
+	content: "# ";
+}

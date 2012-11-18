@@ -41,7 +41,7 @@ anyways, the relevant information follows:
 - Following the markdown code is the content of "footer"
 - Any files that don't end in ".md", don't end in ".nav", and aren't "header1"
   "header2" or "footer" are copied directly into the output section without
-  change, as are directories.
+  change, as are directories.  This includes ".html" files.
 - An atom.xml feed is generated from parsing news.html (generated from news.md)
   in the root of website.  It expects news.html to be set up in a very specific
   manner:
@@ -49,7 +49,8 @@ anyways, the relevant information follows:
     hyperlink (http://bedrocklinux.org/news.html#X) and TITLE indicates the
     title of the news item.  This should be followed by a blank line.
   - Next should be an ISO8601 date without any time information, such as
-    "1900-01-01", within &lt;small&gt; and &lt;p&gt; tags.  This, too, should be followed by a blank line.
+    "1900-01-01", within &lt;small&gt; and &lt;p&gt; tags.  This, too, should
+    be followed by a blank line.
   - The next line(s) should be wrapped in a &lt;p&gt; tag.  The *first* paragraph
     will be dumped into the summary; after that everything is ignored until the
     next title/hyperlink line.

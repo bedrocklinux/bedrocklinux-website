@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang=en>
+<meta charset=utf-8>
+<title>Bedrock Linux 1.0alpha2 Momo Backports</title>
+<meta name=viewport content="width=device-width">
+<link rel=alternate type=application/atom+xml title="Bedrock Linux Feed" href=./..//atom.xml>
+<link rel=stylesheet href=./..//bedrock.css><body>
+<header>
+<h1 id=logo><a href=./..//><pre>__          __             __
+\ \_________\ \____________\ \___
+ \  _ \  _\ _  \  _\ __ \ __\   /
+  \___/\__/\__/ \_\ \___/\__/\_\_\</pre>
+</a></h1>
+<ul id=nav>
+<li><a href="../index.html">Home</a></li>
+</ul>
+
+<p>Bedrock Linux 1.0alpha2 Momo</p>
+
+<ul id=nav>
+<li><a href="index.html">Root Momo page</a></li>
+<li><a href="changelog.html">Changelog</a></li>
+<li><a href="upgrade.html">Upgrading instructions</a></li>
+<li><a href="backports.html">Backported features</a></li>
+<li><a href="systemrequirements.html">System Requirements</a></li>
+<li><a href="knownissues.html">Known Issues</a></li>
+<li><a href="install.html">Installation instructions</a></li>
+<li><a href="clients.html">Client setup instructions</a></li>
+<li><a href="configure.html">Configuration instructions</a></li>
+<li><a href="commands.html">Command overview</a></li>
+</ul>
+
+</header>
+<section>
+		<div id=main>
+			<h1>Functionality Backported From Bosco</h1>
+			<p>
+				One of the key features of the upcoming release of Bedrock,
+				Bosco, is a much faster brc.  This has been backported to Momo
+				for those who would like the performance improvement without
+				having to wait for Bosco's release.
+			</p>
+			<p>
+				Note that this backport has had minimal testing and may be
+				potentially problematic.  If you experience problems, rolling
+				back to Momo's brc is advisable.
+			</p>
+			<h2>Benchmarks</h2>
+			<p>
+				To get an idea of the kind of performance improvement, the time
+				to run <code>cat /etc/issue >dev/null</code> was tested "natively" without
+				using brc at all (as a control), with the new Bosco brc and
+				with the old Momo brc.  The "native" example was run several
+				times before running any testing was done to ensure the
+				contents of the file being read were already in RAM.
+			</p>
+			<p>
+				On an desktop using a Intel Core i5-3550 (quad core, 3.30Ghz), in a Debian
+				squeeze client, the results were as follows:
+			</p>
+			<ul class="cmd">
+				<li>time cat /etc/issue >/dev/null<br>cat /etc/issue > /dev/null  0.00s user 0.00s system 0% cpu 0.001 total</li>
+				<li>time brc-bosco squeeze cat /etc/issue >/dev/null<br>brc-bosco squeeze cat /etc/issue > /dev/null  0.00s user 0.00s system 0% cpu 0.001 total</li>
+				<li>time brc-momo squeeze cat /etc/issue >/dev/null<br>brc-momo squeeze cat /etc/issue > /dev/null  0.00s user 0.07s system 14% cpu 0.478 total</li>
+			</ul>
+			<p>
+				Thus, on that system, Momo's brc causes an almost half-second
+				delay.  The backported Bosco's brc's overhead was sufficiently
+				small that with <code>time</code>'s resolution was insufficient
+				to notice any change between using brc and not using brc at
+				all.  Moreover, the CPU utilization for the new brc was, like
+				the time it took, below <code>time</code>'s resolution.  Momo's
+				brc had a 14% cpu utilization overhead.
+			</p>
+			<p>
+				On an laptop using a Intel Core i3-2310M (quad core, 2.10Ghz), in a Debian
+				squeeze client, the results were as follows:
+			</p>
+			<ul class="cmd">
+				<li>time cat /etc/issue >/dev/null<br>cat /etc/issue > /dev/null  0.00s user 0.00s system 46% cpu 0.002 total</li>
+				<li>time brc-bosco squeeze cat /etc/issue >/dev/null<br>brc-bosco squeeze cat /etc/issue > /dev/null  0.00s user 0.00s system 53% cpu 0.002 total</li>
+				<li>time brc-momo squeeze cat /etc/issue >/dev/null<br>brc-momo squeeze cat /etc/issue > /dev/null  0.00s user 0.07s system 61% cpu 2.025 total</li>
+			</ul>
+			<p>
+				The results are similar on the slower machine: the new brc has
+				a negligible CPU usage and time delay, compared to the very
+				noticeable delay caused by Momo's brc.  Quite a noticeable
+				improvement.
+			</p>
+			<h2>Upgrade instructions</h2>
+			<ol>
+				<li>
+					<p>
+						Make a slight change to (the core Bedrock's)
+						<code>/etc/init.d/rcS</code> to ensure the mount points
+						are set up early, as the new brc will make the
+						assumption that they are.  Be careful not to edit a
+						client's <code>/etc/init.d/rcS</code> but the core
+						Bedrock's: from a client (with a full editor) you can
+						probably access this at somewhere such as
+						<code>/var/chroot/bedrock/etc/init.d/rcS</code>,
+						depending on how you set up your Bedrock Linux install.
+					</p>
+					<p>
+						At line 157 (just above the "DEVICE_MANAGER = "udev" line), add the following:
+					</p>
+					<pre>announce "Setting up mounts for clients..."
+brs
+result
+</pre>
+					<p>
+						Then, at the very bottom of the script, remove the if
+						block about "$AUTO_BRS" = "1", as it will no longer
+						serve any benefit.
+					</p>
+				</li>
+				<li>
+					<p>
+						Back up the old brc just in case.
+					</p>
+					<pre class="rcmd">cp /opt/bedrock/bin/brc /opt/bedrock/bin/brc-old</pre>
+				</li>
+				<li>
+					<p>
+						Download <a
+						href="https://raw.github.com/paradigm/bedrocklinux-userland/1.0alpha2/usr/src/brc/brc.c">this
+						file</a> somewhere (such as to /usr/src/brc) and cd to that directory.
+					</p>
+				</li>
+				<li>
+					<p>
+						Run the following to compile the new brc:
+					</p>
+					<pre class="cmd">gcc brc.c -o brc -static -lcap</pre>
+					<p>
+						If it complains that you are missing a required library
+						(such as sys/capability.h), install the corresponding
+						package and try again.  On debian, this package would
+						be libcap-dev.
+					</p>
+				</li>
+				<li>
+					<p>
+						Double-check that the new binary was statically
+						compiled.  Ensure ldd tells you "not a dynamic
+						executable"
+					</p>
+					<pre class="rcmd">ldd brc</pre>
+				</li>
+				<li>
+					<p>
+						If you do not already have it, install the package that
+						contains the "setcap" command in one of your clients.
+						For example, this would be the libcap2-bin package on
+						Debian-based systems.
+					</p>
+				</li>
+				<li>
+					<p>
+						Run a shell, as root, from the client that has the
+						setcap command.  You are about to (temporarily) break
+						brc, and if you are not already in a root shell which
+						has normal access to setcap you may have to fix things
+						either with brc-old or falling back to brroot.  Be sure
+						to cd to the directory which contains the
+						newly-compiled brc.
+					</p>
+				</li>
+				<li>
+					<p>
+						In this root shell, move the newly-compiled brc over the old brc.
+					</p>
+					<pre class="rcmd">cp brc /opt/bedrock/bin/brc</pre>
+				</li>
+				<li>
+					<p>
+						Set the cap_sys_chroot capability (both effective and permitted, but not inherited):
+					</p>
+					<pre class="rcmd">setcap cap_sys_chroot=ep /opt/bedrock/bin/brc</pre>
+				</li>
+				<li>
+					<p>
+						At this point, you should be good to go.  You probably
+						don't have to reboot or do anything to tell the system
+						about the new brc.  For kicks, perhaps benchmark it.
+						Run a shell in a client of your choice, then run
+						(changing "client" below to the client the shell is in,
+						such that the brc command is running the exact same
+						version of cat on the exact same file):
+					</p>
+					<ul class="cmd">
+						<li>time cat /etc/issue >/dev/null</li>
+						<li>time brc <code class="changethis">client</code> cat /etc/issue >/dev/null</li>
+						<li>time brc-old <code class="changethis">client</code> cat /etc/issue >/dev/null</li>
+					</u>
+				</li>
+			</ol>
+			</ul>
+			<h2>Rolling back the backport</h2>
+				If you have trouble with the backported brc and would like to
+				roll it back, it is quite easy to do.
+				<ol>
+					<li>
+						<p>
+							First, get to a root prompt.  brroot should be
+							resilient against whatever problems the new brc could
+							cause, and on the off chance even that is insufficient,
+							boot a Live distro and mount the filesystem.
+						</p>
+					</li>
+					<li>
+						<p>
+							Copy the backup brc over the new one
+						</p>
+						<pre class="rcmd">cp /opt/bedrock/bin/brc-old /opt/bedrock/bin/brc</pre>
+					</li>
+					<li>
+						<p>
+							The alterations to the init script should be safe
+							to keep, as the worst they can do is slightly slow
+							down your boot time.  If you would like to revert
+							them irrelevant, with your text editor of choice,
+							go to line 157 of <code>/etc/init.d/rcS</code> in
+							the core Bedrock and delete the three lines you
+							created in step one of the upgrade instructions
+							("Setting up mounts for clients...").  Then, to the
+							bottom of the file, append:
+						</p>
+						<pre>if [ "$AUTO_BRS" = "1" ]
+then
+	announce "Running brs (background)..."
+	brs &
+	result
+fi</pre>
+					</li>
+					<li>
+						At this point, you should be good to go.  You probably
+						do not have to reboot, but it would be advisable here
+						just in case.
+					</li>
+				</ol>
+		</div>
+
+		<!-- footer -->
+</section>
+<footer>
+<p>© <a href=/>Bedrock Linux</a> 2012
+</footer>
+</html>
