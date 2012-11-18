@@ -1,0 +1,66 @@
+diff -rupN capchroot-0.1/capchroot.c capchroot-0.1-patched/capchroot.c
+--- capchroot-0.1/capchroot.c	2009-07-22 19:17:30.000000000 +0000
++++ capchroot-0.1-patched/capchroot.c	2012-07-19 16:29:17.000000000 +0000
+@@ -29,41 +29,11 @@ void usage(const char *progname) {
+ int allowed(const char *path) {
+   int ret = 0;
+   struct pathcfg cfg;
+-  struct passwd *user;
+-  struct group *g;
+-  char **c, **gr;
+-
+-  user = getpwuid(getuid());
+-  if(user == NULL) {
+-    perror("getpwuid");
+-  }
+-
+   /* Initialize the cfg structure */
+   if(getconfig(path, &cfg)) {
+-    /* Check if the user was explicitly allowed */
+-    for(c = cfg.users; *c != NULL; ++c) {
+-      if((ret = !strcmp(*c, user->pw_name)))
+-        break;
+-    }
+-
+-    if(!ret) {
+-      for(c = cfg.groups; *c != NULL; ++c) {
+-        g = getgrnam(*c);
+-        if(g == NULL)
+-          continue;
+-        /* First check if the group name is the primary group */
+-        if((ret = g->gr_gid == user->pw_gid))
+-          break;
+-        /* Iterate over all group members to see if the user is in the group */
+-        for(gr = g->gr_mem; *gr != NULL; gr++) {
+-          if((ret = !strcmp(*gr, user->pw_name))) {
+-            break;
+-          }
+-        }
+-      }
+-    }
+     /* Free the components of cfg */
+     getconfig_free(&cfg);
++	ret = 1;
+   }
+   return ret;
+ }
+diff -rupN capchroot-0.1/Makefile capchroot-0.1-patched/Makefile
+--- capchroot-0.1/Makefile	2009-07-22 19:17:30.000000000 +0000
++++ capchroot-0.1-patched/Makefile	2012-07-19 16:31:03.000000000 +0000
+@@ -1,13 +1,13 @@
+ CC ?= gcc
+ CFLAGS ?= -O2 -pipe
+-LDFLAGS ?=
++LDFLAGS ?= -static
+ INSTALL ?= install
+-CONFIGFILE = /etc/capchroot.allow
++CONFIGFILE = /opt/bedrock/etc/capchroot.allow
+ 
+ all: capchroot
+ 
+ capchroot: capchroot.o configfile.o
+-	$(CC) -Wall -o capchroot $(LDFLAGS) -lcap capchroot.o configfile.o
++	$(CC) -Wall -o capchroot $(LDFLAGS) capchroot.o configfile.o -lcap
+ 
+ capchroot.o: capchroot.c configfile.h
+ 	$(CC) -Wall -c $(CFLAGS) -DCONFIGFILE=\"$(CONFIGFILE)\" capchroot.c

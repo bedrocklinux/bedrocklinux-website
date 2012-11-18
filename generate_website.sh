@@ -70,7 +70,12 @@ BEGIN{
 	ITEMCOUNTER='$NUMBER_OF_ITEMS'
 }
 !/^$/&&(IN_SUMMARY==1){
-	if(substr($0,0,3)=="<p>"){
+	if(substr($0,0,3)=="<p>" && substr($0,length($0)-3)=="</p>"){
+		IN_SUMMARY=0
+		print "\t\t\t"substr($0,4,length($0)-7)
+		print "\t\t</summary>"
+		print "\t</entry>"
+	}else if(substr($0,0,3)=="<p>"){
 		print "\t\t\t"substr($0,4)
 	}else if(substr($0,length($0)-3)=="</p>"){
 		IN_SUMMARY=0
