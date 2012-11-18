@@ -4,11 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
-## {id="website\_overhaul"} Website Overhaul
+## {id="website\_overhaul"} Website Overhaul, includes atom/rss
 <small>2012-11-18</small>
 
 Website overhauled.  Huge thanks to [simonlc](http://simon.lc/) for assisting
-me with a new website design.
+me with a new website design.  Note that the website now supports atom, and so
+if you would like to follow Bedrock Linux development and news feel free to
+point your RSS feed reader to "http://bedrocklinux.org/atom.xml".
 
 ## {id="bosco\_performance"} Bosco performance boosted; backported to Momo
 <small>2012-11-16</small>
