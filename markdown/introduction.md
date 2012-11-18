@@ -50,7 +50,7 @@ Linux is the Linux distribution for you.
 <small><sup>1</sup>Well, everything except for user-friendly. At the moment,
 Bedrock Linux can not honestly be considered "user-friendly."</small>
 
-### {id="what_bedrock_does"} What Bedrock Linux Does
+### {id="what\_bedrock\_does"} What Bedrock Linux Does
 
 Bedrock Linux uniquely manipulates the filesytem and PATH to allow software
 from various other Linux distributions to coexist as though they were all from
@@ -64,7 +64,7 @@ library conflicts are a non-issue with Bedrock Linux's design - if there is a
 package out there for a Linux distribution on your CPU architecture, it will
 most likely work with Bedrock Linux.
 
-### {id="bedrock_only"} Bedrock-Only Features
+### {id="bedrock\_only"} Bedrock-Only Features
 
 In addition to doing <small>(almost)</small> anything any other Linux
 distribution can do, there are a number of things Bedrock Linux can do which no
@@ -80,7 +80,7 @@ other distribution can.
   another Linux distribution. Packages feel disposable, like toothpicks. No
   need to fret over one breaking; just use another.
 
-## {id="real_world"} Real-World Examples of where Bedrock Linux Shines
+## {id="real\_world"} Real-World Examples of where Bedrock Linux Shines
 
 These are all examples of real-world situations which came up while Bedrock
 Linux was in development which showed quite clearly Bedrock's strength.
@@ -111,7 +111,7 @@ Linux was in development which showed quite clearly Bedrock's strength.
   it from the Arch Linux repository. Arch Linux temporarily lost access to
   Sage, and Ubuntu users never benefited having Sage in a repository.
 
-## {id="how_bedrock_works"} How Bedrock Linux Works
+## {id="how\_bedrock\_works"} How Bedrock Linux Works
 
 Bedrock's magic is based around filesystem and PATH manipulation.
 
@@ -136,7 +136,7 @@ client, via chroot, the program can be tricked into thinking that is running in
 its native Linux distribution. It would read the proper libraries and support
 programs and, for the most part, just work.
 
-### {id="bind_mounts"} Bind Mounts
+### {id="bind\_mounts"} Bind Mounts
 
 Linux can take mountable devices (such as usb sticks) and make their
 filesystems accessible at any folder on the (virtual) filesystem. Mounting usb
@@ -177,7 +177,7 @@ run a (chrooted) program in another client Linux distribution rather than only
 looking for its own versions of things. By changing the order of the elements
 in the `$PATH` variable, search order can be specified. 
 
-## {id="design_choices"} Design Choices
+## {id="design\_choices"} Design Choices
 
 Due to Bedrock's unusual goals, several unusual design choices were made. These
 choices were the reason Bedrock Linux needs to be its own distribution rather
@@ -210,7 +210,7 @@ to use functionality from a client rather than Bedrock Linux itself. If
 something can be deferred to a client it will be; Bedrock Linux only does what
 it has to do to enable the integration of other Linux distributions. 
 
-### {id="statically_linked"} Statically-linked Executables
+### {id="statically\_linked"} Statically-linked Executables
 
 Typically, most executables refer to other libraries for their components. If
 this is done at runtime, this is known as *dynamic linking*. By contrast, one
@@ -258,7 +258,7 @@ It should be noted that another Linux-distribution-in-progress, [stali from
 suckless](http://dl.suckless.org/stali/clt2010/stali.html), also makes heavy
 use of static compilition.
 
-### {id="manual_init"} Manual Client Init Scripts
+### {id="manual\_init"} Manual Client Init Scripts
 
 Most Linux distributions automatically manage the programs which are run at
 startup and shutdown, but Bedrock Linux will not be one of them for the
@@ -289,26 +289,26 @@ first itself. Only later, after the essentials are done and the system is
 functional, will the core Bedrock Linux stop its management of `/dev` and let a
 client take over.
 
-## {id="package_choices"} Package choices
+## {id="package\_choices"} Package choices
 
-### {id="kernel_linux"} Kernel: Linux
+### {id="kernel\_linux"} Kernel: Linux
 
 No other operating system kernel has such a great variety of userland options
 which could benefit from Bedrock's unique userland sharing system.
 
-### {id="bootloader_syslinux"} Bootloader: Syslinux
+### {id="bootloader\_syslinux"} Bootloader: Syslinux
 
 This is the simplest bootloader the Bedrock Linux developer knows of. Setting
 it up is just a handful of commands.
 
-### {id="userland_busybox"} Userland: Busybox
+### {id="userland\_busybox"} Userland: Busybox
 
 Busybox is an all-in-one solution for a minimal(/embedded) Linux userland. It
 is significantly smaller and easier to set up than most of its alternatives.
 Statically-linking it is relatively common, and it can be found in many Linux
 distribution client repositories statically-compiled.
 
-### {id="chroot_brc"} Chroot: brc ("BedRock Chroot")
+### {id="chroot\_brc"} Chroot: brc ("BedRock Chroot")
 
 The standard `chroot` command requires root. If setuid'd or cap_sys_chroot'd it
 is possible to use `chroot` to escalate privileges. Thus, Bedrock Linux
@@ -319,7 +319,7 @@ another chrooted environment.  No existing command did both of these things,
 and thus Bedrock Linux had to create its own, `brc`.  `brc` is largely based on
 [capchroot](https://mailman.archlinux.org/pipermail/arch-dev-public/2009-July/012552.html).
 
-### {id="shell_scripts"} Shell scripts
+### {id="shell\_scripts"} Shell scripts
 
 Additionally, Bedrock Linux uses some of its own shell scripts (using
 busybox's `/bin/sh`) for things such as booting and integrating the system.
