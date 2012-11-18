@@ -100,10 +100,6 @@ BEGIN{
 	IN_SUMMARY=1
 	ITEMCOUNTER=ITEMCOUNTER-1
 }
-
-
 ' ../html/news.html >> $OUTFILE
-
-
 
 echo '</feed>'                                                     >> $OUTFILE
