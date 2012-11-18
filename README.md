@@ -10,7 +10,8 @@ such changes.
 
 To generate the website from the markdown source, simply run the
 generate_website.sh script.  The only dependency in addition to UNIX utilities
-(sh, awk, sed, grep, find, etc) is markdown.
+(sh, awk, sed, grep, find, etc) is markdown and *gnu* awk ("gawk").  I might
+later drop the gnu-isms from awk if there is interest.
 
 If you're interested in digging deeper, note that the website generation code
 was not necessarily designed to be portable to other projects.  The atom.xml
