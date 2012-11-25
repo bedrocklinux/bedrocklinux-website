@@ -61,7 +61,7 @@ security offered by a locked-down standard Linux distribution.
 ## {id="contribute"} How can I contribute?
 
 - Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) or
-  [reddit](reddit.com/r/bedrocklinux) and ask around.
+  [reddit](http://reddit.com/r/bedrocklinux) and ask around.
 - Take a look at the [issues](issues/) and, if you feel you can tackle
   something, [claim it](https://github.com/paradigm/bedrocklinux-issues) and go
   at it.  Or make a new issue if you have an idea.
