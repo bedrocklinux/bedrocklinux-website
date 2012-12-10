@@ -69,7 +69,7 @@ gawk -F\" '
 BEGIN{
 	ITEMCOUNTER='$NUMBER_OF_ITEMS'
 }
-/^<h2 id=/{
+/^<h2 id=/||/^<\/section>$/{
 	URL="http://bedrocklinux.org/news.html#"$2
 	TITLE=substr($3,2,length($3)-6)
 	if(IN_CONTENT==1){
