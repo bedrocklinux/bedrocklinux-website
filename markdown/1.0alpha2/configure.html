@@ -224,7 +224,7 @@ mount /home</pre>
 			<h2 id="fstab">fstab</h2>
 			<p>
 				In order to ensure non-root users can set up clients, each item
-				which needs to be shared should be set it
+				which needs to be shared should be set in
 				<code>/etc/fstab</code> with the option <code>user</code> and
 				possbily <code>noauto</code>.
 			</p>
@@ -241,8 +241,8 @@ mount /home</pre>
 			<p>
 				To have a client daemon start or stop at boot/shutdown, place
 				the relevant command to do this in
-				<code>/etc/init.drcS.clients</code> and
-				<code>/etc/init.drc/K.clients,</code> respectively.  For
+				<code>/etc/init.d/rcS.clients</code> and
+				<code>/etc/init.d/rcK.clients,</code> respectively.  For
 				example, to start Debian squeeze's cups daemon at boot, place
 				the following in your <code>/etc/init.d/rcS.clients:
 			</p>
