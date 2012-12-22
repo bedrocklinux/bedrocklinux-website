@@ -30,7 +30,9 @@ do
 	cat header2 >> $OUTFILE
 	sed '1,2d' $PAGE |\
 		markdown |\
-		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' >> $OUTFILE
+		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' |\
+		sed 's,<pre><code,<pre,g' |\
+		sed 's,</code><pre>,</pre>,g' >> $OUTFILE
 	cat footer >> $OUTFILE
 done
 

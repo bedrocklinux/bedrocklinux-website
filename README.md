@@ -28,6 +28,8 @@ anyways, the relevant information follows:
   beginning of the relevant section with a `{...}`, where the `...` will be
   placed accordingly.  For example, `## {id="website_overhaul"} Website
   Overhaul` will turn into `<h2 id="website_overhaul">Website Overhaul</h2>`
+- Markdown tends to nest <code> directly inside of <pre>.  The inner <code>
+  tags are removed from this part.
 - The file `header1` in the root of the `markdown` directory contains the
   beginning chunk of all of the websites.
   Baring a few things described below, this will be the same for every page.
