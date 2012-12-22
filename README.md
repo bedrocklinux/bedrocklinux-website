@@ -29,13 +29,13 @@ anyways, the relevant information follows:
   placed accordingly.  Note the space after the closing brace.  For example,
   `## {id="website_overhaul"} Website Overhaul` will turn into `<h2
   id="website_overhaul">Website Overhaul</h2>`
-- Since <ul> and <ol> are both immediately followed by another tag, if you
-  would like to place an `id`, `class`, etc inside <ul>/<ol>, make the *first*
-  list item just `{...}` (note lack of space at the end).  e.g.: `-
+- Since `<ul>` and `<ol>` are both immediately followed by another tag, if you
+  would like to place an `id`, `class`, etc inside `<ul>/<ol>`, make the
+  *first* list item just `{...}` (note lack of space at the end).  e.g.: `-
   {class="rcmd"}`
 - Something within `~(...~)` will be converted to `<code class="changethis">`.
-- Markdown tends to nest <code> directly inside of <pre>.  The inner <code>
-  tags are removed from this part.
+- Markdown tends to nest `<code>` directly inside of `<pre>`.  The inner
+  `<code>` tags are removed from this part.
 - The file `header1` in the root of the `markdown` directory contains the
   beginning chunk of all of the websites.
   Baring a few things described below, this will be the same for every page.
