@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="linux.com-new-distros"} Bedrock Linux mentioned on linux.com
+<small>2012-12-12</small>
+
+Bedrock Linux was mentioned in an [article on
+linux.com](https://www.linux.com/news/hardware/desktops/679646-6-linux-distros-born-in-2012/)
+about new Linux distributions created in 2012.
+
+
 ## {id="website\_overhaul"} Website Overhaul, includes atom/rss
 <small>2012-11-18</small>
 
