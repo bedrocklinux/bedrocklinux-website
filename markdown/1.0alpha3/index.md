@@ -4,14 +4,15 @@ Nav: bosco.nav
 Bedrock Linux 1.0alpha3 Bosco
 =============================
 
-These are a collection of files used to create and document the second alpha of
-Bedrock Linux, named "Bosco."  Bosco is tentatively set for release by
-End-of-Summer 2013.
+These are a collection of files used to create and document the third alpha of
+Bedrock Linux, named "Bosco", which was released on 2012/12/31.
 
-Plans
------
-
-A short description of the plans for Bosco can be be found [here](plans.html).
-
-Note that the plans have been implemented and backported to Momo.  Further
-information about the backport can be found [here](../1.0alpha2/backports.html).
+- [Changelog](changelog.html)
+- [Upgrading instructions](upgrade.html)
+- [System Requirements](systemrequirements.html)
+- [Known Issues](knownissues.html)
+- [Installation instructions](install.html)
+- [Client setup instructions](clients.html)
+- [Configuration instructions](configure.html)
+- [Command overview](commands.html)
+- [design plans](plans.html)

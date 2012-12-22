@@ -2,5 +2,9 @@
 
 Bedrock Linux 1.0alpha3 Bosco
 
-- [Root Momo page](index.html)
-- [Plans](plans.html)
+- [Root Bosco page](index.html)
+- [Changlog](changelog.html)
+- [Upgrading Instructions](upgrade.html)
+- [System Requirements](systemrequirements.html)
+- [Development Plans](plans.html)
+- [Known Issues](knownissues.html)
