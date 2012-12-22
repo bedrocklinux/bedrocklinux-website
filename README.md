@@ -25,9 +25,15 @@ anyways, the relevant information follows:
   also be treated as markdown; however, all unordered lists will be given the
   `id="nav"`
 - To add an `id`, `class`, etc section within an opening tag, start the very
-  beginning of the relevant section with a `{...}`, where the `...` will be
-  placed accordingly.  For example, `## {id="website_overhaul"} Website
-  Overhaul` will turn into `<h2 id="website_overhaul">Website Overhaul</h2>`
+  beginning of the relevant section with a `{...} `, where the `...` will be
+  placed accordingly.  Note the space after the closing brace.  For example,
+  `## {id="website_overhaul"} Website Overhaul` will turn into `<h2
+  id="website_overhaul">Website Overhaul</h2>`
+- Since <ul> and <ol> are both immediately followed by another tag, if you
+  would like to place an `id`, `class`, etc inside <ul>/<ol>, make the *first*
+  list item just `{...}` (note lack of space at the end).  e.g.: `-
+  {class="rcmd"}`
+- Something within `~(...~)` will be converted to `<code class="changethis">`.
 - Markdown tends to nest <code> directly inside of <pre>.  The inner <code>
   tags are removed from this part.
 - The file `header1` in the root of the `markdown` directory contains the

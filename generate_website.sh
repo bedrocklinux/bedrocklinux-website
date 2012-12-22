@@ -30,9 +30,29 @@ do
 	cat header2 >> $OUTFILE
 	sed '1,2d' $PAGE |\
 		markdown |\
+		awk -F"{|}" '
+			/^<ul>$/{
+				X=1
+			}
+			/^<li>{/ && X==1{
+				print "<ul "$2">"
+				X=2
+			}
+			!/^<ul>$/{
+				if(X==1){
+					print "<ul>"
+				}
+				if(X==0){
+					print $0
+				}
+				X=0
+			}
+		' |\
+		sed 's,~(,<code class="changethis">,g' |\
+		sed 's,~),</code>,g' |\
 		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' |\
 		sed 's,<pre><code,<pre,g' |\
-		sed 's,</code><pre>,</pre>,g' >> $OUTFILE
+		sed 's,</code></pre>,</pre>,g' >> $OUTFILE
 	cat footer >> $OUTFILE
 done
 
