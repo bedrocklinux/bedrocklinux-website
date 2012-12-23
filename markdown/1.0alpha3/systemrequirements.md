@@ -1,4 +1,4 @@
-Title: Bedrock Linux 1.0alpha3 System Requirements
+Title: Bedrock Linux 1.0alpha3 Bosco System Requirements
 Nav: bosco.nav
 
 # Bedrock Linux 1.0alpha3 Bosco System Requirements

@@ -3,9 +3,13 @@
 Bedrock Linux 1.0alpha3 Bosco
 
 - [Root Bosco page](index.html)
-- [Changlog](changelog.html)
-- [Upgrading Instructions](upgrade.html)
+- [Changelog](changelog.html)
+- [Upgrading instructions](upgrade.html)
 - [System Requirements](systemrequirements.html)
-- [Development Plans](plans.html)
 - [Known Issues](knownissues.html)
-- [Installation Instructions](install.html)
+- [Installation instructions](install.html)
+- [Client setup instructions](clients.html)
+- [Tips, Tricks and Troubleshooting](troubleshooting.html)
+- [Configuration instructions](configure.html)
+- [Command Overview](commands.html)
+- [Design Plans](plans.html)
