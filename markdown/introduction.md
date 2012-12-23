@@ -4,31 +4,31 @@ Nav: home.nav
 # Introduction to Bedrock Linux
 
 - [Search for the Perfect Linux Distribution](#search)
-  - [What Bedrock Linux Does](#what_bedrock_does)
+	- [What Bedrock Linux Does](#what_bedrock_does)
 - [Real-World Examples of where Bedrock Linux Shines](#real_world)
 - [How Bedrock Linux Works](#how_bedrock_works)
-  - [Chroot](#chroot)
-  - [Bind Mounts](#bind_mounts)
-  - [PATH](#path)
+	- [Chroot](#chroot)
+	- [Bind Mounts](#bind_mounts)
+	- [PATH](#path)
 - [Design Choices](#design_choices)
-  - [Simplicity](#simplicity)
-  - [Minimalism and Deferring Features](#minimalism)
-  - [Statically-linked Executables](#statically_linked)
-  - [Manual Client Init Scripts](#manual_ini)
-  - [Self-sufficient Booting](#self-sufficient)
+	- [Simplicity](#simplicity)
+	- [Minimalism and Deferring Features](#minimalism)
+	- [Statically-linked Executables](#statically_linked)
+	- [Manual Client Init Scripts](#manual_ini)
+	- [Self-sufficient Booting](#self-sufficient)
 - [Package choices](#package_choices)
-  - [Kernel: Linux](#linux)
-  - [Bootloader: Syslinux](#syslinux)
-  - [Userland: Busybox](#busybox)
-  - [Chroot: brc ("BedRock Chroot")](#brc)
-  - [Shell scripts](#shell_scripts)
+	- [Kernel: Linux](#linux)
+	- [Bootloader: Syslinux](#syslinux)
+	- [Userland: Busybox](#busybox)
+	- [Chroot: brc ("BedRock Chroot")](#brc)
+	- [Shell scripts](#shell_scripts)
 - [Bedrock Linux Commands](#commands)
-  - [brc ("BedRock Chroot")](#brc)
-  - [brs ("BedRock Setup")](#brs)
-  - [brp ("BedRock Path")](#brp)
-  - [brl ("BedRock aLl")](#brl)
-  - [bru ("Bedrock Update")](#bru)
-  - [brsh ("BedRock SHell")](#brsh)
+	- [brc ("BedRock Chroot")](#brc)
+	- [brs ("BedRock Setup")](#brs)
+	- [brp ("BedRock Path")](#brp)
+	- [brl ("BedRock aLl")](#brl)
+	- [bru ("Bedrock Update")](#bru)
+	- [brsh ("BedRock SHell")](#brsh)
 
 ## {id="search"} Search for the Perfect Linux Distribution
 
@@ -349,9 +349,11 @@ fedora firefox`.
 
 ### {id="brs"} brs ("BedRock Setup")
 
-`brs` will set up clients.  Note that will be dropped in Bedorck Linux
-1.0alpha3, as clients will no longer have to be set up after the initial setup
-at boot.
+`brs` will set up the `share` items from `brclients.conf` in the client
+provided as an argument.  In Bedrock Linux 1.0alpha3, this is automatically
+used at boot and rarely needs to be run by the user.  The exception is if a new
+client is added or a share mount point accidentally removed, in which case the
+user can simply call `brs ~(clientname~)`.
 
 ### {id="brp"} brp ("BedRock Path")
 

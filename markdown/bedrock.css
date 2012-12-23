@@ -75,9 +75,13 @@ h4{
 	margin:2.15em 0 1.1rem;
 	font-size:1.0rem
 }
+/* I don't like extra margin on ul,ol */
+/*p,ul,ol{*/
+p{
+	margin:0 0 1rem 0
+}
 p,ul,ol{
 	padding:0;
-	margin:0 0 1rem 0
 }
 ul ul,ol ol{
 	padding:0 0 0 1.5rem

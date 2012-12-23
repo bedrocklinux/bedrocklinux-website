@@ -1,8 +1,26 @@
-Title: Bedrock Linux 1.0alpha3 Installation Instructions
+Title: Bedrock Linux 1.0alpha3 Bosco Installation Instructions
 Nav: bosco.nav
 
 Bedrock Linux 1.0alpha3 Installation Instructions
 =================================================
+
+Note that there is no proper installer for this release of Bedrock Linux
+(1.0alpha3 Bosco). Installation is done by manually collecting and compiling
+the components, laying out the filesystem, adding the users, etc. Experienced
+Linux users - those who are comfortable compiling their own software, know the
+significance of the various parts of the filesystem directory layout, etc -
+should not have overly much trouble, but those new to Linux or those who don't
+want to get their hands dirty may wish to seek another Linux distribution for
+their needs.
+
+If you are currently using a previous version of Bedrock Linux, note that many
+of the existing directories from your current installation may be used in this
+release unaltered: `/home`, `/root`, `/boot`, `/bin`, `/sbin`, `/usr/bin`,
+`/usr/sbin`, `/var/chroot` (or wherever you kept your clients). When these
+directories come up in the following instructions, consider simply copying the
+old values over the ones created here.  Additionally, it could be useful to
+keep your configruation files, such as `brclients.conf` and `/etc/passwd`, to
+reference.
 
 - [Installation Host Environment](#installer-host)
 - [Partitioning](#partitioning)
@@ -21,32 +39,7 @@ Bedrock Linux 1.0alpha3 Installation Instructions
 - [Reboot and Enjoy](#reboot)
 
 
-Note that there is no proper installer for this release of Bedrock Linux
-(1.0alpha3 Bosco). Installation is done by manually collecting and compiling
-the components, laying out the filesystem, adding the users, etc. Experienced
-Linux users - those who are comfortable compiling their own software, know the
-significance of the various parts of the filesystem directory layout, etc -
-should not have overly much trouble, but those new to Linux or those who don't
-want to get their hands dirty may wish to seek another Linux distribution for
-their needs.
 
-If you are currently using a previous version of Bedrock Linux, note that many
-of the existing directories from your current installation may be used in this
-release unaltered:
-
-- `/home`
-- `/root`
-- `/boot`
-- `/bin`
-- `/sbin`
-- `/usr/bin`
-- `/usr/sbin`
-
-When these directories come up in the following instructions, consider simply
-copying the old values over the ones created here.
-
-Additionally, it could be useful to keep your configruation files, such as
-`brclients.conf` and `/etc/passwd`, to reference.
 
 ## {id="installer-host"} Installation Host Environment
 
@@ -132,12 +125,12 @@ rather than typing/copying it verbatim.
 Note that this will become Bedrock's root
 directory when you are done. As root:
 
-    {class="rcmd"} mkdir -p ~(/mnt/bedrock~)
+	{class="rcmd"} mkdir -p ~(/mnt/bedrock~)
 
 Mount the newly-created main/root partition. Replace ~(sdXN~) with the
 corresponding device file to the main/root partition. As root:
 
-    {class="rcmd"} mount /dev/~(sdXN~) ~(/mnt/bedrock~)
+	{class="rcmd"} mount /dev/~(sdXN~) ~(/mnt/bedrock~)
 
 If you created more than one partition (other than swap) for Bedrock, make the
 corresponding directories and mount them.  If you are upgrading from a prior
@@ -175,7 +168,7 @@ Debian-based Linux distributions, these packages are `libcap-dev` and
 Once you have run all of these command successfully, you can clean up
 extraneous files with:
 
-    {class="rcmd"} make remove-unnecessary
+	{class="rcmd"} make remove-unnecessary
 
 ## {id="initial-client"} Initial Client(s)
 
@@ -288,7 +281,7 @@ and
 [compile/install the kernel]( ../1.0alpha2/install.html#COMPILE Busybox)
 are still valid; follow those until you get to
 
-	ldd busybox
+	{class="cmd"} ldd busybox
 
 When you get there, return to this page and skip down to [busybox test
 section](#busybox-test) below.  If you would prefer to use Busybox from another
@@ -308,9 +301,9 @@ any given Linux distribution's static busybox would be appreciated.
 
 - **Does not work**
 	- Debian 6 Squeeze (Busybox 1.17.1-8)
-		- (`getty` seems to fail to call `login`)
+		- `getty` seems to fail to call `login`
 	- Ubuntu 12.10 Precise Pangolin (Busybox 1.18.5-1ubuntu4)
-		- (`getty` seems to fail to call `login`)
+		- `getty` seems to fail to call `login`
 
 There seems to be a trend where Busyboxes from Debian-based Linux distributions
 prior to 1.20 have a bug with `getty/login`.  Presumably any 1.20 Busybox or
@@ -378,7 +371,7 @@ the location of the busybox you are testing as an argument.  For example, if the
 current working directory contains the busybox executable you are going to test,
 download the test script there and run:
 
-	./busybox-tests-1.0alpha3.sh ./busybox
+	{class="cmd"} ./busybox-test-1.0alpha3.sh ./busybox
 
 If a test failed, you will have to find or compile another busybox.  See the
 known-good busyboxes listed towards the top of [the busybox section](#busybox).
@@ -436,7 +429,7 @@ difficulty resuming installation.
 
 Change to the directory in which you placed downloaded Syslinux source.
 
-	cd ~(/mnt/bedrock/src~)
+	{class="cmd"} cd ~(/mnt/bedrock/src~)
 
 Unpackage syslinux and change directories into the extlinux subdirectory in it:
 
@@ -449,13 +442,13 @@ which comes with the package. Otherwise, you will have to compile extlinux it
 yourself. If you are not using (32-bit) x86 (or you would like to compile
 syslinux for another reason), run the following:
 
-	make clean; make
+	{class="cmd"} make clean; make
 
 This will compile a number of things you do not need. If you receive an error,
 there is a good chance that it was not with regards to extlinux. Check to see
 if extlinux compiled successfully: 
 
-	ls extlinux/extlinux
+	{class="cmd"} ls extlinux/extlinux
 
 Install extlinux. As root:
 
@@ -565,7 +558,7 @@ and install it instead, but these instructions do not cover it.
 
 Change to the directory in which you placed the source code packages.
 
-	cd ~(/mnt/bedrock~)/src
+	{class="cmd"} cd ~(/mnt/bedrock~)/src
 
 - {class="cmd"}
 - tar xvf e2fsprogs-~(VERSION~).tar.gz
@@ -585,8 +578,9 @@ Compile the fsck executables:
 
 To confirm that they were compiled statically, run
 
-	ldd e2fsck/e2fsck
-	ldd misc/fsck
+- {class="cmd"}
+- ldd e2fsck/e2fsck
+- ldd misc/fsck
 
 and check that both commands output "not a dynamic executable".
 

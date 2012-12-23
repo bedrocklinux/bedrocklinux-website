@@ -17,6 +17,13 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and the
 [introduction](introduction.html) for more.
 
+## {id="linux.com-new-distros"} Bedrock Linux mentioned on linux.com
+<small>2012-12-12</small>
+
+Bedrock Linux was mentioned in an [article on
+linux.com](https://www.linux.com/news/hardware/desktops/679646-6-linux-distros-born-in-2012/)
+about new Linux distributions created in 2012.
+
 ## {id="website\_overhaul"} Website Overhaul
 <small>2012-11-18</small>
 
@@ -34,12 +41,5 @@ functionality was backported to Momo for those who are interested in trying it
 out before Bosco is ready.  See
 [here](http://bedrocklinux.org/1.0alpha2/backports.html) for benchmarks and
 instructions on how to install the backport update.
-
-## {id="olf-2012"} Bedrock Linux at Ohio Linux Fest 2012
-<small>2012-09-29</small>
-
-Bedrock Linux's founder/lead dev is presenting Bedrock Linux today at [the Ohio
-LinuxFest 2012](http://www.ohiolinux.org/talks#BEDROCK).  The slides for the
-presentation are available [here](http://bedrocklinux.org/media/bedrock-olf.pdf).
 
 [See older news items](news.html)

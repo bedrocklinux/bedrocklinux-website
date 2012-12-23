@@ -1,14 +1,14 @@
-Title: Bedrock Linux 1.0alpha3 Known Issues
+Title: Bedrock Linux 1.0alpha3 Bosco Known Issues
 Nav: bosco.nav
 
 # Bedrock Linux 1.0alpha3 Bosco Known Issues
 
-- [File Sync Issue](#etc)
-- [Difficulty Statically Compiling](#static)
+- [/etc File Sync Issue](#etc)
+- [Difficulty Statically Compiling Busybox](#static)
 - [Man pages do not work across clients](#manpages)
 - [Debian-based clients: statoverride problems](#statoverride)
 
-## {id="etc"} File Sync Issue
+## {id="etc"} /etc File Sync Issue
 
 Individual files, when "shared" via bind mounts, cannot be moved
 over.  This is particularly problematic for files such as `/etc/passwd` which are normally updated by creating a new file and moving it over the previous one.
@@ -17,11 +17,11 @@ Work arounds:
 
 - You could share these files and manually "update" them.  If the "groupadd" command is run, it will fail and leave a temporary file such as "/etc/group+" behind.  You can cat this file over the normal "/etc/group" file to finalize the command yourself, like so:
 
-    cat /etc/group+ /etc/group && rm /etc/group+
+	cat /etc/group+ /etc/group && rm /etc/group+
 
 - You could avoid sharing these files files through the brclients.conf system and manually sync them when one changes.  For example, if "groupadd" is run, you could run the following:
 
-    cp /etc/group /tmp/ && brl cp /tmp/group /etc/group && rm /tmp/group
+	cp /etc/group /tmp/ && brl cp /tmp/group /etc/group && rm /tmp/group
 
 This assumes `/tmp` is shared between clients.
 
@@ -29,7 +29,7 @@ Work is underway to create a daemon to automate this second option.  See here fo
 
 See [here](http://bedrocklinux.org/issues/issue-ed10277445e2bc796171ca53603f0894f300a5ef.html) for issue tracker page for the issue.
 
-## {id="static"} Difficulty Statically Compiling
+## {id="static"} Difficulty Statically Compiling Busybox
 
 Difficulty statically compiling busybox have been noted, somewhat dependent on
 the client/installer host used. This is caused by conscious limitations placed
@@ -40,10 +40,8 @@ Work arounds:
 
 - One of the changes since Momo is that Bosco supports using pre-compiled
   static busybox from another Linux distribution, such as (infact, preferably)
-  from a client.  You just have to make sure:
-  1. it is statically compiled
-  2. has the necessary applets
-
+  from a client.  You just have to make sure it [meets a a few
+  requirements](install.html#busybox-test).
 - Compile against a different library, such as [uclibc](http://www.uclibc.org/)
   (a sister project of busybox) or [musl](http://www.musl-libc.org/).  If you'd
   like to try using uclibc, look into

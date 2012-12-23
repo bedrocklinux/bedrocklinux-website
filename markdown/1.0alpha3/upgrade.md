@@ -1,4 +1,4 @@
-Title: Bedrock Linux 1.0alpha3 Upgrade Instructions
+Title: Bedrock Linux 1.0alpha3 Bosco Upgrade Instructions
 Nav: bosco.nav
 
 Bedrock Linux 1.0alpha3 Upgrading Instructions
