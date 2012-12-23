@@ -20,10 +20,11 @@ else
 fi
 
 echo -n "Testing $1 for applets... "
+# fsck should be optional, removed it from the list below
 MISSINGAPPLETS=""
 for APPLET in "\[" ar awk basename cat chmod chroot chvt clear\
 	cmp cp cut dd df dirname echo ed env expand expr false find\
-	free fsck getty grep head hostname hwclock id init install\
+	free getty grep head hostname hwclock id init install\
 	kill last length ln ls mdev mkdir more mount mt od passwd\
 	printf ps readlink reset rm route sed seq sh sleep sort\
 	split stat swapon sync tail time top touch true tty umount\
