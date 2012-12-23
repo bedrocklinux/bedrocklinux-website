@@ -113,7 +113,7 @@ it comes up in these instructions. In general, when you see anything formatted
 rather than typing/copying it verbatim.
 
 Note that this will become Bedrock's root
-directory when we are done. As root:
+directory when you are done. As root:
 
     {class="rcmd"} mkdir -p ~(/mnt/bedrock~)
 
@@ -269,10 +269,14 @@ If you would prefer to compile your own Busybox, the instructions from the
 previous release to [download the source]( ../1.0alpha2/install.html#DOWNLOAD Busybox)
 and
 [compile/install the kernel]( ../1.0alpha2/install.html#COMPILE Busybox)
-are still valid; follow those.  When you have completed them, skip the
-rest of this section and continue in the [next section below](#syslinux).  If
-you would prefer to use Busybox from another Linux distribution, continue
-reading here.
+are still valid; follow those until you get to
+
+	ldd busybox
+
+When you get there, return to this page and skip down to [busybox test
+section](#busybox-test) below.  If you would prefer to use Busybox from another
+Linux distribution (or just have difficulty statically compiling busybox),
+continue reading here.
 
 Static busyboxes from a number of Linux distributions have been tested, but
 potential remains for untested ones to have problems.  If you try this out with
@@ -309,7 +313,7 @@ you would like to install the kernel.
 - mount -- bind /dev/pts ~(/mnt/bedrock/var/chroot/client~)/dev/pts
 - chroot ~(/mnt/bedrock/var/chroot/client~) /bin/sh
 
-From there, run whatever commands are necessary to install busybox.  Note we
+From there, run whatever commands are necessary to install busybox.  Note you
 are looking for a *static* busybox - the package might be called something such
 as `busybox-static`.  When you have finished, run the following commands:
 
@@ -338,53 +342,38 @@ busybox from the package.  For example, to download Debian Sid's busybox:
 - Busybox will be available at ~(/tmp/busybox~)/bin/busybox
 - You may move busybox out of ~(/tmp/busybox~) and remove that directory.
 
+### {id="busybox-test"} Busybox test
+
 You should now have a candidate busybox; either one you compiled from source,
 one from a client or one from another distribution.
 
-To make sure it will work, we need to run three tests.  First, we have to ensure it is static.  `cd` to the directory containing busybox and run the following:
+To make sure it will work, you need to test for four things:
 
-	ldd ./busybox
+1. That it is statically compiled
+2. That it contains all of the required applets
+3. That it supports "--install"
+4. That it does not have a specific bug which appears to have been fixed in
+Busybox 1.20.0
 
-If the output is `not a dynamic executable`, it is statically compiled.
-Otherwise, you will have to find another busybox.  Next, we need to make sure
-it has the minimum required applets.  To test for this, run:
+To test for these things, download [this script](busybox-test-1.0alpha3.sh),
+set it to be executable (`chmod +x busybox-test-1.0alpha3.sh`) and run it with
+the location of the busybox you are testing as an argument.  For example, if the
+current working directory contains the busybox executable you are going to test,
+download the test script there and run:
 
-	export MISSINGAPPLETS=""
-	for APPLET in "\[" ar awk basename cat chmod chroot chvt clear cmp cp cut dd df dirname echo ed env expand expr false find free fsck getty grep head hostname hwclock id init install kill last length ln ls mdev mkdir more mount mt od passwd printf ps readlink reset rm route sed seq sh sleep sort split stat swapon sync tail time top touch true tty umount uname vi wc wget which xargs yes
-	do
-		if busybox | awk 'p==1{print$0}/^Currently/{p=1}' | grep "^$APPLET$"
-		then
-			MISSINGAPPLETS="$APPLET "
-		fi
-	done
-	if [ -z "$MISSINGAPPLETS" ]
-	then
-		echo "OKAY"
-	else
-		echo "Missing: $MISSINGAPPLETS"
-	fi
+	./busybox-tests-1.0alpha3.sh ./busybox
 
-If the output is `OKAY`, this busybox has all of the required applets.
-Otherwise you will have to find another busybox.
+If a test failed, you will have to find or compile another busybox.  See the
+known-good busyboxes listed towards the top of [the busybox section](#busybox).
 
-Finally, we need to ensure it has the `--install` argument.  Run:
-
-	./busybox | grep -q -- "--install" | echo $?
-
-If the output is `0`, it does; if it outputs `1` does not (unless it
-is an older busybox, pre-1.20, in which case you can proceed pretending as
-though it did succeed.)
-
-If all three of the above tests turned out well, you can install this busybox.
-Assuming your current working directory is still next to the busybox
-executable, run:
+If all of the tests pass, you can continue by installing this busybox
+executable into ~(/mnt/bedrock~).  `cd` into the directory which contains the
+busybox executable and run:
 
 - {class="rcmd"}
 - cp ./busybox ~(/mnt/bedrock/~)/bin
 - chroot ~(/mnt/bedrock~) /bin/busybox --install
 
-If you received an error about `--install` not being available, you'll have to
-find another busybox and repeat the tests.  Otherwise, if this command worked,
-busybox is now installed.
+Busybox should now be installed.
 
 ## {id="syslinux"} Syslinux
