@@ -41,7 +41,8 @@ do
 			!/^<ul>$/{
 				if(X==1){
 					print "<ul>"
-				}
+					print $0
+				}else
 				if(X==0){
 					print $0
 				}

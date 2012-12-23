@@ -739,15 +739,17 @@
 				Recommended applets:
 			</p>
 			<p>
-				At the moment, there is no list of exactly what parts of
-				busybox Bedrock Linux requires.  If you are worried that you
-				might leave something out which Bedrock Linux requires, a
-				viable strategy could be to simply be easiest to install just
-				about everything in Applets (ie, everything not under "Busybox
-				Settings --->").  This is not required, and if you're familiar
-				with what is typically expected in a Linux distribution, you're
-				free to limit busybox's applets to simply that.
+				The following list constitutes the minimum required commands -
+				find the applets that supply these and ensure they are enabled:
 			</p>
+			<pre>
+[ ar awk basename cat chmod chroot chvt clear cmp cp cut dd df
+dirname echo ed env expand expr false find free fsck getty grep
+head hostname hwclock id init install kill last length ln ls
+mdev mkdir more mount mt od passwd printf ps readlink reset rm
+route sed seq sh sleep sort split stat swapon sync tail time
+top touch true tty umount uname vi wc wget which xargs yes
+			</pre>
 			<p>
 			To compile, run:
 			</p>
@@ -783,9 +785,9 @@
 				</li>
 			</ul>
 			<p>
-				A high-priority goal for an up release of Bedrock Linux will be
-				to include a more consistent, installer host distro-agnostic
-				solution for statically compiling buysbox.
+				A high-priority goal for the upcoming release of Bedrock Linux
+				will be to include a more consistent, installer host
+				distro-agnostic solution for statically compiling buysbox.
 			</p>
 			<p>
 				To confirm that it was compiled statically, run
