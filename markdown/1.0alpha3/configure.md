@@ -1,8 +1,8 @@
 Title: Bedrock Linux 1.0alpha3 Bosco Configuration Instructions
 Nav: bosco.nav
 
-Bedrock Linux 1.0alpha3 Configuration Instructions
-==================================================
+Bedrock Linux 1.0alpha3 Bosco Configuration Instructions
+========================================================
 
 
 - [rc.conf](#rcconf)

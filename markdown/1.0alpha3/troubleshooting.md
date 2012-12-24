@@ -1,8 +1,8 @@
 Title: Bedrock Linux 1.0alpha3 Bosco Tips, Tricks and Troubleshooting
 Nav: bosco.nav
 
-Bedrock Linux 1.0alpha3 Tips, Tricks and Troubleshooting
-========================================================
+Bedrock Linux 1.0alpha3 Bosco Tips, Tricks and Troubleshooting
+==============================================================
 
 This page contains tips, tricks and troubleshooting advice for various software
 and clients for Bedrock Linux 1.0alpha3 Bosco.

@@ -185,6 +185,9 @@ pre.rcmd{
 pre.rcmd:before{
 	content: "# ";
 }
+code.rcmd{
+	color:#aa0055;
+}
 code.changethis{
 	color:#888800;
 }

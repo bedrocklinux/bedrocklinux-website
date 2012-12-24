@@ -1,8 +1,8 @@
 Title: Bedrock Linux 1.0alpha3 Bosco Client Setup Instructions
 Nav: bosco.nav
 
-Bedrock Linux 1.0alpha3 Client Setup Instructions
-=================================================
+Bedrock Linux 1.0alpha3 Bosco Client Setup Instructions
+=======================================================
 
 These are instructions for installing other Linux distributions as clients
 within Bedrock Linux 1.0alpha3.
