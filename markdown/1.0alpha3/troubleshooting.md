@@ -10,6 +10,7 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 - [General issues](#general)
 	- [Sudo PATH](#sudo-path)
 	- [Proprietary Nvidia Drivers](#proprietary-nvidia-drivers)
+- [DNS from the core does not work](#dns)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -57,6 +58,24 @@ client, it may be wise to use that same client to compile X11.
 In addition to creating a kernel module, the proprietary Nvidia driver may
 alter X11 files.  To ensure it works properly, it should be installed in the
 same client which will provide X11.
+
+### {id="dns"} DNS from the core does not work
+
+It seems that even if `ldd` reports busybox was statically compiled, when
+compiled against glibc, the DNS libraries do not seem to be pulled it and
+functionality such as `ping` or `wget` do not seem to work.  This is considered
+a minor issue as a client should be able to provide this functionality such
+that the core Bedrock Linux does not need it.  If you insist on remedying it,
+you have two choices:
+
+- you can statically compile busybox against a library such as uclibc or musl,
+  but be warned [some consider this difficult](knownissues.html#static)
+
+- you can compare the strace output of a "static" busybox in a client where it
+works the strace output of it in the core to see what libraries it is using and
+copy them into the core.
+
+TODO: do the above and provide the libraries in the instructions here
 
 ## {id="client-specific"} Client specific issues
 

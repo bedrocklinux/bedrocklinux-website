@@ -149,7 +149,7 @@ command below may wipe them.
 All of the Bedrock Linux userland which does not come from upstream is
 available in a single tarball which you can download and untar.  Download the
 [userland tarball from here](bedrock-userland-1.0alpha3.tar.gz) into
-`/mnt/bedrock` and run the following to set it up:
+~(/mnt/bedrock~) and run the following to set it up:
 
 - {class="rcmd"}
 - tar xvf bedrock-userland-1.0alpha3.tar.gz
@@ -190,6 +190,7 @@ any given Linux distribution's kernel would be appreciated.
 - **Works**
 	- Debian 6 Squeeze (Linux 2.6.32-5): `works`
 	- Ubuntu 12.10 Precise Pangolin (Linux 3.2.0-23): `works`
+	- Arch Linux (2012-12-22) (Linux 3.6.10-1): `works`
 	- Knoppix 7.0.4CD (Linux 3.4.9): `works`
 		- Note: the initrd (minird) will attempt to load the knoppix userland from an image.  However, Knoppix's kernel (with the modules in `/lib/modules` seems to work fine without an initrd.
 - **Does not work**
@@ -241,17 +242,20 @@ The files are:
 
 - The kernel image itself.  This is usually located in the `/boot`
   directory and called something along the lines of ~(vmlinuz-VERSION-ARCH~).
-- The system map file.  Like the last item, this is usually located in the
-  `/boot` directory next to the kernel image.  It is and called something along
-  the lines of ~(System.map-VERSION~).
 - If the distribution from which you are getting the kernel uses a initrd (as
   most major broad-audience and live distros do), you will probably also want to copy
   that over as well.  This is often called something along the lines of
   ~(initrd.img-VERSION-ARCH~) and located with the image in `/boot`.
+- Optionally, the system map file.  Like the the kernel image, this is usually
+  located in the `/boot` directory next to the kernel image.  It is and called
+  something along the lines of ~(System.map-VERSION~).  Some Linux
+  distributions provide this in the same package as the kernel image while
+  others do not.  If you do not know what it is, you probably do not need it.
 - Optionally, the `.config` file for the kernel.  This file is useful for
-  creating a new kernel based on the previous kernel's configuration.
-  Like the last few items items, this is usually located in the `/boot`
-  directory. It is usually called something along the lines of ~(config-VERSION-ARCH~).
+  creating a new kernel based on the previous kernel's configuration.  Like the
+  last few items items, this is usually located in the `/boot` directory. It is
+  usually called something along the lines of ~(config-VERSION-ARCH~).  Like
+  the system map, if you do not know what it is you probably do not need it.
 - The modules.  You will want to copy this even if you are sharing
   `/lib/modules` with this client (as you will otherwise be sharing the core's
   *empty* `/lib/modules` with the client).  Shared items from clients only
@@ -259,8 +263,8 @@ The files are:
   Bedrock Linux itself*.  The directory you are looking for is usually in
   `/lib/modules` and called something along the lines of the version of the
   kernel they match.  Thus, if you grabbed `vmlinuz-2.6.32-5-686` from a client
-  earlier for the image, you will want the `/lib/modules/2.6.32-5-686`
-  directory.
+  earlier for the image, you will want to copy the `/lib/modules/2.6.32-5-686`
+  directory from the client into the same place in the core Bedrock Linux.
 - Optionally, the firmware.  Many linux modules (such as wireless card drivers)
   require firmware which is usually installed into `/lib/firmware`.  Simply
   copy the contents of this directory in the client into the core's
@@ -295,6 +299,7 @@ any given Linux distribution's static busybox would be appreciated.
 - **Works:**
 	- Knoppix 7.04 (Busybox 1.20.2)
 	- Debian Sid (on 2012-12-22) (Busybox 1.20.0-7)
+	- Arch Linux (on 2012-12-22) (Busybox 1.20.0-7)
 
 - **Does not work**
 	- Debian 6 Squeeze (Busybox 1.17.1-8)
@@ -322,7 +327,8 @@ you would like to install the kernel.
 
 From there, run whatever commands are necessary to install busybox.  Note you
 are looking for a *static* busybox - the package might be called something such
-as `busybox-static`.  When you have finished, run the following commands:
+as `busybox-static`, although it might just be called `busybox`.  When you have
+finished, run the following commands:
 
 - {class="rcmd"}
 - exit   #(to leave the chroot)
@@ -399,7 +405,7 @@ the name of one of the bootloaders within the project.  If you are using ext2,
 ext3, ext4 or BTRFS as your filesystem, the "extlinux" bootloader from Syslinux
 should suffice.  If you are using another filesystem which another filesystem
 you can either look at another member of the Syslinux family which supports
-your filesystem and continue below altering ~(extlinux~) as necessary or find a
+your filesystem and continue below altering `extlinux` as necessary or find a
 completely different bootloader.
 
 Finally, note that syslinux/extlinus is a BIOS-based bootloader and will not
@@ -441,13 +447,16 @@ syslinux for another reason), run the following:
 
 	{class="cmd"} make clean; make
 
-This will compile a number of things you do not need. If you receive an error,
-there is a good chance that it was not with regards to extlinux. Check to see
-if extlinux compiled successfully: 
+You may receive an error about lacking `nasm` or some other packages.  If so,
+install those packages and try again.  If you receive other errors, note that
+this will compile a number of things you do not need and there is a good chance
+that the error was not with regards to extlinux. Check to see if extlinux
+compiled successfully:
 
 	{class="cmd"} ls extlinux/extlinux
 
-Install extlinux. As root:
+If this returns a file, it compiled successfully, and you are free to install
+extlinux. As root:
 
 	{class="rcmd"} extlinux/extlinux --install ~(/mnt/bedrock~)/boot/extlinux
 
@@ -474,7 +483,7 @@ Or, if you'd prefer a fancy graphical menu, copy `vesamenu.c32`
 To be able to poweroff from the boot menu (or commandline), copy `poweroff.com`:
 
 
-	{class="rcmd"} cp cp com32/modules/reboot.c32 ~(/mnt/bedrock~)/boot/extlinux
+	{class="rcmd"} cp com32/modules/reboot.c32 ~(/mnt/bedrock~)/boot/extlinux
 
 Note that you can reboot with ctrl-alt-delete without `reboot.c32`.
 
@@ -553,11 +562,11 @@ For ext2, ext3 and ext4, you can find the source for the fsck executable at
 to use another filesystem, it should not be difficult to find the fsck for it
 and install it instead, but these instructions do not cover it.
 
-Change to the directory in which you placed the source code packages.
-
-	{class="cmd"} cd ~(/mnt/bedrock~)/src
+Change to the directory in which you placed the downloaded source, untar it and
+enter the resulting directory:
 
 - {class="cmd"}
+- cd ~(/mnt/bedrock~)/src
 - tar xvf e2fsprogs-~(VERSION~).tar.gz
 - cd e2fsprogs-~(VERSION~)
 
@@ -617,37 +626,39 @@ Linux's core rather than a shell from a client.  While "brroot" is not
 required, it is quite useful as a fall-back in case the you would like to use a
 shell from a client for root and that client breaks.
 
+The next handful of command should be run in a chroot:
+
+	{class="rcmd"} chroot ~(/mnt/bedrock~) /bin/sh
+
 The root user (and brroot) both have default passwords of "bedrock".  To change
 this to something else, run
 
-	{class="rcmd"} chroot ~(/mnt/bedrock~) passwd -a sha512
+	{class="rcmd"} passwd -a sha512
 
 Note that this will only change root's password; the brroot login for the same
 user will still have the default password.  To change brroot password to the
 same thing, run:
 
-- {class="rcmd"}
-- chroot ~(/mnt/bedrock~)
-- cat /etc/shadow | awk '!/^brroot:/{print$0}/^root:/{print "br"$0}' > /etc/shadow
-- exit
+	{class="rcmd"} cat /etc/shadow |\
+	awk '!/^brroot:/{print$0}/^root:/{print "br"$0}' > /etc/shadow
 
 For any additional users you would like to add, run:
 
 - {class="rcmd"}
-- chroot ~(/mnt/bedrock~)
-- adduser ~(USERNAME~) -s /opt/bedrock/bin/brsh -D
+- adduser ~(USERNAME~) -s /bedrock/bin/brsh -D
 - passwd -a sha512 ~(USERNAME~)
-- exit
 
 If you would like to create a "br-" version of these users which will use the
 same password to log in but will always log in to the core of Bedrock Linux,
 run the following for each user:
 
 - {class="rcmd"}
-- chroot ~(/mnt/bedrock~)
 - cat /etc/passwd | sed 's/^~(USERNAME~):/br&/' | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
 - cat /etc/shadow | sed 's/^~(USERNAME~):/br&/' >> /etc/shadow
-- exit
+
+Once you have completed adding all of the desired users and setting their passwords, you may exit the chroot
+
+	{class="rcmd"} exit
 
 ### {id="hostname"} Hostname
 

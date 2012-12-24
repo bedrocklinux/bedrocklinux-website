@@ -115,7 +115,7 @@ Download and the required software.
 Unpackage all packages
 
 - {class="cmd"}
-- for PACKAGE in *.pkg.tar*
+- `for PACKAGE in *.pkg.tar*`
 - do
 - tar xvf $PACKAGE
 - done
@@ -160,22 +160,65 @@ information available:
 
 	{class="rcmd"} cp /proc/mounts /tmp/archbootstrap/etc/mtab
 
+Finally, mount a few key directories:
+
+- {class="rcmd"}
+- mkdir -p /tmp/archbootstrap/proc
+- mount -t proc proc /tmp/archbootstrap/proc
+- mkdir -p /tmp/archbootstrap/sys
+- mount -t sysfs sysfs /tmp/archbootstrap/sys
+- mkdir -p /tmp/archbootstrap/dev
+- mount --bind dev /tmp/archbootstrap/dev
+- mkdir -p /tmp/archbootstrap/dev/pts
+- mount -t devpts devpts /tmp/archbootstrap/dev/pts
+
 Install Arch Linux's base:
 
 	{class="rcmd"} chroot /tmp/archbootstrap pacman -Su base -r /arch
 
 It may take a bit to download and unpackage the various components. 
 
+Unmount the mounts we created just before the install:
+
+- {class="rcmd"}
+- umount /tmp/archbootstrap/dev/pts
+- umount /tmp/archbootstrap/dev
+- umount /tmp/archbootstrap/sys
+- umount /tmp/archbootstrap/proc
+
 If you did not bind-mount `/tmp/archbootstrap/arch`, move
 `/tmp/archbootstrap/arch` to where you would like the Arch client to reside.
 Otherwise, unmount it so it is no longer accessible within
 `/tmp/archbootstrap.`
 
-	{class="rcmd"} mv /tmp/archbootstrap/arch PATH
+	{class="rcmd"} mv /tmp/archbootstrap/arch ~(/var/chroot/arch~)
 
 Clean up the temporary archbootstrap directory:
 
 	{class="rcmd"} rm -rf /tmp/archbootstrap
+
+Arch Linux is now installed as a client.  However, `pacman` still needs to be
+set up.  Once you've added the client to `brclients.conf`, set up `pacman` by
+running `brc`'ing into the client and running:
+
+- uncomment a mirror in /etc/pacman.d/mirrorlist
+- set up the pacman signiture keys via `{class="rcmd"} pacman-key --init`
+  (while entering random characters into your keyboard in another window to
+  generate entropy)
+- populate the keys with `{class="rcmd"} pacman-key --populate archlinux`
+- run your first update via `{class="rcmd"} pacman -Syu`
+
+Finally, note that the above method includes the "linux" package *but* it does
+not seem to run the hook to create the initrd.  If you want to use Arch Linux's
+kernel when booting, reinstall the "linux" package to have it create the initrd
+for you to copy into place:
+
+	{class="rcmd"} pacman -S linux
+
+Or, alternatively, if you do not want to use the kernel, you can remove it to
+save disk space:
+
+	{class="rcmd"} pacman -R linux
 
 ## {id="fedora"} Fedora
 
