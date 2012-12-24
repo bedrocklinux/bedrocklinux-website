@@ -24,11 +24,13 @@ Nav: home.nav
 	- [Shell scripts](#shell_scripts)
 - [Bedrock Linux Commands](#commands)
 	- [brc ("BedRock Chroot")](#brc)
-	- [brs ("BedRock Setup")](#brs)
 	- [brp ("BedRock Path")](#brp)
 	- [brl ("BedRock aLl")](#brl)
 	- [bru ("Bedrock Update")](#bru)
+	- [brs ("BedRock Setup")](#brs)
 	- [brsh ("BedRock SHell")](#brsh)
+	- [bri ("BedRock Information")](#bri)
+	- [brw ("Bedrock Where")](#brw)
 
 ## {id="search"} Search for the Perfect Linux Distribution
 
@@ -347,21 +349,20 @@ the user would like to specify which is to run (rather than allowing Bedrock
 Linux to chose the default), one can explicitly call `brc`, like so: `brc
 fedora firefox`.
 
-### {id="brs"} brs ("BedRock Setup")
+If no command is given, `brc` will attempt to use the user's current `$SHELL`.
+If the value of `$SHELL` is not available in the client it will fail.
 
-`brs` will set up the `share` items from `brclients.conf` in the client
-provided as an argument.  In Bedrock Linux 1.0alpha3, this is automatically
-used at boot and rarely needs to be run by the user.  The exception is if a new
-client is added or a share mount point accidentally removed, in which case the
-user can simply call `brs ~(clientname~)`.
 
 ### {id="brp"} brp ("BedRock Path")
 
 Very early (before any public release) versions of Bedrock Linux would try to
 detect if you tried to run a command which isn't available and, on the fly,
 attempt to find the command in a client. This proved to slow. Instead,
-Bedrock's `brp` command will hash the available commands from within the client
-it is run in.
+Bedrock's `brp` command will search for all of the commands available and store
+them in directories which can be included in one's `$PATH` so that those
+commands work transparently.  `/etc/profile` should include the relevant
+directories in the `$PATH` automatically.
+
 
 ### {id="brl"} brl ("BedRock aLl")
 
@@ -375,6 +376,16 @@ Updating all of the clients is a very common task, and so `bru` was created to
 make it a simple one. `bru` can be used to update all of the clients in a
 single command.  Note that eventually this will likely be replaced by a more
 comprehensive package manager manager (not a typo) command.
+
+### {id="brs"} brs ("BedRock Setup")
+
+`brs` will set up the `share` items from `brclients.conf` in the client(s)
+provided as (an) argument(s).  In Bedrock Linux 1.0alpha3, this is automatically
+used at boot and rarely needs to be run by the user.  The exception is if a new
+client is added or a share mount point accidentally removed, in which case the
+user can simply call `brs ~(clientname~)`.  Unlike prior versions, this will
+not check if a client has already been set up - do not run in a client which
+has already been set up.
 
 ### {id="brsh"} brsh ("BedRock SHell")
 
@@ -415,3 +426,27 @@ This can be advantageous over `brsh` as (1) it should work if `brsh` fails to
 detect a client has broken, and (2) it does not require logging in, changing
 the `brsh` configuration file, then logging back out, and logging back in
 again, if the user wants to directly log into the core Bedrock shell.
+
+
+### {id="bri"} bri ("BedRock Information")
+
+The `bri` command will provide information about the clients based on which
+flag is used.
+
+- `bri -l` will print a List of clients.
+- `bri -n` will print the name of the client in which the command is run.
+- `bri -p` will print the path of the client in which the command is run *if*
+  no arguments are given.  Otherwise, it will print the paths of the clients
+  provided in the argument.
+- `bri -s` will print the shared mount points for a client.  It does not check
+  if these are actually set up yet (from [brs](#brs)); it only prints the items
+  listed in the brclients.conf for the respective client(s).  If no argument is
+  provided, it will print for the client in which the command is run;
+  otherwise, it will print for all clients.
+- `{class="rcmd"} bri -c` will cache the values of `-n` and `-p` to speed up
+  future requests.  Note that this requires root.  It is recommended that this
+  is run in newly made clients immediately after they are made.
+
+### {id="brw"} brw ("Bedrock Where")
+
+The `brw` command is simply an alias to `bri -n` for convenience.
