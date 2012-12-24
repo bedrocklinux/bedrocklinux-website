@@ -86,13 +86,12 @@ to your RAM size to two-and-a-half times your RAM size.
 
 If you are comfortable with typical partitioning schemes for Linux - such as
 making `/boot`, `/home`, etc their own partitions - you are free to do so.
-However, you may first want to skip down to [Creating the directory
-structure](#directory-structure) before doing so to note some unusual aspects
-of Bedrock's layout. Specifically, note that `/usr` is not heavily used.
-Rather, most of the software usually in `/usr` will be accessed from client
-Linux distributions. You may want to consider making `/var/chroot` its own
-partition and giving it a lot of space, as this is the recommended location for
-storing the client Linux distributions.
+Before doing so, note some unusual aspects of Bedrock's layout:
+- `/usr` is not heavily used.  Rather, most of the software usually in `/usr`
+  will be accessed from client Linux distributions.
+- You may want to consider making `/var/chroot` its own partition and giving it
+  a lot of space, as this is the recommended location for storing the client
+  Linux distributions.
 
 Note which devices files correspond to which partitions of the Bedrock Linux
 filesystem. These are normally located in `/dev`, and called `sdXN`, where `X` is a
