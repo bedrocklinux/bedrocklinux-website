@@ -38,9 +38,6 @@ reference.
 	- [Bedrock-Specific Configuration](#bedrock-specific-config)
 - [Reboot and Enjoy](#reboot)
 
-
-
-
 ## {id="installer-host"} Installation Host Environment
 
 First, boot a Linux distribution from a device/partition other than the one on
@@ -87,6 +84,7 @@ to your RAM size to two-and-a-half times your RAM size.
 If you are comfortable with typical partitioning schemes for Linux - such as
 making `/boot`, `/home`, etc their own partitions - you are free to do so.
 Before doing so, note some unusual aspects of Bedrock's layout:
+
 - `/usr` is not heavily used.  Rather, most of the software usually in `/usr`
   will be accessed from client Linux distributions.
 - You may want to consider making `/var/chroot` its own partition and giving it
