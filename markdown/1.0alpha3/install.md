@@ -1,8 +1,8 @@
 Title: Bedrock Linux 1.0alpha3 Bosco Installation Instructions
 Nav: bosco.nav
 
-Bedrock Linux 1.0alpha3 Installation Instructions
-=================================================
+Bedrock Linux 1.0alpha3 Bosco Installation Instructions
+=======================================================
 
 Note that there is no proper installer for this release of Bedrock Linux
 (1.0alpha3 Bosco). Installation is done by manually collecting and compiling

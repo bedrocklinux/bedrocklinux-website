@@ -1,8 +1,8 @@
 Title: Bedrock Linux 1.0alpha3 Bosco Upgrade Instructions
 Nav: bosco.nav
 
-Bedrock Linux 1.0alpha3 Upgrading Instructions
-==============================================
+Bedrock Linux 1.0alpha3 Bosco Upgrading Instructions
+====================================================
 
 Upgrading an installation from a prior version is not officially tested or
 supported.  It is recommended to simply back everything up and install from
