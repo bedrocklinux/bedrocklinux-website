@@ -642,11 +642,31 @@ same thing, run:
 	{class="rcmd"} cat /etc/shadow |\
 	awk '!/^brroot:/{print$0}/^root:/{print "br"$0}' > /etc/shadow
 
-For any additional users you would like to add, run:
+*If* the busybox you installed has the `adduser` command, you can run the
+following to install additional users:
 
 - {class="rcmd"}
 - adduser ~(USERNAME~) -s /bedrock/bin/brsh -D
 - passwd -a sha512 ~(USERNAME~)
+
+If it does not, you will have to manually add the new users:
+
+- {class="rcmd"}
+- USERNAME=~(desired username~)
+- UID=~(desired UID)
+- GID=~(desired GID)
+- echo "$USERNAME:x:$UID:$UID::$USERNAME:/bedrock/bin/brsh" >> /etc/passwd
+- echo "$USERNAME:x:15699:0:99999:7:::" >> /etc/shadow
+- echo "$USERNAME:x:$GID:" >> /etc/group
+- mkdir /home/$USERNAME
+- chown $USERNAME:$USERNAME /home/$USERNAME
+- passwd -a sha512 $USERNAME
+
+If you are not sure what to put for `UID` or `GID`, note that both
+traditionally start at `1000` for regular users and increment upwards as new
+users are added.  Look at the contents of `/etc/passwd` and `/etc/group` to
+find the lowest used `UID` and `GID` of at least `1000` already in use (if any)
+and pick the next integer above that.
 
 If you would like to create a "br-" version of these users which will use the
 same password to log in but will always log in to the core of Bedrock Linux,

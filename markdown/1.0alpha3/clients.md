@@ -83,6 +83,10 @@ For example, to install the (64-bit) x86_64 Debian squeeze to
 
 It may take a bit to download and unpackage the various components.
 
+Check to see if it created a non-blank `/var/lib/dpkg/statoverride` file, and
+if it did, delete the content (ie, leave a blank file in its place).  See [this
+troubleshooting item](troubleshooting.html#statoverride).
+
 Don't forget to edit `/etc/apt/sources.list` and other client-specific settings.
 
 ## {id="arch"} Arch Linux
