@@ -443,6 +443,11 @@ flag is used.
   listed in the brclients.conf for the respective client(s).  If no argument is
   provided, it will print for the client in which the command is run;
   otherwise, it will print for all clients.
+- `bri -w` will print the client which will provide the command if it is not
+  available locally.
+- `bri -W` will print the client which will provides the command - either the
+  client it is run in (ie, `bri -n`) if it is available locally or the output
+  of `bri -w` if it is available in the brpath.
 - `{class="rcmd"} bri -c` will cache the values of `-n` and `-p` to speed up
   future requests.  Note that this requires root.  It is recommended that this
   is run in newly made clients immediately after they are made.
