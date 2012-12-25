@@ -5,7 +5,7 @@ Bedrock Linux 1.0alpha3 Bosco
 =============================
 
 These are a collection of files used to create and document the third alpha of
-Bedrock Linux, named "Bosco".  Bosco should be released within the next month.
+Bedrock Linux, named "Bosco",  which was released on 2012/12/25.
 
 - [Changelog](changelog.html)
 - [Upgrading instructions](upgrade.html)
