@@ -8,12 +8,11 @@ Upgrading an installation from a prior version is not officially tested or
 supported.  It is recommended to simply back everything up and install from
 scratch.  Attempt to upgrade an existing installation at your own risk.
 
-If you would like to attempt to upgrade despite the above warning, read *all*
-of the instructions below before *first*, then begin following them.
+If you would like to attempt to upgrade despite the above warning, *first* read all of the instructions below, then begin following them.
 
 1. Back everything up, especially the configuration files in the core
 2. Boot from some other medium (such as a LiveCD or LiveUSB) and mount your
-Bedrock Linux parittions within it.  You may skip mounting partitions which
+Bedrock Linux partitions within it.  You may skip mounting partitions which
 contain only:
  - `/home`
  - `/root`
