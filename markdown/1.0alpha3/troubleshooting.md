@@ -10,7 +10,8 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 - [General issues](#general)
 	- [Sudo PATH](#sudo-path)
 	- [Proprietary Nvidia Drivers](#proprietary-nvidia-drivers)
-- [DNS from the core does not work](#dns)
+	- [DNS from the core does not work](#dns)
+	- [/etc/fd errors](#etc-fd-errors)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -19,7 +20,6 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 		- [Ubuntu resolv.conf](#ubuntu-resolvconf)
 	- [Arch Linux](#arch)
 		- [Pacman Filesystem Errors](#pacman-filesystem-errors)
-		- [/etc/fd errors](#etc-fd-errors)
 	- [Fedora](#fedora)
 		- [Problems with using yum.](#yum-problems)
 
@@ -77,6 +77,24 @@ copy them into the core.
 
 TODO: do the above and provide the libraries in the instructions here
 
+#### {id="etc-fd-errors"} /etc/fd errors
+
+If you receive errors along these lines:
+
+	/dev/fd/~(N~): No such file or directory
+
+where ~(N~) is a number, this is most likely due to the fact that the device
+manager you are using is not setting up `/dev/fd` as some programs expect.
+This can be solved (for the current session) by running:
+
+- {class="rcmd"}
+- rm -r /dev/fd
+- ln -s /proc/self/fd /dev
+
+To solve this permanently, one could simply add those two lines to
+`/etc/rc.local` in the core Bedrock such that it is run every time Bedrock Linux
+is booted.
+
 ## {id="client-specific"} Client specific issues
 
 ### {id="debian-based"} Debian-based Linux distributions
@@ -128,24 +146,6 @@ be caused by `pacman` assuming that the mount points it sees are the same as the
 ones init sees (which would be a fair assumption in almost every case except
 Bedrock Linux). You can configure `pacman` to not check for free disk space by
 commenting out `CheckSpace` from `~(/var/chroot/arch~)/etc/pacman.conf`
-
-#### {id="etc-fd-errors"} /etc/fd errors
-
-If you receive errors along these lines:
-
-	/dev/fd/~(N~): No such file or directory
-
-where ~(N~) is a number, this is most likely due to the fact that the device
-manager you are using is not setting up `/dev/fd` as some Arch programs expect.
-This can be solved (for the current session) by running:
-
-- {class="rcmd"}
-- rm -r /dev/fd
-- ln -s /proc/self/fd /dev
-
-To solve this permanently, one could simply add those two lines to
-`/etc/rc.local` in the core Bedrock such that it is run every time Bedrock Linux
-is booted.
 
 ### {id="fedora"} Fedora
 
