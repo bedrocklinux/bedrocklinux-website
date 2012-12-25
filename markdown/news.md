@@ -4,6 +4,12 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="bosco-release"} Bedrock Linux 1.0alpha3 Bosco released
+<small>2012-12-25</small>
+
+The third Bedrock Linux release, 1.0alpha3 Bosco has been released.
+See the high-level changelog [here](1.0alpha3/changelog.html)
+
 ## {id="linux.com-new-distros"} Bedrock Linux mentioned on linux.com
 <small>2012-12-12</small>
 
@@ -77,7 +83,6 @@ well as contributions from others.
 
 A short video demonstration of Bedrock Linux can be found
 [here](http://www.youtube.com/watch?v=MuYMBCcgs98)
-
 ## {id="slashdot"} Bedrock Linux on Wired's website
 <small>2012-08-05</small>
 
