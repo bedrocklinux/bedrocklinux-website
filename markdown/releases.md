@@ -7,7 +7,7 @@ Releases
 Upcoming Releases
 -----------------
 
-No webpage for the upcoming release yet.
+[1.0alpha4 "Flopsie" (upcoming)](1.0alpha4/)
 
 Current Release
 ---------------
