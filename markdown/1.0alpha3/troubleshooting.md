@@ -69,7 +69,7 @@ properly.
   component of the nvidia proprietary driver, but *not the kernel module*.  This
   can be done with (still with no X11 servers running):
 
-	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --no-kernel-module
+		{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --no-kernel-module
 
 Everything should be good to go.  The above instructions were necessary
 because:
@@ -97,7 +97,7 @@ Other things to looko out for are:
 system in place to manage kernel module loading. If you compiled your kernel
 with nouveau, you can simple (re)move the module. To find it, run
 
-	{class="cmd"} find /lib/modules -name nouveau
+		{class="cmd"} find /lib/modules -name nouveau
 
 and move or delete the file (as root).
 
