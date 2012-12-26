@@ -58,12 +58,12 @@ properly.
   drivers installed normally.  *If* this client also has xorg installed, run
   the following (as root, without any X11 servers running)
 
-	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run
+		{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run
 
 - If the client which provided the kernel does not have xorg installed, run the
   following (note the additional flag):
 
-	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --kernel-module-only
+		{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --kernel-module-only
 
 - The other clients in which you installed xorg should install the *userland*
   component of the nvidia proprietary driver, but *not the kernel module*.  This
