@@ -35,29 +35,47 @@ and set it as `/etc/sudoer`'s `secure_path` in `/etc/sudoers`
 ### {id="proprietary-nvidia-drivers"} Proprietary Nvidia Drivers
 
 The official Nvidia proprietary drivers works well in Bedrock Linux, given a
-few requirements.  For the proprietary Nvidia driver to work, you should ensure
-the directory containing the kernel modules (historically `/lib/modules`,
-although there is a push to move it to `/usr/lib/modules`) is either shared or
-copied into at least the client(s) which run X11/xinit/startx. Moreover, you
-should ensure nouveau is not enabled. Bedrock currently does not have any
+few limitations.
+
+In general, if you want to make it relatively easy, use the same client for:
+
+1. The nvidia proprietary driver
+2. The kernel
+3. xorg
+4. *all* of the programs which require 3D acceleration.
+
+Yes, this loses a lot of the advantages of Bedrock Linux.  These are necessary
+because:
+1. The proprietary nvidia driver compiles a module to go into the kernel.
+While it is possible to have the kernel from a different client (see the
+proprietary nvidia driver's `--kernel-source-path` flag), that's more work and
+not documented here.  You're welcome to take a crack at it, though - it works
+if you do it right.
+2. The proprietary nvidia driver alters parts of the userland in addition to
+the kernel module.  This means it *has* to be installed in the client with xorg
+for it to work.
+3. Some programs seem to try to read libraries which the proprietary nvidia
+driver altered.  If the program is installed in the same client as the nvidia
+driver, this works fine.  However, if the program is in a different client
+which the nvidia driver did not alter the userland, it may or may not work.  In
+theory, it *might* be possible to either share the nvidia userland changes
+across clients or install the nvidia driver into every client which wants to
+run such a program (even if the client does not provide xorg), but thus far the
+Bedrock Linux developer has not managed to get this to work consistently.
+
+Other things to looko out for are:
+
+- You should ensure the directory containing the kernel modules (historically
+`/lib/modules`, although there is a push to move it to `/usr/lib/modules`) is
+either shared or copied into at least the client(s) which run X11/xinit/startx.
+
+- You should ensure nouveau is not enabled. Bedrock currently does not have any
 system in place to manage kernel module loading. If you compiled your kernel
 with nouveau, you can simple (re)move the module. To find it, run
 
 	{class="cmd"} find /lib/modules -name nouveau
 
 and move or delete the file (as root).
-
-The proprietary Nvidia driver should be compiled using the same version of the
-same compiler used to compile the kernel. If you compiled the kernel yourself
-in the installer host, you can make a Bedrock Linux client from the installer
-host and use that to compile the nvidia driver. Otherwise, you can recompile
-the Linux kernel using a client (and install it and reboot) and then use that
-client again to compile the nvidia driver.  If you received the kernel from a
-client, it may be wise to use that same client to compile X11.
-
-In addition to creating a kernel module, the proprietary Nvidia driver may
-alter X11 files.  To ensure it works properly, it should be installed in the
-same client which will provide X11.
 
 ### {id="dns"} DNS from the core does not work
 
