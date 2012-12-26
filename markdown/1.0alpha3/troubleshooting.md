@@ -34,24 +34,51 @@ and set it as `/etc/sudoer`'s `secure_path` in `/etc/sudoers`
 
 ### {id="proprietary-nvidia-drivers"} Proprietary Nvidia Drivers
 
-The official Nvidia proprietary drivers works well in Bedrock Linux, given a
-few limitations.
+The official Nvidia proprietary drivers works well in Bedrock Linux if set up
+properly.
 
-In general, if you want to make it relatively easy, use the same client for:
+- Do not use the proprietary nvidia driver from a client's package manager;
+  rather, use the officially provided one from Nvidia's website.  This is
+  necssary because the same exact driver may have to be installed in multiple
+  clients.
 
-1. The nvidia proprietary driver
-2. The kernel
-3. xorg
-4. *all* of the programs which require 3D acceleration.
+- You must make sure the kernel module is available in client which provides
+  xorg.  Simply ensure `/lib/modules` is shared both there and the client which
+  provides the kernel (if they are different).
 
-Yes, this loses a lot of the advantages of Bedrock Linux.  These are necessary
+- xorg needs to be installed the client which provides xorg and clients
+  which will provide applications which require graphics-card-acceleration
+  (such as compositing window manager, CAD tool or videogame).  Yes, this is a
+  lot of extra disk space used, but it is necessary (as explained below).  If
+  you'd rather save disk space, make all of these the same client; ie, use the
+  same client to provide the kernel, xorg, and all
+  graphics-card-acceleration-requiring applications.
+
+- The client which provided the kernel should have the proprietary nvidia
+  drivers installed normally.  *If* this client also has xorg installed, run
+  the following (as root, without any X11 servers running)
+
+	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run
+
+- If the client which provided the kernel does not have xorg installed, run the
+  following (note the additional flag):
+
+	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --kernel-module-only
+
+- The other clients in which you installed xorg should install the *userland*
+  component of the nvidia proprietary driver, but *not the kernel module*.  This
+  can be done with (still with no X11 servers running):
+
+	{class="rcmd"} sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --no-kernel-module
+
+Everything should be good to go.  The above instructions were necessary
 because:
 
-1. The proprietary nvidia driver compiles a module to go into the kernel.
-While it is possible to have the kernel from a different client (see the
-proprietary nvidia driver's `--kernel-source-path` flag), that's more work and
-not documented here.  You're welcome to take a crack at it, though - it works
-if you do it right.
+1. Without the `--no-kernel-module` flag, the proprietary nvidia driver
+compiles a module to go into the kernel.  While it is possible to have the
+kernel from a different client (see the proprietary nvidia driver's
+`--kernel-source-path` flag), that's more work and not documented here.  You're
+welcome to take a crack at it, though - it works if you do it right.
 
 2. The proprietary nvidia driver alters parts of the userland in addition to
 the kernel module.  This means it *has* to be installed in the client with xorg
@@ -60,17 +87,11 @@ for it to work.
 3. Some programs seem to try to read libraries which the proprietary nvidia
 driver altered.  If the program is installed in the same client as the nvidia
 driver, this works fine.  However, if the program is in a different client
-which the nvidia driver did not alter the userland, it may or may not work.  In
-theory, it *might* be possible to either share the nvidia userland changes
-across clients or install the nvidia driver into every client which wants to
-run such a program (even if the client does not provide xorg), but thus far the
-Bedrock Linux developer has not managed to get this to work consistently.
+which the nvidia driver did not alter the userland, it may or may not work.
+However, you should be able to simply install xorg followed by the userland
+component of the nvidia driver in that client to ensure it does in fact work.
 
 Other things to looko out for are:
-
-- You should ensure the directory containing the kernel modules (historically
-`/lib/modules`, although there is a push to move it to `/usr/lib/modules`) is
-either shared or copied into at least the client(s) which run X11/xinit/startx.
 
 - You should ensure nouveau is not enabled. Bedrock currently does not have any
 system in place to manage kernel module loading. If you compiled your kernel
