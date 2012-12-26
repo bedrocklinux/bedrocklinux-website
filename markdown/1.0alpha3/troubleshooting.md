@@ -46,14 +46,17 @@ In general, if you want to make it relatively easy, use the same client for:
 
 Yes, this loses a lot of the advantages of Bedrock Linux.  These are necessary
 because:
+
 1. The proprietary nvidia driver compiles a module to go into the kernel.
 While it is possible to have the kernel from a different client (see the
 proprietary nvidia driver's `--kernel-source-path` flag), that's more work and
 not documented here.  You're welcome to take a crack at it, though - it works
 if you do it right.
+
 2. The proprietary nvidia driver alters parts of the userland in addition to
 the kernel module.  This means it *has* to be installed in the client with xorg
 for it to work.
+
 3. Some programs seem to try to read libraries which the proprietary nvidia
 driver altered.  If the program is installed in the same client as the nvidia
 driver, this works fine.  However, if the program is in a different client
