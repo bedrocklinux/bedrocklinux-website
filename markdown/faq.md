@@ -16,6 +16,7 @@ Nav:   home.nav
 - [Why does this need to be its own distribution?](#why_own_distro)
 - [On which distribution is Bedrock Linux based?](#on_which_distro)
 - [This sounds overly-ambitious. Do you really think you can pull this off?](#overly-ambitious)
+- [Why not use cgroups/namespaces rather than chroots/bind-mounts?](#cgroups-namespaces)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -199,3 +200,32 @@ possible, it has been done, and the necessities for you to see this for
 yourself have been made available if you don't want to take my word for it.
 Much work needs to be done such as polish and the addition of many features,
 but the core idea has been proven quite definitively to work.
+
+## {id="cgroups-namespaces"} Why not use cgroups/namespaces rather than chroots?
+
+The Bedrock Linux developer largely feels he is missing something, as this has
+been proposed numerous times by apparently knowledgable people without
+sufficient detail as to *how* it would be preferable beyond chroots being "old"
+and cgroups being "new", and the Bedrock Linux developer has been unable to
+determine how this would be preferable through his own research.  If the
+reasoning below seems to be based on insufficient information, please do not
+hesitate to remedy that fact - pop into the IRC room or subreddit.
+
+As far as the Bedrock Linux developer can ascertain, the same techniques - such
+as bind mounts - would be used to lay out the file system in either proposed
+method.  The differences lay in:
+
+1. The number of bind-mounts required to achieve the desired filesystem from
+the point of view of a client is apparently lower with chroots than comparable
+chroot-less namespace, because the chroot does a lot of the work.  Perhaps more
+importantly is that it is potentially easier to understand, as it is from the
+core Bedrock's point of view, the entire filesystem of all of the clients is
+visible; this can help an end-user wrap his mind around what exactly is going
+on.  Using namespaces, there would not be a "master" view.
+
+2. The technique used to switch from one client's point of view to another.
+With chroots, the new process can break out of a chroot used for one client and
+then chroot into another.  With cgroups, the new process can switch which cgroup
+it is in.  Either way requires careful use of capabilities to ensure this only
+happens as desired.  This seems to be a wash.  Switching when both systems are
+equivalent is simply more work for the same result.
