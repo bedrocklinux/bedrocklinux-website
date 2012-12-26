@@ -52,7 +52,9 @@ support compiling tools such as `make`.  Distributions with ready access to
 through AUR, Fedora, and others) are preferable if you would like a
 Debian-based client, as they will make it relatively easy to acquire said
 client through `debootstrap`.  The installer host should also have internet
-access.
+access.  Arch Linux users have reported difficulties statically compiling with
+libcap - if you are using Arch Linux, you might have to compile your own libcap
+(perhaps with ABS) which supports statically compiling.
 
 Be sure the installer host uses the same instruction set as you wish Bedrock
 Linux to use. Specifically, watch out for (32-bit) x86 live Linux distribution
@@ -160,7 +162,9 @@ If you receive errors about a missing library, such as `sys/capability.h`, or a
 missing executable such as `setcap`, install the package which contains the
 library or executable and try again.  At the time of writing on most major
 Debian-based Linux distributions, these packages are `libcap-dev` and
-`libcap2-bin`, respectively.
+`libcap2-bin`, respectively.  Arch Linux users have reported difficulties
+statically compiling with `-lcap` - if you are using Arch Linux, you may have
+to recompile libcap to support statically compiling.
 
 Once you have run all of these command successfully, you can clean up
 extraneous files with:
