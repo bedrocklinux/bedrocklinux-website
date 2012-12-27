@@ -156,7 +156,7 @@ is booted.
 If you run `startx` and do not have a keyboard or mouse:
 
 - First, don't panic about your system being hard locked.  You can regain
-  keyboard control and go to a tty1 by hitting alt-sysrq-r followed by the keys
+  keyboard control and go to a tty by hitting alt-sysrq-r followed by the keys
   to go to the tty (such as ctrl-alt-F1).  Read up about
   [magic sysrq on linux](http://en.wikipedia.org/wiki/Magic_SysRq_key) if
   you're not familiar with it.
