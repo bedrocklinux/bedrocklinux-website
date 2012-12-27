@@ -207,6 +207,19 @@ If you use su *without the -l flag*, consider changing the relevant lines in `/e
 	ENV_SUPATH PATH=/bedrock/bin:/bedrock/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin
 	ENV_PATH PATH=/bedrock/bin:/usr/local/bin:/usr/bin:/bin:/bedrock/brpath/bin
 
+Note that
+
+-  busybox does not provide `sudo` and
+- busybox's `su` does not seem to respect `/etc/login.defs`
+
+Thus, neither of these items will resolve anything in the core Bedrock, only in
+clients.  In the core, you could:
+
+- log in directoy to a tty
+- use `su -l`
+- use another client's tool to become root and then run the core's shell, such
+  as `sudo brc bedrock brsh`
+
 ## {id="client-specific"} Client specific issues
 
 ### {id="debian-based"} Debian-based Linux distributions
