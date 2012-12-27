@@ -659,7 +659,7 @@ If it does not, you will have to manually add the new users:
 - USERNAME=~(desired username~)
 - UID=~(desired UID~)
 - GID=~(desired GID~)
-- echo "$USERNAME:x:$UID:$UID::$USERNAME:/bedrock/bin/brsh" >> /etc/passwd
+- echo "$USERNAME:x:$UID:$UID::/home/$USERNAME:/bedrock/bin/brsh" >> /etc/passwd
 - echo "$USERNAME:x:15699:0:99999:7:::" >> /etc/shadow
 - echo "$USERNAME:x:$GID:" >> /etc/group
 - mkdir /home/$USERNAME
