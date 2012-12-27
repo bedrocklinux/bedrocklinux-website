@@ -46,12 +46,12 @@ properly.
   xorg.  Simply ensure `/lib/modules` is shared both there and the client which
   provides the kernel (if they are different).
 
-- xorg needs to be installed the client which provides xorg and clients
-  which will provide applications which require graphics-card-acceleration
-  (such as compositing window manager, CAD tool or videogame).  Yes, this is a
-  lot of extra disk space used, but it is necessary (as explained below).  If
-  you'd rather save disk space, make all of these the same client; ie, use the
-  same client to provide the kernel, xorg, and all
+- xorg needs to be installed the client which provides xorg and *might* need to
+  be installed in clients which will provide applications which require
+  graphics-card-acceleration (such as compositing window manager, CAD tool or
+  videogame).  Yes, this is a lot of extra disk space used, but it is necessary
+  (as explained below).  If you'd rather save disk space, make all of these the
+  same client; ie, use the same client to provide the kernel, xorg, and all
   graphics-card-acceleration-requiring applications.
 
 - The client which provided the kernel should have the proprietary nvidia
@@ -88,8 +88,8 @@ for it to work.
 driver altered.  If the program is installed in the same client as the nvidia
 driver, this works fine.  However, if the program is in a different client
 which the nvidia driver did not alter the userland, it may or may not work.
-However, you should be able to simply install xorg followed by the userland
-component of the nvidia driver in that client to ensure it does in fact work.
+You should be able to simply install xorg followed by the userland component of
+the nvidia driver in that client to ensure it does in fact work.
 
 Other things to looko out for are:
 
@@ -100,6 +100,19 @@ with nouveau, you can simple (re)move the module. To find it, run
 		{class="cmd"} find /lib/modules -name nouveau
 
 and move or delete the file (as root).
+
+- Nvidia's current solution for multiarch doesn't seem to play well with the
+  current solution implemented by some distros.  If you're on a 64-bit system
+  and wish to run 32-bit software which requires graphics card acceleration, It
+  may simply be easiest to create a 32-bit client for 32-bit applications and
+  install the 32-bit nvidia driver in it like so:
+
+		{class="rcmd"} linux32 sh ./NVIDIA-Linux-~(ARCH~)-~(VERSION~).run --no-kernel-module
+
+The "linux32" command ensures the driver doesn't complain about being in a
+64-bit environment when installing.  Do not try this without
+`--no-kernel-module` if you have a 64-bit kernel.
+
 
 ### {id="dns"} DNS from the core does not work
 
