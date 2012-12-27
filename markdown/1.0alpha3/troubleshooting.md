@@ -185,10 +185,11 @@ If you are receiving errors such as
 This could be because the application (such as `df`) is attempting to read
 information from `/etc/mtab`, which is not being maintained.  What you can do instead, however, is symlink `/proc/mounts` (which is being maintained) to `/etc/mtab`, like so:
 
-	{class="rcmd"} ln -s /proc/mounts /etc/mtab
+	{class="rcmd"} ln -f -s /proc/mounts /etc/mtab
 
-This should remedy the issue.
+This should remedy the issue.  If you like, you could run this in all of your clients:
 
+	{class="rcmd"} brl ln -f -s /proc/mounts /etc/mtab
 
 ## {id="client-specific"} Client specific issues
 
