@@ -14,6 +14,8 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 	- [/etc/fd errors](#etc-fd-errors)
 	- [No keyboard or mouse in xorg](#no-kbd-mouse)
 	- [Mount Table Unreadable](#no-mount-table)
+	- [Losted PATH items on su](#su-path)
+	- [Root sometimes loses PATH items](root-path)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -190,6 +192,21 @@ information from `/etc/mtab`, which is not being maintained.  What you can do in
 This should remedy the issue.  If you like, you could run this in all of your clients:
 
 	{class="rcmd"} brl ln -f -s /proc/mounts /etc/mtab
+
+### {id="root-path"} Root sometimes loses PATH items
+
+There are two common ways to switch from a normal user to root, both of which
+can potentially change your $PATH away from what is desired.  To see the proper
+path for the root user, login directly to a tty and run `echo $PATH`.
+
+If you use sudo, consider adding a "secure_path" which includes the entire root PATH, such as:
+
+	Defaults secure_path="/bedrock/bin:/bedrock/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"
+
+If you use su *without the -l flag*, consider changing the relevant lines in `/etc/login.defs` to the following:
+
+	ENV_SUPATH PATH=/bedrock/bin:/bedrock/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin
+	ENV_PATH PATH=/bedrock/bin:/usr/local/bin:/usr/bin:/bin:/bedrock/brpath/bin
 
 ## {id="client-specific"} Client specific issues
 
