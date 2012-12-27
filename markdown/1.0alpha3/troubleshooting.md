@@ -13,6 +13,7 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 	- [DNS from the core does not work](#dns)
 	- [/etc/fd errors](#etc-fd-errors)
 	- [No keyboard or mouse in xorg](#no-kbd-mouse)
+	- [Mount Table Unreadable](#no-mount-table)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -173,6 +174,21 @@ If you run `startx` and do not have a keyboard or mouse:
 		EndSection
 
 - Try using `udev` if you aren't already.
+
+
+### {id="no-mount-table"} Mount Table Unreadable
+
+If you are receiving errors such as
+
+	df: Warning: cannot read table of mounted file systems
+
+This could be because the application (such as `df`) is attempting to read
+information from `/etc/mtab`, which is not being maintained.  What you can do instead, however, is symlink `/proc/mounts` (which is being maintained) to `/etc/mtab`, like so:
+
+	{class="rcmd"} ln -s /proc/mounts /etc/mtab
+
+This should remedy the issue.
+
 
 ## {id="client-specific"} Client specific issues
 
