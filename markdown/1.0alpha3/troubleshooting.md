@@ -12,6 +12,7 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 	- [Proprietary Nvidia Drivers](#proprietary-nvidia-drivers)
 	- [DNS from the core does not work](#dns)
 	- [/etc/fd errors](#etc-fd-errors)
+	- [No keyboard or mouse in xorg](#no-kbd-mouse)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -149,6 +150,29 @@ This can be solved (for the current session) by running:
 To solve this permanently, one could simply add those two lines to
 `/etc/rc.local` in the core Bedrock such that it is run every time Bedrock Linux
 is booted.
+
+### {id="no-kbd-mouse"} No keyboard or mouse in xorg
+
+If you run `startx` and do not have a keyboard or mouse:
+
+- First, don't panic about your system being hard locked.  You can regain
+  keyboard control and go to a tty1 by hitting alt-sysrq-r followed by the keys
+  to go to the tty (such as ctrl-alt-F1).  Read up about
+  [http://en.wikipedia.org/wiki/Magic_SysRq_key](magic sysrq on linux) if
+  you're not familiar with it.
+
+- Ensure you have the relevant keyboard and mouse packages installed.  On
+  Debian-based systems, these would be `xserver-xorg-input-kbd` and
+  `xserver-xorg-input-mouse`.
+
+- Try including the following in your xorg.conf and restarting the xserver:
+
+		Section "ServerFlags"
+			Option "AutoAddDevices" "False"
+			Option "AllowEmptyInput" "False"
+		EndSection
+
+- Try using `udev` if you aren't already.
 
 ## {id="client-specific"} Client specific issues
 
