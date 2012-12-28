@@ -177,8 +177,10 @@ New to Bosco is experimental support for using components from other Linux
 distributions such as (and in fact, preferably from) clients.  It would thus be
 useful to acquire your first client before continuing with creating the rest of
 Bedrock Linux.  Instructions to acquire and set up clients are available
-[here](clients.html).  After you have at least one client (although more is
-fine), continue reading below.
+[here](clients.html).  You do not (yet) have to worry about configuring the
+client - simply install it so that it is on disk (and its files are accessible)
+After you have at least one client (although more is fine), continue reading
+below.
 
 ## {id="kernel"} Linux Kernel
 
@@ -699,4 +701,5 @@ configure Bedrock Linux specific functionality such as clients.
 
 ## {id="reboot"} Reboot and Enjoy
 
-Finally, reboot into Bedrock Linux and enjoy!
+Reboot into Bedrock Linux.  First thing you'll probably want to do is run
+`{class="rcmd"} brp` - then enjoy!
