@@ -197,6 +197,7 @@ any given Linux distribution's kernel would be appreciated.
 	- Debian 6 Squeeze (Linux 2.6.32-5): `works`
 	- Ubuntu 12.10 Precise Pangolin (Linux 3.2.0-23): `works`
 	- Arch Linux (2012-12-22) (Linux 3.6.10-1): `works`
+	- Gentoo (2012-12-29): `works`
 	- Knoppix 7.0.4CD (Linux 3.4.9): `works`
 		- Note: the initrd (minird) will attempt to load the knoppix userland from an image.  However, Knoppix's kernel (with the modules in `/lib/modules` seems to work fine without an initrd.
 - **Does not work**
@@ -306,6 +307,7 @@ any given Linux distribution's static busybox would be appreciated.
 	- Knoppix 7.04 (Busybox 1.20.2)
 	- Debian Sid (on 2012-12-22) (Busybox 1.20.0-7)
 	- Arch Linux (on 2012-12-22) (Busybox 1.20.0-7)
+	- Gentoo (2012-12-29): `works`
 
 - **Does not work**
 	- Debian 6 Squeeze (Busybox 1.17.1-8)
