@@ -17,7 +17,7 @@ Work arounds:
 
 - You could share these files and manually "update" them.  If the "groupadd" command is run, it will fail and leave a temporary file such as "/etc/group+" behind.  You can cat this file over the normal "/etc/group" file to finalize the command yourself, like so:
 
-		cat /etc/group+ /etc/group && rm /etc/group+
+		cat /etc/group+ > /etc/group && rm /etc/group+
 
 - You could avoid sharing these files files through the brclients.conf system and manually sync them when one changes.  For example, if "groupadd" is run, you could run the following:
 
