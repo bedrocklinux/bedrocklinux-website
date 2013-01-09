@@ -10,7 +10,7 @@ fi
 
 echo -n "Testing $1 for being statically compiled... "
 
-if [ "$(ldd $1 | cut -c2-)" = "not a dynamic executable" ]
+if ! ldd $1 1>/dev/null
 then
 	echo "PASSED"
 else
