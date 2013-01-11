@@ -9,6 +9,8 @@ for Flopsie are solidified.  Several options being considered are:
 
 - [Generate the brpath on the fly via a FUSE virtual filesystem](http://bedrocklinux.org/issues/issue-d364e2c09c68fa3d060a315d5353f52d6b827b69.html), removing the need for brp.
 
+- [Create virtual filesystem (via FUSE) which provides information about clients](http://bedrocklinux.org/issues/issue-ef8e6c818a5aa50f34204ab420460c1bd4fa23b6.html).
+
 - Fix the [/etc issue](http://bedrocklinux.org//issues/issue-ed10277445e2bc796171ca53603f0894f300a5ef.html).  Researching [using a daemon to detect a change and distribute it](http://bedrocklinux.org/issues/issue-a158e55ccf9aa3f6eb8036fb086f83c8cdab0cd9.html) or using FUSE.
 
 - Mandate specific location for all clients.  Downside is less flexibility,
