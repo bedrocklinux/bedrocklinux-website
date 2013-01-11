@@ -25,6 +25,8 @@ upsides are simpler config and brc.
 - Improve Makefile to automate compiling more software, such as fsck, to ease
   installation.
 
+- Include ability to add/remove clients on the fly.  [`brs` should be able to remove mount points in clients so they can be deleted](http://bedrocklinux.org/issues/issue-743e8f4d4958be76542a5dcaf83d5836d3c8d6e2.html).
+
 - Create a system to allow users to prioritize non-native commands over native
   commands.  Currently, if multiple clients provide the same command, each will
   run their own version when.  The user should be able to prioritize one of
