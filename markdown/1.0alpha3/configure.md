@@ -564,7 +564,7 @@ the following in your `/etc/init.d/rcS.clients`:
 
 	brc squeeze /etc/init.d/cups start
 
-And, to ensure it properly closes at shutdown, place the folloing in your
+And, to ensure it properly closes at shutdown, place the following in your
 `/etc/init.d/rcK.clients`:
 
 	brc squeeze /etc/init.d/cups stop
