@@ -226,8 +226,8 @@ you would like to install the kernel.
 - cp /etc/resolv.conf ~(/mnt/bedrock/var/chroot/client~)/etc
 - mount -t proc proc ~(/mnt/bedrock/var/chroot/client~)/proc
 - mount -t sysfs sysfs ~(/mnt/bedrock/var/chroot/client~)/sys
-- mount -- bind /dev ~(/mnt/bedrock/var/chroot/client~)/dev
-- mount -- bind /dev/pts ~(/mnt/bedrock/var/chroot/client~)/dev/pts
+- mount --bind /dev ~(/mnt/bedrock/var/chroot/client~)/dev
+- mount --bind /dev/pts ~(/mnt/bedrock/var/chroot/client~)/dev/pts
 - chroot ~(/mnt/bedrock/var/chroot/client~) /bin/sh
 
 From there, run whatever commands are necessary to install the kernel.  When
@@ -241,7 +241,7 @@ you have finished, run the following commands:
 - umount ~(/mnt/bedrock/var/chroot/client~)/dev
 
 Next, you must copy the relevant files from the location in the other Linux
-distribution into the core of Bedrock Linux so they can be accessed whiel
+distribution into the core of Bedrock Linux so they can be accessed while
 booting.  If you are getting them from a client, they will likely be somewhere
 such as ~(/mnt/bedrock/var/chroot/client~).  If you are using another source
 such as the installer host you will have to determine where they are located.
@@ -280,13 +280,13 @@ The files are:
 ## {id="busybox"} Busybox
 
 Like with the kernel, Bedrock Linux now has experimental support for using
-kernels from other Linux distributions such as (in fact, preferably) from a
-client.
+Busybox binaries from other Linux distributions such as (in fact, preferably)
+from a client.
 
 If you would prefer to compile your own Busybox, the instructions from the
 previous release to [download the source]( ../1.0alpha2/install.html#DOWNLOAD Busybox)
 and
-[compile/install the kernel]( ../1.0alpha2/install.html#COMPILE Busybox)
+[compile/install Busybox]( ../1.0alpha2/install.html#COMPILE Busybox)
 are still valid; follow those until you get to
 
 	{class="cmd"} ldd busybox
