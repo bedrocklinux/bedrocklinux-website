@@ -14,8 +14,27 @@ Linux), automate compiling packages with Gentoo's portage, and ensure that
 software aimed only for the ever popular Ubuntu will run smoothly - all at the
 same time, in the same distribution - Bedrock Linux will provide a means to
 achieve this.  [Watch a
-demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and the
-[introduction](introduction.html) for more.
+demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
+[introduction](introduction.html) and [FAQ](faq.html) for more.
+
+## {id="bosco-update"} Bedrock Linux 1.0alpha3 Bosco update
+<small>2012-01-16</small>
+
+Bosco has been updated, fixing various issues.  If you are currently using a
+Bosco installation from before 2012-01-16, it is recommended you update.
+Download and untar the [userland](1.0alpha3/bedrock-userland-1.0alpha3.tar.gz)
+to a temporary directory (such as `/tmp/bosco-update`), and replace the
+following files from the core system with those from the userland tarball:
+
+- /etc/init.d/rcS
+- /etc/init.d/rcK
+- /etc/init.d/rc.local
+	- careful not to overwrite any settings you may have placed in here
+- /bedrock/bin/brc
+	- you'll have to compile the updated brc.c
+		- `gcc -Wall brc.c -o /bedrock/brc/brc -static -lcap`
+		- `{class="rcmd"} setcap cap_sys_chroot=ep /bedrock/bin/brc`
+- /bedrock/sbin/bru
 
 ## {id="bosco-release"} Bedrock Linux 1.0alpha3 Bosco released
 <small>2012-12-25</small>
@@ -29,13 +48,5 @@ See the high-level changelog [here](1.0alpha3/changelog.html)
 Bedrock Linux was mentioned in an [article on
 linux.com](https://www.linux.com/news/hardware/desktops/679646-6-linux-distros-born-in-2012/)
 about new Linux distributions created in 2012.
-
-## {id="website\_overhaul"} Website Overhaul
-<small>2012-11-18</small>
-
-Website overhauled.  Huge thanks to [simonlc](http://simon.lc/) for assisting
-me with a new website design.  Note that the website now supports atom, and so
-if you would like to follow Bedrock Linux development and news feel free to
-point your RSS feed reader to "http://bedrocklinux.org/atom.xml".
 
 [See older news items](news.html)

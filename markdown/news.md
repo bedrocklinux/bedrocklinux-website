@@ -4,6 +4,25 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="bosco-update"} Bedrock Linux 1.0alpha3 Bosco update
+<small>2012-01-16</small>
+
+Bosco has been updated, fixing various issues.  If you are currently using a
+Bosco installation from before 2012-01-16, it is recommended you update.
+Download and untar the [userland](1.0alpha3/bedrock-userland-1.0alpha3.tar.gz)
+to a temporary directory (such as `/tmp/bosco-update`), and replace the
+following files from the core system with those from the userland tarball:
+
+- /etc/init.d/rcS
+- /etc/init.d/rcK
+- /etc/init.d/rc.local
+	- careful not to overwrite any settings you may have placed in here
+- /bedrock/bin/brc
+	- you'll have to compile the updated brc.c
+		- `gcc -Wall brc.c -o /bedrock/brc/brc -static -lcap`
+		- `{class="rcmd"} setcap cap_sys_chroot=ep /bedrock/bin/brc`
+- /bedrock/sbin/bru
+
 ## {id="bosco-release"} Bedrock Linux 1.0alpha3 Bosco released
 <small>2012-12-25</small>
 
