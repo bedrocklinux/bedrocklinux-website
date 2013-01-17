@@ -36,7 +36,7 @@ reference.
 	- [Add users](#add-users)
 	- [Hostname](#hostname)
 	- [Bedrock-Specific Configuration](#bedrock-specific-config)
-- [Reboot and Enjoy](#reboot)
+- [Post-reboot](#post-reboot)
 
 ## {id="installer-host"} Installation Host Environment
 
@@ -701,7 +701,31 @@ desired hostname as well.
 See [the bosco configuration page](configure.html) for instructions on how to
 configure Bedrock Linux specific functionality such as clients.
 
-## {id="reboot"} Reboot and Enjoy
 
-Reboot into Bedrock Linux.  First thing you'll probably want to do is run
-`{class="rcmd"} brp` - then enjoy!
+## {id="post-reboot"} Post-Reboot
+
+Reboot into Bedrock Linux and run the last few commands to set it up.  Log in
+as root and run:
+
+	{class="rcmd"} brp
+
+This will make commands from clients - such as `bash` - available both from the
+core and other clients, assuming everything is set up properly.
+
+Lastly, you might have to re-set capabilities on `brc`.  Earlier when you ran
+`{class="rcmd"} make install`, make attempted to set the chroot capability on
+`brc` to allow non-root users to use `chroot()` through `brc`.  For some reason
+this may not stick; if that is the case, you'll have to re-do it here.  Try to
+run a `brc` command (for example, `brc bedrock cat /etc/issue`) as a non-root
+user.  If this gives you an error about setcap, install the relevant packages
+into a client to provide the `setcap` command, possibly run
+`{class="rcmd"} brp -a`, (or just `{class="rcmd"} brp`) and then run:
+
+	{class="rcmd"} setcap cap_sys_chroot=ep /bedrock/bin/brc
+
+Everything should be good to go.  If you run into any difficulties, try
+reviewing the relevant documentation pages for this release, and if that
+doesn't help sufficiently, don't hesitate to drop into the IRC channel or
+subreddit.
+
+Enjoy!
