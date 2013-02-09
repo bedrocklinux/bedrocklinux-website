@@ -78,8 +78,8 @@ Use debootstrap to download and set up the target client Linux distribution.
 For example, to install the (64-bit) x86_64 Debian squeeze to
 `/var/chroot/squeeze` using `http://ftp.us.debian.org/debian`:
 
-	{class="rcmd"} debootstrap --arch amd64 squeeze /var/chroot/squeeze\
-	http://ftp.us.debian.org/debian
+- {class="rcmd"}
+- debootstrap --arch amd64 squeeze /var/chroot/squeeze http://ftp.us.debian.org/debian
 
 It may take a bit to download and unpackage the various components.
 
