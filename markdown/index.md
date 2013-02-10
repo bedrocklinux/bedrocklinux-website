@@ -18,7 +18,7 @@ demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
 ## {id="bosco-update"} Bedrock Linux 1.0alpha3 Bosco update
-<small>2012-01-16</small>
+<small>2013-01-16</small>
 
 Bosco has been updated, fixing various issues.  If you are currently using a
 Bosco installation from before 2012-01-16, it is recommended you update.
