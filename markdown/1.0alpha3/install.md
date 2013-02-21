@@ -230,8 +230,11 @@ you would like to install the kernel.
 - mount --bind /dev/pts ~(/mnt/bedrock/var/chroot/client~)/dev/pts
 - chroot ~(/mnt/bedrock/var/chroot/client~) /bin/sh
 
-From there, run whatever commands are necessary to install the kernel.  When
-you have finished, run the following commands:
+From there, run whatever commands are necessary to install the kernel.  For
+example, for x86_64 Debian-based client run 
+`{class="rcmd"} apt-get install linux-image-amd64`, or for an Arch Linux client run
+`{class="rcmd"} pacman -S linux`. When you have finished, run the following
+commands to clean up:
 
 - {class="rcmd"}
 - exit   #(to leave the chroot)
@@ -240,7 +243,7 @@ you have finished, run the following commands:
 - umount ~(/mnt/bedrock/var/chroot/client~)/dev/pts
 - umount ~(/mnt/bedrock/var/chroot/client~)/dev
 
-Next, you must copy the relevant files from the location in the other Linux
+Next, you must copy the relevant files from the location in the client Linux
 distribution into the core of Bedrock Linux so they can be accessed while
 booting.  If you are getting them from a client, they will likely be somewhere
 such as ~(/mnt/bedrock/var/chroot/client~).  If you are using another source
