@@ -111,6 +111,6 @@ Each directory will contain the following:
 
 ### bins and sbins
 
-The `/bedrock/brinfo/bins/` and `/bedrock/brinfo/sbins/` directorys will each
+The `/bedrock/brinfo/bins/` and `/bedrock/brinfo/sbins/` directories will each
 contain one file for every executable in their parts of the filesystem.
 Reading the file will provide the name of the client which provides it.
