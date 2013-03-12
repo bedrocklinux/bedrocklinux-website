@@ -147,7 +147,7 @@ If you run `startx` and do not have a keyboard or mouse:
   Debian-based systems, these would be `xserver-xorg-input-kbd` and
   `xserver-xorg-input-mouse`.
 
-- Try including the following in your xorg.conf and restarting the xserver:
+- You may need `AutoAddDevices` and `AllowEmptyInput` set to `False` in your `xorg.conf` file.  If this file already exists, it is probably at `/etc/X11/xorg.conf` in the client that provides `startx`; otherwise, you'll have to create it.  Try adding the following to the relevant `xorg.conf` file and starting the xserver:
 
 		Section "ServerFlags"
 			Option "AutoAddDevices" "False"
