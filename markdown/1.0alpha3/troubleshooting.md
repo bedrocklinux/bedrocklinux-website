@@ -175,10 +175,10 @@ This should remedy the issue.  If you like, you could run this in all of your cl
 ### {id="root-path"} Root sometimes loses PATH items
 
 There are two common ways to switch from a normal user to root, both of which
-can potentially change your $PATH away from what is desired.  To see the proper
+can potentially change your `$PATH` away from what is desired.  To see the proper
 path for the root user, login directly to a tty and run `echo $PATH`.
 
-If you use sudo, consider adding a "secure_path" which includes the entire root PATH, such as:
+If you use sudo, consider adding a "secure_path" line to `/etc/sudoers` which includes the entire root PATH, such as:
 
 	Defaults secure_path="/bedrock/bin:/bedrock/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"
 
@@ -189,7 +189,7 @@ If you use su *without the -l flag*, consider changing the relevant lines in `/e
 
 Note that
 
--  busybox does not provide `sudo` and
+- busybox does not provide `sudo` and
 - busybox's `su` does not seem to respect `/etc/login.defs`
 
 Thus, neither of these items will resolve anything in the core Bedrock, only in
