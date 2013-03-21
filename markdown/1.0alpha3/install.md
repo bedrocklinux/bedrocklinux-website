@@ -4,6 +4,12 @@ Nav: bosco.nav
 Bedrock Linux 1.0alpha3 Bosco Installation Instructions
 =======================================================
 
+Before beginning installation, be sure to at least skim [the other
+pages](index.html) for this release of Bedrock Linux (1.0alpha3 Bosco).  Make
+sure you're aware of, for example, the [known issues](knownissues.html) and
+[troubleshooting advice](troubleshooting.html) before you begin following the
+instructions below.
+
 Note that there is no proper installer for this release of Bedrock Linux
 (1.0alpha3 Bosco). Installation is done by manually collecting and compiling
 the components, laying out the filesystem, adding the users, etc. Experienced
@@ -19,7 +25,7 @@ release unaltered: `/home`, `/root`, `/boot`, `/bin`, `/sbin`, `/usr/bin`,
 `/usr/sbin`, `/var/chroot` (or wherever you kept your clients). When these
 directories come up in the following instructions, consider simply copying the
 old values over the ones created here.  Additionally, it could be useful to
-keep your configruation files, such as `brclients.conf` and `/etc/passwd`, to
+keep your configuration files, such as `brclients.conf` and `/etc/passwd`, to
 reference.
 
 - [Installation Host Environment](#installer-host)
