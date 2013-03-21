@@ -650,8 +650,8 @@ Note that this will only change root's password; the brroot login for the same
 user will still have the default password.  To change brroot password to the
 same thing, run:
 
-	{class="rcmd"} cat /etc/shadow |\
-	awk '!/^brroot:/{print$0}/^root:/{print "br"$0}' > /etc/shadow
+- {class="rcmd"}
+- cat /etc/shadow | awk '!/^brroot:/{print$0}/^root:/{print "br"$0}' > /tmp/tmpshadow; mv /tmp/tmpshadow /etc/shadow
 
 *If* the busybox you installed has the `adduser` command, you can run the
 following to install additional users:
@@ -681,7 +681,7 @@ and pick the next integer above that.
 
 If you would like to create a "br-" version of these users which will use the
 same password to log in but will always log in to the core of Bedrock Linux,
-run the following for each user:
+run the following for each user *once*:
 
 - {class="rcmd"}
 - cat /etc/passwd | sed 's/^~(USERNAME~):/br&/' | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
