@@ -14,7 +14,7 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 	- [No keyboard or mouse in xorg](#no-kbd-mouse)
 	- [Mount Table Unreadable](#no-mount-table)
 	- [root/sudo path issues](#root-path)
-	- [timezone troubles](#timezone)
+	- [time issues](#time)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
@@ -195,7 +195,7 @@ clients.  In the core, you could:
 - use another client's tool to become root and then run the core's shell, such
   as `sudo brc bedrock brsh`
 
-### {id="timezone"} timezone troubles
+### {id="time"} time issues
 
 Bedrock manages the timezone through the [TZ variable which is set in
 rc.conf](configure.html#tz).  This should be picked up by /etc/profile and, by
@@ -205,6 +205,10 @@ described, it should not require any tweaking per client.  If you are having
 trouble with your timezone, see if maybe you are setting `$TZ` elsewhere such
 as your shell's rc file (e.g.: `.bashrc`) or are using a shell that is not
 parsing `/etc/profile` (`brsh` should parse `/etc/profile`)
+
+To set the time, use an application such as `ntpdate` from a client, then run
+`hwclock -s` to save the result to your hardware clock so it sticks across
+reboots.
 
 ## {id="client-specific"} Client specific issues
 
