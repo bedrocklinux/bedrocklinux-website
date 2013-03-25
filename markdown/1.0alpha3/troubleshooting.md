@@ -206,8 +206,8 @@ trouble with your timezone, see if maybe you are setting `$TZ` elsewhere such
 as your shell's rc file (e.g.: `.bashrc`) or are using a shell that is not
 parsing `/etc/profile` (`brsh` should parse `/etc/profile`)
 
-To set the time, use an application such as `ntpdate` from a client, then run
-`hwclock -s` to save the result to your hardware clock so it sticks across
+To set the time, use an application such as `{class="rcmd"} ntpdate` from a client, then run
+`{class="rcmd"} hwclock -s` to save the result to your hardware clock so it sticks across
 reboots.
 
 ## {id="client-specific"} Client specific issues
