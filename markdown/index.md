@@ -1,52 +1,60 @@
-Title: Bedrock Linux
+Title: Bedrock OSX
 Nav:   home.nav
 
-Bedrock Linux
+Bedrock OSX
 =============
 
-Bedrock Linux is a Linux distribution created with the aim of making most of
-the (often seemingly mutually-exclusive) benefits of various other Linux
-distributions available simultaneously and transparently.
+Bedrock OSX is a project to allow a user to get the benefits of multiple
+releases of Apple OSX - the world's most advanced desktop operating system -
+simultaneously and transparently, without the overhead of virtual machines.
+You can simply store the contents of a various OSX release on-disk, then use
+the Bedrock OSX system to have components of these older OSX releases
+integrated with each other.  You get all of the flawless beautify and
+simplicity of Apple's current masterpieces without losing the flawless beautify
+and simplicity of Apple's previous masterpieces.
 
-If one would like a rock-solid stable base (for example, from Debian or a RHEL
-clone) yet still have easy access to cutting-edge packages (from, say, Arch
-Linux), automate compiling packages with Gentoo's portage, and ensure that
-software aimed only for the ever popular Ubuntu will run smoothly - all at the
-same time, in the same distribution - Bedrock Linux will provide a means to
-achieve this.  [Watch a
-demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
-[introduction](introduction.html) and [FAQ](faq.html) for more.
+## {id="switch-osx"} Bedrock Switching to OSX
+<small>2013-04-01</small>
 
-## {id="bosco-update"} Bedrock Linux 1.0alpha3 Bosco update
-<small>2013-01-16</small>
+The primary complaint about the Bedrock OS project throughout its history is
+that it is insufficiently user friend.  To quote Jonathan Corbert of Linux
+Weekly News:
 
-Bosco has been updated, fixing various issues.  If you are currently using a
-Bosco installation from before 2012-01-16, it is recommended you update.
-Download and untar the [userland](1.0alpha3/bedrock-userland-1.0alpha3.tar.gz)
-to a temporary directory (such as `/tmp/bosco-update`), and replace the
-following files from the core system with those from the userland tarball:
+> [Bedrock Linux] may be especially well suited for those users who have gotten
+> frustrated with the way distributions like Gentoo do everything for them.
 
-- /etc/init.d/rcS
-- /etc/init.d/rcK
-- /etc/init.d/rc.local
-	- careful not to overwrite any settings you may have placed in here
-- /bedrock/bin/brc
-	- you'll have to compile the updated brc.c
-		- `gcc -Wall brc.c -o /bedrock/brc/brc -static -lcap`
-		- `{class="rcmd"} setcap cap_sys_chroot=ep /bedrock/bin/brc`
-- /bedrock/sbin/bru
+Clearly, this needs to be remedied.  The Bedrock Linux developers feel very
+strong that if you're going to do something, you should do it right, and no
+Linux-based operation system has ever gotten the reputation for
+user-friendliness that OSX has.  Switching to OSX is a necessity if the Bedrock
+OS is ever going to become truly user friendly.
 
-## {id="bosco-release"} Bedrock Linux 1.0alpha3 Bosco released
-<small>2012-12-25</small>
+From a technical standpoint it seems quite doable.  The crux of how Bedrock
+works under the hood - chroot() - is available on OSX as well.  Apple OSX is
+UNIX.  Moreover, work to make things like CUPS or webkit work on Bedrock will
+cleanly carry over.
 
-The third Bedrock Linux release, 1.0alpha3 Bosco has been released.
-See the high-level changelog [here](1.0alpha3/changelog.html)
+Really, there isn't any downside.  This Linux thing was never going to catch on
+anyways.  The upsides, though, are tremendous.  Consider:
 
-## {id="linux.com-new-distros"} Bedrock Linux mentioned on linux.com
-<small>2012-12-12</small>
+- Rosetta - the PowerPC-x86 binary translator for OSX - is not supported on OSX
+  as of 10.7 "Lion".  What about those poor people who bought software like
+  Diablo 2 for OSX in the PowerPC days?  With Bedrock OSX, they can just use an
+  older OSX release that supports Rosetta and play Diablo 2 on their shiny
+  newer OSX!
 
-Bedrock Linux was mentioned in an [article on
-linux.com](https://www.linux.com/news/hardware/desktops/679646-6-linux-distros-born-in-2012/)
-about new Linux distributions created in 2012.
+- The latest version of OSX, as of the time of writing, has some applications
+  crash when a user enters "FILE:///" into a number of text objects, such as a
+  Finder window's search box.  Prior releases of OSX did not have this.  You
+  could simply use an older Finder release until this is fixed!
+
+- With Linux, the lack of standardization makes developing Bedrock OS a pain.
+  If some obscure distro does things in a way the Bedrock developers are not
+  familiar, it might not work out of the box as a client.  OSX, however, has a
+  known number of releases.  We just have to support those.  Much easier.
+  Bedrock development will likely speed up greatly once the switch has occurred.
+
+However, converting the base project will take about one year.  Expect Bedrock
+OSX to be available on April 1st, 2014.
 
 [See older news items](news.html)
