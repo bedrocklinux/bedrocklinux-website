@@ -1,11 +1,13 @@
-Title: Bedrock OSX: News Archive
+Title: Bedrock Linux: News Archive
 Nav: home.nav
 
 News Archive
 ============
 
-## {id="switch-osx"} Bedrock Switching to OSX
+## {id="switch-osx"} Bedrock Switching to OSX (April Fools 2013)
 <small>2013-04-01</small>
+
+The April fools joke for 2013:
 
 The primary complaint about the Bedrock OS project throughout its history is
 that it is insufficiently user friend.  To quote Jonathan Corbert of Linux
