@@ -1,20 +1,26 @@
-Title: Bedrock OSX
+Title: Bedrock Linux
 Nav:   home.nav
 
-Bedrock OSX
+Bedrock Linux
 =============
 
-Bedrock OSX is a project to allow a user to get the benefits of multiple
-releases of Apple OSX - the world's most advanced desktop operating system -
-simultaneously and transparently, without the overhead of virtual machines.
-You can simply store the contents of a various OSX release on-disk, then use
-the Bedrock OSX system to have components of these older OSX releases
-integrated with each other.  You get all of the flawless beautify and
-simplicity of Apple's current masterpieces without losing the flawless beautify
-and simplicity of Apple's previous masterpieces.
+Bedrock Linux is a Linux distribution created with the aim of making most of
+the (often seemingly mutually-exclusive) benefits of various other Linux
+distributions available simultaneously and transparently.
 
-## {id="switch-osx"} Bedrock Switching to OSX
+If one would like a rock-solid stable base (for example, from Debian or a RHEL
+clone) yet still have easy access to cutting-edge packages (from, say, Arch
+Linux), automate compiling packages with Gentoo's portage, and ensure that
+software aimed only for the ever popular Ubuntu will run smoothly - all at the
+same time, in the same distribution - Bedrock Linux will provide a means to
+achieve this.  [Watch a
+demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
+[introduction](introduction.html) and [FAQ](faq.html) for more.
+
+## {id="switch-osx"} Bedrock Switching to OSX (April Fools 2013)
 <small>2013-04-01</small>
+
+The April fools joke for 2013:
 
 The primary complaint about the Bedrock OS project throughout its history is
 that it is insufficiently user friend.  To quote Jonathan Corbert of Linux
