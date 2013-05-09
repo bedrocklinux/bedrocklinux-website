@@ -14,6 +14,7 @@ as a client.
 - [Any Linux Distribution](#any)
 - [Debian-based Linux distributions](#debian-based)
 - [Arch Linux](#arch)
+- [Gentoo Linux](#gentoo)
 - [Fedora](#fedora)
 
 ## {id="any"} Any Linux Distribution
@@ -223,6 +224,90 @@ Or, alternatively, if you do not want to use the kernel, you can remove it to
 save disk space:
 
 	{class="rcmd"} pacman -R linux
+
+## {id="gentoo"} Gentoo Linux
+
+Gentoo Linux provides a tarball of the userland, which makes installing it as a
+Bedrock client fairly simple. Note that this is a quick overview of the
+steps required in getting Gentoo working as a Bedrock client. For more
+information on configuring and using Gentoo, consult the 
+[Gentoo Handbook](http://www.gentoo.org/doc/en/handbook/).
+
+To download the tarball, navigate to the
+[Gentoo mirrorlist](http://www.gentoo.org/main/en/mirrors2.xml) and choose
+the mirror that is closest to you. Once you've followed the link to the mirror,
+navigate to `releases/amd64/autobuilds/current-stage3` for 64-bit, or 
+`releases/x86/autobuilds/current-stage3` for 32-bit, and download the
+appropriate stage3 tarball to the directory that Gentoo is being installed into.
+
+Unpack the tarball.
+
+- {class="cmd"}
+- tar -xvjpf stage3-*.tar.bz2 # Note the "-p" option
+
+The next step is to configure `~(/var/chroot/gentoo~)/etc/portage/make.conf` file
+so that you can compile the appropriate utilites using portage. For information
+on how to optimize portage for comiplation on your machine, consult Gentoo's
+[Compilation Optimization Guide](http://www.gentoo.org/doc/en/gcc-optimization.xml).
+
+After configuring your compilation optimization variables, it is time to set up
+the system so that you can chroot into it to finish the installation process.
+
+- {class="rcmd"}
+- cp /etc/resolv.conf ~(/var/chroot/gentoo~)/etc
+- mount -t proc proc ~(/var/chroot/gentoo~)/proc
+- mount -t sysfs sysfs ~(/var/chroot/gentoo~)/sys
+- mount --bind /dev ~(/var/chroot/gentoo~)/dev
+- mount --bind /dev/pts ~(/var/chroot/gentoo~)/dev/pts
+- chroot ~(/var/chroot/gentoo~) /bin/sh
+
+You will now install portage while inside the Gentoo chroot.
+
+- {class="rcmd"}
+- mkdir /usr/portage # portage will be installed here
+- emerge-webrsync # download and install the latest portage snapshot
+- emerge --sync # update the portage tree
+
+Now, before installing anything with Gentoo, it is recommended that you choose
+a system profile. This will set up default values for your `USE` variable, among
+other things. You can view the available profiles with
+
+- {class="rcmd"}
+- eselect profile list
+
+and set it by selecting the number associated with the desired configuration
+
+- {class="rcmd"}
+- eselect profile set ~(PROFILE~)
+
+Finally, you may configure your `USE` flags in `/etc/portage/make.conf`. `USE`
+flags are one of the most powerful features in Gentoo. They are keywords that
+allow you to tell portage what dependencies and you would like to allow or
+block from your system. For information on how to use `USE` flags, consult the
+[USE flags](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=2&chap=2)
+section of the Gentoo Handbook.
+
+It is recommended that you update your system to be compatible with your newly
+configured `USE` flags. However before recompiling your system, you may want to
+emerge `gentoolkit`, which provides the `revdep-rebuild` utility. This will
+allow you to rebulid the applications that were dynamically linked to the
+now-removed software but don't require them anymore.
+
+- {class="rcmd"}
+- emerge gentoolkit
+- emerge --update --deep --with-bdeps=y --newuse world # update entire system
+- emerge --depclean # remove orphaned dependencies
+- revdep-rebuild # rebuild applications with broken dynamic links
+
+Now that Gentoo is fully set up, exit the chroot and remove the mounts
+
+- {class="rcmd"}
+- exit   #(to leave the chroot)
+- umount ~(/var/chroot/gentoo~)/proc
+- umount ~(/var/chroot/gentoo~)/sys
+- umount ~(/var/chroot/gentoo~)/dev/pts
+- umount ~(/var/chroot/gentoo~)/dev
+
 
 ## {id="fedora"} Fedora
 
