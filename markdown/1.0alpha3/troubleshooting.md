@@ -23,6 +23,8 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 		- [Ubuntu resolv.conf](#ubuntu-resolvconf)
 	- [Arch Linux](#arch)
 		- [Pacman Filesystem Errors](#pacman-filesystem-errors)
+    - [Gentoo Linux](#gentoo)
+        - [/var/tmp out of space](#portage-out-of-space}
 	- [Fedora](#fedora)
 		- [Problems with using yum.](#yum-problems)
 
@@ -261,6 +263,17 @@ be caused by `pacman` assuming that the mount points it sees are the same as the
 ones init sees (which would be a fair assumption in almost every case except
 Bedrock Linux). You can configure `pacman` to not check for free disk space by
 commenting out `CheckSpace` from `~(/var/chroot/arch~)/etc/pacman.conf`
+
+### {id="gentoo"} Gentoo Linux
+
+#### {id="portage-out-of-space"} /var/tmp Out of Space
+
+If you get errors when updating Gentoo that `/var/tmp` is out of space, this is
+most likely because portage uses `/var/tmp` to compile everything. If `/var/tmp`
+is configured in `brclients.conf` to be shared, and you have your core Bedrock
+system on a separate, smaller partition, then this error is because `/var/tmp`
+is stored on the smaller core Bedrock partition. To fix it, just unshare
+`/var/tmp` from Gentoo in your `brclients.conf`.
 
 ### {id="fedora"} Fedora
 
