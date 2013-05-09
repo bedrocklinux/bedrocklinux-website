@@ -23,8 +23,8 @@ and clients for Bedrock Linux 1.0alpha3 Bosco.
 		- [Ubuntu resolv.conf](#ubuntu-resolvconf)
 	- [Arch Linux](#arch)
 		- [Pacman Filesystem Errors](#pacman-filesystem-errors)
-    - [Gentoo Linux](#gentoo)
-        - [/var/tmp out of space](#portage-out-of-space}
+	- [Gentoo Linux](#gentoo)
+		- [/var/tmp out of space](#portage-out-of-space)
 	- [Fedora](#fedora)
 		- [Problems with using yum.](#yum-problems)
 
