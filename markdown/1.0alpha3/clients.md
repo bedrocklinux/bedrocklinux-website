@@ -91,6 +91,11 @@ Don't forget to edit `/etc/apt/sources.list` and other client-specific settings.
 
 ## {id="arch"} Arch Linux
 
+Note: The steps below to install Arch Linux as a client quickly become out of
+date as Arch changes.  Several users have reported success with
+[Archbootstra](https://wiki.archlinux.org/index.php/Archbootstrap) instead.
+Give that a try.
+
 Arch Linux's package manager, `pacman`, can be used to setup a new Arch Linux
 install in a folder in a manner similar to Debian's `debootstrap`. It is
 possible to setup `pacman` and its requirements in a folder and then use it
