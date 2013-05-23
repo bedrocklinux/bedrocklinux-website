@@ -17,6 +17,22 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="tllts-podcast"} Bedrock Linux Interviews
+<small>2013-05-23</small>
+
+The founder and lead developer of Bedrock Linux was interviewed on not one, but
+two Linux podcasts in the last few days:  Linux in the Ham Shack and The Linux
+Link Tech Show.  If you would like to listen in, both were recorded.  Linux in
+the Ham Shack's podcast is not up yet, but you can listen to TLLTS here:
+
+http://tllts.org/rsspage.php
+
+Look for episode 506 on May 22, 2013.  The discussion veers away from Bedrock
+Linux after about the first hour.
+
+Another news item will likely be put up once the Linux in the Ham Shack
+interview, episode 107, goes up.
+
 ## {id="switch-osx"} Bedrock Switching to OSX (April Fools 2013)
 <small>2013-04-01</small>
 
