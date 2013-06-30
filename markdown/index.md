@@ -17,6 +17,15 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="lhs-podcast"} Bedrock on LHS Podcast 107 Now Available
+<small>2013-06-30</small>
+
+As was mentioned in the last news item, Bedrock Linux was on two podcasts
+recently; however, only one was available online at the time.  The other
+podcast is now available online, and can be found here:
+
+http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/
+
 ## {id="tllts-podcast"} Bedrock Linux Interviews
 <small>2013-05-23</small>
 
