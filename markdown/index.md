@@ -31,16 +31,13 @@ http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/
 
 The founder and lead developer of Bedrock Linux was interviewed on not one, but
 two Linux podcasts in the last few days:  Linux in the Ham Shack and The Linux
-Link Tech Show.  If you would like to listen in, both were recorded.  Linux in
-the Ham Shack's podcast is not up yet, but you can listen to TLLTS here:
+Link Tech Show.  If you would like to listen in, both were recorded. Here are
+the links:
 
-http://tllts.org/rsspage.php
+- TLLTS Episode #506: ([.spx file](http://www.tlltsarchive.org/archives/tllts_506-05-22-13.spx)) ([listen online on player.fm](http://player.fm/series/the-linux-link-tech-show-itunes-feed/the-linux-link-tech-show-episode-506))
 
-Look for episode 506 on May 22, 2013.  The discussion veers away from Bedrock
-Linux after about the first hour.
+- [LHS Episode #107: Sorry for Party Bedrocking](http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/)
 
-Another news item will likely be put up once the Linux in the Ham Shack
-interview, episode 107, goes up.
 
 ## {id="switch-osx"} Bedrock Switching to OSX (April Fools 2013)
 <small>2013-04-01</small>
