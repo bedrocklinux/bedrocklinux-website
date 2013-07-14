@@ -213,3 +213,54 @@ ul.rcmd{
 ul.rcmd li:before{
 	content: "# ";
 }
+
+/* issues stuff - thanks Phr33d0m! */
+
+table {
+	width: 100%;
+}
+div.description {
+	margin-top: 35px;
+}
+div.description p {
+	background-color: #0C2D45;
+	margin-left: 2px;
+	margin-top: -15px;
+	padding: 10px;
+	width: 98%;
+}
+td.attrname {
+	color: #bdbdbd;
+	width: 200px;
+}
+td.date {
+	width: 205px;
+}
+.log td {
+	padding: 0 5px 1px 5px;
+}
+.log td.logcomment {
+	background-color: #1F1F1F;
+	margin-top: 100px;
+	padding: 5px 10px;
+	width: 840px;
+}
+.log tr.odd-row, .log tr.even-row {
+	background-color: #545454;
+}
+.progress-meter {
+	border: 2px solid #03af00;
+}
+.progress-meter-done {
+	background-color: #03af00;
+}
+.progress-meter-undone {
+	background-color: #ddd;
+}
+/* non-related issues stuff */
+div.main h1 {
+	text-align: center;
+}
+div.footer {
+	margin-top: 20px;
+}
