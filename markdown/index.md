@@ -34,7 +34,7 @@ two Linux podcasts in the last few days:  Linux in the Ham Shack and The Linux
 Link Tech Show.  If you would like to listen in, both were recorded. Here are
 the links:
 
-- TLLTS Episode #506: ([.spx file](http://www.tlltsarchive.org/archives/tllts_506-05-22-13.spx)) ([listen online on player.fm](http://player.fm/series/the-linux-link-tech-show-itunes-feed/the-linux-link-tech-show-episode-506))
+- TLLTS Episode #506: ([.ogg file](http://tlltsarchive.org/archives/tllts_506-05-22-13.ogg)) ([.mp3 file](http://tlltsarchive.org/archives/tllts_506-05-22-13.mp3)) ([listen online on player.fm](http://player.fm/series/the-linux-link-tech-show-itunes-feed/the-linux-link-tech-show-episode-506))
 
 - [LHS Episode #107: Sorry for Party Bedrocking](http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/)
 
