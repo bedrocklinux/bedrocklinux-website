@@ -4,6 +4,34 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="flopsie-delay"} Bedrock Linux 1.0alpha4 "Flopsie" delayed, additional features planned
+<small>2013-07-17</small>
+
+At this point in time it does not look like Bedrock Linux 1.0alph4 "Flopsie"
+will be completed by the previous target date of "end of summer 2013".  The new
+target date is January 1st, 2014.
+
+The delay is entirely due entirely to time availability expectations not being
+met, and is not the result of any unforeseen technical issues; the plans for
+Flopsie still seem viable at this point in time.  The additional time allows
+for additional goals for the next release.  In total, expect the following:
+
+ - A fix for the /etc issue
+ - Installation scripts; much less manual installation work.
+ - Moving to musl as the standard C library for core components.
+ - Updates to`brs` to let it setup/teardown clients on-the-fly
+ - Updates to `bri` including:
+     - the ability to indicate which client is providing a given PID.
+     - making `bri -w` and `bri -W` act the same (current difference is confusing)
+ - Updates to `brw` (essentially aliasing `bri -w/W` if provided an argument)
+ - A script to automate acquiring and setting up (some) client distributions.
+ - a new `brp` which:
+     - updates the BRPATH on-the-fly (no more manually running `brp`)
+     - can force a given executable to always be provided by the same client (out-prioritizing local-to-client executables).
+     - can force a given executable to always be provided *only* locally, even if it could be provided to another client.  Good to avoid confusion in some cases (e.g.: local `python` vs shared `python2`)
+
+See the [Flopsie Plans page](1.0alpha4/plans.html) for more details.
+
 ## {id="lhs-podcast"} Bedrock on LHS Podcast 107 Now Available
 <small>2013-06-30</small>
 
