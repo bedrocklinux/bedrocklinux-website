@@ -17,6 +17,33 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="flopsie-delay"} Bedrock Linux 1.0alpha4 "Flopsie" delayed, additional features planned
+<small>2013-07-17</small>
+
+At this point in time it does not look like Bedrock Linux 1.0alph4 "Flopsie"
+will be completed by the previous target date of "end of summer 2013".  The new
+target date is January 1st, 2014.
+
+The delay is entirely due entirely to time availability expectations not being
+met, and is not the result of any unforeseen technical issues; the plans for
+Flopsie still seem viable at this point in time.  The additional time allows
+for additional goals for the next release.  In total, expect the following:
+
+ - A fix for the /etc issue
+ - Installation scripts; much less manual installation work.
+ - Moving to musl as the standard C library for core components.
+ - Updates to`brs` to let it setup/teardown clients on-the-fly
+ - Updates to `bri` including:
+     - the ability to indicate which client is providing a given PID.
+ - Updates to `brw` (essentially aliasing `bri -w/W` if provided at least one argument).
+ - A script to automate acquiring and setting up (some) client distributions.
+ - a new `brp` which:
+     - updates the BRPATH on-the-fly (no more manually running `brp`)
+     - can force a given executable to always be provided by the same client (out-prioritizing local-to-client executables).
+     - can force a given executable to always be provided *only* locally, even if it could be provided to another client.  Good to avoid confusion in some cases (e.g.: local `python` vs shared `python2`)
+
+See the [Flopsie Plans page](1.0alpha4/plans.html) for more details.
+
 ## {id="lhs-podcast"} Bedrock on LHS Podcast 107 Now Available
 <small>2013-06-30</small>
 
@@ -41,51 +68,5 @@ Linux after about the first hour.
 
 Another news item will likely be put up once the Linux in the Ham Shack
 interview, episode 107, goes up.
-
-## {id="switch-osx"} Bedrock Switching to OSX (April Fools 2013)
-<small>2013-04-01</small>
-
-The April fools joke for 2013:
-
-The primary complaint about the Bedrock OS project throughout its history is
-that it is insufficiently user friend.  To quote Jonathan Corbert of Linux
-Weekly News:
-
-> [Bedrock Linux] may be especially well suited for those users who have gotten
-> frustrated with the way distributions like Gentoo do everything for them.
-
-Clearly, this needs to be remedied.  The Bedrock Linux developers feel very
-strong that if you're going to do something, you should do it right, and no
-Linux-based operation system has ever gotten the reputation for
-user-friendliness that OSX has.  Switching to OSX is a necessity if the Bedrock
-OS is ever going to become truly user friendly.
-
-From a technical standpoint it seems quite doable.  The crux of how Bedrock
-works under the hood - chroot() - is available on OSX as well.  Apple OSX is
-UNIX.  Moreover, work to make things like CUPS or webkit work on Bedrock will
-cleanly carry over.
-
-Really, there isn't any downside.  This Linux thing was never going to catch on
-anyways.  The upsides, though, are tremendous.  Consider:
-
-- Rosetta - the PowerPC-x86 binary translator for OSX - is not supported on OSX
-  as of 10.7 "Lion".  What about those poor people who bought software like
-  Diablo 2 for OSX in the PowerPC days?  With Bedrock OSX, they can just use an
-  older OSX release that supports Rosetta and play Diablo 2 on their shiny
-  newer OSX!
-
-- The latest version of OSX, as of the time of writing, has some applications
-  crash when a user enters "FILE:///" into a number of text objects, such as a
-  Finder window's search box.  Prior releases of OSX did not have this.  You
-  could simply use an older Finder release until this is fixed!
-
-- With Linux, the lack of standardization makes developing Bedrock OS a pain.
-  If some obscure distro does things in a way the Bedrock developers are not
-  familiar, it might not work out of the box as a client.  OSX, however, has a
-  known number of releases.  We just have to support those.  Much easier.
-  Bedrock development will likely speed up greatly once the switch has occurred.
-
-However, converting the base project will take about one year.  Expect Bedrock
-OSX to be available on April 1st, 2014.
 
 [See older news items](news.html)
