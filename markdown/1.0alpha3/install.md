@@ -425,11 +425,13 @@ you can either look at another member of the Syslinux family which supports
 your filesystem and continue below altering `extlinux` as necessary or find a
 completely different bootloader.
 
-Finally, note that syslinux/extlinus is a BIOS-based bootloader and will not
-work with native (U)EFI.  Many (U)EFI motherboards have a legacy BIOS-emulation
-mode which will probably work.  If you are installing Bedrock Linux on a (U)EFI
-motherboard without such functionality, you will have to find another
-bootloader.
+Quick update notes: Syslinux seems to move files around between releases
+without necessarily documenting it in the first place you'd look.  The
+instructions here may be out-of-date and you may have to poke around.  For
+example, since the time these instructions support for EFI has been added.  To
+build for a BIOS (pre-EFI system), compile with `make bios` and look around in
+a `bios` folder for mentioned files.  Look for `bios/extlinux/extlinux` and
+`bios/mbr/mbr.bin` instead of whatever is mentioned below.
 
 The following instructions are assuming you are using the extlinux member of
 the Syslinux family.  If you are using another bootloader for whatever reason,
