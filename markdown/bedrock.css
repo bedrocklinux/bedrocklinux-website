@@ -220,30 +220,26 @@ table {
 	width: 100%;
 }
 div.description {
-	margin-top: 35px;
+	margin-top: 20px;
 }
 div.description p {
 	background-color: #0C2D45;
-	margin-left: 2px;
-	margin-top: -15px;
 	padding: 10px;
-	width: 98%;
 }
 td.attrname {
 	color: #bdbdbd;
-	width: 200px;
+	padding-right: 40%;
 }
-td.date {
-	width: 205px;
+td.attrname, .log td.date, .log td.person {
+	width: 1%;
+	white-space: nowrap;
 }
 .log td {
-	padding: 0 5px 1px 5px;
+	padding: 0 7px 1px 7px;
 }
 .log td.logcomment {
 	background-color: #1F1F1F;
-	margin-top: 100px;
 	padding: 5px 10px;
-	width: 840px;
 }
 .log tr.odd-row, .log tr.even-row {
 	background-color: #545454;
