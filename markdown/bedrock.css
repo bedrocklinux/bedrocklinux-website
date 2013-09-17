@@ -235,7 +235,7 @@ div.description p {
 }
 td.attrname {
 	color: #bdbdbd;
-	padding-right: 40%;
+	padding-right: 40px;
 }
 td.attrname, .log td.date, .log td.person {
 	width: 1%;
