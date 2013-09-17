@@ -64,7 +64,7 @@ h1{
 	font-size:2rem
 }
 h2{
-	margin:1.33em 0 1.5rem;
+	margin: 1.33em 0 0.1em;
 	font-size:1.5rem
 }
 h3{
@@ -120,8 +120,15 @@ body{
 	margin:0 auto;
 	line-height:1.5rem
 }
+body section {
+	text-align: justify;
+}
+header p {
+	border-bottom: 1px solid #ddd;
+}
 #nav{
-	list-style:none
+	list-style:none;
+	margin: -15px 0 15px 0;
 }
 #logo{
 	margin:1.5rem 0;
@@ -152,7 +159,7 @@ body{
 		position:fixed
 	}
 	footer{
-		bottom:1px
+		bottom: -14px;
 	}
 	section{
 		max-width:65%;
