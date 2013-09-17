@@ -64,7 +64,7 @@ h1{
 	font-size:2rem
 }
 h2{
-	margin:1.33em 0 1.5rem;
+	margin: 1.33em 0 0.1em;
 	font-size:1.5rem
 }
 h3{
@@ -120,8 +120,15 @@ body{
 	margin:0 auto;
 	line-height:1.5rem
 }
+body section {
+	text-align: justify;
+}
+header p {
+	border-bottom: 1px solid #ddd;
+}
 #nav{
-	list-style:none
+	list-style:none;
+	margin: -15px 0 15px 0;
 }
 #logo{
 	margin:1.5rem 0;
@@ -152,7 +159,7 @@ body{
 		position:fixed
 	}
 	footer{
-		bottom:1px
+		bottom: -14px;
 	}
 	section{
 		max-width:65%;
@@ -220,30 +227,26 @@ table {
 	width: 100%;
 }
 div.description {
-	margin-top: 35px;
+	margin-top: 20px;
 }
 div.description p {
 	background-color: #0C2D45;
-	margin-left: 2px;
-	margin-top: -15px;
 	padding: 10px;
-	width: 98%;
 }
 td.attrname {
 	color: #bdbdbd;
-	width: 200px;
+	padding-right: 40%;
 }
-td.date {
-	width: 205px;
+td.attrname, .log td.date, .log td.person {
+	width: 1%;
+	white-space: nowrap;
 }
 .log td {
-	padding: 0 5px 1px 5px;
+	padding: 0 7px 1px 7px;
 }
 .log td.logcomment {
 	background-color: #1F1F1F;
-	margin-top: 100px;
 	padding: 5px 10px;
-	width: 840px;
 }
 .log tr.odd-row, .log tr.even-row {
 	background-color: #545454;
