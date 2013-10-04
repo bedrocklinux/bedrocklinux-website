@@ -19,7 +19,7 @@ for additional goals for the next release.  In total, expect the following:
  - A fix for the /etc issue
  - Installation scripts; much less manual installation work.
  - Moving to musl as the standard C library for core components.
- - Updates to`brs` to let it setup/teardown clients on-the-fly
+ - Updates to `brs` to let it setup/teardown clients on-the-fly
  - Updates to `bri` including:
      - the ability to indicate which client is providing a given PID.
      - making `bri -w` and `bri -W` act the same (current difference is confusing)
