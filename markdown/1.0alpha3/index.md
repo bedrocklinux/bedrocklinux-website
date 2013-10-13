@@ -9,6 +9,7 @@ Bedrock Linux, named "Bosco",  which was released on 2012/12/25.
 
 - [Changelog](changelog.html)
 - [Upgrading instructions](upgrade.html)
+- [Backported features](backports.html)
 - [System Requirements](systemrequirements.html)
 - [Known Issues](knownissues.html)
 - [Installation instructions](install.html)

@@ -4,6 +4,12 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="bosco-backport-bru"} Flopsie feature backported to Bosco
+<small>2013-10-13</small>
+
+Flopsie plans discussed [here](http://bedrocklinux.org/1.0alpha4/plans.html)
+are showing promising results.  One of the features, the union filesystem intended to fix the /etc-issue, has been backported to Bosco for those who are interested in trying it out before Flopsie is ready.  See [here](http://bedrocklinux.org/1.0alpha3/backports.html) for instructions on how to install the backport.
+
 ## {id="flopsie-delay"} Bedrock Linux 1.0alpha4 "Flopsie" delayed, additional features planned
 <small>2013-07-17</small>
 

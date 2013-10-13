@@ -17,6 +17,12 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="bosco-backport-bru"} Flopsie feature backported to Bosco
+<small>2013-10-13</small>
+
+Flopsie plans discussed [here](http://bedrocklinux.org/1.0alpha4/plans.html)
+are showing promising results.  One of the features, the union filesystem intended to fix the /etc-issue, has been backported to Bosco for those who are interested in trying it out before Flopsie is ready.  See [here](http://bedrocklinux.org/1.0alpha3/backports.html) for instructions on how to install the backport.
+
 ## {id="flopsie-delay"} Bedrock Linux 1.0alpha4 "Flopsie" delayed, additional features planned
 <small>2013-07-17</small>
 
@@ -52,21 +58,5 @@ recently; however, only one was available online at the time.  The other
 podcast is now available online, and can be found here:
 
 http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/
-
-## {id="tllts-podcast"} Bedrock Linux Interviews
-<small>2013-05-23</small>
-
-The founder and lead developer of Bedrock Linux was interviewed on not one, but
-two Linux podcasts in the last few days:  Linux in the Ham Shack and The Linux
-Link Tech Show.  If you would like to listen in, both were recorded.  Linux in
-the Ham Shack's podcast is not up yet, but you can listen to TLLTS here:
-
-http://tllts.org/rsspage.php
-
-Look for episode 506 on May 22, 2013.  The discussion veers away from Bedrock
-Linux after about the first hour.
-
-Another news item will likely be put up once the Linux in the Ham Shack
-interview, episode 107, goes up.
 
 [See older news items](news.html)
