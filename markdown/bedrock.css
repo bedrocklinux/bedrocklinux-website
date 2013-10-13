@@ -120,9 +120,6 @@ body{
 	margin:0 auto;
 	line-height:1.5rem
 }
-body section {
-	text-align: justify;
-}
 header p {
 	border-bottom: 1px solid #ddd;
 }
