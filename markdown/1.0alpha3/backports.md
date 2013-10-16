@@ -27,7 +27,7 @@ well as a directory in which to "install" a local development stack.
 
 	mkdir -p ~(/tmp/backport/src~) ~(/tmp/backport/dev~)
 
-Download the backported version of bru from [here](https://raw.github.com/paradigm/bedrocklinux-userland/1.0alpha4/src/bru/bru.c) and source for the musl libc library from [here](http://www.musl-libc.org/) and FUSE [here](http://fuse.sourceforge.net/) into ~(/tmp/backport/src~).  Note that both projects have patches for bru and, at the time of writing, the latest version development (HEAD from git) of both is required.  At the time of writing the version of latest stable musl is 0.9.14, and so most likely any later version *not* including that version most likely will work.  For FUSE, bru will require 3.X.
+Download the backported version of bru from [here](https://raw.github.com/paradigm/bedrocklinux-userland/a3226cace958ea242153c536e9f0c86c8693ea2c/src/bru/bru.c) and source for the musl libc library from [here](http://www.musl-libc.org/) and FUSE [here](http://fuse.sourceforge.net/) into ~(/tmp/backport/src~).  Note that both projects have patches for bru and, at the time of writing, the latest version development (HEAD from git) of both is required.  At the time of writing the version of latest stable musl is 0.9.14, and so most likely any later version *not* including that version most likely will work.  For FUSE, bru will require 3.X.
 
 Compile and install musl with the `--prefix` into the local development stack
 location.
