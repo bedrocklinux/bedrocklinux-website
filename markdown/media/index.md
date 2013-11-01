@@ -22,6 +22,12 @@ Media
 - Slides for a Bedrock Linux presentation at The Ohio State University on
   2012-05-24 can be downloaded [here](bedrocklinux-osu.pdf).
 
+## {id="podcasts"} Podcasts
+
+- Bedrock Linux's founder/lead dev was interviewed on the Linux in the Ham Shack podcast episode 107.  It can be found [here](http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/).
+
+- Bedrock Linux's founder/lead dev was interviewed on the Linux Link Tech Show episode 506 which can be found [here](http://tllts.org/rsspage.php).  Look for "TLLTS ep. 506 : May 22, 2013" in the drop-down box.
+
 ## {id="external\_articles"} External Articles
 
 - Bedrock Linux was discussed on LWN on 2012-09-12
