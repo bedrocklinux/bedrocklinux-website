@@ -4,6 +4,15 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="olf-2012-video"} Ohio Linuxfest 2012 Presentation Video
+<small>2013-10-31</small>
+
+The audio from the Bedrock Linux presentation at the 2012 Ohio Linuxfest was
+recorded.  This has been played over the slides and is available to be viewed
+as a video [here](https://www.youtube.com/watch?v=7lIWagDFm6c).  The audio
+recording can be found [here](https://archive.org/details/BedrockLinux) and the
+slides can be found [here](media/bedrocklinux-olf.pdf)
+
 ## {id="bosco-backport-bru"} Flopsie feature backported to Bosco
 <small>2013-10-13</small>
 
