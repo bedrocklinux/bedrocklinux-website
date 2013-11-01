@@ -17,6 +17,15 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="olf-2012-video"} Ohio Linuxfest 2012 Presentation Video
+<small>2013-10-31</small>
+
+The audio from the Bedrock Linux presentation at the 2012 Ohio Linuxfest was
+recorded.  This has been played over the slides and is available to be viewed
+as a video [here](https://www.youtube.com/watch?v=7lIWagDFm6c).  The audio
+recording can be found [here](https://archive.org/details/BedrockLinux) and the
+slides can be found [here](media/bedrocklinux-olf.pdf)
+
 ## {id="bosco-backport-bru"} Flopsie feature backported to Bosco
 <small>2013-10-13</small>
 
@@ -49,14 +58,5 @@ for additional goals for the next release.  In total, expect the following:
      - can force a given executable to always be provided *only* locally, even if it could be provided to another client.  Good to avoid confusion in some cases (e.g.: local `python` vs shared `python2`)
 
 See the [Flopsie Plans page](1.0alpha4/plans.html) for more details.
-
-## {id="lhs-podcast"} Bedrock on LHS Podcast 107 Now Available
-<small>2013-06-30</small>
-
-As was mentioned in the last news item, Bedrock Linux was on two podcasts
-recently; however, only one was available online at the time.  The other
-podcast is now available online, and can be found here:
-
-http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/
 
 [See older news items](news.html)
