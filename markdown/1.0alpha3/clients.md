@@ -93,130 +93,105 @@ Don't forget to edit `/etc/apt/sources.list` and other client-specific settings.
 ## {id="arch"} Arch Linux
 
 Note: The steps below to install Arch Linux as a client quickly become out of
-date as Arch changes.  Several users have reported success with
-[Archbootstrap](https://wiki.archlinux.org/index.php/Archbootstrap) instead.
-Give that a try.
+date as Arch changes. While the bootstrap image should be up to date, the rest 
+of the steps in this guide may be outdated. YMMV.
 
-Arch Linux's package manager, `pacman`, can be used to setup a new Arch Linux
-install in a folder in a manner similar to Debian's `debootstrap`. It is
-possible to setup `pacman` and its requirements in a folder and then use it
-through chroot, largely independent of the host Linux environment. From there,
-it can be used to setup a new Arch Linux client for Bedrock Linux. This should
-work from a client Linux distribution for Bedrock Linux or from a
-LiveCD/LiveUSB.  Whether this works from the core of Bedrock Linux remains
-untested.
+Arch Linux provides a compressed image of an environment suitable for 
+bootstrapping an Arch installation, similar to the typical installation
+media that you can find on Arch Linux's website. Normally, this is used
+to install Arch from the environment of another Linux installation, but
+we're going to use it to create our chrooted Arch client. Before you begin,
+take note of your architecture, and find a `pacman` mirror close to you.
+This instruction will use the kernel.org mirror, although finding one
+geographically close to you is recommended. More information can be
+found on the [official Arch wiki](https://wiki.archlinux.org/index.php/mirrors#Unofficial_mirrors). 
 
-Create and move into a temporary working directory:
+These instructions were tested from the core of Bedrock Linux with some
+software from a Debian Squeeze client, but they should work just as well
+on a LiveCD/LiveUSB.
+
+Move into a temporary working directory: 
 
 - {class="cmd"}
-- mkdir /tmp/archbootstrap
-- cd /tmp/archbootstrap
+- cd /tmp
 
-Download and the required software.
+Download and extract the bootstrap image:
 
 - {class="cmd"}
 - export ARCH=~(ARCH~) # Set to either "x86_64" to "i686"
-- wget https://www.archlinux.org/packages/core/any/pacman-mirrorlist/download --trust-server-names
-- for PACKAGE in pacman glibc gcc-libs binutils libssh2 curl gcc libarchive openssl xz expat gpgme zlib libassuan libgpg-error acl attr bzip2
-- do
-- wget https://www.archlinux.org/packages/core/$ARCH/$PACKAGE/download/ --trust-server-names
-- done
+- wget http://mirrors.kernel.org/archlinux/iso/2013.11.01/archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
+- tar xvf archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
 
-Unpackage all packages
+Prepare the mirrorlist:
 
 - {class="cmd"}
-- `for PACKAGE in *.pkg.tar*`
-- do
-- tar xvf $PACKAGE
-- done
+- vim root.$ARCH/etc/pacman.d/mirrorlist
 
-Uncomment a mirror in `/tmp/archbootstrap/etc/pacman.d/mirrorlist` to use to
-download Arch Linux.
+Uncomment a mirror to download the base system from. It's a good idea to use
+the same mirror as before here.
 
-Disable signiture verification. Open `/tmp/archbootstrap/etc/pacman.conf`, find
-the line containing `SigLevel` under `[core]` and change the value to `Never`.
-Note that this is only for the initial download of Arch Linux - it can continue
-to use signiture verification like normal once installed as a Bedrock Linux
-client.
+Chroot into the bootstrapping environment:
 
-Copy `/etc/resolv.conf` into the archbootstrap environment so it can resolve DNS.
+	{class="rcmd"} /tmp/root.$ARCH/bin/arch-chroot /tmp/root.$ARCH/
 
-	{class="cmd"} cp /etc/resolv.conf /tmp/archbootstrap/etc/
-
-Update the archboostrap we've set up, just in case 
-
-	{class="rcmd"} chroot /tmp/archbootstrap pacman -Syu
-
-Create a new directory in which to download and install the Arch Linux client.
-Note that this has to be within `/tmp/archbootstrap`. You can later move the
-contents to where you prefer, or you can make a bind mount so everything
-installed into this new directory actually goes where you want it to. Moreover,
-ensure it includes the location for pacman's databases within it.
-
-	{class="cmd"} mkdir -p /tmp/archbootstrap/arch/var/lib/pacman/local
-
-Have pacman download its database information into the new directory. Note that
-we are stripping off `/tmp/archbootstrap` because this is being run in a
-chroot.
-
-	{class="rcmd"} chroot /tmp/archbootstrap pacman -Sy -r /arch
-
-By default, pacman checks if enough free space is available before unpackaging
-things. However, the chroot and heavily-used bindmount environment seem to
-confuse it. Comment out `CheckSpace` from `/tmp/archbootstrap/etc/pacman.conf`.
-Despite doing that, however, it might still want to check to the filesystem
-mounts. To ensure it doesn't error and abort when doing so, make the mount
-information available:
-
-	{class="rcmd"} cp /proc/mounts /tmp/archbootstrap/etc/mtab
-
-Finally, mount a few key directories:
+Note that `/etc/resolv.conf` is automatically mounted here, along with `/proc` and
+the other necessary mount points. If this command fails, you probably don't have
+bash version 4 installed on your host system. In that case, you can do the following:
 
 - {class="rcmd"}
-- mkdir -p /tmp/archbootstrap/proc
-- mount -t proc proc /tmp/archbootstrap/proc
-- mkdir -p /tmp/archbootstrap/sys
-- mount -t sysfs sysfs /tmp/archbootstrap/sys
-- mkdir -p /tmp/archbootstrap/dev
-- mount --bind dev /tmp/archbootstrap/dev
-- mkdir -p /tmp/archbootstrap/dev/pts
-- mount -t devpts devpts /tmp/archbootstrap/dev/pts
+- cp /etc/resolv.conf /tmp/root.$ARCH/etc
+- mount --rbind /proc /tmp/root.$ARCH/proc
+- mount --rbind /sys /tmp/root.$ARCH/sys
+- mount --rbind /dev /tmp/root.$ARCH/dev
+- chroot /tmp/root.$ARCH/
 
-Install Arch Linux's base:
+Mount your chroot directory. These instructions will assume that this is a separate
+partition, namely `/dev/sda2`. If not, mount the partition containing it on `/mnt`
+and adjust the next mkdir command accordingly.
 
-	{class="rcmd"} chroot /tmp/archbootstrap pacman -Su base -r /arch
+	{class="rcmd"} mount ~(/dev/sda2~) /mnt
 
-It may take a bit to download and unpackage the various components. 
+Create a new directory in which to download and install the Arch Linux client:
 
-Unmount the mounts we created just before the install:
+	{class="rcmd"} mkdir -p ~(/mnt/arch~)
+
+Initialize `pacman`'s gpg key database. Note that this command will take a *long time*
+if you don't generate entropy for it. This usually involves randomly moving your
+mouse for pressing random keyboard keys until the command completes.
+
+	{class="rcmd"} pacman-key --init
+
+Sync up the database to the existing Arch keys:
+
+	{class="rcmd"} pacman-key --populate archlinux
+
+Install the base system and dev tools to the directory specified earlier.
+	
+	{class="rcmd"} pacstrap -d ~(/mnt/arch~) base base-devel
+
+After this command finishes, you can safely exit the chroot and start configuring
+the system you just installed to `~(/var/chroot/~)arch`.
+	
+	{class="rcmd"} vim /bedrock/etc/brclients.conf
+
+Add in a new section for Arch, which might look something like this:
+
+	[client archlinux]
+	    path = ~(/var/chroot/~)arch
+	    updatecmd = pacman -Syu
+	    share = #Whatever you want to share with the client
+
+Clean up the temporary directory:
 
 - {class="rcmd"}
-- umount /tmp/archbootstrap/dev/pts
-- umount /tmp/archbootstrap/dev
-- umount /tmp/archbootstrap/sys
-- umount /tmp/archbootstrap/proc
+- rm -rf /tmp/root.$ARCH
+- rm /tmp/archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
 
-If you did not bind-mount `/tmp/archbootstrap/arch`, move
-`/tmp/archbootstrap/arch` to where you would like the Arch client to reside.
-Otherwise, unmount it so it is no longer accessible within
-`/tmp/archbootstrap.`
+Arch Linux is now installed as a client. Now is a good time to run your 
+first update via `{class="rcmd"} brc archlinux pacman -Syu`
 
-	{class="rcmd"} mv /tmp/archbootstrap/arch ~(/var/chroot/arch~)
-
-Clean up the temporary archbootstrap directory:
-
-	{class="rcmd"} rm -rf /tmp/archbootstrap
-
-Arch Linux is now installed as a client.  However, `pacman` still needs to be
-set up.  Once you've added the client to `brclients.conf`, set up `pacman` by
-running `brc`'ing into the client and running:
-
-- uncomment a mirror in /etc/pacman.d/mirrorlist
-- set up the pacman signiture keys via `{class="rcmd"} pacman-key --init`
-  (while entering random characters into your keyboard in another window to
-  generate entropy)
-- populate the keys with `{class="rcmd"} pacman-key --populate archlinux`
-- run your first update via `{class="rcmd"} pacman -Syu`
+Note that you will have to either reboot, or resync the path and client manually
+in order to start using your new client.
 
 Finally, note that the above method includes the "linux" package *but* it does
 not seem to run the hook to create the initrd.  If you want to use Arch Linux's
