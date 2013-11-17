@@ -92,11 +92,18 @@ Don't forget to edit `/etc/apt/sources.list` and other client-specific settings.
 
 ## {id="arch"} Arch Linux
 
-Note: The steps below to install Arch Linux as a client quickly become out of
-date as Arch changes. While the bootstrap image should be up to date, the rest 
-of the steps in this guide may be outdated. YMMV.
+Note: Arch Linux changes rapidly, and so some of the details below may become
+out of date.
 
-Arch Linux provides a compressed image of an environment suitable for 
+There are two strategies to acquiring a Arch Linux client at this point in
+time: The archbootstrap script and downloading the official arch linux image.
+
+To try the archbootstrap script, go
+[here](https://wiki.archlinux.org/index.php/Archbootstrap) and follow the
+instructions to acquire the client's files.  Then configure the client.  To
+utilize the official Arch Linux image instead, follow the instructions below.
+
+Arch Linux provides a compressed image of an environment suitable for
 bootstrapping an Arch installation, similar to the typical installation
 media that you can find on Arch Linux's website. Normally, this is used
 to install Arch from the environment of another Linux installation, but
@@ -104,7 +111,7 @@ we're going to use it to create our chrooted Arch client. Before you begin,
 take note of your architecture, and find a `pacman` mirror close to you.
 This instruction will use the kernel.org mirror, although finding one
 geographically close to you is recommended. More information can be
-found on the [official Arch wiki](https://wiki.archlinux.org/index.php/mirrors#Unofficial_mirrors). 
+found on the [official Arch wiki](https://wiki.archlinux.org/index.php/mirrors#Unofficial_mirrors).
 
 These instructions were tested from the core of Bedrock Linux with some
 software from a Debian Squeeze client, but they should work just as well
@@ -119,13 +126,13 @@ Download and extract the bootstrap image:
 
 - {class="cmd"}
 - export ARCH=~(ARCH~) # Set to either "x86_64" to "i686"
-- wget http://mirrors.kernel.org/archlinux/iso/2013.11.01/archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
-- tar xvf archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
+- wget http://mirrors.kernel.org/archlinux/iso/~(2013.11.01~)/archlinux-bootstrap-~(2013.11.01~)-$ARCH.tar.gz
+- tar xvf archlinux-bootstrap-~(2013.11.01~)-$ARCH.tar.gz
 
 Prepare the mirrorlist:
 
 - {class="cmd"}
-- vim root.$ARCH/etc/pacman.d/mirrorlist
+- ~(vim~) root.$ARCH/etc/pacman.d/mirrorlist
 
 Uncomment a mirror to download the base system from. It's a good idea to use
 the same mirror as before here.
@@ -179,7 +186,8 @@ Add in a new section for Arch, which might look something like this:
 	[client archlinux]
 	    path = ~(/var/chroot/~)arch
 	    updatecmd = pacman -Syu
-	    share = #Whatever you want to share with the client
+	    framework = # desired framework
+	    share = # other items to share
 
 Clean up the temporary directory:
 
@@ -187,7 +195,7 @@ Clean up the temporary directory:
 - rm -rf /tmp/root.$ARCH
 - rm /tmp/archlinux-bootstrap-2013.11.01-$ARCH.tar.gz
 
-Arch Linux is now installed as a client. Now is a good time to run your 
+Arch Linux is now installed as a client. Now is a good time to run your
 first update via `{class="rcmd"} brc archlinux pacman -Syu`
 
 Note that you will have to either reboot, or resync the path and client manually
