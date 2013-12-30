@@ -27,6 +27,7 @@ Bedrock Linux 1.0alpha4 Flopsie Configuration Instructions
 		- [firmware](#clientsconf-recommended-firmware)
 	- [Bedrock Linux as a client](#bedrock-as-a-client)
 	- [Full Example](#clientsconf-full-example)
+- [udev](#udev)
 - [fstab](#fstab)
 - [.brsh.conf](#brshconf)
 - [rcS.clients and rcK.clients](#rcSrcK)
@@ -301,6 +302,21 @@ or
 	bind = /proc, /sys, /dev, /dev/pts, /dev/shm, /bedrock
 	bind = /bedrock/clients/bedrock, /home, /root, /lib/modules, /tmp, /var/tmp
 	union = /etc: profile, hostname, hosts, passwd, group, shadow, sudoers, resolv.conf
+
+## {id="udev"} udev
+
+By default, Bedrock Linux uses mdev rather than udev.  If you would like to use
+udev instead, ensure you have udev in a client, then do the following:
+
+- edit `/etc/init.d/rcS.udev` (in the core) so that the `UDEV_CLIENT` variable
+  indicates which client provides udev.
+
+- add `sh /etc/init.d/rcS.udev` to `/etc/init.d/rcS.clients`
+
+The next time you reboot, udev should replace mdev.
+
+To replace mdev with udev in the current session without rebooting, simply run
+`{class="rcmd"} sh /etc/init.d/rcS.udev`.
 
 ## {id="fstab"} fstab
 
