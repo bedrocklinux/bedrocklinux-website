@@ -5,7 +5,7 @@ Bedrock Linux 1.0alpha4 Flopsie Tips, Tricks and Troubleshooting
 ================================================================
 
 This page contains tips, tricks and troubleshooting advice for various software
-and clients for Bedrock Linux 1.0alpha3 Bosco.
+and clients for Bedrock Linux 1.0alpha4 Flopsie.
 
 - [Tips](#tips)
 	- [Client Aliases](#client-aliases)
