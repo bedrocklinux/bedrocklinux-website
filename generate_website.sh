@@ -16,6 +16,7 @@ done
 # generate pages from markdown
 for PAGE in $(find . -type f -name "*.md")
 do
+	echo $PAGE
 	OUTFILE=$(echo "../html/$PAGE" | sed 's/.md$/.html/')
 	DIRNAME=$(dirname $PAGE)
 	TITLE=$(cat $PAGE | sed -n 's/^Title:[ ]\+//p')
