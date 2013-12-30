@@ -1,4 +1,4 @@
-Title: Bedrock Linux 1.0alpha3 Bosco Configuration Instructions
+Title: Bedrock Linux 1.0alpha4 Flopsie Configuration Instructions
 Nav: flopsie.nav
 
 Bedrock Linux 1.0alpha4 Flopsie Configuration Instructions
