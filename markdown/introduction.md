@@ -5,10 +5,12 @@ Nav: home.nav
 
 - [Search for the Perfect Linux Distribution](#search)
 	- [What Bedrock Linux Does](#what_bedrock_does)
+	- [Additional functionality](#additional_functionality)
 - [Real-World Examples of where Bedrock Linux Shines](#real_world)
 - [How Bedrock Linux Works](#how_bedrock_works)
 	- [Chroot](#chroot)
 	- [Bind Mounts](#bind_mounts)
+	- [Union Filesystem](#union_filesystem)
 	- [PATH](#path)
 - [Design Choices](#design_choices)
 	- [Simplicity](#simplicity)
@@ -20,7 +22,6 @@ Nav: home.nav
 	- [Kernel: Linux](#linux)
 	- [Bootloader: Syslinux](#syslinux)
 	- [Userland: Busybox](#busybox)
-	- [Chroot: brc ("BedRock Chroot")](#brc)
 	- [Shell scripts](#shell_scripts)
 - [Bedrock Linux Commands](#commands)
 	- [brc ("BedRock Chroot")](#brc)
@@ -52,29 +53,28 @@ Linux is the Linux distribution for you.
 <small><sup>1</sup>Well, everything except for user-friendly. At the moment,
 Bedrock Linux can not honestly be considered "user-friendly."</small>
 
-### {id="what\_bedrock\_does"} What Bedrock Linux Does
+### {id="what\_bedrock\_does"} What Bedrock Linux does
 
-Bedrock Linux uniquely manipulates the filesytem and PATH to allow software
-from various other Linux distributions to coexist as though they were all from
-the same single, cohesive Linux distribution.  With Bedrock Linux, for example,
-one could have an RSS feed reader from Arch Linux's AUR open a webpage in a web
-browser from Ubuntu's repos while both of them are running in an X11 server
-from Fedora.  Moreover, this interactions feels as though all of the packages
+Bedrock Linux manipulates the virtual filesystem such that processes from
+different distributions which would typically conflict work with each
+other (further details [below](#how_bedrock_works)).  With this system, for
+example, one could have an RSS feed reader from Arch Linux's AUR open a webpage
+in a web browser from Ubuntu's repos while both of them are running in an X11
+server from Fedora.  These interactions feels as though all of the packages
 were from the same repository; for day-to-day activity, Bedrock Linux feels
 like any other Linux distribution.  The typical concerns for things such as
 library conflicts are a non-issue with Bedrock Linux's design - if there is a
 package out there for a Linux distribution on your CPU architecture, it will
 most likely work with Bedrock Linux.
 
-### {id="bedrock\_only"} Bedrock-Only Features
+### {id="additional\_functionality"} Additional Functionality
 
-In addition to doing <small>(almost)</small> anything any other Linux
-distribution can do, there are a number of things Bedrock Linux can do which no
-other distribution can.
+As a side-effect of the way Bedrock Linux ensure packages from different
+distributions can coexist, Bedrock has some unusual additional functionality:
 
-- You can do a distro-upgrade (Debian 5 to 6, Ubuntu 12.04 to 12.10, etc),
-  *live, with almost no downtime*. No need to stop your apache server, reboot,
-  configure things while the server is down, etc.
+- You can effectively do a distro-upgrade (Debian 5 to 6, Ubuntu 12.04 to
+  12.10, etc), *live, with almost no downtime*. No need to stop your apache
+  server, reboot, configure things while the server is down, etc.
 - If a distro-upgrade breaks anything, no problem - the old release's program
   and settings can still be there, ready to go to pick up what it was doing
   before the distro-upgrade broke anything.
@@ -115,14 +115,21 @@ Linux was in development which showed quite clearly Bedrock's strength.
 
 ## {id="how\_bedrock\_works"} How Bedrock Linux Works
 
-Bedrock's magic is based around filesystem and PATH manipulation.
+Bedrock Linux leverages a number of virtual-filesystem-layer manipulation tools
+(such as: `chroot()`, bind-mounts, custom FUSE filesystems, et al) to ensure that
+processes "see" what they expect to see so that two packages from different
+distros do not conflict.  However, rather than completely separating distros,
+it also manipulates the virtual filesystem so that the processes can still
+interact just as they would had they been from the same distro.
+Thus, software from various other Linux distributions coexist as though they
+were all from the same single, cohesive Linux distribution.
 
 ### {id="chroot"} Chroot
 
 A *chroot* changes the apparent filesystem layout from the point of view of
-programs running within it. Specifically, it makes a chosen directory appear to
-be the root of the filesystem. Think of it as prepending a given string to the
-beginning of every filesystem call. For example:
+programs running "within" it. Specifically, it makes a chosen directory appear
+to be the root of the filesystem. Think of it as prepending a given string to
+the beginning of every filesystem call. For example:
 
 - Firefox is located in `/var/chroot/arch/user/bin/firefox`.
 - The following code is run: `chroot /var/chroot/arch /usr/bin/firefox`.
@@ -133,10 +140,13 @@ beginning of every filesystem call. For example:
 
 Bedrock Linux retains within its own filesystem the full filesystems of other
 Linux distros, each in their own directory. These other Linux distributions are
-referred to as clients. If one would like to run a program from any given
+referred to as "clients". If one would like to run a program from any given
 client, via chroot, the program can be tricked into thinking that is running in
 its native Linux distribution. It would read the proper libraries and support
-programs and, for the most part, just work.
+programs and, for the most part, just work.  However, this also limits
+interaction with other processes outside of the chroot (especially in other,
+non-overlapping chroots).  To ensure the processes can fully interact, Bedrock
+Linux uses other tools to partially "undo" the chroot.
 
 ### {id="bind\_mounts"} Bind Mounts
 
@@ -155,12 +165,27 @@ With bind mounts you can, for example, ensure you only have to maintain a
 single `/home` on Bedrock. That `/home` can be bind mounted into each of the
 chrooted client filesystems so that they all share it. If you decide to stop
 using one client's firefox and start using another's, you can keep using your
-same `~/.mozilla` - things will "just work."
+same `~/.mozilla` - things will "just work" in that respect.
 
 Through proper usage of chroots and bind mounts, Bedrock Linux can tweak the
 filesystem from the point of view of any program to ensure they have access to
 the files they need to run properly while ensuring the system feels integrated
 and unified.
+
+### {id="union\_filesystem"} Union Filesystem
+
+Bind mounts have a number of limitations.  The most notable of which is that a
+`rename()` filesystem call cannot be used directly on mount points.  If *some*
+files in a directory (such as `/etc/passwd`) are to be shared, but others (such
+as `/etc/issue`) should be kept unique per client, one cannot bind-mount the
+entire containing directory (`/etc`).  However, since some files (again, such
+as `/etc/passwd`) are updated via `rename()`, those cannot be bind-mounted
+either.
+
+To remedy this, Bedrock Linux uses its own `bru` FUSE union filesystem.
+This system has a non-negligable overhead compared to the bind-mounts, but is
+more flexible, and thus it is used in situations like `/etc` where bind-mounts
+are not ideal, while bind-mounts are used elsewhere for performance.
 
 ### {id="path"} PATH
 
@@ -174,10 +199,15 @@ system will check for an executable named "firefox" in the following locations
 - `/usr/bin/firefox`
 - `/bin/firefox`
 
-Using a specialized `$PATH` variable, Bedrock Linux can have a program attempt to
-run a (chrooted) program in another client Linux distribution rather than only
-looking for its own versions of things. By changing the order of the elements
-in the `$PATH` variable, search order can be specified. 
+Using a specialized `$PATH` variable, Bedrock Linux can have a program attempt
+to run a (chrooted) program in another client Linux distribution in addition to
+only looking for its own versions of things. By changing the order of the
+elements in the `$PATH` variable, search order can be specified.  This way if a
+process attempts to run a program not available in its own distribution, it can
+still see programs made available from other distributions and run those.  This
+all happens transparently - if a web-browser is set to open PDF files in a
+stand-alone PDF reader, it can do so, even if the chosen PDF reader is from
+another distribution.
 
 ## {id="design\_choices"} Design Choices
 
@@ -187,21 +217,13 @@ than simply a system grafted onto another Linux distribution.
 
 ### {id="simplicity"} Simplicity
 
-Understanding Bedrock's filesystem layout (with the chroots, bind mounts, and
-dynamic `$PATH`) can be quite confusing. Additionally, no user-friendly
-standalone installer with pre-compiled packages will be available for quite
-some time; users will be required to compile Bedrock Linux "from scratch."
-Moreover, users will have to maintain things on a very low level; they will be
-expected to, for example, hand-edit the init files (reasoning explained later).
-In order to ensure Bedrock Linux is viable for as many users as possible,
-everything which does not have to be confusing or complicated should be made as
-simple as possible.
-
-Bedrock Linux thus chooses some unusual packages. GRUB, the de-facto bootloader
-for most major Linux distributions, is a tad complicated. Syslinux is
-significantly easier to setup and maintain by hand, and thus is the "official"
-choice for Bedrock. However, GRUB should work fine, if the user wants to figure
-out how to install and manage it himself.
+Understanding Bedrock's filesystem layout (with the chroots, bind mounts, union
+filesystem, and dynamic `$PATH`) can be quite confusing.  Additionally, users
+will have to maintain things on a very low level; they will be expected to, for
+example, hand-edit the init files (reasoning explained later).  In order to
+ensure Bedrock Linux is viable for as many users as possible, everything which
+does not have to be confusing or complicated should be made as simple as
+possible.
 
 ### {id="minimalism"} Minimalism and Deferring Features
 
@@ -210,14 +232,14 @@ Where directly comparable, they are most likely better than the Bedrock Linux
 developer at Linux-distribution-making. Thus, where possible, it is preferable
 to use functionality from a client rather than Bedrock Linux itself. If
 something can be deferred to a client it will be; Bedrock Linux only does what
-it has to do to enable the integration of other Linux distributions. 
+it has to do to enable the integration of other Linux distributions.
 
 ### {id="statically\_linked"} Statically-linked Executables
 
-Typically, most executables refer to other libraries for their components. If
-this is done at runtime, this is known as *dynamic linking*. By contrast, one
-can (sometimes) *statically link* the libraries into the executable when
-compiling.
+Typically, most executables refer to other libraries for some of their
+components. If this is done at runtime, this is known as *dynamic linking*. By
+contrast, one can (sometimes) *statically link* the libraries into the
+executable when compiling so everything is "built-in".
 
 When using dynamically linked executables, the libraries for the executable
 must be available at run time. This is why you can not simply take an
@@ -226,7 +248,7 @@ do not match what it was compiled against, it will not work. Statically linked
 executables can, however, run just about anywhere irrelevant of libraries (of
 course, one still needs the same kernel, CPU instruction set, etc).
 
-In order to ensure the following items, Bedrock's core components are all
+In order to ensure the following items, Bedrock Linux's core components are all
 statically linked:
 
 - It should be possible to run a core Bedrock Linux executable directly in any
@@ -256,26 +278,40 @@ emphatically](http://www.akkadia.org/drepper/no_static_linking.html):
 The Bedrock Linux developer believes that Bedrock's unique situation creates a
 justifiable exemption, but do your own research. 
 
-It should be noted that another Linux-distribution-in-progress, [stali from
+Another Linux-distribution-in-progress, [stali from
 suckless](http://dl.suckless.org/stali/clt2010/stali.html), also makes heavy
-use of static compilition.
+use of static compilation.
 
 ### {id="manual\_init"} Manual Client Init Scripts
 
-Most Linux distributions automatically manage the programs which are run at
-startup and shutdown, but Bedrock Linux will not be one of them for the
-foreseeable future. It is quite possible (and, in fact, likely) that multiple
-clients will have startup and shutdown scripts which conflict with those from
-other clients. Moreover, there are a variety of Linux init systems, each of
-which have their own system for ensuring the programs are launched in the
-proper order to meet their prerequisites.
+Bedrock Linux faces three problems when it comes to running daemons from
+clients:
 
-The Bedrock Linux developer has been unable to think of any sane way of
-determining which init script to run when the clients conflict (which CUPS
-daemon should run, if multiple are available?). Additionally, an automated way
-to determine the launch order from all of the possible systems it will run into
-seems far too challenging of a project. Thus, Bedrock Linux requires manually
-setting which programs from which client's init is launched when.
+1. Multiple clients could provide the same functionality in a way that isn't
+   beneficial to have duplicated.  For example, if multiple clients provide
+   CUPS, which CUPS does the end user want to use?  Rather than attempt to
+   automate some solution, all daemons available from clients will be disabled
+   by default.  The user will have to explicitly list daemons to be launched at
+   boot.
+
+2. There are multiple init systems, each of which interact with daemons
+   differently; there is no one standard for interacting with daemons.
+   Automating some degree of user-friendly-ish support for the major init
+   systems may exist in the future but, for now, development focus is
+   elsewhere, and it is up to the end-user to script what the init system
+   should do to launch/shutdown/restart/etc any given daemon.
+
+3. Several init systems - most notably Upstart and systemd - expect their own
+   process to be PID1.  Under normal circumstances, only one process can be
+   PID1.  Thus, using these executables to manage any daemon from any client
+   distribution is not trivially easy.  For now, it is up to the end user to do
+   things such as parse systemd .service files, find things such as
+   `ExecStart`, and add the corresponding item to Bedrock Linux's init.  There
+   are potential solutions to be investigated in the long run, such as using
+   PID namespaces to "trick" Upstart and systemd into thinking they are PID1.
+
+In the long run these things may be remedied, but for now managing daemons at
+init requires manual efforts from the end users.
 
 ### {id="self-sufficient"} Self-sufficient Booting
 
@@ -309,17 +345,6 @@ Busybox is an all-in-one solution for a minimal(/embedded) Linux userland. It
 is significantly smaller and easier to set up than most of its alternatives.
 Statically-linking it is relatively common, and it can be found in many Linux
 distribution client repositories statically-compiled.
-
-### {id="chroot\_brc"} Chroot: brc ("BedRock Chroot")
-
-The standard `chroot` command requires root. If setuid'd or cap_sys_chroot'd it
-is possible to use `chroot` to escalate privileges. Thus, Bedrock Linux
-requires a specialized chroot command intended to be used by non-root users.
-Moreover, it is beneficial to also have this program break out of a chroot
-before entering another one to allow one chroot'd program launch a program in
-another chrooted environment.  No existing command did both of these things,
-and thus Bedrock Linux had to create its own, `brc`.  `brc` is largely based on
-[capchroot](https://mailman.archlinux.org/pipermail/arch-dev-public/2009-July/012552.html).
 
 ### {id="shell\_scripts"} Shell scripts
 
