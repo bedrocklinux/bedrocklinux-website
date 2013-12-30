@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="flopsie-release"} Bedrock Linux 1.0alpha4 Flopsie released
+<small>2013-12-30</small>
+
+The fourth Bedrock Linux release, 1.0alpha4 Flopsie has been released.
+See the high-level changelog [here](1.0alpha4/changelog.html) and the
+installation instructions [here](1.0alpha4/install.html)
+
 ## {id="olf-2012-video"} Ohio Linuxfest 2012 Presentation Video
 <small>2013-10-31</small>
 

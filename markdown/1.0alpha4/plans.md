@@ -3,9 +3,9 @@ Nav: flopsie.nav
 
 # Bedrock Linux 1.0alpha4 Flopsie Plans
 
-This page serves to describe plans for the upcoming release of Bedrock Linux,
-1.0alpha4 "Flopsie". Flopsie is tentatively set for release by January 1st,
-2014.
+This page serves to describe plans for the then-upcoming release of Bedrock Linux,
+1.0alpha4 "Flopsie". Flopsie has since been released on 2013/12/30.  The
+following is thus out-of-date, but is kept in case anyone is curious.
 
 ## /etc issue fix
 
@@ -60,7 +60,7 @@ have `brw` be an alias for `bri -w` (or `-W`) if at least one argument is
 provided so that `brw ~(program-name~)` will indicate which client will provide a
 given executable, since this, like `bri -n`, is very commonly used.
 
-## brg
+## brg (delayed to hawkey)
 
 Flopsie will include a new Bedrock Linux utility, `brg`, which can be used to
 acquire a new client.  For example (syntax still tentative):
@@ -82,7 +82,7 @@ from one of the above sources, you will have to fall back to installing it
 manually (such as via its normal installation method on another partition or in
 a VM and then copying the contents out).
 
-## brp update
+## brp update (delayed to hawkey)
 
 The current release of Bedrock Linux, 1.0alpha3 "Bosco", requires users run the
 `brp` utility every time an executable is added or remove from the system.

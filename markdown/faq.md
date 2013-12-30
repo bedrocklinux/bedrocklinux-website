@@ -4,11 +4,11 @@ Nav:   home.nav
 # Frequently Asked Questions
 
 - [What is Bedrock Linux?](#what_is_bedrock)
+- [How does Bedrock Linux work?](#how_bedrock_work)
 - [Why should I use Bedrock?](#why_use_bedrock)
 - [Why should I not use Bedrock?](#why_not_use_bedrock)
 - [How can I contribute?](#contribute)
-- [How is this different from/preferable to using a virtual machine?](#vs_virtual_machin)
-- [Why is there no proper installer?](#why_no_installer)
+- [How is this different from/preferable to using a virtual machine?](#vs_virtual_machine)
 - [When will $RELEASE be released?](#when_release)
 - [Why that name?](#why_name)
 - [Where do the release names come from?](#release_names)
@@ -16,10 +16,16 @@ Nav:   home.nav
 - [Why does this need to be its own distribution?](#why_own_distro)
 - [On which distribution is Bedrock Linux based?](#on_which_distro)
 - [This sounds overly-ambitious. Do you really think you can pull this off?](#overly-ambitious)
+- [What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?](#other-os)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
 See the Introduction to [Bedrock](introduction.html).
+
+## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
+
+The exact details may change drastically from release-to-release, but the
+general concept is explained [here](introduction.html#how_bedrock_works).
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
@@ -60,18 +66,18 @@ security offered by a locked-down standard Linux distribution.
 
 ## {id="contribute"} How can I contribute?
 
-- Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) or
-  [reddit](http://reddit.com/r/bedrocklinux) and ask around.
+- Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) and ask around.
 - Take a look at the [issues](issues/) and, if you feel you can tackle
-  something, [claim it](https://github.com/paradigm/bedrocklinux-issues) and go
-  at it.  Or make a new issue if you have an idea.
+  something, discuss it with "paradigm" in
+  [IRC](http://webchat.freenode.net/?channels=bedrock).
+  Or make a new issue if you have an idea.
 - There is always a need to improve the documentation.  For example, you could
   add instructions for setting up an obscure distro as a client Bedrock Linux,
   or something as simple as fixing typos.  Once you have something to submit,
   stop by the [website git
   repo](https://github.com/paradigm/bedrocklinux-website).
 
-## {id="vs\_virtual\_machin"} How is this different from/preferable to using a virtual machine?
+## {id="vs\_virtual\_machine"} How is this different from/preferable to using a virtual machine?
 
 Bedrock Linux's functionality differs from virtual machines in three key ways:
 
@@ -94,25 +100,6 @@ the rest of the system. Virtual machines, by their very design, sandbox the
 clients, such that an attack on one of them will have a difficult time
 propagating to others.
 
-## {id="why\_no\_installer"} Why is there no proper installer?
-
-- Creating an proper installer for Bedrock Linux can takes a substancial amount
-of time, and isn't strictly necessary to use Bedrock Linux.  Due to limits on
-manpower and time, creating a proper installer is a relatively low priority.
-It'd be nice to have, eventually, if everything else on the TODO is checked off
-and the issues described below are alleviated.
-- It is an easy way to avoid the responsibility associated with partitioning or
-setting up a bootloader. A mistake in the former could easily delete valued
-data, and a mistake in the latter could just as easily ruin someone's day in
-other ways. By only providing instructions, if something goes wrong, it is
-quite easy to just say "I told you to be careful at that part" and remove
-responsibility from the Bedrock Linux developer.
-- This also removes responsibility for security vulnerabilities. If Bedrock
-Linux is distributed with a package with a security vulnerability, Bedrock
-Linux could potentially be blamed any issues that arise. This way the blame
-would more likely either fall on the user or upstream.
-- This ensures the user knows how to update core components.
-
 ## {id="when\_release"} When will $RELEASE be released?
 
 If there is an estimate for a release, it will be stated in the index page for
@@ -124,7 +111,7 @@ Bedrock Linux does not do very much by itself; rather, it is the foundation
 upon which other Linux distributions are placed. Initial ideas for a name were
 intent on reflecting this fact. Other proposed names included "Foundation
 Linux", "Frame Linux" and "Scaffolding Linux". The name chosen has nothing to
-do with the television show The Flintstones.
+do with the television show *The Flintstones*.
 
 ## {id="release\_names"} Where do the release names come from?
 
@@ -199,3 +186,54 @@ possible, it has been done, and the necessities for you to see this for
 yourself have been made available if you don't want to take my word for it.
 Much work needs to be done such as polish and the addition of many features,
 but the core idea has been proven quite definitively to work.
+
+## {id="other-os"} What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?
+
+It should be noted that no other operating system family has such a disparate
+variety of userlands which all run on the same kernel.  Bedrock Linux's
+strengths wouldn't be nearly as beneficial anywhere else.  Attempting to do
+something such as Bedrock Linux will inherently require leveraging
+operating-system-specific tools, and so it may require a fair bit of additional
+research to port Bedrock Linux's tools to another platform.
+Bedrock Linux is still under heavily development and changes quite a bit
+between releases.  It may be best to first wait for Bedrock Linux to settle on
+one strategy before putting the efforts to port it elsewhere to avoid wasted effort.
+
+BSD:
+
+- Porting Bedrock Linux to one or more of the BSD operating systems may be
+possible.
+- Differences in things such as chroot(), namespaces, cgroup, etc may
+make it take a fair bit of work.
+- The Bedrock Linux FUSE utilites may "just work" on the BSDs.
+
+Traditional-Linux-and-Android:
+
+- Android's utilities may be dependent on Android's patches to the Linux
+  kernel.  However, "traditional" Linux programs seem to run fine on the
+  Android kernel.  Thus, any port of Bedrock Linux to android would likely
+  require an Android kernel to be used.
+
+- The Android file system layout is significantly different from traditional
+  Linux distributions.  PATH and bind-mount system changes may be required.
+
+- Android does some unusual things with its UID/GIDs.  For example, does not
+  seem to be a UID-username map at /etc/passwd as one would expect from other
+  Linux-based operating systems.  UID namespaces and brc-style translation
+  programs may be necessary.
+
+Android-on-Android:
+
+- This may be possible.  Most of the issues mentioned for the other platforms
+  are unlikely to happen here.
+
+Windows:
+
+- The low-level differences between Windows and Linux are quite significant,
+  and thus the possibility does not seem promising; however, no serious
+  investigation has been done to confirm this.
+
+OSX:
+
+- No investigation has been done into porting Bedrock Linux to OSX.
+- If the BSDs look promising, at least Darwin could be possible.
