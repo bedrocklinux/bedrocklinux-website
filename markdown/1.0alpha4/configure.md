@@ -11,7 +11,7 @@ Bedrock Linux 1.0alpha4 Flopsie Configuration Instructions
 	- [FSCK](#fsck)
 	- [NPATH](#npath)
 	- [SPATH](#spath)
-- [clientsconf](#brclientsconf)
+- [clientsconf](#clientsconf)
 	- [General Format](#clientsconf-general-format)
 	- [Bind](#clientsconf-bind)
 	- [Union](#clientsconf-union)
