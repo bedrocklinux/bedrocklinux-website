@@ -105,9 +105,9 @@ space, it may be easiest to simply grab all of them.  Again, like with mbr.bin,
 if there are multiple groups of results we want those corresponding to to your
 earlier choice of bios vs efi32 vs efi64.  First, find the bios directory:
 
-	- {class="cmd"}
-	- find ~(/mnt/bedrock/src/syslinux-VERSION~) -name bios -d # or efi32 or efi64 as used earlier
-	- cd ~(output-of-above~)
+- {class="cmd"}
+- find ~(/mnt/bedrock/src/syslinux-VERSION~) -name bios -d # or efi32 or efi64 as used earlier
+- cd ~(output-of-above~)
 
 Next, copy all of the files ending in `.c32` in this directory into the
 extlinux install directory.
