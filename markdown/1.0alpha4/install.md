@@ -254,7 +254,7 @@ If you are on another system, install the equivalent packages.
 To compile everything, run
 
 - {class="cmd"}
-- cd ~(/tmp/bedrock~)
+- cd ~(/mnt/bedrock~)
 - ./installer make all
 
 If it does not complete successfully, look at the output the script generates
@@ -264,7 +264,7 @@ dependency or third party source code.
 To install everything, run (as root)
 
 - {class="rcmd"}
-- cd ~(/tmp/bedrock~)
+- cd ~(/mnt/bedrock~)
 - ./installer install all
 
 You should now have everything required to use Bedrock Linux except the
