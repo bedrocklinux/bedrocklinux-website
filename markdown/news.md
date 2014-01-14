@@ -4,6 +4,26 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="early-2014-plans"} Early 2014 plans
+<small>2014-01-14</small>
+
+The plan for Bedrock Linux development in the coming months revolves around
+functionality which can be added without significant under-the-hood changes to
+Bedrock Linux.  Various ideas currently being worked on:
+
+- Additional research on recommended/default client settings.
+- Man pages for Bedrock Linux utilities
+- Tab-completion in bash and zsh for Bedrock Linux utilities
+- A replacement for the current brp which will update on-the-fly
+- A new utility, brg ("BedRock Get"), which will be used to easily acquire
+  clients
+- A new utility, brm ("BedRock Manual"), which can be used to find a man page
+  available in at least one client, irrelevant of which client provides it.
+- A new utility, pmm ("Package Manager Manager"), which will abstract away
+  client-specific package management.
+- A new utility, iss ("Init System System"), which will abstract away
+  individual client init system differences.
+
 ## {id="flopsie-release"} Bedrock Linux 1.0alpha4 Flopsie released
 <small>2013-12-30</small>
 
