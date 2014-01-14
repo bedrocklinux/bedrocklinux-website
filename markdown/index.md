@@ -30,7 +30,7 @@ Bedrock Linux.  Various ideas currently being worked on:
 - A replacement for the current brp which will update on-the-fly.
 - A new utility, brg ("BedRock Get"), which will be used to easily acquire
   clients.
-- A new utility, brm ("BedRock Manual"), which can be used to find a man page
+- A new utility, brm ("BedRock Manual"), which can be used to find a man page.
   available in at least one client, irrelevant of which client provides it.
 - A new utility, pmm ("Package Manager Manager"), which will abstract away
   client-specific package management.
