@@ -167,14 +167,14 @@ now be there, as explained in the following sections.
 
 The musl libc library is required.  The project's website is available at:
 
-    http://www.musl-libc.org/
+[http://www.musl-libc.org/](http://www.musl-libc.org/)
 
 At the time of writing, the latest musl release - 0.9.14 - does not have all of
 the required functionality.  Either use a newer release (such as 0.9.15 or
 0.10.0) if available or get the latest version from git.  The latest stable
 releases and links to download them should be available here:
 
-    http://www.musl-libc.org/download.html
+[http://www.musl-libc.org/download.html](http://www.musl-libc.org/download.html)
 
 And the git repository should be available here:
 
@@ -185,20 +185,20 @@ And the git repository should be available here:
 The Linux kernel repository is required for the Linux header files.  A tarball
 containing the latest Linux kernel should be found here:
 
-https://www.kernel.org/
+[https://www.kernel.org/](https://www.kernel.org/)
 
 ### {id="src-fuse"} fuse
 
 FUSE is required.  The project's website is available at:
 
-    http://fuse.sourceforge.net/
+[http://fuse.sourceforge.net/](http://fuse.sourceforge.net/)
 
 At the time of writing, the latest FUSE release - 2.9.3 - does not have all of
 the required functionality.  Either use a newer release (3.X) if available or
 get the latest version from git.  The latest stable releases should be found
 here:
 
-    http://sourceforge.net/projects/fuse/files/
+[http://sourceforge.net/projects/fuse/files/](http://sourceforge.net/projects/fuse/files/)
 
 And the git repository should be available here:
 
@@ -211,7 +211,7 @@ Busybox is required.  At the time of writing, the latest busybox release -
 release (1.21.2, 1.22.0, etc) or get the latest version from git.  The latest
 stable release should be available as a tarball here:
 
-    http://www.busybox.net/
+[http://www.busybox.net/](http://www.busybox.net/)
 
 And the git repository should be available here:
 
@@ -222,7 +222,7 @@ And the git repository should be available here:
 The Linux Capabilities libraries and utilities are required.  The project's
 website is at:
 
-    https://sites.google.com/site/fullycapable/
+[https://sites.google.com/site/fullycapable/](https://sites.google.com/site/fullycapable/)
 
 At the time of writing a tarball is unavailable, but the git repository is
 available here:
@@ -232,6 +232,7 @@ available here:
 At the time of writing, the latest commit has broken things.  After checking
 out the repository, checkout commit 056ffb0bd25d91ffbcb83c521fc4d3d9904ec4d4
 
+    cd libcap
     git checkout 056ffb0bd25d91ffbcb83c521fc4d3d9904ec4d4
 
 ## {id="build-userland"} Building the userland
@@ -253,7 +254,7 @@ If you are on another system, install the equivalent packages.
 To compile everything, run
 
 - {class="cmd"}
-- cd ~(/tmp/bedrock~)
+- cd ~(/mnt/bedrock~)
 - ./installer make all
 
 If it does not complete successfully, look at the output the script generates
@@ -263,7 +264,7 @@ dependency or third party source code.
 To install everything, run (as root)
 
 - {class="rcmd"}
-- cd ~(/tmp/bedrock~)
+- cd ~(/mnt/bedrock~)
 - ./installer install all
 
 You should now have everything required to use Bedrock Linux except the
