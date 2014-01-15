@@ -186,6 +186,7 @@ After this command finishes, you can safely exit the chroot.
 Clean up the temporary directory:
 
 - {class="rcmd"}
+- umount /tmp/root.$ARCH/mnt
 - rm -rf /tmp/root.$ARCH
 - rm /tmp/archlinux-bootstrap-~(2013.11.01~)-$ARCH.tar.gz
 
