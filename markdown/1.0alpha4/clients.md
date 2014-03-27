@@ -225,7 +225,7 @@ Unpack the tarball.
 - {class="cmd"}
 - tar -xvjpf stage3-*.tar.bz2 # Note the "-p" option
 
-The next step is to configure `~(/var/chroot/gentoo~)/etc/portage/make.conf` file
+The next step is to configure `~(/bedrock/clients/gentoo~)/etc/portage/make.conf` file
 so that you can compile the appropriate utilites using portage. For information
 on how to optimize portage for comiplation on your machine, consult Gentoo's
 [Compilation Optimization Guide](http://www.gentoo.org/doc/en/gcc-optimization.xml).
@@ -234,12 +234,12 @@ After configuring your compilation optimization variables, it is time to set up
 the system so that you can chroot into it to finish the installation process.
 
 - {class="rcmd"}
-- cp /etc/resolv.conf ~(/var/chroot/gentoo~)/etc
-- mount -t proc proc ~(/var/chroot/gentoo~)/proc
-- mount -t sysfs sysfs ~(/var/chroot/gentoo~)/sys
-- mount --bind /dev ~(/var/chroot/gentoo~)/dev
-- mount --bind /dev/pts ~(/var/chroot/gentoo~)/dev/pts
-- chroot ~(/var/chroot/gentoo~) /bin/sh
+- cp /etc/resolv.conf ~(/bedrock/clients/gentoo~)/etc
+- mount -t proc proc ~(/bedrock/clients/gentoo~)/proc
+- mount -t sysfs sysfs ~(/bedrock/clients/gentoo~)/sys
+- mount --bind /dev ~(/bedrock/clients/gentoo~)/dev
+- mount --bind /dev/pts ~(/bedrock/clients/gentoo~)/dev/pts
+- chroot ~(/bedrock/clients/gentoo~) /bin/sh
 
 You will now install portage while inside the Gentoo chroot.
 
@@ -283,10 +283,10 @@ Now that Gentoo is fully set up, exit the chroot and remove the mounts
 
 - {class="rcmd"}
 - exit   #(to leave the chroot)
-- umount ~(/var/chroot/gentoo~)/proc
-- umount ~(/var/chroot/gentoo~)/sys
-- umount ~(/var/chroot/gentoo~)/dev/pts
-- umount ~(/var/chroot/gentoo~)/dev
+- umount ~(/bedrock/clients/gentoo~)/proc
+- umount ~(/bedrock/clients/gentoo~)/sys
+- umount ~(/bedrock/clients/gentoo~)/dev/pts
+- umount ~(/bedrock/clients/gentoo~)/dev
 
 Create a /bedrock/etc/clients.d/~(clientname~).conf file as explained
 in [the configuration page](configure.html).
@@ -311,9 +311,9 @@ step and following all of the following steps.
 
 	{class="rcmd"} febootstrap fedora-~(RELEASE-NUMBER~)~(PATH~)
 
-For example, to install Fedora 17 (beefy miracle) to `/var/chroot/beefy`:
+For example, to install Fedora 17 (beefy miracle) to `/bedrock/clients/beefy`:
 
-	{class="rcmd"} febootstrap fedora-17 /var/chroot/beefy/
+	{class="rcmd"} febootstrap fedora-17 /bedrock/clients/beefy/
 
 It may take a bit to download and unpackage the various components.
 
@@ -357,10 +357,10 @@ Linux distribution.
 	{class="rcmd"} PATH="$PATH:/tmp/febootstrap-~(VERSION~)"\
 	./febootstrap fedora-~(RELEASE-NUMBER~) ~(PATH~)
 
-For example, to install Fedora 17 (beefy miracle) to /var/chroot/beefy:
+For example, to install Fedora 17 (beefy miracle) to /bedrock/clients/beefy:
 
 	{class="rcmd"} PATH="$PATH:/tmp/febootstrap-~(VERSION~)"\
-	./febootstrap fedora-17 /var/chroot/beefy
+	./febootstrap fedora-17 /bedrock/clients/beefy
 
 Clean up the temporary febootstrap directory:
 
