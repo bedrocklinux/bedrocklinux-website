@@ -131,7 +131,7 @@ programs running "within" it. Specifically, it makes a chosen directory appear
 to be the root of the filesystem. Think of it as prepending a given string to
 the beginning of every filesystem call. For example:
 
-- Firefox is located in `/var/chroot/arch/user/bin/firefox`.
+- Firefox is located in `/var/chroot/arch/usr/bin/firefox`.
 - The following code is run: `chroot /var/chroot/arch /usr/bin/firefox`.
 - The newly launched Firefox *thinks* it is located at `/usr/bin/firefox`
 - When Firefox tries to load a file at `/usr/lib/libgtk2.0-0`,`
