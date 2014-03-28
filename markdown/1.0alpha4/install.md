@@ -204,6 +204,12 @@ And the git repository should be available here:
 
     git clone git://git.code.sf.net/p/fuse/fuse fuse-fuse
 
+At the time of writing, the latest commit has broken things.  After checking
+out the repository, checkout commit dd432032db34c2ca22570af5ac6794822ef4c877
+
+    cd fuse-fuse
+    git checkout dd432032db34c2ca22570af5ac6794822ef4c877
+
 ### {id="src-busybox"} busybox
 
 Busybox is required.  At the time of writing, the latest busybox release -
