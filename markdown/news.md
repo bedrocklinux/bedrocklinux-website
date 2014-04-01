@@ -4,6 +4,24 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="invite-only"} Bedrock Linux Invite-only beta
+<small>2014-04-01</small>
+
+The Bedrock OS project has entered an invite-only beta.  This comes with
+numerous new features and functionality, including:
+
+- Support for FreeBSD and Android
+- 80% of the code has been formally verified (planning on verifying the rest
+  before release)
+- Core utilities have been rewritten in Haskell
+- New QT5-based GUI UX
+- Switched to a systemd-based init
+
+The first 50 IP addresses to reach this website should see an invite code
+below:
+
+    c135e9caef83e81f8c246229a7e371cac580f273
+
 ## {id="early-2014-plans"} Early 2014 plans
 <small>2014-01-14</small>
 
