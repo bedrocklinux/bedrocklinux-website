@@ -7,7 +7,6 @@ Main Nav
 - [Installation Instructions](1.0alpha4/install.html)
 - [Current release (1.0alpha4)](1.0alpha4/)
 - [All releases](releases.html)
-- [Issue Tracker](issues/)
 - [News Archive](news.html)
 - [Media](media/)
 
@@ -17,4 +16,3 @@ External Links
 - [reddit.com/r/bedrocklinux](http://reddit.com/r/bedrocklinux)
 - [Git repo for website](https://github.com/paradigm/bedrocklinux-website)
 - [Git repo for userland](https://github.com/paradigm/bedrocklinux-userland)
-- [Git repo for issues](https://github.com/paradigm/bedrocklinux-issues)
