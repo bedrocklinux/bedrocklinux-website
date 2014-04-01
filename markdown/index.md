@@ -17,6 +17,24 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="invite-only"} Bedrock Linux Invite-only beta
+<small>2014-04-01</small>
+
+The Bedrock OS project has entered an invite-only beta.  This comes with
+numerous new features and functionality, including:
+
+- Support for FreeBSD and Android
+- 80% of the code has been formally verified (planning on verifying the rest
+  before release)
+- Core utilities have been rewritten in Haskell
+- New QT5-based GUI UX
+- Switched to a systemd-based init
+
+The first 50 IP addresses to reach this website should see an invite code
+below:
+
+    c135e9caef83e81f8c246229a7e371cac580f273
+
 ## {id="early-2014-plans"} Early 2014 plans
 <small>2014-01-14</small>
 
@@ -43,14 +61,5 @@ Bedrock Linux.  Various ideas currently being worked on:
 The fourth Bedrock Linux release, 1.0alpha4 Flopsie has been released.
 See the high-level changelog [here](1.0alpha4/changelog.html) and the
 installation instructions [here](1.0alpha4/install.html)
-
-## {id="olf-2012-video"} Ohio Linuxfest 2012 Presentation Video
-<small>2013-10-31</small>
-
-The audio from the Bedrock Linux presentation at the 2012 Ohio Linuxfest was
-recorded.  This has been played over the slides and is available to be viewed
-as a video [here](https://www.youtube.com/watch?v=7lIWagDFm6c).  The audio
-recording can be found [here](https://archive.org/details/BedrockLinux) and the
-slides can be found [here](media/bedrocklinux-olf.pdf).
 
 [See older news items](news.html)
