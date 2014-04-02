@@ -4,7 +4,7 @@ Nav: home.nav
 News Archive
 ============
 
-## {id="invite-only"} Bedrock Linux Invite-only beta
+## {id="invite-only"} Bedrock OS Invite-only beta (April Fools 2014)
 <small>2014-04-01</small>
 
 The Bedrock OS project has entered an invite-only beta.  This comes with
