@@ -17,10 +17,11 @@ that too is fine.
 Syslinux is both the name of a project which contains multiple bootloaders and
 the name of one of the bootloaders within the project.  If you are using ext2,
 ext3, ext4 or BTRFS as your filesystem, the "extlinux" bootloader from Syslinux
-should suffice.  If you are using another filesystem which another filesystem
-you can either look at another member of the Syslinux family which supports
-your filesystem and continue below altering `extlinux` as necessary or find a
-completely different bootloader.
+should suffice.  If you are using another filesystem, you can either look at another
+member of the Syslinux family which supports your filesystem or find a completely
+different bootloader. If you do choose to use a different syslinux bootloader,
+the steps should be largely the same, replacing "extlinux" with the bootloader
+of choice.
 
 Download Syslinux from [the official syslinux
 website](http://www.syslinux.org/).  Be sure to read the specific pages for the
