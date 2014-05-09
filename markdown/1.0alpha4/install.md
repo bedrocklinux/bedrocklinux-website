@@ -474,7 +474,7 @@ run the following for each user *once*:
 
 - {class="rcmd"}
 - sed -n 's/^~(USERNAME~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
-- sed -n 's/^~(USERNAME~):/br&/p' /etc/shadow >> /etc/shaddow
+- sed -n 's/^~(USERNAME~):/br&/p' /etc/shadow >> /etc/shadow
 
 Once you have completed adding all of the desired users and setting their
 passwords, you may exit the chroot
