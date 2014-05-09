@@ -473,8 +473,8 @@ same password to log in but will always log in to the core of Bedrock Linux,
 run the following for each user *once*:
 
 - {class="rcmd"}
-- cat /etc/passwd | sed 's/^~(USERNAME~):/br&/' | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
-- cat /etc/shadow | sed 's/^~(USERNAME~):/br&/' >> /etc/shadow
+- sed -n 's/^~(USERNAME~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
+- sed -n 's/^~(USERNAME~):/br&/p' /etc/shadow >> /etc/shaddow
 
 Once you have completed adding all of the desired users and setting their
 passwords, you may exit the chroot
