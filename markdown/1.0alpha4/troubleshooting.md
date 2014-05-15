@@ -9,7 +9,6 @@ and clients for Bedrock Linux 1.0alpha4 Flopsie.
 
 - [Tips](#tips)
 	- [Client Aliases](#client-aliases)
-- [Tips](#tips)
 - [General issues](#general)
 	- [Proprietary Nvidia Drivers](#proprietary-nvidia-drivers)
 	- [/dev/fd errors](#dev-fd-errors)
@@ -30,7 +29,7 @@ and clients for Bedrock Linux 1.0alpha4 Flopsie.
 	- [Fedora](#fedora)
 		- [Problems with using yum.](#yum-problems)
 
-## {id="tips"}
+## {id="tips"} Tips
 
 ### {id="client-aliases"} Client Aliases
 
