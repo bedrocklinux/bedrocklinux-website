@@ -67,15 +67,17 @@ security offered by a locked-down standard Linux distribution.
 ## {id="contribute"} How can I contribute?
 
 - Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) and ask around.
-- Take a look at the [issues](issues/) and, if you feel you can tackle
-  something, discuss it with "paradigm" in
-  [IRC](http://webchat.freenode.net/?channels=bedrock).
-  Or make a new issue if you have an idea.
+- Take a look at the
+  [issues](https://github.com/bedrocklinux/bedrocklinux-userland/issues) and,
+  if you feel you can tackle something, mention it in the issue tracker or
+  discuss it with "paradigm" in
+  [IRC](http://webchat.freenode.net/?channels=bedrock).  Or make a new issue if
+  you have an idea.
 - There is always a need to improve the documentation.  For example, you could
   add instructions for setting up an obscure distro as a client Bedrock Linux,
   or something as simple as fixing typos.  Once you have something to submit,
   stop by the [website git
-  repo](https://github.com/paradigm/bedrocklinux-website).
+  repo](https://github.com/bedrocklinux/bedrocklinux-website).
 
 ## {id="vs\_virtual\_machine"} How is this different from/preferable to using a virtual machine?
 
