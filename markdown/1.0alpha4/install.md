@@ -155,7 +155,7 @@ permissions will be fixed later) for this.
 
 - {class="cmd"}
 - sudo chmod a+rwx ~(/mnt/bedrock~)
-- git clone --branch 1.0alpha4 https://github.com/paradigm/bedrocklinux-userland.git ~(/mnt/bedrock~)/repo
+- git clone --branch 1.0alpha4 https://github.com/bedrocklinux/bedrocklinux-userland.git ~(/mnt/bedrock~)/repo
 - mv ~(/mnt/bedrock~)/repo/\* ~(/mnt/bedrock~)
 - rm -rf ~(/mnt/bedrock/~)repo
 
