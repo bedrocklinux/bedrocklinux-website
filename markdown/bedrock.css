@@ -65,7 +65,8 @@ h1{
 }
 h2{
 	margin: 1.33em 0 0.1em;
-	font-size:1.5rem
+	font-size:1.5rem;
+	border-bottom: 1px solid #ddd;
 }
 h3{
 	margin:1.8em 0 1.2rem;
