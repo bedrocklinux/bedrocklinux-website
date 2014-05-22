@@ -79,7 +79,7 @@ For example, to install the (64-bit) x86_64 Debian squeeze to
 `/bedrock/clients/squeeze` using `http://ftp.us.debian.org/debian`:
 
 - {class="rcmd"}
-- debootstrap --arch amd64 squeeze /bedrock/clients/squeeze http://ftp.us.debian.org/debian
+- debootstrap --arch amd64 squeeze ~(/mnt/bedrock~)/bedrock/clients/squeeze http://ftp.us.debian.org/debian
 
 It may take a bit to download and unpackage the various components.
 
