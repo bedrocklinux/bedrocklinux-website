@@ -180,6 +180,13 @@ And the git repository should be available here:
 
     git clone git://git.musl-libc.org/musl
 
+Some people have reported problems using the latest musl while others have had
+successes.  So far, everyone seems to be having success with the following
+commit:
+
+    cd musl
+    git checkout e783efa6eff5e0b8c91891f778598a95e1f7ad87
+
 ### {id="src-linux"} linux headers
 
 The Linux kernel repository is required for the Linux header files.  A tarball
