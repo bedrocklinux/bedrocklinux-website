@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="github-issues"} Repos and issues moved
+<small>2014-05-21</small>
+
+The public/centralized Bedrock Linux repositories were moved from
+[http://github.com/paradigm](http://github.com/paradigm)
+to
+[http://github.com/bedrocklinux](http://github.com/bedrocklinux)
+.  The Bedrock Linux issue trackers migrated over to GitHub's issue tracker as
+well.
+
 ## {id="invite-only"} Bedrock OS Invite-only beta (April Fools 2014)
 <small>2014-04-01</small>
 
