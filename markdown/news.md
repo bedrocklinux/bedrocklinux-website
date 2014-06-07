@@ -17,6 +17,8 @@ well.
 ## {id="invite-only"} Bedrock OS Invite-only beta (April Fools 2014)
 <small>2014-04-01</small>
 
+*Below is a April Fools 2014 joke -- no closed beta, code has no use*
+
 The Bedrock OS project has entered an invite-only beta.  This comes with
 numerous new features and functionality, including:
 
@@ -31,6 +33,8 @@ The first 50 IP addresses to reach this website should see an invite code
 below:
 
     c135e9caef83e81f8c246229a7e371cac580f273
+    
+*Above is a April Fools 2014 joke -- no closed beta, code has no use*
 
 ## {id="early-2014-plans"} Early 2014 plans
 <small>2014-01-14</small>
