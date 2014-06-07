@@ -169,23 +169,13 @@ The musl libc library is required.  The project's website is available at:
 
 [http://www.musl-libc.org/](http://www.musl-libc.org/)
 
-At the time of writing, the latest musl release - 0.9.14 - does not have all of
-the required functionality.  Either use a newer release (such as 0.9.15 or
-0.10.0) if available or get the latest version from git.  The latest stable
-releases and links to download them should be available here:
+Use the newest version from the 1.0.X series you can find here:
 
 [http://www.musl-libc.org/download.html](http://www.musl-libc.org/download.html)
 
-And the git repository should be available here:
+For example, at the time of writing the newest is 1.0.3:
 
-    git clone git://git.musl-libc.org/musl
-
-Some people have reported problems using the latest musl while others have had
-successes.  So far, everyone seems to be having success with the following
-commit:
-
-    cd musl
-    git checkout e783efa6eff5e0b8c91891f778598a95e1f7ad87
+    http://www.musl-libc.org/releases/musl-1.0.3.tar.gz
 
 ### {id="src-linux"} linux headers
 
