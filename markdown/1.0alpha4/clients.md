@@ -148,6 +148,7 @@ Chroot into the bootstrapping environment:
 - mount --bind /sys /tmp/root.$ARCH/sys
 - mount --bind /dev /tmp/root.$ARCH/dev
 - mount --bind /dev/pts /tmp/root.$ARCH/dev/pts
+- mount --bind /run /tmp/root.$ARCH/run
 - chroot /tmp/root.$ARCH/
 
 Mount your chroot directory. These instructions will assume that this is a separate
