@@ -9,6 +9,7 @@ Nav:   home.nav
 - [Why should I not use Bedrock?](#why_not_use_bedrock)
 - [How can I contribute?](#contribute)
 - [How is this different from/preferable to using a virtual machine?](#vs_virtual_machine)
+- [How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?](#vs_container)
 - [When will $RELEASE be released?](#when_release)
 - [Why that name?](#why_name)
 - [Where do the release names come from?](#release_names)
@@ -101,6 +102,50 @@ vulnerability in one of the clients, there is little to stop it from affecting
 the rest of the system. Virtual machines, by their very design, sandbox the
 clients, such that an attack on one of them will have a difficult time
 propagating to others.
+
+## {id="vs\_container"} How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?
+
+Containers contain things.  They, purposefully, keep the contained software
+from interacting with the rest of the system.  This has numerous benefits:
+
+- If something goes wrong - an innocent bug or a malicious attacker - the
+  damage done is restricted to the container.
+- Software in the container is largely self-sufficient and can be easily made
+  to run on a variety of Linux distributions without worry about things
+  conflicting.  If one has an older distribution such as a RHEL clone but wants
+  a newer version of some software, it could be provided via a container.
+
+However, containers have disadvantages as well:
+
+- Things within containers are kept from interacting with each other.  For
+  things which run as stand-alone services, such as web servers like apache and
+  nginx, this is not a problem.  However, other software is intended to coexist
+  with like software.  Containing things such as `mkdir` and `rmdir` in
+  separate containers would significantly reduce the benefit of each.
+
+- Services such as Docker can be used to create what are effectively very
+  portable packages.  However, someone has to do some work to create these
+  packages.  One cannot simply grab a .deb or .tar.gz from the repositories of
+  other Linux distributions, drop them in a container and expect them to work.
+
+Where containers are useful, one is certainly encouraged to use them.  However,
+one cannot be realistically expected to contain everything independently.  What
+most Linux distributions *do* is provide software that can interact natively
+for when that is useful.  Bedrock Linux is no different here, conceptually,
+from other major distributions.  What makes Bedrock Linux unique is that the
+software it can install natively is provided from a very large variety of
+sources.  If one wants to use `mkdir` from one distribution and `rmdir` from
+another, for whatever reason, Bedrock Linux, for the most part, can make this
+happen.  A more realistic example would be utilizing xorg from one distribution
+and a window manager or desktop environment from another - neither is good
+alone, they need to interact, but there could be legitimate reasons to want
+them from different distributions.  See the compiz story
+[here](http://bedrocklinux.org/introduction.html#real_world), for example.
+
+Containers and Bedrock Linux have very different goals and go about them by
+largely different means.  The two are not in competition in any way; in fact,
+one could run Bedrock Linux in a container, or run containers on top of Bedrock
+Linux, no different than any other distribution.
 
 ## {id="when\_release"} When will $RELEASE be released?
 
