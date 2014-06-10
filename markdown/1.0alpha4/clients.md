@@ -183,6 +183,7 @@ After this command finishes, you can safely exit the chroot.
 - umount /tmp/root.$ARCH/dev
 - umount /tmp/root.$ARCH/sys
 - umount /tmp/root.$ARCH/proc
+- umount /tmp/root.$ARCH/run
 
 Clean up the temporary directory:
 
