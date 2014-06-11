@@ -17,6 +17,13 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="las\_and\_lup"} Bedrock Linux on Linux Action Show, Linux Unplugged
+<small>2014-06-11</small>
+
+Bedrock Linux was discussed on [Linux Action Show
+Episode 316](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-las-316/)
+(starting at forty minutes in).  The Bedrock Linux found/lead developer was then interviewed on [Linux Unplugged Episode 44](http://www.jupiterbroadcasting.com/59617/bedrock-a-new-paradigm-lup-44/) (starting at 8 minutes 30 seconds in).
+
 ## {id="github-issues"} Repos and issues moved
 <small>2014-05-21</small>
 
