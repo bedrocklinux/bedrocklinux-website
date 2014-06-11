@@ -14,6 +14,10 @@ Media
   from 11:15-16:41.  "One of the most fascinating Linux distributions we've
   heard of in years."
 
+- Bedrock Linux was further discussed on another episode of [the Linux Actin Show](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-las-316/) starting at forty minutes in.
+
+
+
 ## {id="pdfs"} PDFs
 
 - Slides for a Bedrock Linux presentation at the Ohio LinuxFest 2012 on
@@ -27,6 +31,9 @@ Media
 - Bedrock Linux's founder/lead dev was interviewed on the Linux in the Ham Shack podcast episode 107.  It can be found [here](http://lhspodcast.info/2013/06/lhs-episode-107-sorry-for-party-bedrocking/).
 
 - Bedrock Linux's founder/lead dev was interviewed on the Linux Link Tech Show episode 506 which can be found [here](http://tllts.org/rsspage.php).  Look for "TLLTS ep. 506 : May 22, 2013" in the drop-down box.
+
+- Bedrock Linux's founder/lead dev was interviewed on the Linux Unplugged episode 44 which can be found [here](http://www.jupiterbroadcasting.com/59617/bedrock-a-new-paradigm-lup-44/), starting 8 minutes 30 seconds in.
+
 
 ## {id="external\_articles"} External Articles
 
