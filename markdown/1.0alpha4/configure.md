@@ -351,7 +351,7 @@ called `.brsh.conf` which contains the contents that should be in your `$SHELL`
 environment. For example, if you would like to use `bash`, have `~/.brsh.conf`
 contain just:
 
-	/bin/bash.
+	/bin/bash
 
 ## {id="rcSrcK"} rcS.clients and rcK.clients
 
