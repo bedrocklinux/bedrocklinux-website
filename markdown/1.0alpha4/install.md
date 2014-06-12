@@ -245,12 +245,13 @@ You will need the following items to build the userland:
 - A typical Linux build stack with gcc and make
 - libattr1-dev (for libcap)
 - autoconf (for fuse)
+- automake (for fuse)
 - libtool (for fuse)
 - gettext (for fuse)
 
 On a Debian-based system, this should install everything required:
 
-	{class="rcmd"} apt-get install build-essential libattr1-dev libtool autoconf gettext
+	{class="rcmd"} apt-get install build-essential libattr1-dev libtool autoconf automake gettext
 
 If you are on another system, install the equivalent packages.
 
