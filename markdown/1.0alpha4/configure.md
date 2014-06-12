@@ -184,7 +184,7 @@ indicate that a collection of settings stored in
 
 are to be utilized.  Frameworks have the exact same syntax as normal
 client.conf files (and can refer to each other).  Typical Bedrock Linux systems
-may have one or two frameworks which which most client configurations
+may have one or two frameworks which most client configurations
 utilize.
 
 A reference framework with recommended defaults for most clients should be
