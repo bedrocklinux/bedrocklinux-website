@@ -66,6 +66,12 @@ find it preferable to use another computer to do the CPU-intensive compiling.
 These instructions do not cover compiling on a separate machine from the one on
 which you wish to install.
 
+**There are known difficulties compiling with gcc 4.8.2 and 4.9.0.  At the time
+of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2.  Consider using a
+distribution with an older gcc release until the situation is remedied.  See
+[here](http://www.openwall.com/lists/musl/2014/05/15/1) for details.  You can,
+for example, use an Ubuntu Saucy live CD/USB with gcc 4.8.1.**
+
 
 ## {id="partitioning"} Partitioning
 
