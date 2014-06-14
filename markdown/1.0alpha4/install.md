@@ -70,7 +70,7 @@ which you wish to install.
 of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2.  Consider using a
 distribution with an older gcc release until the situation is remedied.  See
 [here](http://www.openwall.com/lists/musl/2014/05/15/1) for details.  You can,
-for example, use an Ubuntu Saucy live CD/USB with gcc 4.8.1.**
+for example, use an Ubuntu Raring or Debian Wheezy based live CD/USB with gcc 4.7.X**
 
 
 ## {id="partitioning"} Partitioning
