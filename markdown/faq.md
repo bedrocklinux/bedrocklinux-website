@@ -26,7 +26,7 @@ See the Introduction to [Bedrock](introduction.html).
 ## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
 
 The exact details may change drastically from release-to-release, but the
-general concept is explained [here](introduction.html#how_bedrock_works).
+general concept is explained [here](introduction.html#concepts).
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
