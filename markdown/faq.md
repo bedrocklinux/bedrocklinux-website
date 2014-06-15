@@ -44,9 +44,6 @@ virtual machines.
 - If you have issues with packages from Linux distributions that are unique to
 that distribution and would rather simply use another distribution's package
 for this specific issue than debug the root of the problem.
-- If you would like to try for extremely high uptime while still doing
-distro-upgrades if you are limited yourself to a single machine. See [Why
-should I not use Bedrock?](#why\_not\_use\_bedrock) below for the catch.
 - If you want a toy with which to play.
 
 ## {id="why\_not\_use\_bedrock"} Why should I not use Bedrock?
