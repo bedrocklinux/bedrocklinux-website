@@ -199,3 +199,34 @@ specify exactly which one to use.
 
 Between these three file access types, most things just work as one would
 expect despite the fact that they are not intended to work together.
+
+~{Directly~} accessing a file is done as one would typically do so.  It is
+necessary for this to be the typical method for dependencies to be
+automatically met by software intended for other distributions.
+
+~{Implicitly~} accessing files is done through the filesystem mounted at
+`/bedrock/brpath`.  This provides a (read-only) view of the files available in
+*all* ~{clients~}.  If any ~{client~} provides a file, it can be made
+accessible here.  By adding `/bedrock/brpath` *at the end* of various
+`$PATH`-style variables, programs will automatically search for their own
+~{local~} files first and, if it does not find anything, attempt to use files
+provided by other ~{clients~}.  Bedrock Linux sets up these `$PATH` variables
+automatically so that no manual work or thought is necessary to access anything
+~{implicitly~} - it "just works" as one would have expected if the software was
+packaged for the distribution.
+
+~{Explicitly~} accessing a file is done by accessing the file through a path
+at:
+
+`/bedrock/clients/~(client-name~)/~(path/to/file~)
+
+Where ~(client-name~) is the name of the ~{client~} and ~{path/to/file~} is the
+path to the desired file.  To ~{explicitly~} specify which ~{client~}'s
+executable one would want, use `brc`:
+
+`brc ~(client-name~) ~(command~) ~(arguments~)`.
+
+For example, to use the `vim` text editor from the Arch ~{client~} to modify
+the gentoo ~(client~)'s (~{local~}) `/etc/issue` file, one could use:
+
+`brc arch vim /bedrock/clients/gentoo/etc/issue`
