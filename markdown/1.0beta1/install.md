@@ -6,9 +6,10 @@ Bedrock Linux 1.0beta1 Hawky Installation Instructions
 
 Before beginning installation, be sure to at least skim [the other
 pages](index.html) for this release of Bedrock Linux (1.0beta1 Hawky).  Make
-sure you're aware of, for example, the [known issues](knownissues.html) and
-[troubleshooting advice](troubleshooting.html) before you begin following the
-instructions below.
+sure you know, for example, the [terminology used here](concepts.html), are
+aware of the [known issues](knownissues.html) and [troubleshooting
+advice](troubleshooting.html) before you begin following the instructions
+below.
 
 If you are currently using a previous version of Bedrock Linux, note that many
 of the existing directories from your current installation may be used in this
