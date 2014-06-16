@@ -52,6 +52,8 @@ do
 		' |\
 		sed 's,~(,<code class="changethis">,g' |\
 		sed 's,~),</code>,g' |\
+		sed 's,~{,<code class="keyword">,g' |\
+		sed 's,~},</code>,g' |\
 		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' |\
 		sed 's,<pre><code,<pre,g' |\
 		sed 's,</code></pre>,</pre>,g' >> $OUTFILE

@@ -72,7 +72,7 @@ security offered by a locked-down standard Linux distribution.
   [IRC](http://webchat.freenode.net/?channels=bedrock).  Or make a new issue if
   you have an idea.
 - There is always a need to improve the documentation.  For example, you could
-  add instructions for setting up an obscure distro as a client Bedrock Linux,
+  add instructions for setting up an obscure distro as a ~{client~} Bedrock Linux,
   or something as simple as fixing typos.  Once you have something to submit,
   stop by the [website git
   repo](https://github.com/bedrocklinux/bedrocklinux-website).
@@ -95,9 +95,9 @@ proprietary driver issues) as well as it does in a normal Linux distribution.
 Such things typically do not work very well at all in virtual machines.
 - Bedrock, by its very design, interweaves other Linux distributions together;
 it ensures they share quite a bit. This means if there is a security
-vulnerability in one of the clients, there is little to stop it from affecting
+vulnerability in one of the ~{clients~}, there is little to stop it from affecting
 the rest of the system. Virtual machines, by their very design, sandbox the
-clients, such that an attack on one of them will have a difficult time
+~{clients~}, such that an attack on one of them will have a difficult time
 propagating to others.
 
 ## {id="vs\_container"} How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?
@@ -181,7 +181,7 @@ Bedrock Linux utilities on top of another distribution.
   time. Ultimately, even long-term supported Linux distributions will lose
   support and have to be upgraded or replaced eventually. One of the advantages
   of Bedrock Linux is that these distro-upgrade situations can be significantly
-  less painful when the distro is a client; however, this advantage is not
+  less painful when the distro is a ~{client~}; however, this advantage is not
   available for the base itself. If the base is made to be as minimal as
   possible, this should decrease the amount of things that need to be updated
   and maintained. As Bedrock Linux approaches maturity, this could
@@ -193,21 +193,21 @@ Bedrock Linux utilities on top of another distribution.
 - The base distribution is effectively entirely overhead. Ideally any resource
   usage (disk space, RAM, CPU, etc) should be minimized. Most major
   distributions available are far larger than necessary as a base on which
-  other distros should be placed as Bedrock Linux clients, and most minimal
+  other distros should be placed as Bedrock Linux ~{clients~}, and most minimal
   distributions were found to lack features Bedrock would need (as they were
   intended to be entirely minimal, rather than the basis for a full-blown
   desktop/server/etc). This is particularly important on resource-limited
   devices, such as ASUS Eee PC's, where Bedrock Linux's early development and
   usage took place.
-- Much of what Bedrock Linux needs to do to properly utilize clients requires
+- Much of what Bedrock Linux needs to do to properly utilize ~{clients~} requires
   direct control over key files, such as /etc/profile. While many Linux
   distributions do offer means to properly remove individual files from the
   package manager's control, such as utilizing dpkg-divert, as the number of
   files which need this treatment grow the advantages of using an existing
   distribution shrink.
-- Much of what Bedrock Linux needs to do to properly utilize clients requires
+- Much of what Bedrock Linux needs to do to properly utilize ~{clients~} requires
   direct control over what happens during boot. For example, if one would like
-  to be able to choose which device manager to use from which client, special
+  to be able to choose which device manager to use from which ~{client~}, special
   functionality must be built into the boot process to properly handle deciding
   which device manager to call when, if any. Attempting to integrate such
   functionality into existing boot systems is not an appealing task when a

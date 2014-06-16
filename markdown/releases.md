@@ -7,7 +7,7 @@ Releases
 Upcoming Releases
 -----------------
 
-- ["Hawkey" (upcoming)](1.0beta1/)
+- ["Hawky" (upcoming)](1.0beta1/)
 
 Current Release
 ---------------

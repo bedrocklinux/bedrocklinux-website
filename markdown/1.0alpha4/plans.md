@@ -60,7 +60,7 @@ have `brw` be an alias for `bri -w` (or `-W`) if at least one argument is
 provided so that `brw ~(program-name~)` will indicate which client will provide a
 given executable, since this, like `bri -n`, is very commonly used.
 
-## brg (delayed to hawkey)
+## brg (delayed to hawky)
 
 Flopsie will include a new Bedrock Linux utility, `brg`, which can be used to
 acquire a new client.  For example (syntax still tentative):
@@ -82,7 +82,7 @@ from one of the above sources, you will have to fall back to installing it
 manually (such as via its normal installation method on another partition or in
 a VM and then copying the contents out).
 
-## brp update (delayed to hawkey)
+## brp update (delayed to hawky)
 
 The current release of Bedrock Linux, 1.0alpha3 "Bosco", requires users run the
 `brp` utility every time an executable is added or remove from the system.
