@@ -163,7 +163,7 @@ Consider changing the following from this addition:
 - The ~(Operating System Name~) is what you will see for the item in the menu
   if you are using `menu.c32` or `vesamenu.c32`.  Something such as "Windows 7"
   should be fine.
-- Finally, `hd~(N N~)` refers to the hard drive (the first number) and partiton
+- Finally, `hd~(N N~)` refers to the hard drive (the first number) and partition
   (the second number) on which the bootloader you are chainloading is
   installed.  It appears both numbers are zero-indexed, but if this does not
   work for you try with them either or both of them being one-indexed.  For
