@@ -166,7 +166,7 @@ When you have finished, run the following to clean up:
 
 Edit the following two files to configure pacman to your liking:
 
-- ~(/mnt/bedrock~)/bedrock/clients/~(arch~)/etc/pacman.d/mirrors
+- ~(/mnt/bedrock~)/bedrock/clients/~(arch~)/etc/pacman.d/mirrorlist
 - ~(/mnt/bedrock~)/bedrock/clients/~(arch~)/etc/pacman.conf
 
 Finally, create a /bedrock/etc/clients.d/~(arch~).conf file as explained
