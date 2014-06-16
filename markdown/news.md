@@ -4,10 +4,10 @@ Nav: home.nav
 News Archive
 ============
 
-## {id="hawkey-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
+## {id="hawky-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
 <small>2014-06-11</small>
 
-The plans for Bedrock Linux 1.0beta1 Hawkey are available
+The plans for Bedrock Linux 1.0beta1 Hawky are available
 [here](http://bedrocklinux.org/1.0beta1/plans.html).  This release is planned
 for July 1st, 2014.
 

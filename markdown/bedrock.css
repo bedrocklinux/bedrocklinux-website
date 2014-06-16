@@ -181,6 +181,10 @@ small{
 	color: #999;
 }
 
+code.keyword{
+	color: #f0f;
+}
+
 pre.cmd:before{
 	content: "$ ";
 }

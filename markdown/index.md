@@ -17,10 +17,10 @@ achieve this.  [Watch a
 demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
-## {id="hawkey-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
+## {id="hawky-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
 <small>2014-06-11</small>
 
-The plans for Bedrock Linux 1.0beta1 Hawkey are available
+The plans for Bedrock Linux 1.0beta1 Hawky are available
 [here](http://bedrocklinux.org/1.0beta1/plans.html).  This release is planned
 for July 1st, 2014.
 
@@ -72,18 +72,18 @@ The plan for Bedrock Linux development in the coming months revolves around
 functionality which can be added without significant under-the-hood changes to
 Bedrock Linux.  Various ideas currently being worked on:
 
-- Additional research on recommended/default client settings.
+- Additional research on recommended/default ~{client~} settings.
 - Man pages for Bedrock Linux utilities.
 - Tab-completion in bash and zsh for Bedrock Linux utilities.
 - A replacement for the current brp which will update on-the-fly.
 - A new utility, brg ("BedRock Get"), which will be used to easily acquire
-  clients.
+  ~{clients~}.
 - A new utility, brm ("BedRock Manual"), which can be used to find a man page.
-  available in at least one client, irrelevant of which client provides it.
+  available in at least one ~{client~}, irrelevant of which ~{client~} provides it.
 - A new utility, pmm ("Package Manager Manager"), which will abstract away
-  client-specific package management.
+  ~{client~}-specific package management.
 - A new utility, iss ("Init System System"), which will abstract away
-  individual client init system differences.
+  individual ~{client~} init system differences.
 
 ## {id="flopsie-release"} Bedrock Linux 1.0alpha4 Flopsie released
 <small>2013-12-30</small>

@@ -9,11 +9,11 @@ bugs etc), it should be pretty easy to figure out what is going on and make
 such changes.
 
 To generate the website from the markdown source, simply run the
-generate_website.sh script.  The only dependency in addition to UNIX utilities
-(sh, awk, sed, grep, find, etc) is markdown and *gnu* awk ("gawk").  I might
-later drop the gnu-isms from awk if there is interest.  If you don't have
-markdown in your repository (apparently Gentoo lacks it?), it's just a perl
-script you can download from
+generate\_website.sh script.  The only dependencies in addition to UNIX
+utilities (sh, awk, sed, grep, find, etc) is markdown and *gnu* awk ("gawk").
+I might later drop the gnu-isms from awk if there is interest.  If you don't
+have markdown in your repository (apparently Gentoo lacks it?), it's just a
+perl script you can download from
 [here](http://daringfireball.net/projects/markdown/).
 
 If you're interested in digging deeper, note that the website generation code
@@ -37,6 +37,7 @@ anyways, the relevant information follows:
   *first* list item just `{...}` (note lack of space at the end).  e.g.: `-
   {class="rcmd"}`
 - Something within `~(...~)` will be converted to `<code class="changethis">`.
+- Something within `~{...~}` will be converted to `<code class="keyword">`.
 - Markdown tends to nest `<code>` directly inside of `<pre>`.  The inner
   `<code>` tags are removed from this part.
 - The file `header1` in the root of the `markdown` directory contains the
