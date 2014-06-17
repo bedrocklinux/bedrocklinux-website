@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="hawky-release"} Bedrock Linux 1.0beta1 Hawky Released
+<small>2014-06-17</small>
+
+The first beta of Bedrock Linux, 1.0beta1 Hawky, has been released.
+See a demonstration video [here](https://www.youtube.com/watch?v=YOXGE_oV4XU),
+the high-level changelog [here](1.0beta1/changelog.html) and the installation
+instructions [here](1.0beta1/install.html).
+
 ## {id="hawky-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
 <small>2014-06-11</small>
 
