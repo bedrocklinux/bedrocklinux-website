@@ -28,6 +28,7 @@ as a ~{client~}.
 - [Any Linux Distribution](#any)
 - [Debian-based Linux distributions](#debian-based)
 - [Arch Linux](#arch)
+- [Fedora](#fedora)
 - [Gentoo Linux](#gentoo)
 
 ## {id="any"} Any Linux Distribution
@@ -170,6 +171,33 @@ Edit the following two files to configure pacman to your liking:
 - ~(/mnt/bedrock~)/bedrock/clients/~(arch~)/etc/pacman.conf
 
 Finally, create a /bedrock/etc/clients.d/~(arch~).conf file as explained
+in [the configuration page](configure.html).
+
+## {id="Fedora"} Fedora
+
+The Fedora project provides disk images containing the files of a Fedora
+system.  Select your [prefered
+mirror](https://mirrors.fedoraproject.org/publiclist/Fedora/) which has your
+desired release.  In the mirror's directory, navigate to and download
+`releases/~(release~)/Images/~(arch~)/Fedora-~(version~)-sda.raw.xz`.
+
+Decompress the image with
+
+`unxz Fedora-~(version~).raw.xz`
+
+To mount the file we must find the offset to provide to `mount`.  `fdisk -l
+fedora-~(version~).raw` will provide the relevant information: look for (1)
+where the image "Start"s and (2) the "Unit" size.  Multiplying these two items
+together will provide you with the proper offset.  Once you've found this,
+mount the Fedora image and copy the information off to the desired mount point.
+
+- {class="rcmd"}
+- mkdir -p ~(/bedrock/clients~)/tmp/fedora-image-mount
+- mkdir -p ~(/bedrock/clients~)/bedrock/clients/~(heisenbug~)
+- mount -o ro,loop,offset=~(expr 1953 \\\* 512~) Fedora-~(version~)-sda.raw ~(/bedrock/clients~)/tmp/fedora-image-mount
+- cp -drp ~(/bedrock/clients~)/tmp/fedora-image-mount/\* ~(/mnt/bedrock~)/bedrock/clients/~(heisenbug~)/
+
+Finally, create a /bedrock/etc/clients.d/~(client-name~).conf file as explained
 in [the configuration page](configure.html).
 
 ## {id="gentoo"} Gentoo Linux
