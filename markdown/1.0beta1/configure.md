@@ -303,13 +303,13 @@ You must modify two files.  The location of these files can differ a bit
 depending on if you are booted into another system installing Bedrock Linux or
 if you are in a running Bedrock Linux system.
 
-If you are in another system with the Bedrock Linus filesystem at
+If you are in another system with the Bedrock Linux filesystem at
 ~(/mnt/bedrock~), the files are located at
 
 - `~(/mnt/bedrock~)/etc/init.d/rcS.udev`
 - `~(/mnt/bedrock~)/etc/init.d/rcS.clients`
 
-If you are in a Bedrock Linus system, modify these files:
+If you are in a Bedrock Linux system, modify these files:
 
 - `/bedrock/clients/bedrock/etc/init.d/rcS.udev`
 - `/bedrock/clients/bedrock/etc/init.d/rcS.clients`
