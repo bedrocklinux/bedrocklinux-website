@@ -5,7 +5,7 @@ Bedrock Linux 1.0beta1 Hawky Command Overview
 ==============================================
 
 
-- [brc ("BedRock Chroot")](#brc)
+- [brc ("BedRock Change local Context")](#brc)
 - [bri ("BedRock Information")](#bri)
 - [brl ("BedRock aLl")](#brl)
 - [brsh ("BedRock SHell")](#brsh)
