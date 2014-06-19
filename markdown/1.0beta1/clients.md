@@ -187,14 +187,16 @@ Decompress the image with
 
 To mount the file we must find the offset to provide to `mount`.  `fdisk -l
 fedora-~(version~).raw` will provide the relevant information: look for (1)
-where the image "Start"s and (2) the "Unit" size.  Multiplying these two items
-together will provide you with the proper offset.  Once you've found this,
-mount the Fedora image and copy the information off to the desired mount point.
+where the image "Start"s and (2) the "Unit" size.  The unit size is typically
+512 - if you see that number in the "Units" line, that's probably what you
+need.  Multiplying these two items together will provide you with the proper
+offset.  Once you've found this, mount the Fedora image and copy the
+information off to the desired mount point.
 
 - {class="rcmd"}
 - mkdir -p ~(/bedrock/clients~)/tmp/fedora-image-mount
 - mkdir -p ~(/bedrock/clients~)/bedrock/clients/~(heisenbug~)
-- mount -o ro,loop,offset=~(expr 1953 \\\* 512~) Fedora-~(version~)-sda.raw ~(/bedrock/clients~)/tmp/fedora-image-mount
+- mount -o ro,loop,offset=~($(expr 1953 \\\* 512$)~) Fedora-~(version~)-sda.raw ~(/bedrock/clients~)/tmp/fedora-image-mount
 - cp -drp ~(/bedrock/clients~)/tmp/fedora-image-mount/\* ~(/mnt/bedrock~)/bedrock/clients/~(heisenbug~)/
 
 Finally, create a /bedrock/etc/clients.d/~(client-name~).conf file as explained
