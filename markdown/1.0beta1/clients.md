@@ -173,7 +173,7 @@ Edit the following two files to configure pacman to your liking:
 Finally, create a /bedrock/etc/clients.d/~(arch~).conf file as explained
 in [the configuration page](configure.html).
 
-## {id="Fedora"} Fedora
+## {id="fedora"} Fedora
 
 The Fedora project provides disk images containing the files of a Fedora
 system.  Select your [prefered
