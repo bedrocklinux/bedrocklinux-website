@@ -223,19 +223,19 @@ FUSE is required.  The project's website is available at:
 
 [http://fuse.sourceforge.net/](http://fuse.sourceforge.net/)
 
-At the time of writing, the latest FUSE release - 2.9.3 - does not have all of
-the required functionality.  Either use a newer release (3.X) if available or
-get the latest version from git.  The latest stable releases should be found
-here:
+At the time of writing, the 3.X version is still pre-release and has been found
+to have some problems, and the 2.9.X release - 2.9.3 - was cut *just* before
+the commit which includes support for musl.  Use the latest from the
+`fuse_2_9_bugfix` branch - which should include the musl patch - or a tarball
+of 2.9.4 or later.
+
+Tarballs can be found here:
 
 [http://sourceforge.net/projects/fuse/files/](http://sourceforge.net/projects/fuse/files/)
 
 And the git repository should be available here:
 
     git clone git://git.code.sf.net/p/fuse/fuse fuse-fuse
-
-At the time of writing, the latest succesfully tested commit is
-"3f357f06ed4bb75244e745641af1c53d5b3d9984".
 
 ### {id="src-busybox"} busybox
 
