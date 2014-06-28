@@ -7,7 +7,7 @@ Releases
 Upcoming Releases
 -----------------
 
-- TBA
+- [1.0beta2 "Nyla" (Upcoming)](1.0beta2/)
 
 Current Release
 ---------------

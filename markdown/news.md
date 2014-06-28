@@ -4,6 +4,12 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="nyla-plans"} Bedrock Linux 1.0beta2 Nyla Plans
+<small>2014-06-28</small>
+
+The design plans for the upcoming release of Bedrock Linux, 1.0beta2 Nyla, are
+available [here](1.0beta2/plans.html).
+
 ## {id="hawky-release"} Bedrock Linux 1.0beta1 Hawky Released
 <small>2014-06-17</small>
 

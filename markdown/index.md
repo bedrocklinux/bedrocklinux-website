@@ -18,6 +18,12 @@ demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="nyla-plans"} Bedrock Linux 1.0beta2 Nyla Plans
+<small>2014-06-28</small>
+
+The design plans for the upcoming release of Bedrock Linux, 1.0beta2 Nyla, are
+available [here](1.0beta2/plans.html).
+
 ## {id="hawky-release"} Bedrock Linux 1.0beta1 Hawky Released
 <small>2014-06-17</small>
 
@@ -41,16 +47,5 @@ Episode 316](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-
 (starting at forty minutes in).  The Bedrock Linux found/lead developer was
 then interviewed on [Linux Unplugged Episode 44](http://www.jupiterbroadcasting.com/59617/bedrock-a-new-paradigm-lup-44/) 
 (starting at 8 minutes 30 seconds in).
-
-## {id="github-issues"} Repos and issues moved
-<small>2014-05-21</small>
-
-The public/centralized Bedrock Linux repositories were moved from
-[http://github.com/paradigm](http://github.com/paradigm)
-to
-[http://github.com/bedrocklinux](http://github.com/bedrocklinux)
-.  The Bedrock Linux issue trackers migrated over to GitHub's issue tracker as
-well.
-
 
 [See older news items](news.html)
