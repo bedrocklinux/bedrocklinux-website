@@ -1,4 +1,4 @@
-Title: Bedrock Linux 1.0beta4 Hawky
+Title: Bedrock Linux 1.0beta1 Hawky
 Nav: hawky.nav
 
 Bedrock Linux 1.0beta1 Hawky
