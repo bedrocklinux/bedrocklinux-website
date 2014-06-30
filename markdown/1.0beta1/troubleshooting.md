@@ -18,7 +18,7 @@ and ~{clients~} for Bedrock Linux 1.0beta1 Hawky.
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Ubuntu/Upstart fix](#upstart-fix)
-		- [Locale packages](#upstart-fix)
+		- [Locale packages](#locale)
 		- [Statoverride](#statoverride)
 		- [Ubuntu resolv.conf](#ubuntu-resolvconf)
 	- [Arch Linux](#arch)
@@ -227,7 +227,7 @@ commands as root (within the Ubuntu ~{client~}, via using `brc` for each command
 - dpkg-divert --local --rename --add /sbin/initctl
 - ln -s /bin/true /sbin/initctl
 
-#### {id="upstart-fix"} Locale packages
+#### {id="locale"} Locale packages
 
 In Debian, if you get errors about locale, try installing the `locales-all`
 package.
