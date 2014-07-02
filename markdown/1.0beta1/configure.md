@@ -359,7 +359,16 @@ contain just:
 
 To have a ~{client~} daemon start or stop at boot/shutdown, place the relevant
 command to do this in `/etc/init.d/rcS.clients` and `/etc/init.d/rcK.clients`,
-respectively. For example, to start Debian squeeze's `cups` daemon at boot, place
+respectively.  If you are configuring this from installation where Bedrock
+Linux's filesystem is mounted somewhere, prepend the mount point (such as
+~(/mnt/bedrock~) to the path).  If you are configuring this from a running
+Bedrock Linux system, be sure to access the files in the core, in
+`/bedrock/clients/bedrock/etc/init.d/`.
+
+Be sure that the items fork off into the background if they are long-running,
+such as daemons.  Consider appending `&`.
+
+For example, to start Debian squeeze's `cups` daemon at boot, place
 the following in your `/etc/init.d/rcS.clients`:
 
 	brc squeeze /etc/init.d/cups start
