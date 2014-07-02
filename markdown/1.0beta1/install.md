@@ -127,7 +127,7 @@ main/root partition or, if you made a special `/boot` partition, then the
 ## {id="mounting"} Mounting Bedrock's partitions
 
 Make a directory in which to mount Bedrock Linux's fresh partition(s). These
-instructions assumes you are using ~(/mnt/bedrock~) for this. If you would like
+instructions assume you are using ~(/mnt/bedrock~) for this. If you would like
 to use something else, be sure to change ~(/mnt/bedrock~) accordingly whenever
 it comes up in these instructions. In general, when you see anything formatted
 ~(like this~) that is a reminder that you should consider changing the content
