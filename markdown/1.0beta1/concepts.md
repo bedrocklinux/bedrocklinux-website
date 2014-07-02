@@ -25,13 +25,13 @@ tools to automate installation, removal, acquisition and other details of
 managing packages
 
 A Bedrock Linux ~{client~} is a collection of the above concepts.  The defining
-feature of a ~{client~} is that all of the software in the ~{client~} is intended to
-work together.  A ~{client~}'s package manager can manage the particular type of
-package format used by the packages in the ~{client~}.  Any dependencies packages
-in the ~{client~} may have should be met by other packages in the same ~{client~}.  The
-repositories should provide packages which make the same assumptions about the
-filesystem as other packages; most of the packages which depend on a standard C
-library will likely depend on the same exact one.
+feature of a ~{client~} is that all of the software in the ~{client~} is
+intended to work together.  A ~{client~}'s package manager can manage the
+particular type of package format used by the packages in the ~{client~}.  Any
+dependencies in any given ~{client~} should be met by other packages in the
+same ~{client~}.  The repositories should provide packages which make the same
+assumptions about the filesystem as other packages; most of the packages which
+depend on a standard C library will likely depend on the same exact one.
 
 A typical Bedrock Linux system will have multiple ~{clients~}, usually from
 different distributions.  However, one is certainly welcome to have multiple

@@ -10,7 +10,7 @@ Bedrock Linux, named "Hawky", which was released June 17th, 2014.
 - [Changelog](changelog.html)
 - [System Requirements](systemrequirements.html)
 - [Known Issues](knownissues.html)
-- [Concepts, Theory and Terminology](commands.html)
+- [Concepts, Theory and Terminology](concepts.html)
 - [Installation instructions](install.html)
 - [Client setup instructions](clients.html)
 - [Tips, Tricks and Troubleshooting](troubleshooting.html)
