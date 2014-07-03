@@ -504,8 +504,13 @@ same thing, run:
 Next, add normal user(s) as desired:
 
 - {class="rcmd"}
-- adduser -s /bedrock/bin/brsh -D ~(USERNAME~)
-- passwd -a sha512 ~(USERNAME~)
+- adduser -s /bedrock/bin/brsh -D ~(username~)
+- passwd -a sha512 ~(username~)
+
+Note that this seems to `chmod g+s /home/~(username~)`.  While this is not
+necessarily a bad default, not everyone is a fan.  If you would rather not have
+this, consider running `chmod -R g-s /home/~(username~)` now while there are
+still only a few files in there.
 
 If you would like to create a "br-" version of these users which will use the
 same password to log in but will always log in to the core of Bedrock Linux,
