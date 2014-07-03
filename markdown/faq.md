@@ -194,7 +194,7 @@ utilize ~{client~}s.  Consider:
   unnecessary overhead.  Most distributions would consume disk and RAM
   unnecessarily in this situation.
 
-- If code from a ~{client} breaks, one should be able to easily get it from
+- If code from a ~{client~} breaks, one should be able to easily get it from
   another ~{client~}.  However, the base distribution is a single-point of
   failure and, thus, it should be minimized.
 
