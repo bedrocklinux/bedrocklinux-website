@@ -171,47 +171,37 @@ system requirements for the initial alpha can be found
 
 ## {id="why\_own\_distro"} Why does this need to be its own distribution?
 
-For much of Bedrock Linux's development, it was simply a set of scripts on top
-of Debian. It became apparent, after months of using it, that there would be a
-number of benefits to make this its own Linux distribution. If you do not find
-any value in the items listed here you're more than welcome to try to use the
-Bedrock Linux utilities on top of another distribution.
+At the time of writing, the immediate goal is to figure out *how* to do
+everything Bedrock Linux is trying to do.  Retaining full control of the
+underlying system simplifies development, and so that is what we are doing at
+this point in time.  Bedrock Linus changes so much between releases it is not
+possible to say whether, when it has achieved the desired feature set, the
+techniques it is using could be cleanly implemented on top of another
+distribution.  If it is found to be cleanly possible, the Bedrock Linux
+developers will likely attempt to package and provide code for other use on top
+of other distributions.  That is still to far out to say.
 
-- The base distribution should require minimal maintenance over long periods of
-  time. Ultimately, even long-term supported Linux distributions will lose
-  support and have to be upgraded or replaced eventually. One of the advantages
-  of Bedrock Linux is that these distro-upgrade situations can be significantly
-  less painful when the distro is a ~{client~}; however, this advantage is not
-  available for the base itself. If the base is made to be as minimal as
-  possible, this should decrease the amount of things that need to be updated
-  and maintained. As Bedrock Linux approaches maturity, this could
-  theoretically be brought down to perhaps one or two executables other than
-  the Linux kernel itself. It is difficult to properly express just how nice it
-  is to never worry about how a major change to how things work under the hood
-  of your Linux distribution could possibly take down your system, as the
-  vitals of the system remain relatively static.
-- The base distribution is effectively entirely overhead. Ideally any resource
-  usage (disk space, RAM, CPU, etc) should be minimized. Most major
-  distributions available are far larger than necessary as a base on which
-  other distros should be placed as Bedrock Linux ~{clients~}, and most minimal
-  distributions were found to lack features Bedrock would need (as they were
-  intended to be entirely minimal, rather than the basis for a full-blown
-  desktop/server/etc). This is particularly important on resource-limited
-  devices, such as ASUS Eee PC's, where Bedrock Linux's early development and
-  usage took place.
-- Much of what Bedrock Linux needs to do to properly utilize ~{clients~} requires
-  direct control over key files, such as /etc/profile. While many Linux
-  distributions do offer means to properly remove individual files from the
-  package manager's control, such as utilizing dpkg-divert, as the number of
-  files which need this treatment grow the advantages of using an existing
-  distribution shrink.
-- Much of what Bedrock Linux needs to do to properly utilize ~{clients~} requires
-  direct control over what happens during boot. For example, if one would like
-  to be able to choose which device manager to use from which ~{client~}, special
-  functionality must be built into the boot process to properly handle deciding
-  which device manager to call when, if any. Attempting to integrate such
-  functionality into existing boot systems is not an appealing task when a
-  (very simple) home-grown init could suffice instead.
+However, even if it is possible to run Bedrock Linux code on top of another
+distribution get the desired effect, there will be a number of downsides to
+doing so, and so Bedrock Linux will still benefit from being its own
+distribution.  In theory, once Bedrock Linux is feature complete, the base
+distribution would not be able to provide anything one would not be able to get
+from a ~{client~}.  As a result, the base distribution should be as small as is
+possible while still being able to provide the necessarily functionality to
+utilize ~{client~}s.  Consider:
+
+- Anything more than being able to utilize things from ~{clients~} is
+  unnecessary overhead.  Most distributions would consume disk and RAM
+  unnecessarily in this situation.
+
+- If code from a ~{client} breaks, one should be able to easily get it from
+  another ~{client~}.  However, the base distribution is a single-point of
+  failure and, thus, it should be minimized.
+
+- Bedrock Linux provides some useful functionality for maintain ~{client~}s.
+  However, this would not extend to the base distribution.  Thus, again, the
+  base distribution should be minimized to limit maintenance.
+
 
 ## {id="on\_which\_distro"} On which distribution is Bedrock Linux based?
 
