@@ -53,7 +53,7 @@ e.g.: `TZ=EST5EDT,M3.2.0,M11.1.0`
 
 The content to put here can likely be found in /usr/share/zoneinfo/ in most
 major distros.  Find the file that corresponds to your timezone and look at
-the very last line.
+the very last line, for example with `tail -1 /usr/share/zoneinfo/path/to/timezone/file`.
 
 ### {id="hwclock"} HWCLOCK
 
