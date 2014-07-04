@@ -213,8 +213,8 @@ information on configuring and using Gentoo, consult the
 To download the tarball, navigate to the
 [Gentoo mirrorlist](http://www.gentoo.org/main/en/mirrors2.xml) and choose
 the mirror that is closest to you. Once you've followed the link to the mirror,
-navigate to `releases/amd64/autobuilds/current-stage3` for 64-bit, or 
-`releases/x86/autobuilds/current-stage3` for 32-bit, and download the
+navigate to `releases/amd64/autobuilds/current-stage3-~(arch~)` for 64-bit, or 
+`releases/x86/autobuilds/current-stage3-~(arch~)` for 32-bit, and download the
 appropriate stage3 tarball to the directory that Gentoo is being installed into.
 
 Unpack the tarball.
