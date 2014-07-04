@@ -447,7 +447,7 @@ As a side note, this will not work as you may expect:
     {class="cmd"} sudo echo 1 > /bedrock/brpath/reparse_config
 
 That tells *the shell*, running as a normal user, to write the output of what
-`sudo exec` says.  If you would like to use `sudo` for something like this, you
+`sudo echo` says.  If you would like to use `sudo` for something like this, you
 will need to use another program, such as `tee`, to do the actual writing, like
 so:
 
