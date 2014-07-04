@@ -202,6 +202,11 @@ utilize ~{client~}s.  Consider:
   However, this would not extend to the base distribution.  Thus, again, the
   base distribution should be minimized to limit maintenance.
 
+Finally, consider the possibility that there may not end up being a functional
+difference between installing Bedrock Linux as the base and some other
+distribution as a ~{client~}, and installing Bedrock Linux "on top" of some
+other distribution, only to end up morphing it into the exact same system.
+What really *is* a "base"?
 
 ## {id="on\_which\_distro"} On which distribution is Bedrock Linux based?
 
