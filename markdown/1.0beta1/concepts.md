@@ -82,19 +82,20 @@ release's version of the libary.  If another process from OpenSUSE runs a
 release of OpenSUSE.  The primary reason for ~{direct~} file access is to ensure
 dependencies are resolved correctly at runtime.
 
-If a file is not available ~{directly~}, it will be accessed ~{implicitly~}.  In an
-~{implicit~} file access, if any one ~{client~} provides a given file, that version of
-the file will be returned.  If multiple ~{clients~} can provide a file, they are
-ordered by a certain configured priority and the highest priority ~{client~} which
-can provide a given file will.  For example, if a process from Arch Linux tries
-to run `firefox`, but the Arch ~{client~} does not have firefox installed, but a
-Gentoo ~{client~} *does* have firefox installed, the Gentoo ~{client~}'s firefox will
-run.  If the `man` executable from Mint looks for the man page for `yum`, it
-probably won't see it ~{directly~} because Mint typically does not use the yum
-package manager.  However, if a Fedora ~{client~} is installed, Mint's `man` can
-~{implicitly~} read Mint's man page.  This ~{implicit~} file access is largely
-automatic.  The primary reason for ~{implicit~} file access is to have things "just
-work" across ~{clients~}.
+If a file is not available ~{directly~}, it will be accessed ~{implicitly~}.
+In an ~{implicit~} file access, if any one ~{client~} provides a given file,
+that version of the file will be returned.  If multiple ~{clients~} can provide
+a file, they are ordered by a certain configured priority and the highest
+priority ~{client~} which can provide a given file will.  For example, if a
+process from Arch Linux tries to run `firefox`, but the Arch ~{client~} does
+not have firefox installed, but a Gentoo ~{client~} *does* have firefox
+installed, the Gentoo ~{client~}'s firefox will run.  If the `man` executable
+from Mint looks for the man page for `yum`, it probably won't see it
+~{directly~} because Mint typically does not use the yum package manager.
+However, if a Fedora ~{client~} is installed, Mint's `man` can ~{implicitly~}
+read Fedora's yum man page.  This ~{implicit~} file access is largely
+automatic.  The primary reason for ~{implicit~} file access is to have things
+"just work" across ~{clients~}.
 
 Finally, if a user would like to ~{explicitly~} specify which version of a ~{local~}
 file to access, this can be done through the ~{explicit~} file access.  For
