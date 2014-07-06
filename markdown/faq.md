@@ -174,7 +174,7 @@ system requirements for the initial alpha can be found
 At the time of writing, the immediate goal is to figure out *how* to do
 everything Bedrock Linux is trying to do.  Retaining full control of the
 underlying system simplifies development, and so that is what we are doing at
-this point in time.  Bedrock Linus changes so much between releases it is not
+this point in time.  Bedrock Linux changes so much between releases it is not
 possible to say whether, when it has achieved the desired feature set, the
 techniques it is using could be cleanly implemented on top of another
 distribution.  If it is found to be cleanly possible, the Bedrock Linux
