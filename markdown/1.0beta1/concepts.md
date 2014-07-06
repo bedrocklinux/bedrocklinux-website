@@ -91,9 +91,9 @@ process from Arch Linux tries to run `firefox`, but the Arch ~{client~} does
 not have firefox installed, but a Gentoo ~{client~} *does* have firefox
 installed, the Gentoo ~{client~}'s firefox will run.  If the `man` executable
 from Mint looks for the man page for `yum`, it probably won't see it
-~{directly~} because Mint typically does not use the yum package manager.
+~{directly~} because Mint typically does not use the `yum` package manager.
 However, if a Fedora ~{client~} is installed, Mint's `man` can ~{implicitly~}
-read Fedora's yum man page.  This ~{implicit~} file access is largely
+read Fedora's `yum` man page.  This ~{implicit~} file access is largely
 automatic.  The primary reason for ~{implicit~} file access is to have things
 "just work" across ~{clients~}.
 
