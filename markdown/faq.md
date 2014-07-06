@@ -179,7 +179,7 @@ possible to say whether, when it has achieved the desired feature set, the
 techniques it is using could be cleanly implemented on top of another
 distribution.  If it is found to be cleanly possible, the Bedrock Linux
 developers will likely attempt to package and provide code for other use on top
-of other distributions.  That is still to far out to say.
+of other distributions.  That is still too far out to say.
 
 However, even if it is possible to run Bedrock Linux code on top of another
 distribution get the desired effect, there will be a number of downsides to
