@@ -123,7 +123,7 @@ packaged for the distribution.
 ~{Explicitly~} accessing a file is done by accessing the file through a path
 at:
 
-`/bedrock/clients/~(client-name~)/~(path/to/file~)
+`/bedrock/clients/~(client-name~)/~(path/to/file~)`
 
 Where ~(client-name~) is the name of the ~{client~} and ~{path/to/file~} is the
 path to the desired file.  To ~{explicitly~} specify which ~{client~}'s
