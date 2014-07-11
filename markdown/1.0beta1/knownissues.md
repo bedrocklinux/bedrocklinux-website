@@ -21,6 +21,15 @@ shutdown, start/stop/restart/get-status during normal usage, etc); however, it
 is up to the user to determine exactly what commands should be run to make this
 happen and configure the system to do these manually.
 
+## {id="recursive-brp"} brpath can't self-reference
+
+Bedrock Linux's implicit filepath access, via `/bedrock/brpath`, provides an
+alternative view of the filesystem.  However, due to a technical implementation
+limitation it locks up when attempting to show an alternative view of itself,
+such as the path `/bedrock/brpath/rootfs/bedrock/brpath`.  For the time being,
+either remove the `rootfs` configuration item from `brp.conf` or refrain from
+accessing such directories.
+
 ## {id="nvidia-sigbus"} Nvidia proprietary driver installer SIGBUS's due to bru bug
 
 The Nvidia proprietary Linux driver installer dies with SIGBUS on Bedrock Linux
