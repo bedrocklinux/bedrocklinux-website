@@ -8,6 +8,7 @@ released; more up-to-date information may be found at [the issue
 tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open)
 
 - [No init hooks for daemons](#init)
+- [brpath can't self-reference](#recursive-brp)
 - [Nvidia proprietary driver installer SIGBUS's due to bru bug](#nvidia-sigbus)
 - [One cannot use a client as a stand-alone system](#etc-merge)
 
