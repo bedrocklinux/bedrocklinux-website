@@ -69,8 +69,10 @@ which you wish to install.
 
 **There are known difficulties compiling with gcc 4.8.2 and 4.9.0.  At the time
 of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2.  Consider using a
-distribution with an older gcc release until the situation is remedied.  See
-[here](http://www.openwall.com/lists/musl/2014/05/15/1) and
+distribution with an older gcc release until the situation is remedied, or
+alternatively try using a newer distro/gcc but prepending
+`CFLAGS=-fno-toplevel-reorder` to all `./bedrocklinux-installer make` commands.
+See [here](http://www.openwall.com/lists/musl/2014/05/15/1) and
 [here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61144) for details.  You
 can, for example, use an Ubuntu Raring or Debian Wheezy based live CD/USB with
 gcc 4.7.X**
