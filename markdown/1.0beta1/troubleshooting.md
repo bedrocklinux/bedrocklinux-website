@@ -14,6 +14,7 @@ and ~{clients~} for Bedrock Linux 1.0beta1 Hawky.
 	- [/dev/fd errors](#dev-fd-errors)
 	- [No keyboard or mouse in xorg](#no-kbd-mouse)
 	- [root/sudo path issues](#root-path)
+	- ["grantpt failed" error](#grantpt-failed)
 	- [time issues](#time)
 - [Client specific issues](#client-specific)
 	- [Debian-based Linux distributions](#debian-based)
@@ -193,6 +194,20 @@ clients.  In the core, you could:
 - use `su -l`
 - use another ~{client~}'s tool to become root and then run the core's shell, such
   as `sudo brc bedrock brsh`
+
+### {id="grantpt-failed"} "grantpt failed" error
+
+If you see "grantpt failed" errors, such as when starting a terminal emulator
+like `xfce4-terminal`, this can be remedied by remounting `/dev/pts` to set the
+appropriate group number.
+
+First, look at `/etc/group` and find the number corresponding with the group
+"tty".  Next, add the following to `/bedrock/clients/bedrock/etc/rc.local`:
+
+	mount -o remount,gid=~(tty-gid-number~) /dev/pts
+
+and the "grantpt failed" error no longer persist in the next reboot.  You can
+also apply that command to fix the issue for the current session.
 
 ### {id="time"} time issues
 
