@@ -67,16 +67,24 @@ find it preferable to use another computer to do the CPU-intensive compiling.
 These instructions do not cover compiling on a separate machine from the one on
 which you wish to install.
 
-**There are known difficulties compiling with gcc 4.8.2 and 4.9.0.  At the time
-of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2.  Consider using a
-distribution with an older gcc release until the situation is remedied, or
-alternatively try using a newer distro/gcc but prepending
-`CFLAGS=-fno-toplevel-reorder` to all `./bedrocklinux-installer make` commands.
-See [here](http://www.openwall.com/lists/musl/2014/05/15/1) and
-[here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61144) for details.  You
-can, for example, use an Ubuntu Raring or Debian Wheezy based live CD/USB with
-gcc 4.7.X**
+**gcc 4.8.2 and 4.9.0 both contain an optimization bug which results in
+difficulties with the libc library Bedrock Linux is using, musl.  At the time
+of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2; it is best to
+avoid these.  Try to use an older gcc for the time being, such as from Ubuntu
+Raring or the `gcc47` package in Arch's AUR.**
 
+**Some people have reported success with gcc 4.9.0 using
+`CFLAGS=-fno-toplevel-reorder`, but this does not seem to work consistently.
+Alternatively, you could disable all optimization with `CFLAGS=-O0`, which
+should work more reliably but will also result in slower executables.  At the
+moment using an older gcc without this bug is recommended instead of attempting
+to disable optimization, but if you would like to stick with a gcc release
+hampered by this bug and simply disable optimizations prepend the `CFLAGS` item
+from above to every `./bedrocklinuxinstaller make` command.  For example:
+`CFLAGS=-O0 ./bedrocklinuxinstaller make all`**
+
+**See [here](http://www.openwall.com/lists/musl/2014/05/15/1) and
+[here](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=61144) for details.**
 
 ## {id="partitioning"} Partitioning
 
