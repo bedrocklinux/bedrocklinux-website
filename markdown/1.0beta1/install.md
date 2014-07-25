@@ -73,6 +73,15 @@ of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2; it is best to
 avoid these.  Try to use an older gcc for the time being, such as from Ubuntu
 Raring or the `gcc47` package in Arch's AUR.**
 
+**If you are using a distro/release such as Arch which has gcc-4.7 available
+but not as the "main" gcc, try setting the following environmental variables
+before running any `bedrocklinux-installer` commands:**
+
+- {class="cmd"}
+- export CC=~(/usr/bin/gcc-4.7~)
+- export GCC=$CC
+- export REALGCC=$CC
+
 **Some people have reported success with gcc 4.9.0 using
 `CFLAGS=-fno-toplevel-reorder`, but this does not seem to work consistently.
 Alternatively, you could disable all optimization with `CFLAGS=-O0`, which
