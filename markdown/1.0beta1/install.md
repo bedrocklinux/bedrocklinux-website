@@ -400,7 +400,7 @@ core of Bedrock Linux so they can be accessed while booting.
   others do not.  If you do not know what it is, you probably do not need it.
 - Optionally, the `.config` file for the kernel.  This file is useful for
   creating a new kernel based on the previous kernel's configuration.  Like the
-  last few items items, this is usually located in the `/boot` directory. It is
+  last few items, this is usually located in the `/boot` directory. It is
   usually called something along the lines of ~(config-VERSION-ARCH~).  Like
   the system map, if you do not know what it is you probably do not need it.
 - The modules.  You will want to copy this even if you are sharing
