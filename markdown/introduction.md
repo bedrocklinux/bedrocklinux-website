@@ -51,16 +51,16 @@ same time on the same distribution.
 ### {id="what\_bedrock\_does"} What Bedrock Linux does
 
 Bedrock Linux manipulates the virtual filesystem such that processes from
-different distributions which would typically conflict work with each
-other (further details [below](#how_bedrock_works)) can play along.  With this
-system, for example, one could have an RSS feed reader from Arch Linux's AUR
-open a webpage in a web browser from Ubuntu's repos while both of them are
-running in an X11 server from Fedora.  These interactions feels as though all
-of the packages were from the same repository; for day-to-day activity, Bedrock
-Linux feels like any other Linux distribution.  The typical concerns for things
-such as library conflicts are a non-issue with Bedrock Linux's design - if
-there is a package out there for a Linux distribution on your CPU architecture,
-it will most likely work with Bedrock Linux.
+different distributions which would typically conflict with each other do not
+conflict, but instead are able to cooperate.  With this system, for example,
+one could have an RSS feed reader from Arch Linux's AUR open a webpage in a web
+browser from Ubuntu's repos while both of them are running in an X11 server
+from Fedora.  These interactions feels as though all of the packages were from
+the same repository; for day-to-day activity, Bedrock Linux feels like any
+other Linux distribution.  The typical concerns for things such as library
+conflicts are a non-issue with Bedrock Linux's design - if there is a package
+out there for a Linux distribution on your CPU architecture, it will most
+likely work with Bedrock Linux.
 
 ### {id="additional\_functionality"} Additional Functionality
 
