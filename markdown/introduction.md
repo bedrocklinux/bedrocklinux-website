@@ -173,7 +173,7 @@ The first method is ~{direct~}.  When any given process tries to read a ~{local~
 file at its typical location it will get the same version of the file it would
 have gotten had it done so on its own distribution.  For example, if a process
 provided by a Fedora ~{client~} tries to access a library, it will see that Fedora
-release's version of the libary.  If another process from OpenSUSE runs a
+release's version of the library.  If another process from OpenSUSE runs a
 `#!/bin/sh` script, it will be run by the same `/bin/sh` that comes with its
 release of OpenSUSE.  The primary reason for ~{direct~} file access is to ensure
 dependencies are resolved correctly at runtime.
