@@ -18,6 +18,12 @@ demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="colug-slides"} Columbus Linux User Group presentation
+<small>2014-11-20</small>
+
+Slides from a presentation on Bedrock Linux to the Columbus Linux User Group on
+2014-11-19 are available [here](media/bedrocklinux-colug.pdf).
+
 ## {id="nyla-plans"} Bedrock Linux 1.0beta2 Nyla Plans
 <small>2014-06-28</small>
 
@@ -38,14 +44,5 @@ instructions [here](1.0beta1/install.html).
 The plans for Bedrock Linux 1.0beta1 Hawky are available
 [here](http://bedrocklinux.org/1.0beta1/plans.html).  This release is planned
 for July 1st, 2014.
-
-## {id="las\_and\_lup"} Bedrock Linux on Linux Action Show, Linux Unplugged
-<small>2014-06-11</small>
-
-Bedrock Linux was discussed on [Linux Action Show
-Episode 316](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-las-316/)
-(starting at forty minutes in).  The Bedrock Linux found/lead developer was
-then interviewed on [Linux Unplugged Episode 44](http://www.jupiterbroadcasting.com/59617/bedrock-a-new-paradigm-lup-44/) 
-(starting at 8 minutes 30 seconds in).
 
 [See older news items](news.html)
