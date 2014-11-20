@@ -4,6 +4,12 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="colug-slides"} Columbus Linux User Group presentation
+<small>2014-11-20</small>
+
+Slides from a presentation on Bedrock Linux to the Columbus Linux User Group on
+2014-11-19 are available [here](media/bedrocklinux-colug.pdf).
+
 ## {id="nyla-plans"} Bedrock Linux 1.0beta2 Nyla Plans
 <small>2014-06-28</small>
 
