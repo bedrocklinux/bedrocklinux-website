@@ -20,6 +20,8 @@ Media
 
 ## {id="pdfs"} PDFs
 
+- Slides for a Bedrock Linux presentation at the Columbus Linux User Group on
+  2014-11-19 can be downloaded [here](bedrocklinux-colug.pdf).
 - Slides for a Bedrock Linux presentation at the Ohio LinuxFest 2012 on
   2012-09-29 can be downloaded [here](bedrocklinux-olf.pdf).  These are very
   similar to the slides for OSU (below), with updates and typo fixes.
