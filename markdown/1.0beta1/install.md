@@ -73,6 +73,9 @@ of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2; it is best to
 avoid these.  Try to use an older gcc for the time being, such as from Ubuntu
 Raring or the `gcc47` package in Arch's AUR.**
 
+**There have been reports of issues with hardened gcc toolchains, try with a
+"normal" one instead**
+
 **If you are using a distro/release such as Arch which has gcc-4.7 available
 but not as the "main" gcc, try setting the following environmental variables
 before running any `bedrocklinux-installer` commands:**
@@ -346,7 +349,11 @@ return here.
 
 The ~{client~} acquired in the last step will provide the kernel for Bedrock Linux.
 
-Check if it came with a kernel:
+Most non-live distro's kernels will work.  The notable exception is
+grsec-hardened ones.  grsec changes aspects of `chroot()` that Bedrock Linux's
+design depends on.
+
+Check your client came with a kernel:
 
 	ls ~(/mnt/bedrock~)/bedrock/clients/~(client~)/boot
 
