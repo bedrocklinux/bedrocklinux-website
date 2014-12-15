@@ -67,14 +67,14 @@ find it preferable to use another computer to do the CPU-intensive compiling.
 These instructions do not cover compiling on a separate machine from the one on
 which you wish to install.
 
+**There have been reports of issues with hardened gcc toolchains, use a
+"normal" gcc.**
+
 **gcc 4.8.2 and 4.9.0 both contain an optimization bug which results in
 difficulties with the libc library Bedrock Linux is using, musl.  At the time
 of writing, Arch Linux has 4.9.0 and Ubuntu Trusty has 4.8.2; it is best to
 avoid these.  Try to use an older gcc for the time being, such as from Ubuntu
 Raring or the `gcc47` package in Arch's AUR.**
-
-**There have been reports of issues with hardened gcc toolchains, try with a
-"normal" one instead**
 
 **If you are using a distro/release such as Arch which has gcc-4.7 available
 but not as the "main" gcc, try setting the following environmental variables
