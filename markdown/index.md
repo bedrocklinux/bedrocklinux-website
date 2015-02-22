@@ -18,6 +18,15 @@ demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="nyla-delay"} Bedrock Linux 1.0beta2 Nyla delayed
+<small>2015-02-22</small>
+
+A large number of complications have arisen since Nyla's original release date
+was set, including the numerous hardware failures.  Moreover, while working on
+Nyla many of the required changes have been found to require much more time to
+implement than previously expected.  Thus, Nyla's release is being delayed.
+The new release tentative release date is end-of-summer 2015.
+
 ## {id="colug-slides"} Columbus Linux User Group presentation
 <small>2014-11-20</small>
 
@@ -29,20 +38,5 @@ Slides from a presentation on Bedrock Linux to the Columbus Linux User Group on
 
 The design plans for the upcoming release of Bedrock Linux, 1.0beta2 Nyla, are
 available [here](1.0beta2/plans.html).
-
-## {id="hawky-release"} Bedrock Linux 1.0beta1 Hawky Released
-<small>2014-06-17</small>
-
-The first beta of Bedrock Linux, 1.0beta1 Hawky, has been released.
-See a demonstration video [here](https://www.youtube.com/watch?v=YOXGE_oV4XU),
-the high-level changelog [here](1.0beta1/changelog.html) and the installation
-instructions [here](1.0beta1/install.html).
-
-## {id="hawky-plans"} Bedrock Linux 1.0beta1 Hawky Plans and release date.
-<small>2014-06-11</small>
-
-The plans for Bedrock Linux 1.0beta1 Hawky are available
-[here](http://bedrocklinux.org/1.0beta1/plans.html).  This release is planned
-for July 1st, 2014.
 
 [See older news items](news.html)
