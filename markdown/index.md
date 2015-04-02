@@ -25,7 +25,7 @@ A large number of complications have arisen since Nyla's original release date
 was set, including the numerous hardware failures.  Moreover, while working on
 Nyla many of the required changes have been found to require much more time to
 implement than previously expected.  Thus, Nyla's release is being delayed.
-The new release tentative release date is end-of-summer 2015.
+The new tentative release date is end-of-summer 2015.
 
 ## {id="colug-slides"} Columbus Linux User Group presentation
 <small>2014-11-20</small>
