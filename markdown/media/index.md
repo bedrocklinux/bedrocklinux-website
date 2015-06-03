@@ -13,7 +13,7 @@ Media
   [here](https://www.youtube.com/watch?v=7lIWagDFm6c).  Note the content is largely out-of-date.
 
 - A video demonstrating Bedrock Linux 1.0beta1 Hawky can be found
-  [here](https://www.youtube.com/watch?v=YOXGE_oV4XU)
+  [here](https://www.youtube.com/watch?v=YOXGE_oV4XU).  Apologies for the poor audio quality.
 
 - Bedrock Linux was discussed on the [the Linux Action Show](
   http://www.youtube.com/watch?v=9ca_Tm9cv1g&t=11m15s).  Relevant section goes
