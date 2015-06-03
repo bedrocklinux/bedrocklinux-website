@@ -14,7 +14,7 @@ Media
   from 11:15-16:41.  "One of the most fascinating Linux distributions we've
   heard of in years."
 
-- Bedrock Linux was further discussed on another episode of [the Linux Actin Show](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-las-316/) starting at forty minutes in.
+- Bedrock Linux was further discussed on another episode of [the Linux Action Show](http://www.jupiterbroadcasting.com/59352/introducing-bedrock-linux-las-316/) starting at forty minutes in.
 
 
 
