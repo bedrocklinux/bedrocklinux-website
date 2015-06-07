@@ -1,7 +1,7 @@
 Title: Bedrock Linux 1.0beta2 Nyla
 Nav: nyla.nav
 
-Bedrock Linux 1.0beta2 Hawky
+Bedrock Linux 1.0beta2 Nyla
 =============================
 
 These are a collection of files used to create and document the upcoming second
