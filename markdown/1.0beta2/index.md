@@ -2,10 +2,17 @@ Title: Bedrock Linux 1.0beta2 Nyla
 Nav: nyla.nav
 
 Bedrock Linux 1.0beta2 Nyla
-=============================
+===========================
 
-These are a collection of files used to create and document the upcoming second
-beta of Bedrock Linux, named "Nyla".  Nyla is currently planned to be released
-end-of-summer 2015.
+These are a collection of files used to create and document the second beta of
+Bedrock Linux, named "Nyla", which was released TODO (September 23th, 2015?)
 
+- [Changelog](changelog.html)
+- [System Requirements](systemrequirements.html)
+- [Concepts, Theory and Terminology](concepts.html)
+- [Installation instructions](install.html)
+- [Strata setup instructions](strata.html)
+- [Tips, Tricks and Troubleshooting](troubleshooting.html)
+- [Configuration instructions](configure.html)
+- [Command Overview](commands.html)
 - [Design Plans](plans.html)
