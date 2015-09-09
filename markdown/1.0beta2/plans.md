@@ -1,10 +1,11 @@
 Title: Bedrock Linux 1.0beta2 Nyla Plans
 Nav: nyla.nav
 
-# Bedrock Linux 1.0beta2 Nyla Plans
+Bedrock Linux 1.0beta2 Nyla Plans
+=================================
 
-This page serves to describe plans for the upcoming release of Bedrock Linux,
-1.0beta2 "Nyla".
+This page serves to describe plans for the then-upcoming release of Bedrock
+Linux 1.0beta2 "Nyla".  Nyla has since been released on TODO.
 
 ## Init from clients
 
