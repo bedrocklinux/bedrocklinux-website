@@ -27,14 +27,14 @@ terminology behind Bedrock Linux 1.0beta2 Nyla.
 
 ## {id="problem"} Problem to solve
 
-Software created for various Linux distributions often makes assumptions about
-the environment which hold true for the given release of the given distribution
-but will not hold true in other contexts.  Thus, one cannot simply install a
-non-native package and expect it to work.  One technique which will allow
-software to function in a non-native distro is to segregate it from the rest of
-the system via things like containers.  Doing so, however, means the given
-piece of software's ability to interact with the rest of the system is severely
-limited, and a user's workflow must change to accommodate this.  The
+Linux software is often written with specific assumptions about the environment
+in which it will be run which hold true for a given release of a given
+distribution but will not hold true in other contexts.  Thus, one cannot simply
+install a non-native package and expect it to work.  One technique which will
+allow software to function in a non-native distro is to segregate it from the
+rest of the system via things like containers.  Doing so, however, means the
+given piece of software's ability to interact with the rest of the system is
+severely limited, and a user's workflow must change to accommodate this.  The
 fundamental problem Bedrock Linux is attempting to solve is how to overcome the
 environment conflicts *without* segregating the software from the rest of the
 system.
@@ -46,42 +46,42 @@ not limited to:
   does this require it to be the specific version of the library for the
   specific architecture, but occasionally also require things like specific
   build flags to have been used when the library was compiled.  If software
-  from different distributions have differing requirements at the same exact
-  file path they will conflict with each other.
+  from different distributions have differing requirements for a file at the
+  same exact file path they will conflict with each other.
 
 - The requirement for a specific file at a specific path extends beyond just
   libraries, but can also include things such as executables.  Consider, for
   example, that some distros - primarily Red Hat-related ones - often use
-  `bash` to provide `/bin/sh`.  While distros, such as Debian-based ones, use
-  other shells such as `dash`.  If a given `#!/bin/sh` program uses `bash`-isms
-  it will work on Red Hat-related distros but not on Debian-based ones.  While
-  a proper fix would be to simply use `#!/bin/bash`, sadly this is not always
-  an excised practice.
+  `bash` to provide `/bin/sh`.  While other distros, such as Debian-based ones,
+  use other shells such as `dash`.  If a given `#!/bin/sh` program uses
+  `bash`-isms it will work on Red Hat-related distros but not on Debian-based
+  ones.  A proper fix would be to simply use `#!/bin/bash`, but sadly this is
+  not always an exercised practice.
 
 - Software may have requirements about what program has a given PID.  This is
   particularly common with init-related commands which may have requirements
   about what is providing PID 1.  For example, a sysv `reboot` command will not
   work on a system where PID 1 is provided by systemd.
 
-- Software may require a daemon listening to a given socket, such as dbus.  If
-  an executable is placed in, for example, a minimal distro which does not
-  include dbus, this requirement will fail to be met and the software may not
-  work.
+- Software may require a daemon such as `dbus` to be listening to a given
+  socket.  If an executable is placed in, for example, a minimal distro which
+  does not include `dbus`, this requirement will fail to be met and the
+  software may not work.
 
 - Software may require a given kernel feature to work.  If running another
   kernel build from another distro this feature may be missing.
 
 While Bedrock Linux, as of 1.0beta2 Nyla, does not solve all of these kinds of
-problems, it does many of the more pressing ones, thus allowing quite a lot of
-software from various Linux distributions to "just work" even when utilized in
-Bedrock Linux.
+problems, it does many of the more pressing ones. It thus allows quite a lot of
+software from various, typically mutually-exclusive, Linux distributions to
+"just work" when utilized in Bedrock Linux.
 
 ## {id="local-vs-global"} Local vs global files
 
 If two pieces of software both require different file contents at a given path,
-for both to work two instances of the given file must exist, one meet each of the
-required contents.  Bedrock Linux refers to files with this requirement as
-~{local~} files.
+for both to work two instances of the given file must exist, each must see
+different contents at the same path.  Bedrock Linux refers to files with this
+requirement as ~{local~} files.
 
 In contrast to ~{local~} files are ~{global~} files: files which must be the
 *same* when different pieces of software from different expected environments
@@ -89,9 +89,9 @@ attempt to utilize it.
 
 For example, `/etc/apt/sources.list` is a ~{local~} file.  Debian's `apt-get`
 and Ubuntu's `apt-get` should see different file contents when reading
-`/etc/apt/sources.list`, as both will have mirrors in different locations.
-Thus, if a given Bedrock Linux install has both Debian's and Ubuntu's
-`apt-get`, it will also have two copies of `/etc/apt/sources.list`.
+`/etc/apt/sources.list`, as both will have mirrors and configuration for their
+package managers.  Thus, if a given Bedrock Linux install has both Debian's and
+Ubuntu's `apt-get`, it will also have two copies of `/etc/apt/sources.list`.
 
 `/etc/passwd` is a ~{global~} file.  When software from different distributions
 attempt to match a UID to a username, the pairing should be consistent.
@@ -100,7 +100,8 @@ attempt to match a UID to a username, the pairing should be consistent.
 
 Since a given path is not a unique identifier for a ~{local~} file, something
 else must be used to identify which instance of the file is which.  Bedrock
-Linux refers to this extra piece of information as a ~{stratum~}.
+Linux refers to this extra piece of information as the given file's
+~{stratum~}.
 
 ~{strata~} are collections of files which (usually) are intended to work
 together; they share the same expected environment.  If a given piece of

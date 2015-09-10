@@ -8,16 +8,16 @@ The following are the major changes which were made from Bedrock Linux
 1.0beta1 Hawky to Bedrock Linux 1.0beta2 Nyla:
 
 - The term ~{client~} has been changed to ~{stratum~} to avoid confusion due to
-  problematic associations with the word "~{client~}".
+  problematic associations with the word ~{client~}.
 - Support for ~{hijack~} installation: installation steps such as partitioning,
   installing a bootloader and setting up full disk encryption can all be done
   via another distro's installer.
 - Support for utilizing an init system from ~{stratum~}, chosen at boot time,
   via a new utility `brn`.
-- Support for strata aliases
-- Support for `brp` `pinning`: can now configure implicit items which
+- Support for ~{strata~} aliases.
+- Support for `brp` `pinning`: can now configure ~{implicit~} items which
   out-prioritize `local` access.
-- Much better error messages from `brc`
+- Much improved error messages from `brc`
 - Preparatory work done for binary distribution: build system now results in a
   relocatable tarball.
 - Improvements to mount type detection.
