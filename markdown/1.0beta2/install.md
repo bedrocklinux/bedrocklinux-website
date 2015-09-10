@@ -241,7 +241,13 @@ hijack install, or are currently running a Bedrock Linux system.  After you
 have finished installing Bedrock Linux you are free to remove the symlink.
 Thus, if you are doing a manual install, as root:
 
-    {class="rcmd"} ln -s ~(/path/to/bedrock-linux-mount~)/bedrock /bedrock
+    {class="rcmd"} ln -s ~(/path/to/bedrock-linux/mount~)/bedrock /bedrock
+
+`tar` does not track extended filesystem attributes, and `brc` requires a
+special attribute to allow non-root users to utilize it.  To set this
+attribute, run:
+
+    {class="rcmd"} /bedrock/libexec/setcap cap_sys_chroot=ep /bedrock/bin/brc
 
 ## {id="acquire-strata"} Acquire other strata
 
