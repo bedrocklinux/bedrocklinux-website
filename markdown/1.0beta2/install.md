@@ -25,12 +25,12 @@ Bedrock Linux 1.0beta2 Nyla Installation Instructions
 
 ## {id="notes"} Notes
 
-Note that while installation (particularly via hijacking described below)
-is in some ways improved from prior releases, it is still a relatively rough
-and hands-on process.  If you are not an experienced Linux user it may be
-advisable to wait for a future release where installation has been further
-polished.  If you wish to press on despite concerns about insufficient
-experience, perhaps test first in a VM before committing a box to the process.
+While installation (particularly via hijacking described below) is in some ways
+improved from prior releases, it is still a relatively rough and hands-on
+process.  If you are not an experienced Linux user it may be advisable to wait
+for a future release where installation has been further polished.  If you wish
+to press on despite concerns about insufficient experience, consider testing
+first in a VM before committing a box to the process.
 
 There are no explicit instructions for upgrading from a prior Bedrock Linux
 release; the expectation at this point in the development cycle is a fresh
@@ -44,25 +44,25 @@ pages](index.html) for this release of Bedrock Linux (1.0beta2 Nyla).  Make
 sure you know, for example, the Bedrock Linux specific [lexicon defined
 here](concepts.html), are aware of the [known issues](knownissues.html) and
 [troubleshooting advice](troubleshooting.html) before you begin following the
-instructions below.  Additionally, it may be best to skim these instructions
-before actually executing them.
+instructions below.  Additionally, it may be best to skim all these
+installation instructions before actually executing them.
 
-Note that throughout the instructions ~(this syntax~) is used to indicate
-something which you should *not* copy exactly but instead substitute with
-something else.  What you should substitute should be obvious from context.
+Throughout the instructions ~(this syntax~) is used to indicate something which
+you should *not* copy exactly but instead substitute with something else.  What
+you should substitute should be obvious from context.
 
-Note provided shell commands are prefixed with a `{class="cmd"} $` or `{class="rcmd"} #` indicating they
-should be run as a normal user or a root user, respectively.  These prefixes
-won't be selected by a mouse so that you can easily copy multiple lines and
-paste them into a terminal.  If you do copy/paste, be sure to change the
-aforementioned ~(substitution syntax~).  Also note that copying from a web page
-and pasting directly into a terminal [can be a bad
-idea](https://thejh.net/misc/website-terminal-copy-paste).
+Provided shell commands are prefixed with a `{class="cmd"} $` or
+`{class="rcmd"} #` indicating they should be run as a normal user or a root
+user, respectively.  These prefixes won't be selected by a mouse so that you
+can easily copy multiple lines and paste them into a terminal.  If you do
+copy/paste, be sure to change the aforementioned ~(substitution syntax~).  Also
+note that copying from a web page and pasting directly into a terminal [can be
+a bad idea](https://thejh.net/misc/website-terminal-copy-paste).
 
 There are two general methods for installation:
 
-- Hijacking another distribution's installation.  Bedrock Linux's goal is
-  to allow users to utilize software from various other distros.  This
+- Hijack method: hijacking another distribution's installation.  Bedrock
+  Linux's goal of allowing users to utilize software from various other distros
   includes installation.  The hijack method will allow typical installation
   steps such as partitioning, setting up a bootloader, setting up full disk
   encryption, etc to all be done via another distribution's installation
@@ -70,9 +70,9 @@ There are two general methods for installation:
   experienced Linux users.  If you wish to utilize this method, [continue
   reading here](#hijack-install-method).
 
-- Manually partitioning, setting up a bootloader, etc.  This option was
-  required in Bedrock Linux release before hijack installation was
-  supported, and it has been retained for those who wish to continue using it.
+- Manual method: manually partition, set up a bootloader, etc.  This option was
+  required in Bedrock Linux release before hijack installation was supported,
+  and it has been retained for those who wish to continue using it.
   Documentation here is relatively sparse, as the focus for this release has
   gone towards supporting the new hijack installation method.  To use this
   installation method you should already know how to do things such as
@@ -83,9 +83,9 @@ There are two general methods for installation:
 
 ## {id="hijack-install-method"} Hijack installation
 
-While it may be possible to hijack some existing, long-used distro, this
-has not been well tested.  Instead, it may be advisable to install a fresh
-distro and then hijack that.
+While it may be possible to hijack some existing, long-used install, this has
+not been well tested.  Instead, it may be advisable to install a fresh distro
+and then hijack that.
 
 If you are installing a new distro to hijack, you'll have to pick which
 one.  Some background to help you make your choice:
@@ -100,24 +100,24 @@ one.  Some background to help you make your choice:
   prefer a certain bootloader or want to use full disk encryption, that may
   influence your decision here.
 
-- Note that you may not necessarily have to keep around any of the distro's
-  files (sans things like a bootloader).  Depending on how you set things up,
-  you're welcome to remove the hijacked distro when you're done with the
-  Bedrock Linux installation (or, certainly, you're welcome to keep the
-  distro's files and use them as part of your Bedrock Linux system).  Thus, if
-  there is a distro which provides an installation process you like, but you do
-  not like the resulting system, that would be a viable choice here.  The main
-  caveat is if you have some special partitioning scheme (e.g. full disk
-  encryption), you may have special requirements for your kernel/initrd or init
-  to utilize it that other distros may not be able to fulfill.  This will then
-  require you retain the installation distro.
+- You may not necessarily have to keep around any of the distro's files (sans
+  things like a bootloader).  Depending on how you set things up, you're
+  welcome to remove the hijacked distro when you're done with the Bedrock Linux
+  installation (or, certainly, you're welcome to keep the distro's files and
+  use them as part of your Bedrock Linux system).  Thus, if there is a distro
+  which provides an installation process you like, but you do not like the
+  resulting system, that would be a viable choice here.  The main caveat is if
+  you have some special partitioning scheme (e.g. full disk encryption), you
+  may have special requirements for your kernel/initrd or init to utilize it
+  that other distros may not be able to fulfill.  This will then require you
+  retain the installation distro.
 
 - You will need to compile a Bedrock Linux userland tarball.  While this can be
   done from another distro/machine and copied over to the installation distro
   install, it may be easier to have the installation distro compile it.  This
   will then require the installation distro can provide the following:
 
-	- gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  Thus, it would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
+	- gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  It would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 	- make
 	- git.  This will be used to acquire source code, both Bedrock Linux's
 	  and source code for required third party software.
@@ -133,9 +133,9 @@ whatever you normally do during installation should be fine here.  If you like
 to make multiple partitions for different directories, keep in mind that the
 majority of your userland will end up in a new, Bedrock Linux-specific
 directory at `/bedrock/strata/`.  You could make `/bedrock/strata` its own
-partition, or perhaps one for each ~{stratum~} that ends up in that directory.  If
-you aren't sure what to do here, just follow the recommendations provided by
-the distro you are installing.
+partition, or perhaps make one for each ~{stratum~} that ends up in that
+directory.  If you aren't sure what to do here, just follow the recommendations
+provided by the distro you are installing.
 
 Skip the manual installation instructions and continue reading the instructions
 to [compile the userland](#compile-userland).  Note the instructions below
@@ -145,9 +145,9 @@ merge with the hijack installation method; they will mention things such as
 ## {id="manual-install-method"} Manual installation
 
 Boot into some distro that you can utilize to partition, set up a bootloader,
-etc.  This can be a live distro (e.g. knoppix) or an existing install (on a
-partition other than the one you will install Bedrock Linux onto).  Be sure
-that distro can provide the following requirements for compiling Bedrock Linux:
+etc.  This can be a live distro (e.g. knoppix) or an existing install on a
+partition other than the one you will install Bedrock Linux onto.  Be sure that
+distro can provide the following requirements for compiling Bedrock Linux:
 
 - gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  Thus, it would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 - make
@@ -166,19 +166,19 @@ For the most part, whatever partitioning scheme you prefer for other distros
 should be fine.  If you like to make multiple partitions for different
 directories, keep in mind that the majority of your userland will end up in a
 new, Bedrock Linux-specific directory at `/bedrock/strata/`.  You could make
-`/bedrock/strata` its own partition, or perhaps one for each ~{stratum~} that ends
-up in that directory.  If you aren't sure what to do here, one big partition
-for the root directory and a swap partition about 2.5 times your RAM size
-should be fine.
+`/bedrock/strata` its own partition, or perhaps make one for each ~{stratum~}
+that ends up in that directory.  If you aren't sure what to do here, one big
+partition for the root directory and a swap partition about 2.5 times your RAM
+size should be fine.
 
 Set up a bootloader.  Instructions for setting up syslinux are provided
 [here](syslinux.html).  If you prefer something else, e.g. GRUB2, you'll have
 to find instructions elsewhere.
 
-While it should be possible to manually set up full disk encryption, RAID, etc,
+While it should be possible to manually set up full disk encryption, RAID, etc;
 no instructions are provided here to do so.  Either find instructions elsewhere
 or use the hijack installation method with a distro that provides full disk
-encryption.
+encryption, RAID, etc.
 
 Mount the partitions wherever you like.  Note the instructions below merge with
 the hijack installation method; they will mention things such as "if you
@@ -257,8 +257,12 @@ of other distros so that they are available to be used in the configuration as
 you get farther into the instructions.  This is especially true if you are
 doing the manual install so that you have at least one kernel image.
 
-Go [here](strata.html) to acquire other ~{strata~} then return to the instructions
-here.  Consider opening that link in another tab/window.
+The tarball you expanded in the previous step provided a minimal stratum called
+"fallback" to use in case of emergencies.  It does not provide a kernel image,
+but does provide things such as a minimal init system and shell.
+
+Go [here](strata.html) to acquire other ~{strata~} then return to the
+instructions here.  Consider opening that link in another tab/window.
 
 ## {id="configure"} Configure
 
@@ -294,7 +298,7 @@ to the bottom of the file.  It should look something like:
     framework = default
 
 This tells Bedrock Linux that you have a ~{stratum~} with the configured name,
-as well as tells it what per-stratum configuration to use for this new
+as well as tells it what per-~{stratum~} configuration to use for this new
 ~{stratum~}.  It is recommended to use the default configuration for most
 ~{strata~}, with one exception: the ~{global~} ~{stratum~}.  It's possible (and
 in fact, common) to have *both* ~{rootfs~} and ~{global~} aliases to the same
@@ -422,8 +426,8 @@ If you *are* naming the ~{stratum~} "~{global~}", edit
 
     global = <DO AT INSTALL TIME>
 
-Like ~{rootfs~}, it will be easiest if we create a variable to reference for
-the current, install-time location of the ~{global~} ~{stratum~}.
+Like ~{rootfs~}, later steps will be eased if we create a variable to reference
+for the current, install-time location of the ~{global~} ~{stratum~}.
 
 If your ~{rootfs~} and ~{global~} are the same ~{stratum~}:
 
@@ -435,10 +439,15 @@ Otherwise:
 - {class="rcmd"}
 - export GLOBAL=/bedrock/strata/~(global-stratum-name~)
 
-Next, copy over the Bedrock Linux ~{global~} files into this ~{stratum~}.
+Next we need to get some required ~{global~} files into this ~{global
+stratum~}.  The Bedrock Linux userland tarball included a standard set of some
+of these files.  Copy them into place:
 
 - {class="rcmd"}
 - cp -rpT /bedrock/global-files $GLOBAL
+
+The tarball did not include all of the required ~{global~} files; it does not
+include things such as `/etc/passwd.`  You'll need to get those next.
 
 If you are doing a hijack install and ~{rootfs~} is the same as ~{global~}, you
 already have key files such as `/etc/passwd` in place.
@@ -469,7 +478,8 @@ Or, alternatively, you can create a new set of these files (root password is
 - echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > $GLOBAL/etc/shadow
 - printf 'root:x:0:\ntty:x:5:\ndisk:x:6:\nlp:x:7:\nkmem:x:15:\ndialout:x:20:\ncdrom:x:24:\nfloppy:x:25:\ntape:x:26:\naudio:x:29:\nvideo:x:44:\nstaff:x:50:\n' > $GLOBAL/etc/group
 
-The `/bedrock/global-files` directory is no longer needed.  Remove it:
+The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
+later confusion:
 
 - {class="rcmd"}
 - rm -r /bedrock/global-files
@@ -478,7 +488,7 @@ The `/bedrock/global-files` directory is no longer needed.  Remove it:
 
 Bedrock Linux 1.0beta2 Nyla's system for managing time is particularly weak at
 the moment.  While everything one would need should be possible to do, there is
-a bit of additional manual work required in compassion traditional distros.
+a bit of additional manual work required in comparison to traditional distros.
 This is a known issue which should hopefully be resolved in future Bedrock
 Linux releases.
 
@@ -488,14 +498,17 @@ If you do not have a file at `$GLOBAL/etc/adjtime`, create one:
 - printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
 
 If your hardware clock is using UTC, ensure the second line (which should also
-be the last) of the file at `$GLOBAL/etc/adjtime` is "UTC".  Otherwise, if your
-hardware clock is in local time, set it to "LOCAL".
+be the last) of the file at `$GLOBAL/etc/adjtime` is "UTC".  This is common on
+machines which only run Linux-based operating systems.  Otherwise, if your
+hardware clock is in local time, set it to "LOCAL".  This is common on machines
+which dual-boot with Microsoft Windows.
 
 Next you'll need to configure your timezone information.  Ideally your Olson
 timezone file would be ~{global~} or ~{implicit~}.  Sadly, however, this does
-not work as of Bedrock Linux 1.0beta2 Nyla.  Instead, you should place your
-timezone file into `/bedrock/etc/localtime` and other Bedrock Linux
-configuration should ensure that file is utilized.
+not work as of Bedrock Linux 1.0beta2 Nyla.  Instead, Bedrock Linux will
+attempt to direct everything to utilize the timezone file at
+`/bedrock/etc/localtime`.  This file needs to be updated manually.  Thus, copy
+your desired timezone file to `/bedrock/etc/localtime`:
 
 - {class="rcmd"}
 - cp -p /usr/share/zoneinfo/~(timezone-file~) /bedrock/etc/localtime
@@ -555,8 +568,8 @@ that should be run for it as well as the desired timeout in seconds.  If the
 timeout is set to "0" it will immediately pick the default.  If the timeout is
 set to "-1" it wait indefinitely.  For example:
 
-    default_stratum = crux
-    default_init = /sbin/init
+    default_stratum = alpine
+    default_cmd = /sbin/init
     timeout = 10
 
 ### {it="configure-hostname"} Configure hostname
@@ -646,7 +659,7 @@ Look through `/bedrock/strata/~(*~)/lib/modules` to see if you have such a set
 of files.  You most likely have one set associated with the kernel image you
 copied in the previous step.  Copy these modules into `$GLOBAL/lib/modules`.
 
-For example if a Arch Linux ~{strata~} provides the desired files:
+For example if an Arch Linux ~{strata~} provides the desired files:
 
 - {class="rcmd"}
 - cp -rp /bedrock/strata/arch/lib/modules/\* $GLOBAL/lib/modules/
@@ -745,7 +758,7 @@ If that does not print "1", add the user:
 - {class="rcmd"}
 - adduser -s /bedrock/bin/brsh -D ~(username~)
 
-Set the user's desired password:
+Set the user's password:
 
 - {class="rcmd"}
 - passwd -a sha512 ~(username~)
