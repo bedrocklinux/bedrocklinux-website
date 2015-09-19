@@ -31,6 +31,7 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 	- [CRUX](#crux)
 		- [Slow boot](#crux-slow-boot)
 		- [Freeze on shutdown](#crux-shutdown-freeze)
+		- [Timezone](#crux-timezone)
 
 ## {id="tips"} Tips
 
@@ -296,3 +297,27 @@ root:
 - {class="rcmd"}
 - mv /bedrock/strata/~(crux~)/etc/rc.shutdown /bedrock/strata/~(crux~)/rc.local
 - ln -s ../rc.local /bedrock/strata/~(crux~)/etc/rc.local
+
+#### {id="crux-timezone"} CRUX timezone
+
+CRUX's init is hardcoded to expect all timezone files to be in
+`/usr/share/zoneinfo`, which can cause problems.  To fix this, edit
+
+    /bedrock/strata/~(crux~)/etc/rc
+
+and change
+
+    # Configure system clock
+    if [ "$TIMEZONE" ]; then
+        /bin/ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+    fi
+
+to
+
+    ## Configure system clock
+    #if [ "$TIMEZONE" ]; then
+    #    /bin/ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+    #fi
+
+This will force CRUX to use `/etc/localtime`, which (with default Bedrock Linux
+configuration) will be a copy of `/bedock/etc/localtime`.
