@@ -23,21 +23,22 @@ terminology behind Bedrock Linux 1.0beta2 Nyla.
 		- [High Implicit Access](#high-implicit-access)
 		- [Direct Implicit Access](#direct-implicit-access)
 		- [Low Implicit Access](#low-implicit-access)
+	- [Rule Summary](#rule-summary)
 - [Under the hood](#under-the-hood)
 
 ## {id="problem"} Problem to solve
 
-Linux software is often written with specific assumptions about the environment
-in which it will be run which hold true for a given release of a given
-distribution but will not hold true in other contexts.  Thus, one cannot simply
-install a non-native package and expect it to work.  One technique which will
-allow software to function in a non-native distro is to segregate it from the
-rest of the system via things like containers.  Doing so, however, means the
-given piece of software's ability to interact with the rest of the system is
-severely limited, and a user's workflow must change to accommodate this.  The
-fundamental problem Bedrock Linux is attempting to solve is how to overcome the
-environment conflicts *without* segregating the software from the rest of the
-system.
+Linux software is often written or built with specific assumptions about the
+environment in which it will be utilized.  These assumptions hold true for a
+given release of a given distribution but will not hold true in other contexts.
+Thus, one cannot simply install a non-native package and expect it to work.
+One technique which will allow software to function in a non-native distro is
+to segregate it from the rest of the system via things like containers.  Doing
+so, however, means the given piece of software's ability to interact with the
+rest of the system is severely limited, and the users' workflow must change to
+accommodate this.  The fundamental problem Bedrock Linux is attempting to solve
+is how to overcome the environment conflicts *without* segregating the software
+from the rest of the system.
 
 Various assumptions software often makes about its environment include but are
 not limited to:
@@ -51,7 +52,7 @@ not limited to:
 
 - The requirement for a specific file at a specific path extends beyond just
   libraries, but can also include things such as executables.  Consider, for
-  example, that some distros - primarily Red Hat-related ones - often use
+  example, that some distros - notably Red Hat-related ones - often use
   `bash` to provide `/bin/sh`.  While other distros, such as Debian-based ones,
   use other shells such as `dash`.  If a given `#!/bin/sh` program uses
   `bash`-isms it will work on Red Hat-related distros but not on Debian-based
@@ -79,9 +80,9 @@ software from various, typically mutually-exclusive, Linux distributions to
 ## {id="local-vs-global"} Local vs global files
 
 If two pieces of software both require different file contents at a given path,
-for both to work two instances of the given file must exist, each must see
-different contents at the same path.  Bedrock Linux refers to files with this
-requirement as ~{local~} files.
+for both to work two instances of the given file must exist such that each
+piece of software will see the file it expects at the given path.  Bedrock
+Linux refers to files with this requirement as ~{local~} files.
 
 In contrast to ~{local~} files are ~{global~} files: files which must be the
 *same* when different pieces of software from different expected environments
@@ -89,9 +90,10 @@ attempt to utilize it.
 
 For example, `/etc/apt/sources.list` is a ~{local~} file.  Debian's `apt-get`
 and Ubuntu's `apt-get` should see different file contents when reading
-`/etc/apt/sources.list`, as both will have mirrors and configuration for their
-package managers.  Thus, if a given Bedrock Linux install has both Debian's and
-Ubuntu's `apt-get`, it will also have two copies of `/etc/apt/sources.list`.
+`/etc/apt/sources.list`, as both will have different mirrors and configuration
+for their package managers.  Thus, if a given Bedrock Linux install has both
+Debian's and Ubuntu's `apt-get`, it will also have two copies of
+`/etc/apt/sources.list`.
 
 `/etc/passwd` is a ~{global~} file.  When software from different distributions
 attempt to match a UID to a username, the pairing should be consistent.
@@ -103,21 +105,20 @@ else must be used to identify which instance of the file is which.  Bedrock
 Linux refers to this extra piece of information as the given file's
 ~{stratum~}.
 
-~{strata~} are collections of files which (usually) are intended to work
+~{Strata~} are collections of files which (usually) are intended to work
 together; they share the same expected environment.  If a given piece of
 software has some dependency on a ~{local~} file, that dependency can (usually)
 be met by the software in the same ~{stratum~}.
 
 Every file in a Bedrock Linux system has an associated ~{stratum~}, including
-~{global~} files and files which ~{local~} files which don't actually have
-conflicts on disk.  A given file path and ~{stratum~} pair uniquely identify
-every file.
+~{global~} files and ~{local~} files which don't actually have conflicts on
+disk.  A given file path and ~{stratum~} pair uniquely identify every file.
 
 One can also think of ~{strata~} as slices of the filesystem.  Each slice is
 uniform in environment expectations, but they exist side-by-side and, together,
 make the entire system.
 
-~{Strata~} were previously referred to as "clients", but sadly that term was
+~{Strata~} were previously referred to as "~{clients~}", but sadly that term was
 found to be misleading and lead to regular misunderstandings.  For example, it
 implies a client-server relationship, when no such thing exists in Bedrock
 Linux. ~{Strata~} is a much more fitting mental image for what is actually
@@ -126,17 +127,18 @@ happening.
 ## {id="singletons"} Singletons
 
 Most software from different ~{strata~} can be in use simultaneously.  One can
-have, for example, two instances of `vlc` running at the same time, distro.
-Sadly, not all software works this way.  Things such as the Linux kernel and
-init/PID1 are ~{singletons~}: you can only have one instance of it at a time.
+have, for example, two instances of `vlc` running at the same time from
+different distros.  Sadly, not all software works this way.  Things such as the
+Linux kernel and init/PID1 are ~{singletons~}: you can only have one instance
+of it at a time.
 
-Bedrock Linux does not restrict its users to only using one singleton, but only
-one at a time.  Consider a situation where two distros each provide a Linux
-kernel with a feature the other one lacks (e.g. one has TOMOYO Linux while the
-other has systemtrace).  Bedrock Linux does not do anything to allow its users
-to have both kernels at the same time; however, one can chose which to use on
-reboot.  If a user would like to use TOMOYO Linux most of the time, but
-occasionally use systemtap to debug an issue, this is a viable option.
+Bedrock Linux does not restrict its users to only using one singleton, but
+rather only one at a time.  Consider a situation where two distros each provide
+a Linux kernel with a feature the other one lacks (e.g. one has TOMOYO Linux
+while the other has systemtrace).  Bedrock Linux does not do anything to allow
+its users to have both kernels at the same time; however, one can choose which
+to use on reboot.  If a user would like to use TOMOYO Linux most of the time,
+but occasionally use systemtap to debug an issue, this is a viable option.
 
 Another example of a ~{singleton~} is the init/PID1.  If a user typically
 prefers to use `runit` as their PID1, but occasionally needs `systemd` as a
@@ -154,23 +156,23 @@ it always points to the ~{stratum~} providing the specific functionality.
 ### {id="init-stratum"} Init Stratum
 
 Whichever ~{stratum~} is currently providing PID1 is aliased to ~{init~}.  If
-the user reboots and selects another init, this becomes the ~{init~}
-~{stratum~}.
+the user reboots and selects another init system, the stratum providing the
+chosen init system this becomes the ~{init stratum~}.
 
 ### {id="global-stratum"} Global Stratum
 
-The aforementioned ~{global~} files all belong one ~{stratum~}, which is thus
+The aforementioned ~{global~} files all belong one ~{stratum~}, which is
 aliased to ~{global~} so the relevant Bedrock Linux subsystems will know where
-the ~{global~} files.  It is technically possible to copy/move the global files
-to another ~{stratum~} and thus change the ~{global~} stratum, but is generally
-not recommended as it is easy to botch; ~{global~} is typically chosen at
-install time and left throughout the life of the system.
+the ~{global~} files.  It is technically possible to copy/move the ~{global~}
+files to another ~{stratum~} and thus change the ~{global~} stratum, but is
+generally not recommended as it is easy to botch; ~{global~} is typically
+chosen at install time and left throughout the life of the system.
 
 ### {id="rootfs-stratum"} Rootfs Stratum
 
-One stratum provides the root filesystem at very early boot time.  This
+One ~{stratum~} provides the root filesystem at very early boot time.  This
 includes things such as `/boot` for the bootloader and `/bedrock` for the
-Bedrock Linux subsystems.  This stratum aliased to ~{rootfs~}.  It is
+Bedrock Linux subsystems.  This ~{stratum~} aliased to ~{rootfs~}.  It is
 technically possible to move key files such as `/bedrock` to another
 ~{stratum~} and thus change the ~{rootfs~} stratum, but is generally not
 recommended as it is easy to botch; ~{rootfs~} is typically chosen at install
@@ -198,12 +200,17 @@ correct instance of a file if there is some associated environment expectation
 without constraining them such that they would lose the ability to fully
 interact with software from other distros.
 
+Note that while it is useful to understand these rules to tweak or debug them,
+it is not expected that one keeps them in mind during typical, day-to-day
+Bedrock Linux usage; everything should "just work" transparently, as though all
+of the software in use was intended to work together.
+
 ### {id="explicit"} Explicit access
 
 The highest-priority rule is referred to as ~{explicit~} access.  This occurs
 when the ~{stratum~} is specified in a Bedrock Linux specific manner.
 Naturally, software from other distributions are not designed to use any
-Bedrock Linux specific mechanisms and so they will not automatically access via
+Bedrock Linux specific mechanisms and so they will not automatically utilize
 ~{explicit~} access; only Bedrock Linux-aware users and software should utilize
 this.
 
@@ -212,21 +219,21 @@ specified via:
 
     /bedrock/strata/~(stratum-name~)/~(file-path~)
 
-For example, to access *specifically* Crux's `/etc/rc.conf` file, one would
+For example, to access *specifically* Crux's `/etc/rc.conf` file, one could
 use:
 
     /bedrock/strata/crux/etc/rc.conf
 
-Executables require a different specification method.  Instead, the given
-executable should be prefixed with "`brc ~(stratum-name~)", as one would do
+Specify an Executables require a different access method.  Instead, the given
+executable should be prefixed with `brc ~(stratum-name~)`, as one would do
 with the `sudo -u` or `chroot` commands.
 
-For example, to explicitly run Arch Linux's `vim`, one would run:
+For example, to explicitly run Arch Linux's `vim`, one could run:
 
     brc arch vim
 
 These two systems can be combine.  To use Arch's `/usr/bin/vim` to edit Crux's
-`/etc/rc.conf` one woudl run:
+`/etc/rc.conf` one could run:
 
     brc arch vim /bedrock/strata/crux/etc/rc.conf
 
@@ -245,18 +252,18 @@ the request was not open to *any* file with the given name - but no
 example, specifically `/usr/lib/libc-2.22.so` is needed, software will access
 it via that path.
 
-In these instances there is a high possibility that the requested file is a
-dependency, possibly a picky one such that failing to provide the current file
-will cause a failure.  Thus, Bedrock Linux will provide the given file from the
-same ~{stratum~} as the program which requested it came from.  If `apt-get`
-from a "linuxmint" ~{stratum~} requests `/etc/apt/sources.list`, the linuxmint
-copy of `/etc/apt/sources.list` is provided.  Thus, dependencies - and hence
-environmental expectations - are met.
+In these situations there is a strong possibility that the requested file is a
+dependency, possibly a picky one such that failing to provide the exact file
+will cause a failure.  In these situations Bedrock Linux will provide the given
+file from the same ~{stratum~} as the program which requested it came from.  If
+`apt-get` from a Linux Mint ~{stratum~} requests `/etc/apt/sources.list`, the
+Linux ~mint copy of `/etc/apt/sources.list` is provided.  Thus, dependencies -
+and hence environmental expectations - are met.
 
 ### {id="implicit-access"} Implicit Access
 
-~{implicit~} access occurs when neither a *specific* path *nor* a specific
-~{stratum~} is provided.  In these instances Bedrock Linux is afforded some
+~{implicit~} access occurs when neither a specific path nor a specific
+~{stratum~} is provided.  In these situations Bedrock Linux is afforded some
 freedom to chose which file from which ~{stratum~} to chose.  However, the
 possibility of a specific environment expectation remains in these situations,
 and thus care must be taken.
@@ -271,10 +278,10 @@ Note that ~{implicit~} access is always read-only.
 
 If the given file has some expecation which Bedrock Linux cannot automatically
 detect via ~{local-implicit~} (described below), one can configure Bedrock
-Linux to always provide a given file from a given ~{stratum~}.
+Linux to always ~{implicitly~} provide a given file from a given ~{stratum~}.
 
 For example, the `reboot` command needs to be tied to the ~{stratum~} providing
-init/PID1.  An openrc-using Crux Linux `reboot` will not reboot a system which
+init/PID1.  An openrc-using Alpine Linux `reboot` will not reboot a system which
 has systemd as its init/PID1.  Thus, Bedrock Linux can be configured to always
 have the `reboot` command provided by the ~{init~} ~{stratum~}.
 
@@ -290,7 +297,7 @@ situations.  Luckily, these situations are fairly rare.
 
 If a path is needed to for ~{high implicit~} access, such as specifying a
 NOPASSWD item in `/etc/sudoers`, one can use
-`/bedrock/brpath/pin/~(path-to-file~).  For example, to allow the user
+`/bedrock/brpath/pin/~(path-to-file~)`.  For example, to allow the user
 "paradigm" NOPASSWD `sudo` access to the `reboot` command, one could add the
 following to `/etc/sudoers`:
 
@@ -302,11 +309,14 @@ current ~{init stratum~}.
 #### {id="direct-implicit-access"} Direct Implicit Access
 
 ~{direct implicit~} access is utilized to cover the possibility of a dependency
-to something that did not use a path to specify the file.  If no ~{stratum~}
-(and thus not ~{explicit~} access) or path (and thus not ~{direct~} access) is
-specified, *and* no ~{high implicit~} configuration rule is matched, Bedrock
-Linux checks to see if the given file exists in the ~{local~} stratum.  If it
-exists, the ~{local~} copy is utilized.
+to something that did not use a path to specify the file.  If:
+
+- No ~{stratum~} is specified (thus, not ~{explicit~} access)
+- No path is specified (thus, not ~{direct~} access)
+- No ~{high implicit~} configuration rule is matched (thus, not ~{high implicit~})
+
+Bedrock Linux checks to see if the given file exists in the ~{local~} stratum.
+If it exists, the ~{local~} copy is utilized.
 
 For example, if a script uses `#!/usr/bin/env python`, the `env` executable
 will try to execute `python`.  The script, however, may require a *specific*
@@ -314,21 +324,21 @@ will try to execute `python`.  The script, however, may require a *specific*
 available ~{locally~}, that version will be used to ensure the environment
 expectation is met.
 
-Note this term ~{direct implicit~} is admittedly awkward; the terminology here
-may change in the future.
+The term ~{direct implicit~} is admittedly awkward; the terminology here may
+change in the future.
 
 #### {id="low-implicit-access"} Low Implicit Access
 
 When a file access is attempted, and:
 
-- No ~{stratum~} is specified (thus, not ~{explicit~}
-- No path is specified (thus, not ~{direct~}
+- No ~{stratum~} is specified (thus, not ~{explicit~})
+- No path is specified (thus, not ~{direct~})
 - No ~{high implicit~} rule is matched (thus, not ~{high implicit~})
 - and the file is not available in the ~{local stratum~} (thus, not ~{direct implicit~})
 
 Then ~{low implicit~} is used.  With this rule, Bedrock Linux will check if
-*any* of the other ~{stratum~} can provide the given file.  If so, that
-instance of the file is utilized.  The order these other ~{stratum~} are
+*any* of the other ~{strata~} can provide the given file.  If so, that
+instance of the file is utilized.  The order these other ~{strata~} are
 searched is configurable; some users prefer having cutting-edge versions given
 a higher priority while others prefer older/stable software to take priority if
 available.
@@ -352,10 +362,40 @@ wireless network, one could add the following to `/etc/sudoers`:
 
     paradigm ALL=NOPASSWD: /bedrock/brpath/sbin/wifion
 
+### {id="rule-summary"} Rule Summary
+
+- ~{Global access~}:
+	- A file configured as ~{global~} file is accessed.
+	- Uses file from ~{global stratum~}.
+	- Intended to ensure ~{strata~} interact properly.
+- ~{Explicit access~}:
+	- Desired ~{stratum~} is specified (e.g. `brc` **`slack141`** `vim` or `/bedrock/strata/`**`slack141`**`/etc/pacman.conf`)
+	- Uses specified ~{stratum~}.
+	- Intended to override other rules.
+- ~{Direct access~}:
+	- A path is provided to the file (e.g. **`/usr/lib/`**`libc.so.6`)
+	- Uses ~{local stratum~}.
+	- Intended to catch dependencies (e.g. which instance of a library to use).
+- ~{High implicit~}:
+	- No ~{stratum~} or path specified, but rule is configured.
+	- Uses ~{stratum~} specified by rule.
+	- Intended to catch dependencies (e.g. which `reboot` to use, should be tied to init).
+- ~{Direct implicit~}:
+	- No ~{stratum~} or path specified, no ~{high implicit~} configuration, but file does exist in ~{local stratum~}.
+	- Uses ~{local stratum~}.
+	- Intended to catch dependencies (e.g. which `python` to use with `#!/usr/bin/env python`)
+- ~{Low implicit~}:
+	- No ~{stratum~} or path specified, no ~{high implicit~} configuration, and file not does exist in ~{local stratum~}, but file does exist in another ~{stratum~}
+	- Uses first ~{stratum~} that provides file from configured order.
+	- Intended to ensure ~{strata~} interact properly.
+
+Otherwise, a file access is treated as no such file (e.g. `open(2)` with `O_RDONLY` returns `ENOENT`).
+
 ## {id="under-the-hood"} Under the hood
 
 Various notes on what is going on under-the-hood for those who are curious
-follow.  This information is not required to utilize Bedrock Linux.
+follow.  These are not intended to give a full, detailed picture, but just a
+general idea.  This information is not required to utilize Bedrock Linux.
 
 - `chroot()` is used to segregate out the different ~{stratum~}, effectively
   implementing ~{local~} files.
@@ -369,7 +409,7 @@ follow.  This information is not required to utilize Bedrock Linux.
   ~{stratum~}.  `bri -p` compares roots to determine which ~{stratum~} a given
   process is in.  This is why `brc` is needed for execution ~{explicit~}
   access: It calls `chroot()`.
-- bind-mounts are used to ensure files are at the ~{explicit~} non-execution
+- bind mounts are used to ensure files are at the ~{explicit~} non-execution
   access location of `/bedrock/strata/~(stratum-name~)`.
 - ~{direct~} access works due to `chroot()` usage in `brc`.
 - Which of the three ~{implicit~} access rules is chosen via `$PATH`-like

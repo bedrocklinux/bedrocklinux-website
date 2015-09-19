@@ -271,9 +271,9 @@ normally would.
 
 #### {id="crux-slow-boot"} Slow boot
 
-CRUX runs `depmod` on boot which can take a while.  Moreover, it is not
-strictly needed every boot.  To disable this and speed up boot time a bit,
-edit `/bedrock/strata/~(crux~)/etc/rc.conf` and change
+CRUX runs `depmod` on boot which can take a while.  It is not strictly needed
+every boot.  To disable this and speed up boot time a bit, edit
+`/bedrock/strata/~(crux~)/etc/rc.conf` and change
 
 	if [ -x /etc/rc.modules ]; then
 		/etc/rc.modules
