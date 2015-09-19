@@ -7,6 +7,8 @@ Nav:   home.nav
 - [How does Bedrock Linux work?](#how_bedrock_work)
 - [Why should I use Bedrock?](#why_use_bedrock)
 - [Why should I not use Bedrock?](#why_not_use_bedrock)
+- [How stable is Bedrock Linux?](#stability)
+- [Is Bedrock Linux far enough along for me to use?](#ready_status)
 - [How can I contribute?](#contribute)
 - [How is this different from/preferable to using a virtual machine?](#vs_virtual_machine)
 - [How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?](#vs_container)
@@ -25,8 +27,9 @@ See the Introduction to [Bedrock](introduction.html).
 
 ## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
 
-The exact details may change drastically from release-to-release, but the
-general concept is explained [here](introduction.html#concepts).
+The exact details may change drastically from release-to-release.
+Documentation for the general concepts behind the current release at the time
+of writing (1.0beta2 Nyla) can be found [here](1.0beta2/concepts.html).
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
@@ -62,6 +65,36 @@ distribution combined. While steps can be taken to alleviate this to some
 degree, ultimately, a locked-down Bedrock Linux can never truly reach the
 security offered by a locked-down standard Linux distribution.
 
+## {id="stability"} How stable is Bedrock Linux?
+
+At the time of writing Bedrock Linux is still considered "beta".  It is far
+enough along that it is comfortably in use as a "daily driver" for a good
+number of reasonably experienced Linux users.  However, as noted by the "beta"
+tag, it is not yet considered production stable for the audience at large.
+
+While it does not have a flawless history, Bedrock Linux has had relatively few
+actual stability issues over its history, despite the alpha/beta
+categorization.  For the most part, once you've got it installed, up and
+running most stability issues will be a result of the software acquired from
+other distributions rather than Bedrock Linux itself.
+
+## {id="ready\_status"} Is Bedrock Linux far enough along for me to use?
+
+Bedrock Linux's development has largely focused on the under-the-hood
+technology that makes it work rather than user-facing policy.  The installation
+procedure, for example, is notably rough at the time of writing; this is a
+blocker for many people who are not accustomed to getting their hands dirty
+compiling things and editing configuration files directly.
+
+If you are seeking a polished, it-just-works distribution, Bedrock Linux is not
+yet far enough along to meet that constraint; it may be advisable to use
+another distribution for the time being.
+
+If you are accustomed to more hands-on/low-level distributions such as Arch,
+Gentoo, and Linux from Scratch, and are okay with using a "beta" system that is
+still in active development, Bedrock Linux may be far enough along for you to
+utilize.
+
 ## {id="contribute"} How can I contribute?
 
 - Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) and ask around.
@@ -72,7 +105,7 @@ security offered by a locked-down standard Linux distribution.
   [IRC](http://webchat.freenode.net/?channels=bedrock).  Or make a new issue if
   you have an idea.
 - There is always a need to improve the documentation.  For example, you could
-  add instructions for setting up an obscure distro as a ~{client~} Bedrock Linux,
+  add instructions for setting up an obscure distro as a ~{stratum~} Bedrock Linux,
   or something as simple as fixing typos.  Once you have something to submit,
   stop by the [website git
   repo](https://github.com/bedrocklinux/bedrocklinux-website).
@@ -88,16 +121,16 @@ distribution, all running in an X11 server from a third Linux distribution.
 This all happens transparently; it all feels like one single cohesive Linux
 distribution. Virtual machines cannot do this type of transparency nearly as
 well.
-- Bedrock's ability to access programs from other Linux distributions has
-extremely minimal overhead as compared to virtual machines. This is especially
+- Bedrock's ability to access software from other Linux distributions has
+significantly less overhead than virtual machines do. This is especially
 true with respect to 3D/video acceleration, which "just works" (assuming no
 proprietary driver issues) as well as it does in a normal Linux distribution.
 Such things typically do not work very well at all in virtual machines.
 - Bedrock, by its very design, interweaves other Linux distributions together;
 it ensures they share quite a bit. This means if there is a security
-vulnerability in one of the ~{clients~}, there is little to stop it from affecting
+vulnerability in one of the ~{strata~}, there is little to stop it from affecting
 the rest of the system. Virtual machines, by their very design, sandbox the
-~{clients~}, such that an attack on one of them will have a difficult time
+VMs such that an attack on one of them will have a difficult time
 propagating to others.
 
 ## {id="vs\_container"} How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?
@@ -171,42 +204,45 @@ system requirements for the initial alpha can be found
 
 ## {id="why\_own\_distro"} Why does this need to be its own distribution?
 
-At the time of writing, the immediate goal is to figure out *how* to do
-everything Bedrock Linux is trying to do.  Retaining full control of the
-underlying system simplifies development, and so that is what we are doing at
-this point in time.  Bedrock Linux changes so much between releases it is not
-possible to say whether, when it has achieved the desired feature set, the
-techniques it is using could be cleanly implemented on top of another
-distribution.  If it is found to be cleanly possible, the Bedrock Linux
-developers will likely attempt to package and provide code for other use on top
-of other distributions.  That is still too far out to say.
+This question is a bit difficult to answer, as Bedrock Linux somewhat blurs the
+definition of what constitutes a "Linux distribution".
 
-However, even if it is possible to run Bedrock Linux code on top of another
-distribution get the desired effect, there will be a number of downsides to
-doing so, and so Bedrock Linux will still benefit from being its own
-distribution.  In theory, once Bedrock Linux is feature complete, the base
-distribution would not be able to provide anything one would not be able to get
-from a ~{client~}.  As a result, the base distribution should be as small as is
-possible while still being able to provide the necessarily functionality to
-utilize ~{client~}s.  Consider:
+If someone is using equal parts of multiple different distributions, what
+should one call the resulting operating system?  Say, for example, that exactly
+one third of the installed and in use for a given Linux distro "install" comes
+from Arch Linux, another third from Alpine Linux, and the last third from
+Gentoo Linux.  Which distro is the user running?  Answering the question with a
+simple "Arch", "Alpine" or "Gentoo" would be misleading.  One cannot tie it to
+typically "hard" concepts such as the init system, the kernel, and even the
+root filesystem are fluid concepts in Bedrock Linux - it is possible to switch
+any of those with a reboot while still using the *exact* same rest of the
+system.  Instead of expecting people to answer the question of "which distro
+are you running?" with a long explanation going into the intricacies of how
+things are intermixed between multiple distributions, someone could simply
+answer "Bedrock Linux".
 
-- Anything more than being able to utilize things from ~{clients~} is
-  unnecessary overhead.  Most distributions would consume disk and RAM
-  unnecessarily in this situation.
+People have proposed having Bedrock Linux act as a meta package manager which
+sits on top of another distro.  By virtue of its meta-distro nature, Bedrock
+Linux supports this workflow, while not being constrained to it.  You can
+install Bedrock Linux by hijacking another distro's install.  If you would
+like, you are then free to continue using the original distro's software while
+utilizing Bedrock Linux to access software from other distros.  Functionally,
+this is very similar to installing some other package manager into a distro.
+The key difference is that, from Bedrock Linux's point of view, there is no
+major difference between the files from the distro install you've hijacked and
+the files from the other distros.  You're free to remove all of the original
+install's files (sans a few key install-related things such as the bootloader
+and possibly initrd if it is needed to decrypt full disk encryption, etc).  [If
+you install some distro, such as Slackware, then hijack it into Bedrock Linux,
+then remove all of the files of the original Slackware install, are you still
+running Slackware?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
 
-- If code from a ~{client~} breaks, one should be able to easily get it from
-  another ~{client~}.  However, the base distribution is a single-point of
-  failure and, thus, it should be minimized.
-
-- Bedrock Linux provides some useful functionality for maintain ~{client~}s.
-  However, this would not extend to the base distribution.  Thus, again, the
-  base distribution should be minimized to limit maintenance.
-
-Finally, consider the possibility that there may not end up being a functional
-difference between installing Bedrock Linux as the base and some other
-distribution as a ~{client~}, and installing Bedrock Linux "on top" of some
-other distribution, only to end up morphing it into the exact same system.
-What really *is* a "base"?
+Bedrock Linux is described as a (meta) Linux distribution because this is the
+most accurate answer when restricted to preexisting concepts.  It does not
+"need" to be treated as such; the system is sufficiently flexible to fill other
+workflows, such as acting as though it is a package installed onto some other
+distribution.  However, describing it by these other workflows alone would be
+misleading.
 
 ## {id="on\_which\_distro"} On which distribution is Bedrock Linux based?
 
@@ -214,7 +250,9 @@ Bedrock Linux is not based on or an offshoot of any other Linux distribution;
 it was written "from scratch." It has unusual twin goals of needing to be as
 minimal as possible while supporting the features necessary for a full-blown
 desktop. Rather than attempting to tweak an existing distribution into such a
-shape a new one was made from the ground up.
+shape a new one was made from the ground up.  Or, if you prefer to look at it
+from another point of view, it is "based" on every other major distribution, as
+that is where it gets the majority of its software.
 
 ## {id="overly-ambitious"} This sounds overly-ambitious. Do you really think you can pull this off?
 
