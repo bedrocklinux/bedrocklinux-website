@@ -25,6 +25,12 @@ Bedrock Linux 1.0beta2 Nyla Installation Instructions
 
 ## {id="notes"} Notes
 
+Bedrock Linux's installation provides quite a lot of flexibility.  This comes
+at the cost of substantial decision making during the installation process.  If
+you would like to avoid this and simply use a set of "sane defaults", try the
+[quick start](quickstart.html) instead of the full installation instructions
+described here.
+
 While installation (particularly via hijacking described below) is in some ways
 improved from prior releases, it is still a relatively rough and hands-on
 process.  If you are not an experienced Linux user it may be advisable to wait
@@ -575,9 +581,9 @@ set to "-1" it wait indefinitely.  For example:
 ### {it="configure-hostname"} Configure hostname
 
 The default hostname is "bedrock-box".  To change this, edit
-`/bedrock/etc/hostname` as desired.
+`/etc/hostname` as desired.
 
-Change "bedrock-box" in `/bedrock/etc/hosts` to your desired hostname
+Change "bedrock-box" in `/etc/hosts` to your desired hostname
 as well.
 
 ## {id="kernel"} Linux kernel and associated files
@@ -740,8 +746,8 @@ root is using brsh:
 - mv /etc/new-passwd /etc/passwd
 
 While `brsh` is very convenient for most instances, it may be wise to provide a
-way to bypass it in case something goes wrong.  Add a new username as an alias
-to the root user which uses `/bin/sh`:
+way to bypass it in case something goes wrong.  Add a new username "brroot" as
+an alias to the root user which uses `/bin/sh`:
 
 - {class="rcmd"}
 - sed -n 's/^root:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
