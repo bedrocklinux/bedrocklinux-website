@@ -84,7 +84,7 @@ As root, change directory to the root of the Bedrock Linux system then expand
 the tarball.
 
 - {class="rcmd"}
-- cd ~(/path/to/bedrock-linux/root~)
+- cd /
 - tar xvf ~(/path/to/bedrock-linux-tarball~)
 
 ## {id="acquire-strata"} Acquire other strata
