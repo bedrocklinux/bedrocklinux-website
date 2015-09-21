@@ -223,6 +223,18 @@ an alias to the root user which uses `/bin/sh`:
 - sed -n 's/^root:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
 - sed -n 's/^root:/br&/p' /etc/shadow >> /etc/shadow
 
+Non-root users should use brsh as well:
+
+- {class="rcmd"}
+- awk 'BEGIN{FS=OFS=":"} /^~(username~):/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
+- mv /etc/new-passwd /etc/passwd
+
+Optionally, provide a fall back for these non-root users:
+
+- {class="rcmd"}
+- sed -n 's/^~(username~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
+- sed -n 's/^~(username~):/br&/p' /etc/shadow >> /etc/shadow
+
 Next we'll need to add groups.  If you get a "group ~(group-name~) in use",
 this simply indicates you already have the group; no harm done.
 
