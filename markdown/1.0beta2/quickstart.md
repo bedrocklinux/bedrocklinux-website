@@ -7,7 +7,6 @@ Bedrock Linux 1.0beta2 Nyla Quick Start
 - [Notes](#notes)
 - [Hijack installation](#hijack-install-method)
 - [Compile userland](#compile-userland)
-- [Install Bedrock Linux userland](#install-userland)
 - [Acquire other strata](#acquire-strata)
 - [Configure](#configure)
 - [Manage users and groups](#manage-users-groups)
@@ -180,6 +179,24 @@ rest of the files into place:
 
 - {class="rcmd"}
 - cp -rpT /bedrock/global-files / && rm -r /bedrock/global-files
+
+If you're on Ubuntu or some other distro which expects you to always use sudo
+rather than logging in as root, either set a root password or ensure your
+normal user has sudoers before closing this shell, as the `cp` in the previous
+step overwrite sudoers.
+
+- {class="rcmd"}
+- passwd # set root password
+
+or
+
+- {class="rcmd"}
+- visudo # edit sudoers with checker
+
+or
+
+- {class="rcmd"}
+- ~(vi~) /etc/sudoers # edit sudoers directly
 
 Confirm you've got a file at `/etc/adjtime`.  If it looks like you don't,
 create one:
