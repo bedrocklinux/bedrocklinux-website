@@ -840,6 +840,7 @@ otherwise it may fail to boot.
 - adduser -h / -s /bin/false -D -H systemd-bus-proxy
 - adduser -h / -s /bin/false -D -H messagebus
 - adduser -h / -s /bin/false -D -H dbus
+- delgroup man; adduser -h / -s /bin/false -D -H man
 - addgroup daemon
 - addgroup adm
 - addgroup systemd-journal
