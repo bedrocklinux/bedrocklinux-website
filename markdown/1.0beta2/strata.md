@@ -354,8 +354,9 @@ Clean up:
 - rmdir ~(/mnt/crux-mount~)
 - rm ~(./pkgadd~)
 
-Configure CRUX's `/etc/rc.conf` at `/bedrock/strata/~(crux~)/etc/rc.conf`.  Be sure
-to set the `TIMEZONE` and `HOSTNAME` accordingly.
+Configure CRUX's `/etc/rc.conf` at `/bedrock/strata/~(crux~)/etc/rc.conf`.  Be
+sure to set the `TIMEZONE` to `/bedrock/etc/localtime` and `HOSTNAME` to the
+desired hostname.
 
 Finally, create an entry in `/bedrock/etc/strata.conf` file as explained
 in [the configuration page](configure.html), such as:
