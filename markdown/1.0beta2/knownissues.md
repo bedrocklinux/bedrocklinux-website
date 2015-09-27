@@ -9,6 +9,7 @@ released; more up-to-date information may be found at [the issue
 tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open)
 
 - [Only init stratum's init hooks work](#init)
+- [No such file on umount](#no-such-file-on-umount)
 - [brpath can't self-reference](#recursive-brp)
 - [One cannot use a stratum as a stand-alone system](#stand-alone)
 - [Manual work is required to manage time, firmware](#manual-handling-time-firmware)
@@ -32,6 +33,13 @@ All major init systems run `/etc/rc.local` at boot time, and `/etc/rc.local` is
 configured to be ~{global~}.  Thus relatively simple boot-time operations can
 be written to that file which should then work irrelevant of which init from
 which distro is being used.
+
+## {id="no-such-file-on-umount"} No such file on umount
+
+When shutting down a system, many init systems may report that they are unable
+to mount a given item because it does not exist.  This error message is
+harmless but annoying.  The init systems attempt to unmount the given item
+multiple times, and are surprised when it no longer exists the second time.
 
 ## {id="recursive-brp"} brpath can't self-reference
 
