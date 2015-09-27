@@ -17,22 +17,21 @@ tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open
 ## {id="init"} Only init stratum's init hooks work
 
 On typical Linux distributions, upon installing a package which may start a
-daemon at boot, the package would somehow leave indications for the init system
-on how it should be started.  Currently these hooks only automatically trigger
-for the ~{stratum~} which is currently providing init.  If you would like, for
-example, CUPS to start at boot, the easiest solution is to install it into the
-~{init~} ~{statum~}.
+daemon at boot, the package will leave instructions for the init system
+regarding how the daemon should be started.  Currently these hooks only
+automatically trigger for the ~{stratum~} which is currently providing init.
+If you would like, for example, CUPS to start at boot, the easiest solution is
+to install it from the ~{init~} ~{statum~}.
 
-Note, however, that it is very possible to manually add new init hooks which
-work across ~{stratum~}.  Be sure to use `brc` as appropriate.  See the
-documentation for both the given init system in use (and/or the corresponding
-distro) as well as the documentation for the software you would like to run at
-boot.
+It is very possible to manually add new init hooks which work across
+~{stratum~}.  Be sure to use `brc` as appropriate.  See the documentation for
+both the given init system in use (and/or the corresponding distro) as well as
+the documentation for the software you would like to run at boot.
 
-Additionally, note that all major init systems run `/etc/rc.local` at boot
-time, and that `/etc/rc.local` is configured to be ~{global~}.  Thus relatively
-simple boot-time operations can be written to that file which should then work
-irrelevant of which init from which distro is being used.
+All major init systems run `/etc/rc.local` at boot time, and `/etc/rc.local` is
+configured to be ~{global~}.  Thus relatively simple boot-time operations can
+be written to that file which should then work irrelevant of which init from
+which distro is being used.
 
 ## {id="recursive-brp"} brpath can't self-reference
 
@@ -41,13 +40,13 @@ alternative view of the filesystem.  However, due to a technical implementation
 limitation it locks up when attempting to show an alternative view of itself.
 Do not configure `brp` to use any path which leads back to `/bedrock/brpath`.
 
-## {id="stand-alone"} One cannot use a stratum as a stand-alone system
+## {id="stand-alone"} Cannot use a stratum as a stand-alone system
 
 If one reboots into a ~{stratum~} as its own stand-alone system, global files -
 especially `/etc/passwd`, `/etc/group` and `/etc/shadow` - may not be properly
 in place.  Things such as UIDs and GIDs may be out-of-sync from what may be on
 the rest of the filesystem.  There are plans to have Bedrock Linux merge
-certain /etc files when enabling/disabling a ~{stratum~} to remedy this, but
+certain `/etc` files when enabling/disabling a ~{stratum~} to remedy this, but
 these plans have not yet been implemented.
 
 ## {id="manual-handling-time-firmware"} Manual work is required to manage time, firmware
