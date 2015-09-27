@@ -280,17 +280,13 @@ normally would.
 
 CRUX runs `depmod` on boot which can take a while.  It is not strictly needed
 every boot.  To disable this and speed up boot time, edit
-`/bedrock/strata/~(crux~)/etc/rc.conf` and change
+`/bedrock/strata/~(crux~)/etc/rc.modules` and change
 
-	if [ -x /etc/rc.modules ]; then
-		/etc/rc.modules
-	fi
+	/sbin/depmod -a
 
 to
 
-	#if [ -x /etc/rc.modules ]; then
-	#	 /etc/rc.modules
-	#fi
+	# /sbin/depmod -a
 
 #### {id="crux-shutdown-freeze"} CRUX shutdown freeze
 
@@ -301,8 +297,8 @@ move `rc.shutdown` elsewhere so `/etc/` is not ripped out from under it.  As
 root:
 
 - {class="rcmd"}
-- mv /bedrock/strata/~(crux~)/etc/rc.shutdown /bedrock/strata/~(crux~)/rc.local
-- ln -s ../rc.local /bedrock/strata/~(crux~)/etc/rc.local
+- mv /bedrock/strata/~(crux~)/etc/rc.shutdown /bedrock/strata/~(crux~)/rc.shutdown
+- ln -s ../rc.shutdown /bedrock/strata/~(crux~)/etc/rc.shutdown
 
 #### {id="crux-timezone"} CRUX timezone
 
