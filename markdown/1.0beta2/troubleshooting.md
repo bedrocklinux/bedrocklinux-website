@@ -32,6 +32,8 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 		- [Slow boot](#crux-slow-boot)
 		- [Freeze on shutdown](#crux-shutdown-freeze)
 		- [Timezone](#crux-timezone)
+	- [Alpine](#alpine)
+		- [No hostname](#alpine-no-hostname)
 
 ## {id="tips"} Tips
 
@@ -325,3 +327,14 @@ to
 
 This will force CRUX to use `/etc/localtime`, which (with default Bedrock Linux
 configuration) will be a copy of `/bedock/etc/localtime`.
+
+### {id="alpine"} Alpine
+
+#### {id="alpine-no-hostname"} No hostname
+
+If acquired via [Alpine stratum acquiring instructions](strata.html#alpine),
+the openrc service to set the hostname is not enabled by default, and thus the
+hostname is not set.  To enable it at boot, run
+
+- {class="rcmd"}
+- ln -s hostname /bedrock/strata/~(alpine~)/etc/init.d/hostname
