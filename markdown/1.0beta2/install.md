@@ -820,6 +820,7 @@ Adding typical expected groups:
 - addgroup input
 - addgroup utmp
 - addgroup plugdev
+- addgroup uucp
 
 It may be desirable to add your normal user to the "audio" and "video" groups:
 
@@ -842,6 +843,7 @@ otherwise it may fail to boot.
 - addgroup daemon
 - addgroup adm
 - addgroup systemd-journal
+- addgroup systemd-journal-remote
 - addgroup systemd-timesync
 - addgroup systemd-network
 - addgroup systemd-resolve
@@ -850,6 +852,10 @@ otherwise it may fail to boot.
 - addgroup dbus
 - addgroup netdev
 - addgroup bluetooth
+- addgroup optical
+- addgroup storage
+- addgroup lock
+- addgroup uuidd
 
 If you want to add any other users or groups, now is a good time.  Once you're
 done, exit the chroot.
