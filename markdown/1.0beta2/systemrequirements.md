@@ -40,10 +40,10 @@ for embedded-style systems.
 ## {id="storage"} Storage
 
 Depending on what you choose to compile into the Linux Kernel and Busybox,
-Hawky should fit snuggly within only a handful of megabytes of disk space
-(although a fully-loaded Linux Kernel can take tens if not hundreds of
-megabytes). However, Bedrock Linux is of limited use without any ~{strata~}, and
-the ~{strata~} can take quite a bit of space. See the disk space requirements for
-the ~{stratum~} Linux distributions you are interested in. As a rule of thumb, a
-gigabyte of disk space should be set aside for each ~{stratum~} distribution, with
-more preferred.
+Bedrock Linux should fit snuggly within only a handful of megabytes of disk
+space (although a fully-loaded Linux Kernel can take tens if not hundreds of
+megabytes). However, Bedrock Linux is of limited use without any ~{strata~},
+and the ~{strata~} can take quite a bit of space. See the disk space
+requirements for the ~{stratum~} Linux distributions you are interested in. As
+a rule of thumb, a gigabyte of disk space should be set aside for each
+~{stratum~} distribution, with more preferred.

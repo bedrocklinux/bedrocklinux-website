@@ -166,29 +166,29 @@ distro can provide the following requirements for compiling Bedrock Linux:
 - gettext (needed for FUSE)
 - fakeroot (for building tarball with proper permissions)
 
-Partition via preferred tools, e.g. fdisk or gparted.
-
-For the most part, whatever partitioning scheme you prefer for other distros
-should be fine.  If you like to make multiple partitions for different
-directories, keep in mind that the majority of your userland will end up in a
-new, Bedrock Linux-specific directory at `/bedrock/strata/`.  You could make
-`/bedrock/strata` its own partition, or perhaps make one for each ~{stratum~}
-that ends up in that directory.  If you aren't sure what to do here, one big
-partition for the root directory and a swap partition about 2.5 times your RAM
-size should be fine.
+Partition via preferred tools, e.g. fdisk or gparted.  For the most part,
+whatever partitioning scheme you prefer for other distros should be fine.  If
+you like to make multiple partitions for different directories, keep in mind
+that the majority of your userland will end up in a new, Bedrock Linux-specific
+directory at `/bedrock/strata/`.  You could make `/bedrock/strata` its own
+partition, or perhaps make one for each ~{stratum~} that ends up in that
+directory.  If you aren't sure what to do here, one big partition for the root
+directory and a swap partition about 2.5 times your RAM size should be fine.
 
 Set up a bootloader.  Instructions for setting up syslinux are provided
 [here](syslinux.html).  If you prefer something else, e.g. GRUB2, you'll have
 to find instructions elsewhere.
 
 While it should be possible to manually set up full disk encryption, RAID, etc;
-no instructions are provided here to do so.  Either find instructions elsewhere
-or use the hijack installation method with a distro that provides full disk
-encryption, RAID, etc.
+no instructions are provided here to do so.  If you want to utilize such
+technologies, either find instructions elsewhere or use the hijack installation
+method with a distro that provides full disk encryption, RAID, etc.
 
-Mount the partitions wherever you like.  Note the instructions below merge with
-the hijack installation method; they will mention things such as "if you
-are doing a hijack install" or "if you are doing a manual install".
+Mount the partitions wherever you like.
+
+Note the instructions below merge with the hijack installation method; they
+will mention things such as "if you are doing a hijack install" or "if you are
+doing a manual install".
 
 ## {id="compile-userland"} Compile userland
 
@@ -351,6 +351,18 @@ point other than your root directory, run:
 If you change shells, reboot, etc. at any point be sure to update the variable
 as future installation commands reference it.
 
+Some initrds assume directories existing on the root filesystem.  Ensure these
+directories exist to appease the initrds:
+
+- {class="rcmd"}
+- for dir in dev proc sys mnt root tmp var run bin; do mkdir -p $ROOTFS/$dir; done
+
+Additionally, many people are accustomed to debugging a system by setting
+"init=/bin/sh".  Ensure this option exists:
+
+- {class="rcmd"}
+- [ -e $ROOTFS/bin/sh ] || ln -s /bedrock/libexec/busybox $ROOTFS/bin/sh
+
 ### {id="configure-global"} Configure global stratum
 
 Bedrock Linux refers to a special set of files as ~{global~} files.  These
@@ -366,7 +378,7 @@ files.  Consider:
   up, you'll want to use the ~{rootfs~} as your ~{global~}
   ~{stratum~} to continue using things like your already setup `$HOME`
   directory.  Additionally, using a hijacked distro as *both* ~{rootfs~}
-  *and* ~{global~} will make a latter installation step (placing various
+  *and* ~{global~} will make a later installation step (placing various
   kernel-related files in the correct place) slightly easier.
 
 - ~{global~} will hold key files you do not want to remove.  Placing them in
@@ -464,7 +476,7 @@ If you are doing a hijack install and you're using a fresh ~{global~}
 ~{stratum~} to use them as a base set of passwd/group/shadow files:
 
 - {class="rcmd"}
-- cp -rp $ROOTFS/etc/passwd $ROOTFS/etc/group $ROOTFS/etc/shadow $GLOBAL
+- cp -rp $ROOTFS/etc/passwd $ROOTFS/etc/group $ROOTFS/etc/shadow $GLOBAL/etc/
 
 If you are doing a manual install and you're using a fresh ~{global~}
 ~{stratum~} that only contains ~{global~} files, you can copy over your current
@@ -472,7 +484,7 @@ system's `/etc/passwd`, `/etc/group`, and `/etc/shadow` files into the
 ~{global~} ~{stratum~} to use them as a base set of passwd/group/shadow files:
 
 - {class="rcmd"}
-- cp -rp /etc/passwd /etc/group /etc/shadow $GLOBAL
+- cp -rp /etc/passwd /etc/group /etc/shadow $GLOBAL/etc/
 
 Or, alternatively, you can create a new set of these files (root password is
 "bedrock", be sure to change this later):
@@ -581,9 +593,9 @@ set to "-1" it wait indefinitely.  For example:
 ### {it="configure-hostname"} Configure hostname
 
 The default hostname is "bedrock-box".  To change this, edit
-`/etc/hostname` as desired.
+`$GLOBAL/etc/hostname` as desired.
 
-Change "bedrock-box" in `/etc/hosts` to your desired hostname
+Change "bedrock-box" in `$GLOBAL/etc/hosts` to your desired hostname
 as well.
 
 ## {id="kernel"} Linux kernel and associated files
@@ -598,7 +610,7 @@ bootloader](#configure-bootloader) step.
 ### {id="boot-files"} /boot files
 
 Typically one or more Linux kernel images and some associated files, such as
-initrds, are placed into `/boot`.  These files are:
+initrds, are placed into `$ROOTFS/boot/`.  These files are:
 
 - The kernel image itself, which usually looks like ~(vmlinuz-VERSION-ARCH~).
 - An initrd.  Some distros do not use these, but most do.  They usually look
@@ -628,11 +640,11 @@ install them, like so:
 From here, run whatever commands are necessary to install the kernel.  For
 example, in a x86\_64 Debian-based ~{stratum~}, run:
 
-	{class="rcmd"} apt-get install linux-image-amd64
+	{class="rcmd"} apt-get update && apt-get install linux-image-amd64
 
 or for an Arch Linux ~{stratum~} run
 
-	{class="rcmd"} pacman -S linux
+	{class="rcmd"} pacman -Sy linux
 
 When you have finished, run the following to clean up:
 
@@ -668,6 +680,7 @@ copied in the previous step.  Copy these modules into `$GLOBAL/lib/modules`.
 For example if an Arch Linux ~{strata~} provides the desired files:
 
 - {class="rcmd"}
+- mkdir -p $GLOBAL/lib/modules
 - cp -rp /bedrock/strata/arch/lib/modules/\* $GLOBAL/lib/modules/
 
 ### {id="firmware"} firmware
@@ -695,7 +708,8 @@ start.  Copy the various firmware files from the various ~{strata~} into
 `$ROOTFS/lib/modules/`:
 
 - {class="rcmd"}
-- cp -rp /bedrock/strata/\*/lib/modules/\* $ROOTFS/lib/modules
+- mkdir -p $ROOTFS/lib/firmware
+- cp -rp /bedrock/strata/\*/lib/firmware/\* $ROOTFS/lib/firmware/
 
 ## {id="manage-users-groups"} Manage users and groups
 
@@ -762,6 +776,7 @@ from the hijacked install:
 If that does not print "1", add the user:
 
 - {class="rcmd"}
+- mkdir -p /home
 - adduser -s /bedrock/bin/brsh -D ~(username~)
 
 Set the user's password:
@@ -841,6 +856,8 @@ done, exit the chroot.
 
 - {class="rcmd"}
 - exit
+
+Consider editing other global configuration files such as `/etc/sudoers` now.
 
 ## {id="configure-bootloader"} Configure bootloader
 

@@ -86,7 +86,7 @@ For example, to install the (64-bit) x86\_64 Debian jessie to
 `/bedrock/strata/jessie` using `http://ftp.us.debian.org/debian`:
 
 - {class="rcmd"}
-- debootstrap --arch amd64 jessie /bedrock/strata/squeeze http://ftp.us.debian.org/debian
+- debootstrap --arch amd64 jessie /bedrock/strata/jessie http://ftp.us.debian.org/debian
 
 It may take a bit to download and unpackage the various components.
 
@@ -296,7 +296,7 @@ Then, extract it into its own directory
 - {class="cmd"}
 - mkdir xbps-static
 - cd xbps-static
-- tar xvf xbps-static\* ~(/path/to/xbps-static-tarball~)
+- tar xvf ~(/path/to/xbps-static-tarball~)
 
 Next, as root, tell it to acquire the files:
 
@@ -354,7 +354,7 @@ Clean up:
 - rmdir ~(/mnt/crux-mount~)
 - rm ~(./pkgadd~)
 
-Configure CRUX's `/etc/rc.conf` at `/bedrock/strata/crux/etc/rc.conf`.  Be sure
+Configure CRUX's `/etc/rc.conf` at `/bedrock/strata/~(crux~)/etc/rc.conf`.  Be sure
 to set the `TIMEZONE` and `HOSTNAME` accordingly.
 
 Finally, create an entry in `/bedrock/etc/strata.conf` file as explained

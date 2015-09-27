@@ -30,20 +30,9 @@ given release in case there are any known issues.  You should probably at least
 skim the contents of the doc/ directory in the tarball as well.  If you are
 using BTRFS, you need at least version 4.0.
 
-Note: These instructions were written for Syslinux 6.01.  6.02 - the latest at
-the time of writing - has been found to have issues `chain.c32`.  6.03 has been
-released since this document was written, but it has not yet been tested.
-
-If you do not have a `$ROOTFS` variable pointing to the Bedrock Linux mount
-point from the installation instructions, make one:
-
-- {class="rcmd"}
-- export ROOTFS=~(/path/to/bedrock-linux/root~)
-
-Make a directory to install extlinux into:
-
-- {class="rcmd"}
-- mkdir -p $ROOTFS/boot/extlinux
+Note: These instructions were written for Syslinux 6.01.  6.02 has been found
+to have issues `chain.c32`.  6.03 has been released since this document was
+written, but it has not yet been tested.
 
 Unpackage syslinux and change directories into the extlinux subdirectory in it:
 
@@ -79,6 +68,18 @@ indicating the location of the unpackaged source:
 
 - {class="rcmd"}
 - export SYSLINUX=~(/path/to/syslinux/source~)
+
+If you do not have a `$ROOTFS` variable pointing to the Bedrock Linux mount
+point from the installation instructions, make one:
+
+- {class="rcmd"}
+- export ROOTFS=~(/path/to/bedrock-linux/root~)
+
+Make a directory to install extlinux into:
+
+- {class="rcmd"}
+- mkdir -p $ROOTFS/boot/extlinux
+
 
 Find the `extlinux` executable:
 
@@ -152,11 +153,11 @@ Consider changing the following:
   Bedrock's main/root partition or its `/boot` partition if you made one.
 - Change ~(vmlinuz-KERNEL-VERSION~) to the filename of a kernel image installed
   into `$ROOTFS/boot`.  If you don't have any yet, you should get at least one
-  during the installation instructions - once you've done that update this file.
+  during the installation instructions - **once you've done that update this file**.
 - Like the kernel image, you'll want to update ~(INITRD ../initrd.img-VERSION~)
   to the initrd you are using, if any.  If you don't have any yet you probably
-  will acquire at least one during later installation instructions.  Update
-  this file at that time.
+  will acquire at least one during later installation instructions.  **Update
+  this file at that time**.
 - You may also change ~(menu.c32~) to ~(vesamenu.c32~) for a fancier menu or
   remove the `~(UI menu.c32~)` line completely for a command line interface.
 

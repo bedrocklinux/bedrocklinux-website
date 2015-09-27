@@ -4,8 +4,8 @@ Nav: nyla.nav
 Bedrock Linux 1.0beta2 Nyla Concepts
 ====================================
 
-The text below is an introduction toof the key concepts, theory, and
-terminology behind Bedrock Linux 1.0beta2 Nyla.
+The text below is an introduction too the key concepts, theory, and terminology
+behind Bedrock Linux 1.0beta2 Nyla.
 
 - [Problem to solve](#problem)
 - [Local vs global files](#local-vs-global)
@@ -33,12 +33,12 @@ environment in which it will be utilized.  These assumptions hold true for a
 given release of a given distribution but will not hold true in other contexts.
 Thus, one cannot simply install a non-native package and expect it to work.
 One technique which will allow software to function in a non-native distro is
-to segregate it from the rest of the system via things like containers.  Doing
-so, however, means the given piece of software's ability to interact with the
-rest of the system is severely limited, and the users' workflow must change to
-accommodate this.  The fundamental problem Bedrock Linux is attempting to solve
-is how to overcome the environment conflicts *without* segregating the software
-from the rest of the system.
+to segregate it from the rest of the system via tools such as containers.
+Doing so, however, means the given piece of software's ability to interact with
+the rest of the system is severely limited, and the users' workflow must change
+to accommodate this.  The fundamental problem Bedrock Linux is attempting to
+solve is how to overcome the environment conflicts *without* segregating the
+software from the rest of the system.
 
 Various assumptions software often makes about its environment include but are
 not limited to:
@@ -59,7 +59,7 @@ not limited to:
   ones.  A proper fix would be to simply use `#!/bin/bash`, but sadly this is
   not always an exercised practice.
 
-- Software may have requirements about what program has a given PID.  This is
+- Software may have requirements about which program has a given PID.  This is
   particularly common with init-related commands which may have requirements
   about what is providing PID 1.  For example, a sysv `reboot` command will not
   work on a system where PID 1 is provided by systemd.
@@ -73,9 +73,9 @@ not limited to:
   kernel build from another distro this feature may be missing.
 
 While Bedrock Linux, as of 1.0beta2 Nyla, does not solve all of these kinds of
-problems, it does many of the more pressing ones. It thus allows quite a lot of
-software from various, typically mutually-exclusive, Linux distributions to
-"just work" when utilized in Bedrock Linux.
+problems, it does solve many of the more pressing ones. It thus allows quite a
+lot of software from various, typically mutually-exclusive, Linux distributions
+to "just work" when utilized in Bedrock Linux.
 
 ## {id="local-vs-global"} Local vs global files
 
@@ -118,9 +118,9 @@ One can also think of ~{strata~} as slices of the filesystem.  Each slice is
 uniform in environment expectations, but they exist side-by-side and, together,
 make the entire system.
 
-~{Strata~} were previously referred to as "~{clients~}", but sadly that term was
-found to be misleading and lead to regular misunderstandings.  For example, it
-implies a client-server relationship, when no such thing exists in Bedrock
+~{Strata~} were previously referred to as "~{clients~}", but sadly that term
+was found to be misleading and led to regular misunderstandings.  For example,
+it implies a client-server relationship, when no such thing exists in Bedrock
 Linux. ~{Strata~} is a much more fitting mental image for what is actually
 happening.
 
@@ -191,14 +191,13 @@ Linux must determine which if any ~{local~} file to provide so that both
 environment expectations are met *and* things interact smoothly as they would
 if they were all from the same distribution.
 
-From a high-level conceptually point of view, when a filesystem access attempt
+From a high-level, conceptual point of view, when a filesystem access attempt
 is made, Bedrock Linux goes through the following rules to determine which if
-any ~{stratum~} should provide the given file.
-
-The end result of these rules is that various pieces of software will see the
-correct instance of a file if there is some associated environment expectation
-without constraining them such that they would lose the ability to fully
-interact with software from other distros.
+any ~{stratum~} should provide the given file.  The end result of these rules
+is that various pieces of software will see the correct instance of a file if
+there is some associated environment expectation without constraining them such
+that they would lose the ability to fully interact with software from other
+distros.
 
 Note that while it is useful to understand these rules to tweak or debug them,
 it is not expected that one keeps them in mind during typical, day-to-day
@@ -224,9 +223,9 @@ use:
 
     /bedrock/strata/crux/etc/rc.conf
 
-Specify an Executables require a different access method.  Instead, the given
-executable should be prefixed with `brc ~(stratum-name~)`, as one would do
-with the `sudo -u` or `chroot` commands.
+Specify a file to execute require a different access method.  Instead, the
+given executable should be prefixed with `brc ~(stratum-name~)`, as one would
+do with the `sudo -u` or `chroot` commands.
 
 For example, to explicitly run Arch Linux's `vim`, one could run:
 
@@ -237,9 +236,9 @@ These two systems can be combine.  To use Arch's `/usr/bin/vim` to edit Crux's
 
     brc arch vim /bedrock/strata/crux/etc/rc.conf
 
-Please note that this ~{explicit~} acceses - and the tedium which results from
+Please note that this ~{explicit~} access - and the tedium which results from
 the extra text to associate the given ~{stratum~} - is relatively rare compared
-to the other rules.  It is mostly used as an override.  For most things the
+to the other rules.  It is primarily used as an override.  For most things the
 system will automatically determine which ~{stratum~} is appropriate from the
 following rules.
 
@@ -257,12 +256,12 @@ dependency, possibly a picky one such that failing to provide the exact file
 will cause a failure.  In these situations Bedrock Linux will provide the given
 file from the same ~{stratum~} as the program which requested it came from.  If
 `apt-get` from a Linux Mint ~{stratum~} requests `/etc/apt/sources.list`, the
-Linux ~mint copy of `/etc/apt/sources.list` is provided.  Thus, dependencies -
+Linux Mint copy of `/etc/apt/sources.list` is provided.  Thus, dependencies -
 and hence environmental expectations - are met.
 
 ### {id="implicit-access"} Implicit Access
 
-~{implicit~} access occurs when neither a specific path nor a specific
+~{Implicit~} access occurs when neither a specific path nor a specific
 ~{stratum~} is provided.  In these situations Bedrock Linux is afforded some
 freedom to chose which file from which ~{stratum~} to chose.  However, the
 possibility of a specific environment expectation remains in these situations,
@@ -276,9 +275,10 @@ Note that ~{implicit~} access is always read-only.
 
 #### {id="high-implicit-access"} High Implicit Access
 
-If the given file has some expecation which Bedrock Linux cannot automatically
-detect via ~{local-implicit~} (described below), one can configure Bedrock
-Linux to always ~{implicitly~} provide a given file from a given ~{stratum~}.
+If the given file has some expectation which Bedrock Linux cannot automatically
+detect via ~{local-implicit~} (described below), [one can
+configure](configure.html#brp.conf) Bedrock Linux to always ~{implicitly~}
+provide a given file from a given ~{stratum~}.
 
 For example, the `reboot` command needs to be tied to the ~{stratum~} providing
 init/PID1.  An openrc-using Alpine Linux `reboot` will not reboot a system which
@@ -290,7 +290,7 @@ highest priority of any of the ~{implicit~} access rules.
 
 Do note that running `/usr/sbin/reboot` is considered ~{direct~} access;
 programs which attempt to run `/usr/sbin/reboot` (e.g. the shutdown button from
-a Desktop Enviornment) will get the ~{local~} ~{stratum~} copy and may fail to
+a desktop environment) will get the ~{local~} ~{stratum~} copy and may fail to
 work.  Sadly, Bedrock Linux's transparency breaks down here: users will be
 required to configure/adjust things to use ~{implicit~} access in these
 situations.  Luckily, these situations are fairly rare.
@@ -415,7 +415,8 @@ general idea.  This information is not required to utilize Bedrock Linux.
 - Which of the three ~{implicit~} access rules is chosen via `$PATH`-like
   variables for different applications.  For example, `man` looks through the
   `$MANPATH` when looking for a man page.  If a rule is invalid, no file will
-  exist for the respective location in the `$PATH`-like variable.
+  exist for the respective location in the `$PATH`-like variable, and thus
+  access will fall through to the next ~{implicit~} rule.
 - ~{high implicit~} and ~{low implicit~} rules are implemented via another FUSE
   filesystem, `brp`.  This populates the directories in the `$PATH`-like
   variables on-the-fly depending on configuration and what files are available
@@ -429,6 +430,6 @@ general idea.  This information is not required to utilize Bedrock Linux.
 The specific details described above vary from release to release as better
 ways of solving the fundamental problem are found, and thus information such as
 what is described here can quickly become outdated.  A full, detailed white
-paper is planned for after Bedrock Linux hits 1.0 stable and thus stabilizes.
-At such a time the white paper contents will be valid for a long enough time to
-justify the effort placed into writing it.
+paper is planned to be written and released when Bedrock Linux stabilizes at a
+1.0 stable release.  At such a time the white paper contents will be valid for
+a long enough time to justify the effort placed into writing it.

@@ -37,10 +37,10 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 
 ### {id="stratum-aliases"} Stratum Aliases
 
-Rather than typing `brc ~(stratum~)`, one can shave some keystroke by generating
-aliases for all of the ~{strata~}, like so:
+Rather than typing `brc ~(stratum~)`, one can shave some keystrokes by
+generating aliases for all of the ~{strata~}, like so:
 
-	for STRATUM in $(bri -l | grep -v '^local$')
+	for STRATUM in $(bri -i)
 	do
 		alias $STRATUM="brc $STRATUM"
 		alias s$STRATUM="sudo brc $STRATUM"
@@ -55,21 +55,24 @@ Consider placing that loop, or something similar, in your shell's rc file.
 The official Nvidia proprietary drivers works well in Bedrock Linux if set up
 properly.
 
-Note, the proprietary nvidia drivers are functionally two components: the
-userland component and the kernel module.  The goal is to get the kernel module
-in `/lib/modules` so it can be utilized by the rest of the system and to get
-the userland component into (1) the ~{stratum~} that provides xorg and (2)
-other ~{strata~} which you would like to have graphics acceleration.  Finally,
-note that mixing nvidia driver version probably isn't a good idea; it may be
-best to stick with a single version everywhere.
+The proprietary nvidia drivers are functionally two components: the userland
+component and the kernel module.  The goal is to get the kernel module in
+`/lib/modules` so it can be utilized by the rest of the system and to get the
+userland component into (1) the ~{stratum~} that provides xorg and (2) other
+~{strata~} which you would like to have graphics acceleration.  Finally, note
+that mixing Nvidia driver version probably isn't a good idea; it may be best to
+stick with a single version everywhere.
 
-First, download the appropriate release of the nVidia Linux drivers as can be
-found [here](http://www.nvidia.com/object/unix.html).  Keep it somewhere that
-will continue across reboots, as you may reboot soon.
+While many distros do provide proprietary Nvidia drivers in their repos,
+different ~{strata~} will most likely have different versions of the driver.
+Since uniformity is desired here, use the official Nvidia Linux drivers from
+the Nvidia website instead.  Download the appropriate release of the Nvidia
+Linux drivers from [here](http://www.nvidia.com/object/unix.html).  Keep it
+somewhere that will continue across reboots, as you may reboot soon.
 
-Note that nvidia's proprietary drivers do not play nicely with the nouveau
-drivers, and so the nouveau drivers must be disabled.  Create or append to the
-file at `/etc/modprobe.d/blacklist` the following:
+Nvidia's proprietary drivers do not play nicely with the nouveau drivers, and
+so the nouveau drivers must be disabled.  Create or append to the file at
+`/etc/modprobe.d/blacklist` the following:
 
 	blacklist nouveau
 
@@ -78,9 +81,9 @@ difficulty `{class="rcmd"} rmmod`'ing it because it is in use, reboot.  If it
 appears your initrd is loading it, add "rdblacklist=nouveau" to your
 bootloader's kernel line.
 
-Next, the proprietary driver module.  In the ~{stratum~} that provides the
-kernel (so the versions match), install the proprietary nvidia driver module by
-doing one of the following:
+Next, install the proprietary driver module.  In the ~{stratum~} that provides
+the kernel (so the versions match), install the proprietary nvidia driver
+module by doing one of the following:
 
 - Using the official proprietary nvidia driver with the `-K` option to install
   only the kernel.
@@ -89,9 +92,9 @@ doing one of the following:
   importantly, the kernel module.
 
 Finally, install the userland component in all of the ~{strata~} which you
-would like to have acceleration in xorg.  For each of these ~{strata~}run the
-nVidia proprietary driver installer with the `--no-kernel-module` option.  If
-you have a 32-bit ~{stratum~}, on a 64 bit system, you can use the x86 nvidia
+would like to have acceleration in xorg.  For each of these ~{strata~} run the
+Nvidia proprietary driver installer with the `--no-kernel-module` option.  If
+you have a 32-bit ~{stratum~} on a 64 bit system, you can use the x86 nvidia
 driver prefixed with "linux32" so it doesn't complain about being on a 64 bit
 system.  If you are installing this into a ~{stratum~} while the system is
 already running xorg, as long as the ~{stratum~} in which you are installing
@@ -127,8 +130,9 @@ If you run `startx` and do not have a keyboard or mouse:
   [magic sysrq on linux](http://en.wikipedia.org/wiki/Magic_SysRq_key) if
   you're not familiar with it.
 
-- Try using `udev` if you aren't already.  Boot with a ~{stratum~} from some
-  distro that defaults to starting `udev` at boot - most major ones do.
+- Try using `udev` if you aren't already (e.g. in contrast to `mdev`).  Boot
+  with a ~{stratum~} from some distro that defaults to starting `udev` at boot
+  - most major ones do.
 
 - Ensure you have the relevant keyboard and mouse packages installed.  On
   Debian-based systems, these would be `xserver-xorg-input-kbd` and
@@ -173,13 +177,13 @@ First, look at `/etc/group` and find the number corresponding with the group
 
 	mount -o remount,gid=~(tty-gid-number~) /dev/pts
 
-and the "grantpt failed" error no longer persist in the next reboot.  You can
-also apply that command to fix the issue for the current session.
+and the "grantpt failed" error should no be resolved in the next reboot.  You
+can also apply that command to fix the issue for the current session.
 
 ### {id="time"} time issues
 
 Some distros unmount filesystems before writing the system clock to the
-hardware clock.  This means the global adjtime file is not available, which in
+hardware clock.  This means the global `/etc/adjtime` file is not available, which in
 turn means information such as clock drift and whether the hardware clock is in
 local vs UTC time is not being utilized properly.
 
@@ -203,18 +207,18 @@ Write to the hardware clock with
 
 #### {id="upstart-fix"} Ubuntu/Upstart fix
 
-Older releases of Ubuntu uses Upstart for its init system. Many services in
+Older releases of Ubuntu uses Upstart for their init system. Many services in
 Ubuntu have been modified to depend on `init` to be specific to Upstart and
-refuse to operate otherwise. This means they do not work in chroots out of the
-box. See the
-[here](https://bugs.launchpad.net/ubuntu/+source/upstart/+bug/430224) for more
-information. One way to alleviate this is to run the following two commands as
-root (within the Ubuntu ~{stratum~}, via using `brc` for each command or `brc`
-to open a shell in the ~{stratum~} and run it from the shell):
+refuse to operate otherwise.  Since Bedrock Linux may use a different init
+system while attempting to run software from Ubuntu, such software may fail.
+See the [here](https://bugs.launchpad.net/ubuntu/+source/upstart/+bug/430224)
+for more information. One way to alleviate this is to run the following two
+commands as root (within the Ubuntu ~{stratum~}, via using `brc` for each
+command or `brc` to open a shell in the ~{stratum~} and run it from the shell):
 
 - {class="rcmd"}
-- dpkg-divert --local --rename --add /sbin/initctl
-- ln -s /bin/true /sbin/initctl
+- brc ~(ubuntu-stratum~) dpkg-divert --local --rename --add /sbin/initctl
+- brc ~(ubuntu-stratum~) ln -s /bin/true /sbin/initctl
 
 #### {id="locale"} Locale packages
 
@@ -243,12 +247,12 @@ symlink and just create an empty file in its place
 
 #### {id="pacman-filesystem-errors"} Pacman Filesystem Errors
 
-If you get errors about `could not get filesystem information for ~(PATH~)`
-when using `pacman`, this is normal and mostly harmless so long as you have
-sufficient free disk space for the operation you are attempting. This seems to
-be caused by `pacman` assuming that the mount points it sees are the same as the
-ones init sees (which would be a fair assumption in almost every case except
-Bedrock Linux). You can configure `pacman` to not check for free disk space by
+Errors stating "could not get filesystem information for ~(PATH~)" when using
+`pacman` are normal and mostly harmless so long as you have sufficient free
+disk space for the operation you are attempting. This seems to be caused by
+`pacman` assuming that the mount points it sees are the same as the ones init
+sees (which would be a fair assumption in almost every case except Bedrock
+Linux). You can configure `pacman` to not check for free disk space by
 commenting out `CheckSpace` from `/bedrock/strata/~(arch~)/etc/pacman.conf`
 
 ### {id="fedora"} Fedora
@@ -259,11 +263,11 @@ Febootstrap does not seem to always include the `fedora-release` package. This i
 troublesome, as the package is utilized to access the Fedora repositories. If you
 find difficulties using `yum`, you might be able to resolve this by downloading
 the `fedora-release` package for the given release (e.g.:
-`fedora-release-17.noarch.rpm`), and install it thusly (from within the Fedora
+`fedora-release-17.noarch.rpm`) and installing it (from within the Fedora
 ~{stratum~}, via `brc`):
 
 - {class="rcmd"}
-- rpm -i fedora-~(VERSION~).noarch.rpm
+- brc ~(heisenbug~) rpm -i fedora-~(VERSION~).noarch.rpm
 
 You should then be able to use `yum` to access Fedora's repositories as one
 normally would.
@@ -273,7 +277,7 @@ normally would.
 #### {id="crux-slow-boot"} Slow boot
 
 CRUX runs `depmod` on boot which can take a while.  It is not strictly needed
-every boot.  To disable this and speed up boot time a bit, edit
+every boot.  To disable this and speed up boot time, edit
 `/bedrock/strata/~(crux~)/etc/rc.conf` and change
 
 	if [ -x /etc/rc.modules ]; then

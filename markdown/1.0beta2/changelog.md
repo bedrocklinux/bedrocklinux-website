@@ -16,7 +16,7 @@ Hawky to Bedrock Linux 1.0beta2 Nyla:
   via a new utility `brn`.
 - Support for ~{strata~} aliases.
 - Support for `brp` `pinning`: can now configure ~{implicit~} items which
-  out-prioritize `local` access.
+  out prioritize `local` access.
 - Much improved error messages from `brc`.
 - Preparatory work done for binary distribution: build system now results in a
   relocatable tarball.

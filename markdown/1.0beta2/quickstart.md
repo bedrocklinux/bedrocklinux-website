@@ -86,6 +86,24 @@ the tarball.
 - cd /
 - tar xvf ~(/path/to/bedrock-linux-tarball~)
 
+`tar` does not track extended filesystem attributes, and `brc` requires a
+special attribute to allow non-root users to utilize it.  To set this
+attribute, run:
+
+    {class="rcmd"} /bedrock/libexec/setcap cap_sys_chroot=ep /bedrock/bin/brc
+
+Some initrds assume directories existing on the root filesystem.  Ensure these
+directories exist to appease the initrds:
+
+- {class="rcmd"}
+- for dir in dev proc sys mnt root tmp var run bin; do mkdir -p /$dir; done
+
+Additionally, many people are accustomed to debugging a system by setting
+"init=/bin/sh".  Ensure this option exists:
+
+- {class="rcmd"}
+- [ -e /bin/sh ] || ln -s /bedrock/libexec/busybox /bin/sh
+
 ## {id="acquire-strata"} Acquire other strata
 
 Further down the instructions will include things like configuring which init

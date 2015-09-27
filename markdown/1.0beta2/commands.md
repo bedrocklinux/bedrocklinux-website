@@ -144,3 +144,7 @@ control to that init.
 
 Like `brp` and `bru` this is mostly managed by the system and it is unlikely
 the end-user will need to run this directly.
+
+If you run into difficulties booting, `brn` can be told to open a debug shell
+before handing control off to the specified init by setting "debug_brn" on the
+kernel line in the bootloader.
