@@ -40,6 +40,8 @@ When shutting down a system, many init systems may report that they are unable
 to mount a given item because it does not exist.  This error message is
 harmless but annoying.  The init systems attempt to unmount the given item
 multiple times, and are surprised when it no longer exists the second time.
+The confusion is likely due to the unusual nested nature of the Bedrock Linux
+mount structure.
 
 ## {id="recursive-brp"} brpath can't self-reference
 
