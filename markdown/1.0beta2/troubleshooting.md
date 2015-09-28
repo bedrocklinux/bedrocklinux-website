@@ -83,6 +83,13 @@ difficulty `{class="rcmd"} rmmod`'ing it because it is in use, reboot.  If it
 appears your initrd is loading it, add "rdblacklist=nouveau" to your
 bootloader's kernel line.
 
+The driver installer may pick up components such as `make` across ~{strata~} and end
+up attempting to install into the wrong location.  To avoid this possibility,
+restrict the `$PATH`:
+
+- {class="rcmd"}
+- export PATH=/usr/sbin:/usr/bin:/sbin:/bin
+
 Next, install the proprietary driver module.  In the ~{stratum~} that provides
 the kernel (so the versions match), install the proprietary nvidia driver
 module by doing one of the following:
@@ -95,13 +102,15 @@ module by doing one of the following:
 
 Finally, install the userland component in all of the ~{strata~} which you
 would like to have acceleration in xorg.  For each of these ~{strata~} run the
-Nvidia proprietary driver installer with the `--no-kernel-module` option.  If
-you have a 32-bit ~{stratum~} on a 64 bit system, you can use the x86 nvidia
-driver prefixed with "linux32" so it doesn't complain about being on a 64 bit
-system.  If you are installing this into a ~{stratum~} while the system is
-already running xorg, as long as the ~{stratum~} in which you are installing
-these drivers is not the one providing xorg you can probably get away with
-using the `--no-x-check` flag.
+Nvidia proprietary driver installer with the `--no-kernel-module` option (since
+you already installed the kernel module) and the
+`--no-check-for-alternate-installs` option (to avoid blowing away nvidia driver
+installs in other ~{strata~}).  If you have a 32-bit ~{stratum~} on a 64 bit
+system, you can use the x86 nvidia driver prefixed with "linux32" so it doesn't
+complain about being on a 64 bit system.  If you are installing this into a
+~{stratum~} while the system is already running xorg, as long as the
+~{stratum~} in which you are installing these drivers is not the one providing
+xorg you can probably get away with using the `--no-x-check` flag.
 
 You are then free to start and use xorg with GPU acceleration.
 
