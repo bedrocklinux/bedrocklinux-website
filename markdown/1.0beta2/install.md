@@ -717,9 +717,9 @@ You already have some basic users and groups set up from the "Configure global
 stratum" step, but it is best to ensure some minimum expectations are met
 before continuing.
 
-To manage users, you'll need to `chroot` into ~{global~}.  However, unless you
-set up ~{rootfs~} and ~{global~} to be the same ~{stratum~}, it is not
-guaranteed that ~{global~} has any commands to run at this point.  Bedrock
+To manage users and groups, you'll need to `chroot` into ~{global~}.  However,
+unless you set up ~{rootfs~} and ~{global~} to be the same ~{stratum~}, it is
+not guaranteed that ~{global~} has any commands to run at this point.  Bedrock
 Linux's subsystems will resolve this at run time, but not during installation.
 If ~{rootfs~} and ~{global~} are different, run:
 
@@ -797,10 +797,8 @@ can optionally create one:
 - sed -n 's/^~(username~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
 - sed -n 's/^~(username~):/br&/p' /etc/shadow >> /etc/shadow
 
-Next we'll need to add groups.  If you get a "group ~(group-name~) in use",
-this simply indicates you already have the group; no harm done.
-
-Adding typical expected groups:
+Next we'll need to add expected users and groups.  If you get a "in use" error,
+this simply indicates you already have the user or group; no harm done.
 
 - {class="rcmd"}
 - addgroup -g 0 root
@@ -816,7 +814,7 @@ Adding typical expected groups:
 - addgroup -g 44 video
 - addgroup -g 50 staff
 - addgroup -g 65534 nogroup || addgroup -g 60000 nogroup
-- addgroup man
+- adduser -h / -s /bin/false -D -H man || adduser -h / -s /bin/false -D -H -G man man
 - addgroup input
 - addgroup utmp
 - addgroup plugdev
@@ -833,14 +831,13 @@ it is a good idea to ensure some of the users and groups it expects exist, as
 otherwise it may fail to boot.
 
 - {class="rcmd"}
-- adduser -h / -s /bin/false -D -H daemon
-- adduser -h / -s /bin/false -D -H systemd-network
-- adduser -h / -s /bin/false -D -H systemd-timesync
-- adduser -h / -s /bin/false -D -H systemd-resolve
-- adduser -h / -s /bin/false -D -H systemd-bus-proxy
-- adduser -h / -s /bin/false -D -H messagebus
-- adduser -h / -s /bin/false -D -H dbus
-- delgroup man; adduser -h / -s /bin/false -D -H man
+- adduser -h / -s /bin/false -D -H daemon || adduser -h / -s /bin/false -D -H -G daemon daemon
+- adduser -h / -s /bin/false -D -H systemd-network || adduser -h / -s /bin/false -D -H systemd--G network network
+- adduser -h / -s /bin/false -D -H systemd-timesync || adduser -h / -s /bin/false -D -H systemd--G timesync timesync
+- adduser -h / -s /bin/false -D -H systemd-resolve || adduser -h / -s /bin/false -D -H systemd--G resolve resolve
+- adduser -h / -s /bin/false -D -H systemd-bus-proxy || adduser -h / -s /bin/false -D -H systemd-bus--G proxy proxy
+- adduser -h / -s /bin/false -D -H messagebus || adduser -h / -s /bin/false -D -H -G messagebus messagebus
+- adduser -h / -s /bin/false -D -H dbus || adduser -h / -s /bin/false -D -H -G dbus dbus
 - addgroup daemon
 - addgroup adm
 - addgroup systemd-journal
