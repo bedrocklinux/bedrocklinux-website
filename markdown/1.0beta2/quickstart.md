@@ -241,6 +241,14 @@ as well.
 
 ## {id="manage-users-groups"} Manage users and groups
 
+Different `adduser` implementations have different flags.  For consistency,
+users and groups will be added with the same Bedrock Linux-provided busybox
+utility.  The provided busybox's shell is configured to prioritize its own
+commands over those found in the `$PATH`.  Launch the shell:
+
+- {class="rcmd"}
+- /bedrock/libexec/busybox sh
+
 To handle nuances of how shells are handled in a typical Linux system, Bedrock
 Linux provides its own meta-shell, `brsh`, which can be configured to
 immediately switch to some other, desired shell (e.g. bash or zsh).  Ensure
@@ -270,10 +278,8 @@ Optionally, provide a fall back for these non-root users:
 - sed -n 's/^~(username~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
 - sed -n 's/^~(username~):/br&/p' /etc/shadow >> /etc/shadow
 
-Next we'll need to add groups.  If you get a "group ~(group-name~) in use",
-this simply indicates you already have the group; no harm done.
-
-Adding typical expected groups:
+Next we'll need to add expected users and groups.  If you get a "in use" error,
+this simply indicates you already have the user or group; no harm done.
 
 - {class="rcmd"}
 - addgroup -g 0 root
@@ -289,7 +295,7 @@ Adding typical expected groups:
 - addgroup -g 44 video
 - addgroup -g 50 staff
 - addgroup -g 65534 nogroup || addgroup -g 60000 nogroup
-- addgroup man
+- adduser -h / -s /bin/false -D -H man || adduser -h / -s /bin/false -D -H -G man man
 - addgroup input
 - addgroup utmp
 - addgroup plugdev
@@ -306,14 +312,13 @@ it is a good idea to ensure some of the users and groups it expects exist, as
 otherwise it may fail to boot.
 
 - {class="rcmd"}
-- adduser -h / -s /bin/false -D -H daemon
-- adduser -h / -s /bin/false -D -H systemd-network
-- adduser -h / -s /bin/false -D -H systemd-timesync
-- adduser -h / -s /bin/false -D -H systemd-resolve
-- adduser -h / -s /bin/false -D -H systemd-bus-proxy
-- adduser -h / -s /bin/false -D -H messagebus
-- adduser -h / -s /bin/false -D -H dbus
-- delgroup man; adduser -h / -s /bin/false -D -H man
+- adduser -h / -s /bin/false -D -H daemon || adduser -h / -s /bin/false -D -H -G daemon daemon
+- adduser -h / -s /bin/false -D -H systemd-network || adduser -h / -s /bin/false -D -H systemd--G network network
+- adduser -h / -s /bin/false -D -H systemd-timesync || adduser -h / -s /bin/false -D -H systemd--G timesync timesync
+- adduser -h / -s /bin/false -D -H systemd-resolve || adduser -h / -s /bin/false -D -H systemd--G resolve resolve
+- adduser -h / -s /bin/false -D -H systemd-bus-proxy || adduser -h / -s /bin/false -D -H systemd-bus--G proxy proxy
+- adduser -h / -s /bin/false -D -H messagebus || adduser -h / -s /bin/false -D -H -G messagebus messagebus
+- adduser -h / -s /bin/false -D -H dbus || adduser -h / -s /bin/false -D -H -G dbus dbus
 - addgroup daemon
 - addgroup adm
 - addgroup systemd-journal
@@ -330,6 +335,12 @@ otherwise it may fail to boot.
 - addgroup storage
 - addgroup lock
 - addgroup uuidd
+
+If you want to add any other users or groups, now is a good time.  Once you're
+done, exit the busybox shell.
+
+- {class="rcmd"}
+- exit
 
 ## {id="configure-bootloader"} Configure bootloader
 
