@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="nyla-release-soon"} Bedrock Linux 1.0beta2 Nyla in final development stages
+<small>2015-10-03</small>
+
+All major features and changes for Bedrock Linux 1.0beta2 Nyla are complete; it
+is currently undergoing final testing and bug squashing.  The release should be
+soon.
+
 ## {id="nyla-delay"} Bedrock Linux 1.0beta2 Nyla delayed
 <small>2015-02-22</small>
 
