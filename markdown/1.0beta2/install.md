@@ -513,7 +513,7 @@ Linux releases.
 If you do not have a file at `$GLOBAL/etc/adjtime`, create one:
 
 - {class="rcmd"}
-- printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
+- [ -e "$GLOBAL/etc/adjtime" ] || printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
 
 If your hardware clock is using UTC, ensure the third line (which should also
 be the last) of the file at `$GLOBAL/etc/adjtime` is "UTC".  This is common on

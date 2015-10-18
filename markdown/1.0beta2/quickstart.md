@@ -220,7 +220,7 @@ Confirm you've got a file at `/etc/adjtime`.  If it looks like you don't,
 create one:
 
 - {class="rcmd"}
-- printf '0.000000 0.000000 0.000000\n0\nUTC\n' > /etc/adjtime
+- [ -e "$GLOBAL/etc/adjtime" ] || printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
 
 Find the file corresponding to your timezone in `/usr/share/zoneinfo` and copy
 it to `/bedrock/etc/localtime`:
