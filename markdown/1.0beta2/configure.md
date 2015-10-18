@@ -26,6 +26,7 @@ Bedrock Linux 1.0beta2 Nyla Configuration Instructions
 - [aliases.conf and aliases.d/\*](#aliases.conf)
 - [brp.conf](#brp.conf)
 - [brn.conf](#brn.conf)
+- [fstab](#fstab)
 
 ## {id="rc.conf"} rc.conf
 
@@ -343,3 +344,59 @@ To chose a default ~{stratum~}, set the `default_stratum =` and `default_cmd`
 items accordingly.  With those set, a user can simply hit enter at the menu and
 the default item will be chosen.  Moreover, if a timeout is set, the default
 item will be chosen when the timeout expires.
+
+## {id="fstab"} fstab
+
+Bedrock Linux will provide a menu on boot to let you chose which init system to
+use for the given session.  For it to work, it needs to be able to find the
+strata which provide init systems.  It will load a fstab config from
+`/bedrock/etc/fstab` before searching for strata to ensure they are available.
+Most `fstab` configuration will require changes to the default framework as
+well.
+
+`/bedrock/etc/fstab` can be treated like most fstabs, and should be populated
+to inform Bedrock Linux where these additional partitions go.  It is mounted
+just before the menu to pick which init system to use is presented so the menu
+can find init systems on strata from different partitions.  It is different
+from the `/etc/fstab` that an init system may attempt to utilize as the init
+system's `/etc/fstab` will mount *after* the init system has already started.
+It is easiest to simply use `/bedrock/etc/fstab` for everything and refrain
+from utilizing `/etc/fstab` at all, but there may be scenarios in which the
+latter is required.
+
+A few things to keep in mind when populating it:
+
+- The rootfs stratum is on the root of the filesystem tree, i.e. `/`, from
+  fstab's point of view.  Thus, if you would like to place rootfs' `/boot` on
+  its own partition, it should be mounted at `/boot` and not, for example,
+  `/bedrock/strata/jessie/boot`.
+- `/bedrock` is considered part of the rootfs stratum, and thus anything in
+  `/bedrock` should be mounted directly onto the root of the filesystem tree.
+  For example, if you have `/bedrock/strata` on its own partition, it should
+  mount the partition onto `/bedrock/strata`.
+- Any global mount points, such as `/home`, should be mounted in the ~{global
+  stratum~}.  Thus, if ~{global~} is at `/bedrock/strata/global` one would
+  mount home to `/bedrock/strata/global/home` in the fstab.  If ~{global~} is
+  also ~{rootfs~}, then it should be mounted to `/home`.  The default framework
+  settings will then ensure it is accessible in the other strata.
+- Order matters.  If you mount `/bedrock/strata/global/home` before mounting
+  `/bedrock/strata` things may go awry.
+
+Additionally, the default framework should be made aware of some of these
+additional mount points; place such changes into
+`/bedrock/etc/frameworks.d/default`.  Any mount points in `/bedrock/` should be
+configured as `bind` items.  For example, if you made `/bedrock/strata` its own
+partition, add
+
+    bind = /bedrock/strata
+
+and the `/bedrock/strata` mounted in in `/bedrock/etc/fstab` will be made
+accessible in the other ~{strata~}.
+
+Any mount global mount points should be configured as `share` items.  For
+example, if you made `/home` its own partition, add
+
+    bind = /bedrock/home
+
+and the `/home` mounted in in `/bedrock/etc/fstab` will be made
+accessible in the other ~{strata~}.
