@@ -10,6 +10,7 @@ Bedrock Linux 1.0beta2 Nyla Quick Start
 - [Acquire other strata](#acquire-strata)
 - [Configure](#configure)
 - [Manage users and groups](#manage-users-groups)
+- [Configure fstab](#configure-fstab)
 - [Configure bootloader](#configure-bootloader)
 - [Reboot](#reboot)
 
@@ -45,8 +46,14 @@ partitioning, and even full disk encryption.  Once this is done, we can
 even remove the original install's software, just retaining things like the
 bootloader and partitioning scheme.
 
-Go ahead and install some other "traditional" distro, then boot into it.  Set
-up things such as your desired users and network access.
+Go ahead and install some other "traditional" distro.  If you use a very simple
+partitioning scheme, such as just one root partition and swap, you can skip
+some later steps.  This is useful to expedite things and is in the spirit of
+these "quick start" instructions.  More complicated partitioning schemes will
+require additional configuration later.
+
+Once you've installed it, boot into it and set up things such as your desired
+users and network access.
 
 ## {id="compile-userland"} Compile userland
 
@@ -309,9 +316,9 @@ otherwise it may fail to boot.
 
 - {class="rcmd"}
 - adduser -h / -s /bin/false -D -H daemon || adduser -h / -s /bin/false -D -H -G daemon daemon
-- adduser -h / -s /bin/false -D -H systemd-network || adduser -h / -s /bin/false -D -H systemd--G network network
-- adduser -h / -s /bin/false -D -H systemd-timesync || adduser -h / -s /bin/false -D -H systemd--G timesync timesync
-- adduser -h / -s /bin/false -D -H systemd-resolve || adduser -h / -s /bin/false -D -H systemd--G resolve resolve
+- adduser -h / -s /bin/false -D -H systemd-network || adduser -h / -s /bin/false -D -H -G network network
+- adduser -h / -s /bin/false -D -H systemd-timesync || adduser -h / -s /bin/false -D -H -G timesync timesync
+- adduser -h / -s /bin/false -D -H systemd-resolve || adduser -h / -s /bin/false -D -H -G resolve resolve
 - adduser -h / -s /bin/false -D -H systemd-bus-proxy || adduser -h / -s /bin/false -D -H systemd-bus--G proxy proxy
 - adduser -h / -s /bin/false -D -H messagebus || adduser -h / -s /bin/false -D -H -G messagebus messagebus
 - adduser -h / -s /bin/false -D -H dbus || adduser -h / -s /bin/false -D -H -G dbus dbus
@@ -337,6 +344,15 @@ done, exit the busybox shell.
 
 - {class="rcmd"}
 - exit
+
+## {id="configure-fstab"} Configure fstab
+
+Bedrock Linux has two files that need to be updated for any partitions outside
+of the typical root and swap partitions, `fstab` and the default `strata.conf`
+framework.  If your partitioning scheme is more complicated than simply a root
+filesystem and a bootloader, configure `/bedrock/etc/fstab` and the default
+framework as described [here](configure.html#fstab) then return to these
+instructions.  Consider opening that link in another tab or window.
 
 ## {id="configure-bootloader"} Configure bootloader
 
