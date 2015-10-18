@@ -495,9 +495,24 @@ Or, alternatively, you can create a new set of these files (root password is
 - {class="rcmd"}
 - mkdir -p $GLOBAL/etc
 - chmod a+rx $GLOBAL/etc
-- echo 'root:x:0:0:,,,:/root:/bedrock/bin/sh' > $GLOBAL/etc/passwd
-- echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > $GLOBAL/etc/shadow
-- printf 'root:x:0:\ntty:x:5:\ndisk:x:6:\nlp:x:7:\nkmem:x:15:\ndialout:x:20:\ncdrom:x:24:\nfloppy:x:25:\ntape:x:26:\naudio:x:29:\nvideo:x:44:\nstaff:x:50:\n' > $GLOBAL/etc/group
+- [ -e "$GLOBAL/etc/passwd" ] || echo 'root:x:0:0:,,,:/root:/bedrock/bin/sh' > $GLOBAL/etc/passwd
+- [ -e "$GLOBAL/etc/shadow" ] || echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > $GLOBAL/etc/shadow
+- [ -e "$GLOBAL/etc/group" ] || printf 'root:x:0:\ntty:x:5:\ndisk:x:6:\nlp:x:7:\nkmem:x:15:\ndialout:x:20:\ncdrom:x:24:\nfloppy:x:25:\ntape:x:26:\naudio:x:29:\nvideo:x:44:\nstaff:x:50:\n' > $GLOBAL/etc/group
+
+If you already have a `/etc/sudoers` file, append a Bedrock Linux `$PATH`
+setting to it:
+
+- {class="rcmd"}
+- [ -e $GLOBAL/etc/sudoers ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> /etc/sudoers
+
+Otherwise, create a sudoers file to ensure, if you do get `sudo` later, the
+`$PATH` is setup properly:
+
+- {class="rcmd"}
+- [ -e $GLOBAL/etc/sudoers ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > /etc/sudoers
+- chown root:root /etc/sudoers
+- chmod 440 /etc/sudoers
+
 
 The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
 later confusion:
