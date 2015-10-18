@@ -172,8 +172,11 @@ you like to make multiple partitions for different directories, keep in mind
 that the majority of your userland will end up in a new, Bedrock Linux-specific
 directory at `/bedrock/strata/`.  You could make `/bedrock/strata` its own
 partition, or perhaps make one for each ~{stratum~} that ends up in that
-directory.  If you aren't sure what to do here, one big partition for the root
-directory and a swap partition about 2.5 times your RAM size should be fine.
+directory.  `/bedrock/sbin/brn` needs to be on the root partition so the
+bootloader can find it, and thus you should not create another partition just
+for `/bedrock` or `/bedrock/sbin`.  If you aren't sure what to do here, one big
+partition for the root directory and a swap partition about 2.5 times your RAM
+size should be fine.
 
 Set up a bootloader.  Instructions for setting up syslinux are provided
 [here](syslinux.html).  If you prefer something else, e.g. GRUB2, you'll have
