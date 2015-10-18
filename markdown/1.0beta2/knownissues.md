@@ -11,6 +11,7 @@ tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open
 - [Only init stratum's init hooks work](#init)
 - [No such file on umount](#no-such-file-on-umount)
 - [brpath can't self-reference](#recursive-brp)
+- [bru may not respect ACLs, supplementary groups](#bru-acls-groups)
 - [One cannot use a stratum as a stand-alone system](#stand-alone)
 - [Manual work is required to manage time, firmware](#manual-handling-time-firmware)
 - [Cannot boot with a read-only filesystem](#cannot-read-only-boot)
@@ -50,6 +51,12 @@ Bedrock Linux's implicit filepath access, via `/bedrock/brpath`, provides an
 alternative view of the filesystem.  However, due to a technical implementation
 limitation it locks up when attempting to show an alternative view of itself.
 Do not configure `brp` to use any path which leads back to `/bedrock/brpath`.
+
+## {id="bru-acls-groups"} bru may not respect ACLs, supplementary groups
+
+The `bru` mount point only checks access via a processes' UID and GID; it
+currently does not fully support more sophisticated access mechanisms such as
+ACLs and supplementary groups.
 
 ## {id="stand-alone"} Cannot use a stratum as a stand-alone system
 
