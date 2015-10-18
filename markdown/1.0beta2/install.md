@@ -274,13 +274,16 @@ attribute, run:
 
 ## {id="acquire-strata"} Acquire other strata
 
-Further down the instructions will include things like configuring which init
-system to use.  Before doing that, it may be advisable to acquire the userlands
-of other distros so that they are available to be used in the configuration as
-you get farther into the instructions.  This is especially true if you are
-doing the manual install so that you have at least one kernel image.
+If you are doing a hijack install, the hijacked distro is being converted into
+a ~{stratum~} which can provide a base set of system files.  However, it may be
+desirable to have other ~{strata~} before continuing so that once you boot into
+Bedrock Linux you already have a software from other distros ready to go.
 
-The tarball you expanded in the previous step provided a minimal stratum called
+If you are doing a manual install, you are missing essentials such as a kernel
+image and will need to acquire at least one other ~{stratum~} to provide such
+things.
+
+The tarball you expanded in the previous step provided a minimal ~{stratum~} called
 "fallback" to use in case of emergencies.  It does not provide a kernel image,
 but does provide things such as a minimal init system and shell.
 
