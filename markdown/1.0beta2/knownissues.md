@@ -12,6 +12,7 @@ tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open
 - [No such file on umount](#no-such-file-on-umount)
 - [brpath can't self-reference](#recursive-brp)
 - [bru may not respect ACLs, supplementary groups](#bru-acls-groups)
+- [Limited support for encrypted /home](#encrypted-home)
 - [One cannot use a stratum as a stand-alone system](#stand-alone)
 - [Manual work is required to manage time, firmware](#manual-handling-time-firmware)
 - [Cannot boot with a read-only filesystem](#cannot-read-only-boot)
@@ -57,6 +58,12 @@ Do not configure `brp` to use any path which leads back to `/bedrock/brpath`.
 The `bru` mount point only checks access via a processes' UID and GID; it
 currently does not fully support more sophisticated access mechanisms such as
 ACLs and supplementary groups.
+
+## {id="encrypted-home"} Limited support for encrypted /home
+
+Some distros provide an option to encrypt `/home` on installation, which is
+then automatically decrypted on login.  This is not yet supported by Bedrock
+Linux.
 
 ## {id="stand-alone"} Cannot use a stratum as a stand-alone system
 
