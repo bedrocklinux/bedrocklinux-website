@@ -198,29 +198,25 @@ rest of the files into place:
 - {class="rcmd"}
 - cp -rpT /bedrock/global-files / && rm -r /bedrock/global-files
 
-If you're on Ubuntu or some other distro which expects you to always use sudo
-rather than logging in as root, either set a root password or ensure your
-normal user has sudoers before closing this shell, as the `cp` in the previous
-step overwrite sudoers.
-
-- {class="rcmd"}
-- passwd # set root password
-
-or
-
-- {class="rcmd"}
-- visudo # edit sudoers with checker
-
-or
-
-- {class="rcmd"}
-- ~(vi~) /etc/sudoers # edit sudoers directly
-
 Confirm you've got a file at `/etc/adjtime`.  If it looks like you don't,
 create one:
 
 - {class="rcmd"}
 - [ -e "$GLOBAL/etc/adjtime" ] || printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
+
+If you already have a `/etc/sudoers` file, append a Bedrock Linux `$PATH`
+setting to it:
+
+- {class="rcmd"}
+- [ -e "$GLOBAL/etc/sudoers" ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> /etc/sudoers
+
+Otherwise, create a sudoers file to ensure, if you do get `sudo` later, the
+`$PATH` is setup properly:
+
+- {class="rcmd"}
+- [ -e "$GLOBAL/etc/sudoers" ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > /etc/sudoers
+- chown root:root /etc/sudoers
+- chmod 440 /etc/sudoers
 
 Find the file corresponding to your timezone in `/usr/share/zoneinfo` and copy
 it to `/bedrock/etc/localtime`:
