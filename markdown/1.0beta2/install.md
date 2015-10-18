@@ -728,7 +728,7 @@ For example if an Arch Linux ~{strata~} provides the desired files:
 
 Bedrock Linux 1.0beta2 Nyla's system for managing firmware is particularly weak
 at the moment.  While everything one would need should be possible to do, there
-is a bit of additional manual work required in compassion traditional distros.
+is a bit of additional manual work required in comparison traditional distros.
 This is a known issue which should hopefully be resolved in future Bedrock
 Linux releases.
 
