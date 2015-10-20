@@ -318,7 +318,7 @@ otherwise it may fail to boot.
 - adduser -h / -s /bin/false -D -H systemd-network || adduser -h / -s /bin/false -D -H -G network network
 - adduser -h / -s /bin/false -D -H systemd-timesync || adduser -h / -s /bin/false -D -H -G timesync timesync
 - adduser -h / -s /bin/false -D -H systemd-resolve || adduser -h / -s /bin/false -D -H -G resolve resolve
-- adduser -h / -s /bin/false -D -H systemd-bus-proxy || adduser -h / -s /bin/false -D -H systemd-bus--G proxy proxy
+- adduser -h / -s /bin/false -D -H systemd-bus-proxy || adduser -h / -s /bin/false -D -H -G proxy proxy
 - adduser -h / -s /bin/false -D -H messagebus || adduser -h / -s /bin/false -D -H -G messagebus messagebus
 - adduser -h / -s /bin/false -D -H dbus || adduser -h / -s /bin/false -D -H -G dbus dbus
 - addgroup daemon
