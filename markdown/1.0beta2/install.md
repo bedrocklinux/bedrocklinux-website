@@ -520,15 +520,15 @@ If you already have a `/etc/sudoers` file, append a Bedrock Linux `$PATH`
 setting to it:
 
 - {class="rcmd"}
-- [ -e $GLOBAL/etc/sudoers ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> /etc/sudoers
+- [ -e $GLOBAL/etc/sudoers ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> $GLOBAL/etc/sudoers
 
 Otherwise, create a sudoers file to ensure, if you do get `sudo` later, the
 `$PATH` is setup properly:
 
 - {class="rcmd"}
-- [ -e $GLOBAL/etc/sudoers ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > /etc/sudoers
-- chown root:root /etc/sudoers
-- chmod 440 /etc/sudoers
+- [ -e $GLOBAL/etc/sudoers ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > $GLOBAL/etc/sudoers
+- chown root:root $GLOBAL/etc/sudoers
+- chmod 440 $GLOBAL/etc/sudoers
 
 
 The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
