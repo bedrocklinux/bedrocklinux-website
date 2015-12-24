@@ -29,35 +29,38 @@ behind Bedrock Linux 1.0beta2 Nyla.
 ## {id="problem"} Problem to solve
 
 Linux software is often written or built with specific assumptions about the
-environment in which it will be utilized.  These assumptions hold true for a
-given release of a given distribution but will not hold true in other contexts.
-Thus, one cannot simply install a non-native package and expect it to work.
-One technique which will allow software to function in a non-native distro is
-to segregate it from the rest of the system via tools such as containers.
-Doing so, however, means the given piece of software's ability to interact with
-the rest of the system is severely limited, and the users' workflow must change
-to accommodate this.  The fundamental problem Bedrock Linux is attempting to
-solve is how to overcome the environment conflicts *without* segregating the
-software from the rest of the system.
+environment in which it will be utilized.  These assumptions should hold true
+for a given release of a given distribution but may not hold true in other
+contexts.  One cannot simply install a non-distro-native package and expect it
+to "just work".  One technique which will allow software to function in a
+non-native distro is to segregate it from the rest of the system; for example,
+consider container technologies such as LXC.  Utilizing these technologies,
+however, means the given piece of software's ability to interact with the rest
+of the system is severely limited, and the users' workflow must change to
+accommodate this.  The fundamental problem Bedrock Linux is attempting to solve
+is how to overcome these environment conflicts *without* segregating the
+software from the rest of the system *or* adjusting the software to remove the
+assumptions.  Ideally, a user should be able to take any package from any
+distro and install it, unmodified, in Bedrock Linux and have it "just work".
 
 Various assumptions software often makes about its environment include but are
 not limited to:
 
-- That a *given* build of a library exists at a specific location.  Not only
-  does this require it to be the specific version of the library for the
-  specific architecture, but occasionally also require things like specific
-  build flags to have been used when the library was compiled.  If software
-  from different distributions have differing requirements for a file at the
-  same exact file path they will conflict with each other.
+- That a given build of a library exists at a specific location.  Not only does
+  this require it to be the specific version of the library for the specific
+  architecture, but occasionally also require things like specific build flags
+  to have been used when the library was compiled.  If software from different
+  distributions have differing requirements for a file at the same exact file
+  path they will conflict with each other.
 
 - The requirement for a specific file at a specific path extends beyond just
   libraries, but can also include things such as executables.  Consider, for
-  example, that some distros - notably Red Hat-related ones - often use
-  `bash` to provide `/bin/sh`.  While other distros, such as Debian-based ones,
-  use other shells such as `dash`.  If a given `#!/bin/sh` program uses
-  `bash`-isms it will work on Red Hat-related distros but not on Debian-based
-  ones.  A proper fix would be to simply use `#!/bin/bash`, but sadly this is
-  not always an exercised practice.
+  example, that some distros - notably Red Hat-related ones - often use `bash`
+  to provide `/bin/sh`.  Other distros, such as Debian-based ones, use other
+  shells such as `dash`.  If a given `#!/bin/sh` program uses `bash`-isms it
+  will work on Red Hat-related distros but not on Debian-based ones.  A proper
+  fix would be for the given script to simply use `#!/bin/bash`, but sadly this
+  is not always an exercised practice.
 
 - Software may have requirements about which program has a given PID.  This is
   particularly common with init-related commands which may have requirements
@@ -121,8 +124,8 @@ make the entire system.
 ~{Strata~} were previously referred to as "~{clients~}", but sadly that term
 was found to be misleading and led to regular misunderstandings.  For example,
 it implies a client-server relationship, when no such thing exists in Bedrock
-Linux. ~{Strata~} is a much more fitting mental image for what is actually
-happening.
+Linux. [Strata](https://en.wikipedia.org/wiki/Stratum) is a much more fitting
+mental image for what is actually happening.
 
 ## {id="singletons"} Singletons
 
@@ -157,7 +160,9 @@ it always points to the ~{stratum~} providing the specific functionality.
 
 Whichever ~{stratum~} is currently providing PID1 is aliased to ~{init~}.  If
 the user reboots and selects another init system, the stratum providing the
-chosen init system this becomes the ~{init stratum~}.
+chosen init system this becomes the ~{init stratum~}.  This information is
+needed to properly determine from which stratum a given init-related command
+(e.g. `reboot`) should be provided.
 
 ### {id="global-stratum"} Global Stratum
 
@@ -219,11 +224,11 @@ specified via:
     /bedrock/strata/~(stratum-name~)/~(file-path~)
 
 For example, to access *specifically* Crux's `/etc/rc.conf` file, one could
-use:
+use the following file path:
 
     /bedrock/strata/crux/etc/rc.conf
 
-Specify a file to execute require a different access method.  Instead, the
+Specifying a file to execute require a different access method.  Instead, the
 given executable should be prefixed with `brc ~(stratum-name~)`, as one would
 do with the `sudo -u` or `chroot` commands.
 
@@ -231,7 +236,7 @@ For example, to explicitly run Arch Linux's `vim`, one could run:
 
     brc arch vim
 
-These two systems can be combine.  To use Arch's `/usr/bin/vim` to edit Crux's
+These two systems can be combine.  To use Arch's `vim` to edit Crux's
 `/etc/rc.conf` one could run:
 
     brc arch vim /bedrock/strata/crux/etc/rc.conf
@@ -253,11 +258,11 @@ it via that path.
 
 In these situations there is a strong possibility that the requested file is a
 dependency, possibly a picky one such that failing to provide the exact file
-will cause a failure.  In these situations Bedrock Linux will provide the given
-file from the same ~{stratum~} as the program which requested it came from.  If
-`apt-get` from a Linux Mint ~{stratum~} requests `/etc/apt/sources.list`, the
-Linux Mint copy of `/etc/apt/sources.list` is provided.  Thus, dependencies -
-and hence environmental expectations - are met.
+will cause a failure.  Here Bedrock Linux will provide the given file from the
+same ~{stratum~} as the program which requested it, i.e. the ~{local~}
+~{stratum~}.  If `apt-get` from a Linux Mint ~{stratum~} requests
+`/etc/apt/sources.list`, the Linux Mint copy of `/etc/apt/sources.list` is
+provided.  Thus, dependencies - and hence environmental expectations - are met.
 
 ### {id="implicit-access"} Implicit Access
 
@@ -346,7 +351,7 @@ available.
 This rule is what allows most of the ~{local~} file interaction between
 ~{strata~}.
 
-If a `bash` shell runs `man vim`, but only one instance of `bash` and `man` and
+If a `bash` shell runs `man vim`, but only one instance of each `bash`, `man` and
 the `vim` man page exist and they're all from different ~{strata~}, this rule
 is what allows them to all work together.  A user is free to type `man vim` in
 the `bash` shell and the expected man page shows up - everything "just works"
@@ -369,7 +374,7 @@ wireless network, one could add the following to `/etc/sudoers`:
 	- Uses file from ~{global stratum~}.
 	- Intended to ensure ~{strata~} interact properly.
 - ~{Explicit access~}:
-	- Desired ~{stratum~} is specified (e.g. `brc` **`slack141`** `vim` or `/bedrock/strata/`**`slack141`**`/etc/pacman.conf`)
+	- Desired ~{stratum~} is specified (e.g. `brc` **`slack141`** `vim` or `/bedrock/strata/`**`arch`**`/etc/pacman.conf`)
 	- Uses specified ~{stratum~}.
 	- Intended to override other rules.
 - ~{Direct access~}:
@@ -408,7 +413,7 @@ general idea.  This information is not required to utilize Bedrock Linux.
 - `chroot()` is used as a way to "tag" a given process with the associated
   ~{stratum~}.  `bri -p` compares roots to determine which ~{stratum~} a given
   process is in.  This is why `brc` is needed for execution ~{explicit~}
-  access: It calls `chroot()`.
+  access: it calls `chroot()`.
 - bind mounts are used to ensure files are at the ~{explicit~} non-execution
   access location of `/bedrock/strata/~(stratum-name~)`.
 - ~{direct~} access works due to `chroot()` usage in `brc`.
@@ -421,11 +426,13 @@ general idea.  This information is not required to utilize Bedrock Linux.
   filesystem, `brp`.  This populates the directories in the `$PATH`-like
   variables on-the-fly depending on configuration and what files are available
   in what ~{stratum~} at the time of `brp` access.
-- While all of the above systems ensure the appropriate file contents are
+- While all of the above systems ensure the appropriate *file contents* are
   available at the appropriate times/locations, they do leave a gap: only some
-  processes can see all of the mount points.  `pivot_root` is called when
-  selecting the ~{init stratum~} at boot time to ensure the init system can see
-  all of the mount points and thus cleanly unmount everything at poweroff.
+  processes can see all of the *mount points*.  This distinction is primarily
+  important for unmounting the mount points at shutdown time.  `pivot_root` is
+  called when selecting the ~{init stratum~} at boot time to ensure the init
+  system can see all of the mount points and thus cleanly unmount everything at
+  poweroff.
 
 The specific details described above vary from release to release as better
 ways of solving the fundamental problem are found, and thus information such as

@@ -71,12 +71,12 @@ There are two general methods for installation:
 
 - Hijack method: hijacking another distribution's installation.  Bedrock
   Linux's goal of allowing users to utilize software from various other distros
-  includes installation.  The hijack method will allow typical installation
-  steps such as partitioning, setting up a bootloader, setting up full disk
-  encryption, etc to all be done via another distribution's installation
-  software/documentation/techniques.  This is generally recommended for less
-  experienced Linux users.  If you wish to utilize this method, [continue
-  reading here](#hijack-install-method).
+  includes installation software.  The hijack method will allow typical
+  installation steps such as partitioning, setting up a bootloader, setting up
+  full disk encryption, etc to all be done via another distribution's
+  installation software/documentation/techniques.  This is generally
+  recommended for less experienced Linux users.  If you wish to utilize this
+  method, [continue reading here](#hijack-install-method).
 
 - Manual method: manually partition, set up a bootloader, etc.  This option was
   required in Bedrock Linux release before hijack installation was supported,
@@ -92,8 +92,8 @@ There are two general methods for installation:
 ## {id="hijack-install-method"} Hijack installation
 
 While it may be possible to hijack some existing, long-used install, this has
-not been well tested.  Instead, it may be advisable to install a fresh distro
-and then hijack that.
+not been well tested.  Instead, it is advisable to install a fresh distro and
+then hijack that.
 
 If you are installing a new distro to hijack, you'll have to pick which
 one.  Some background to help you make your choice:
@@ -142,9 +142,14 @@ multiple partitions for different directories, keep in mind that the majority
 of your userland will end up in a new, Bedrock Linux-specific directory at
 `/bedrock/strata/`.  You could make `/bedrock/strata` its own partition, or
 perhaps make one for each ~{stratum~} that ends up in that directory.  Such
-partitioning schemes require a more configuration than simpler schemes.  If you
-aren't sure what to do here, just follow the recommendations provided by the
-distro you are installing.
+partitioning schemes require a more configuration than simpler schemes; skim
+[the fstab config page](configure.html#fstab) to be sure you understand the
+changes that will need to be made for such schemes.  The simplest scheme - one
+large partition for the data and one for swap - is the easiest to setup and
+configure.
+
+If you aren't sure what to do here, just follow the recommendations provided by
+the distro you are installing.
 
 Next, boot into the install you're about to hijack.
 
@@ -491,12 +496,11 @@ If you are doing a hijack install and ~{rootfs~} is the same as ~{global~}, you
 already have key files such as `/etc/passwd` in place.
 
 If you are doing a hijack install and you're using a fresh ~{global~}
-~{stratum~} that only contains ~{global~} files, copy over the ~{rootfs~}'
-`/etc/passwd`, `/etc/group`, and `/etc/shadow` files into the ~{global~}
-~{stratum~} to use them as a base set of passwd/group/shadow files:
+~{stratum~} that only contains ~{global~} files, copy various ~{rootfs~} files that were created via the hijacked distro's installer that are global, such as
+`/etc/passwd`, `/etc/group`, `/etc/shadow`, `/etc/fstab`, and `/etc/sudoers`:
 
 - {class="rcmd"}
-- cp -rp $ROOTFS/etc/passwd $ROOTFS/etc/group $ROOTFS/etc/shadow $GLOBAL/etc/
+- cp -rp $ROOTFS/etc/passwd $ROOTFS/etc/group $ROOTFS/etc/shadow $ROOTFS/etc/fstab $GLOBAL/etc/
 
 If you are doing a manual install and you're using a fresh ~{global~}
 ~{stratum~} that only contains ~{global~} files, you can copy over your current
