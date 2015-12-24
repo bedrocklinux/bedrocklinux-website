@@ -216,20 +216,39 @@ Write to the hardware clock with
 
 ### {id="debian-based"} Debian-based Linux distributions
 
-#### {id="upstart-fix"} Ubuntu/Upstart fix
+#### {id="upstart-fix"} Ubuntu/Upstart prior to 15.04 fix
 
-Older releases of Ubuntu uses Upstart for their init system. Many services in
-Ubuntu have been modified to depend on `init` to be specific to Upstart and
-refuse to operate otherwise.  Since Bedrock Linux may use a different init
-system while attempting to run software from Ubuntu, such software may fail.
-See the [here](https://bugs.launchpad.net/ubuntu/+source/upstart/+bug/430224)
-for more information. One way to alleviate this is to run the following two
-commands as root (within the Ubuntu ~{stratum~}, via using `brc` for each
-command or `brc` to open a shell in the ~{stratum~} and run it from the shell):
+Ubuntu releases prior to 15.04 Vivid Veret utilized Upstart as their init
+system.  Some software was specially modified/configured to expect Upstart as
+the init system and would fail if running another init system.  See [this bug
+report](https://bugs.launchpad.net/ubuntu/+source/upstart/+bug/430224) for more
+information.
+
+If you are using an Ubuntu release prior to 15.04 *and* do not intend to use
+Upstart as your init (getting your init from another stratum), you can replace `/sbin/initctl` with `/bin/true` to bypass much of the issue, like so:
 
 - {class="rcmd"}
 - brc ~(ubuntu-stratum~) dpkg-divert --local --rename --add /sbin/initctl
-- brc ~(ubuntu-stratum~) ln -s /bin/true /sbin/initctl
+- ln -s /bin/true /bedrock/strata/~(ubuntu-stratum~)/sbin/initctl
+
+Note that this does break the ability to boot with that stratum's Upstart init
+system.  Do not do this for Ubuntu 15.04 or later where it has switched to
+systemd.
+
+#### {id="upstart-fix"} Ubuntu/Upstart post 15.04 fix
+
+In the 15.04 Vivid Veret release, Ubuntu switched to systemd.  This release
+includes mechanisms for backwards compatibility with Upstart.  Some software
+bundled with this release (and possibly later releases), such as the default
+lightdm graphical login manager, assumes `/sbin/initctl` is in the `$PATH` for
+non-root users.  However, Bedrock Linux's default `$PATH` configuration places
+`sbin` directories into the `$PATH` only for the root user.  As a work-around,
+one can ensure `initctl` is accessible from a `bin`:
+
+- {class="rcmd"}
+- ln -s /sbin/initctl /bedrock/strata/~(ubuntu-stratum~)/usr/local/bin
+
+Note that this does break the ability to boot with that stratum's Upstart init system.
 
 #### {id="locale"} Locale packages
 
