@@ -962,7 +962,8 @@ to have GRUB2 read and utilize the updated configuration.
 
 With syslinux or LILO, just edit the relevant lines to change the menu item to
 "Bedrock Linux 1.0beta2 Nyla" and add "rw init=/bedrock/sbin/brn" to the kernel
-line.  For example, with syslinux, an adjusted stanza may look like:
+line, as well as ensure "splash" is unset.  For example, with syslinux, an
+adjusted stanza may look like:
 
     LABEL nyla
         MENU LABEL Bedrock Linux 1.0beta2 nyla
