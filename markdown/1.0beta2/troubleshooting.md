@@ -18,9 +18,10 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 	- [time issues](#time)
 - [stratum specific issues](#stratum-specific)
 	- [Debian-based Linux distributions](#debian-based)
-		- [Ubuntu/Upstart fix](#upstart-fix)
 		- [Locale packages](#locale)
 		- [Statoverride](#statoverride)
+		- [Ubuntu/Upstart prior to 15.04 fix](#upstart-fix-pre-vivid)
+		- [Ubuntu/Upstart post 15.04 fix](#upstart-fix-post-vivid)
 		- [Ubuntu resolv.conf](#ubuntu-resolvconf)
 	- [Arch Linux](#arch)
 		- [Pacman Filesystem Errors](#pacman-filesystem-errors)
@@ -216,7 +217,24 @@ Write to the hardware clock with
 
 ### {id="debian-based"} Debian-based Linux distributions
 
-#### {id="upstart-fix"} Ubuntu/Upstart prior to 15.04 fix
+#### {id="locale"} Locale packages
+
+In Debian, if you get errors about locale, try installing the `locales-all`
+package.
+
+In Ubuntu, if you get errors about locale, try installing the appropriate
+`language-pack-~(LANGUAGE~)` (such as `language-pack-en`) package.
+
+#### {id="statoverride"} Statoverride
+
+If you get an error about statoverride when using apt/dpkg, it can most likely
+be resolved by deleting the contents of `/var/lib/dpkg/statoverride` in the
+relevant ~{stratum~}.  For example:
+
+- {class="rcmd"}
+- printf "" > /bedrock/strata/jessie/var/lib/dpkg/statoverride
+
+#### {id="upstart-fix-pre-vivid"} Ubuntu/Upstart prior to 15.04 fix
 
 Ubuntu releases prior to 15.04 Vivid Veret utilized Upstart as their init
 system.  Some software was specially modified/configured to expect Upstart as
@@ -235,7 +253,7 @@ Note that this does break the ability to boot with that stratum's Upstart init
 system.  Do not do this for Ubuntu 15.04 or later where it has switched to
 systemd.
 
-#### {id="upstart-fix"} Ubuntu/Upstart post 15.04 fix
+#### {id="upstart-fix-post-vivid"} Ubuntu/Upstart post 15.04 fix
 
 In the 15.04 Vivid Veret release, Ubuntu switched to systemd.  This release
 includes mechanisms for backwards compatibility with Upstart.  Some software
@@ -249,23 +267,6 @@ one can ensure `initctl` is accessible from a `bin`:
 - ln -s /sbin/initctl /bedrock/strata/~(ubuntu-stratum~)/usr/local/bin
 
 Note that this does break the ability to boot with that stratum's Upstart init system.
-
-#### {id="locale"} Locale packages
-
-In Debian, if you get errors about locale, try installing the `locales-all`
-package.
-
-In Ubuntu, if you get errors about locale, try installing the appropriate
-`language-pack-~(LANGUAGE~)` (such as `language-pack-en`) package.
-
-#### {id="statoverride"} Statoverride
-
-If you get an error about statoverride when using apt/dpkg, it can most likely
-be resolved by deleting the contents of `/var/lib/dpkg/statoverride` in the
-relevant ~{stratum~}.  For example:
-
-- {class="rcmd"}
-- printf "" > /bedrock/strata/jessie/var/lib/dpkg/statoverride
 
 #### {id="ubuntu-resolvconf"} Ubuntu resolv.conf
 

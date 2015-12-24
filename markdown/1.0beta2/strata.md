@@ -163,6 +163,9 @@ Edit the following two files to configure `pacman` to your liking:
 - /bedrock/strata/~(arch~)/etc/pacman.d/mirrorlist
 - /bedrock/strata/~(arch~)/etc/pacman.conf
 
+Remove/comment out "CheckSpace" from
+`/bedrock/strata/~(arch~)/etc/pacman.conf`.
+
 Finally, create an entry in `/bedrock/etc/strata.conf` file as explained
 in [the configuration page](configure.html), such as:
 

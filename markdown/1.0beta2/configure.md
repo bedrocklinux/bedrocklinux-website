@@ -347,38 +347,62 @@ item will be chosen when the timeout expires.
 
 ## {id="fstab"} fstab
 
-Bedrock Linux will provide a menu on boot to let you chose which init system to
-use for the given session.  For it to work, it needs to be able to find the
-strata which provide init systems.  It will load a fstab config from
-`/bedrock/etc/fstab` before searching for strata to ensure they are available.
-Most `fstab` configuration will require changes to the default framework as
-well.
+Bedrock Linux provides a menu on boot to let the user choose which init system
+to use for the given session.  Naturally this menu must be provided before the
+init system is run, which means it must be provided before `/etc/fstab` is
+mounted.  If the init system is on a partition other than the boot-time root
+partition, this partition must be mounted by something other than `/etc/fstab`.
+For these mounts Bedrock Linux provides its own pre-init time fstab file at
+`/bedrock/etc/fstab`.
 
-`/bedrock/etc/fstab` can be treated like most fstabs, and should be populated
-to inform Bedrock Linux where these additional partitions go.  It is mounted
-just before the menu to pick which init system to use is presented so the menu
-can find init systems on strata from different partitions.  It is different
-from the `/etc/fstab` that an init system may attempt to utilize as the init
-system's `/etc/fstab` will mount *after* the init system has already started.
-It is easiest to simply use `/bedrock/etc/fstab` for everything and refrain
-from utilizing `/etc/fstab` at all, but there may be scenarios in which the
-latter is required.
+Some users prefer to make a partition specifically for `/bedrock/strata` or one
+for each ~{strata~} within `/bedrock/strata` (e.g. a partition for
+`/bedrock/strata/gentoo`, a partition for `/bedrock/strata/slackware`, etc).
+Since these partitions can potentially contain init systems,
+`/bedrock/etc/fstab` was created specifically to support these workflows.  If
+you do not have special partitions for/within `/bedrock/strata`, but rather
+kept that directory on the root partition, you probably do not need to worry
+about `/bedrock/etc/fstab`.  However, you may still need to worry about the
+default framework - keep reading below.
 
-A few things to keep in mind when populating it:
+Other common mount points - such as `/home` and `/tmp` - can use `/etc/fstab`
+just as they are utilized in other distros.  Nonetheless, if you would like to
+have `/bedrock/etc/fstab` mount partitions such as `/home` it can do so.
 
-- The rootfs stratum is on the root of the filesystem tree, i.e. `/`, from
-  fstab's point of view.  Thus, if you would like to place rootfs' `/boot` on
-  its own partition, it should be mounted at `/boot` and not, for example,
-  `/bedrock/strata/jessie/boot`.
+For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
+`/etc/fstab`.  However, there are a few special things to keep in mind:
+
+- `/bedrock/etc/fstab` is mounted by the Bedrock Linux provided busybox
+  executable in a limited environment.  It may not understand some less common
+  fstab features which would have been understood in `/etc/fstab`.  For those
+  features, `/etc/fstab` will be required.  It is possible to run into a
+  catch-22 in which some special fstab command that busybox doeas not
+  understand is required to provide a given init - avoid these situations.
+
+- Since `/bedrock/etc/fstab` is mounted so early - before init - various
+  Bedrock Linux subsystems are not yet enabled.  For example, the systems in
+  place to ensure ~{global~} files are available in the same place from
+  everyone's point-of-view or that ~{rootfs~} stratum's files are available at
+  the explicit path `/bedrock/strata/~(rootfs-stratum-name~)/` are not yet
+  enabled.  Thus, special consideration must be utilized when mounting into
+  either the ~{global~} or ~{rootfs~} ~{strata~}.
+
+- The ~{rootfs stratum~} is on the root of the filesystem tree, i.e. `/`, from
+  `/bedrock/etc/fstab`'s point of view.  Thus, if you would like to place
+  ~{rootfs~}' `/boot` on its own partition, it should be mounted at `/boot` and
+  not, for example, `/bedrock/strata/jessie/boot`.
+
 - `/bedrock` is considered part of the rootfs stratum, and thus anything in
   `/bedrock` should be mounted directly onto the root of the filesystem tree.
   For example, if you have `/bedrock/strata` on its own partition, it should
   mount the partition onto `/bedrock/strata`.
-- Any global mount points, such as `/home`, should be mounted in the ~{global
-  stratum~}.  Thus, if ~{global~} is at `/bedrock/strata/global` one would
-  mount home to `/bedrock/strata/global/home` in the fstab.  If ~{global~} is
-  also ~{rootfs~}, then it should be mounted to `/home`.  The default framework
-  settings will then ensure it is accessible in the other strata.
+
+- Any global mount points, such as `/home` or `/tmp`, should be mounted in the
+  ~{global stratum~}.  If ~{global~} is also ~{rootfs~}, then `/home` should be
+  mounted to `/home`.  However, if ~{global~} is not ~{rootfs~}, `/home` should
+  be mounted to `/bedrock/strata/~(global-stratum-name~)/home`.  The default
+  framework settings will then ensure it is accessible in the other strata.
+
 - Order matters.  If you mount `/bedrock/strata/global/home` before mounting
   `/bedrock/strata` things may go awry.
 
@@ -396,7 +420,7 @@ accessible in the other ~{strata~}.
 Any mount global mount points should be configured as `share` items.  For
 example, if you made `/home` its own partition, add
 
-    bind = /bedrock/home
+    bind = /home
 
 and the `/home` mounted in in `/bedrock/etc/fstab` will be made
 accessible in the other ~{strata~}.

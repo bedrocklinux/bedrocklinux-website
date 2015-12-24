@@ -24,16 +24,16 @@ options for most decisions.  Note that some options cannot be easily changed
 post install; if you would prefer to do a "full" install read the full
 [installation instructions](install.html).
 
-Please note that Bedrock Linux is quite a bit different from other
-distributions, and just following these instructions may be insufficient to
-fully understand and manage the resulting system.   If you plan to use the
-resulting system as a daily driver, it may be worthwhile to eventually skim
-[the other pages](index.html) for this release of Bedrock Linux (1.0beta2
-Nyla).  It is useful to know, for example, the Bedrock Linux specific [lexicon
-defined here](concepts.html), be aware of the [known issues](knownissues.html)
-and [troubleshooting advice](troubleshooting.html) before you begin following
-the instructions below.  Additionally, it may be best to skim all these
-installation instructions before actually executing them.
+Bedrock Linux is quite a bit different from other distributions, and just
+following these instructions may be insufficient to fully understand and manage
+the resulting system.   If you plan to use the resulting system as a daily
+driver, it may be worthwhile to eventually skim [the other pages](index.html)
+for this release of Bedrock Linux (1.0beta2 Nyla).  It is useful to know, for
+example, the Bedrock Linux specific [lexicon defined here](concepts.html), be
+aware of the [known issues](knownissues.html) and [troubleshooting
+advice](troubleshooting.html) before you begin following the instructions
+below.  Additionally, it may be best to skim all these installation
+instructions before actually executing them.
 
 ## {id="hijack-install-method"} Hijack installation
 
