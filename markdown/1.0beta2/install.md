@@ -912,7 +912,7 @@ Consider editing other global configuration files such as `/etc/sudoers` now.
 Finally, you will need to configure your bootloader.  This is the last major
 step for the installation.
 
-You'll want to change three things:
+You'll want to change four things:
 
 - Set/change the menu item's name to something you'll recognize for this
   install of Bedrock Linux, e.g.  "Bedrock Linux 1.0beta2 Nyla".
@@ -921,6 +921,9 @@ You'll want to change three things:
 
 - Set it to mount the root filesystem as read-write, not read-only.
   Boot-to-read-only is not supported in 1.0beta2 Nyla.
+
+- Ensure no graphical splash screen is utilized (as this may mask Bedrock
+  Linux's pick-an-init menu).
 
 For example, if you are using GRUB2, edit:
 
@@ -942,10 +945,20 @@ to
 
     GRUB_DISTRIBUTOR="Bedrock Linux 1.0beta2"
 
-then run
+If you see "splash" in any of the GRUB configuration lines, such as
+
+    GRUB_CMDLINE_LINUX_DDEFAULT="quiet splash"
+
+remove it, leaving something like:
+
+    GRUB_CMDLINE_LINUX_DDEFAULT="quiet"
+
+Finally, run
 
 - {class="rcmd"}
 - update-grub
+
+to have GRUB2 read and utilize the updated configuration.
 
 With syslinux or LILO, just edit the relevant lines to change the menu item to
 "Bedrock Linux 1.0beta2 Nyla" and add "rw init=/bedrock/sbin/brn" to the kernel
@@ -965,3 +978,5 @@ and enjoy!
 If you run into any difficulties, try reviewing the relevant documentation
 pages for this release, and if that doesn't help sufficiently, don't hesitate
 to drop into the [IRC channel](https://webchat.freenode.net/?channels=bedrock).
+The channel can be slow, but if you stick around, someone will assist you
+eventually.
