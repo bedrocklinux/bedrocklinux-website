@@ -13,7 +13,8 @@ Bedrock Linux 1.0beta2 Nyla Command Overview
 - [brp ("BedRock Path")](#brp)
 - [brs ("BedRock Setup")](#brs)
 - [bru ("BedRock Union")](#bru)
-- [brn ("Bedrock Union pre-iNit")](#brn)
+- [brn ("BedRock pre-iNit")](#brn)
+- [brr ("BedRock Report")](#brr)
 
 ## {id="brc"} brc ("BedRock Change local context")
 
@@ -133,7 +134,7 @@ directories.  Specifically, it implements the required functionality for the
 is mostly managed by the system and it is unlikely the end-user will need to
 run this directly.
 
-## {id="brn"} brn ("Bedrock Union pre-iNit")
+## {id="brn"} brn ("BedRock pre-iNit")
 
 The `brn` command bootstraps other init systems.  It reads
 [brn.conf](configure.html#brn.conf) and, through querying `bri`, the
@@ -147,4 +148,40 @@ the end-user will need to run this directly.
 
 If you run into difficulties booting, `brn` can be told to open a debug shell
 before handing control off to the specified init by setting "debug_brn" on the
-kernel line in the bootloader.
+kernel line in the bootloader.  Most bootloaders will let you edit the kernel
+line for the given session in some manner, e.g. selecting it in a menu and
+pressing `<tab>` or `e`.  Consider placing this before "init=" to ensure the
+kernel/initrd does not interpret this as an argument for the init command.  To
+resume booting the system after you have completed your debugging, exit the
+debug shell - e.g. with `exit` or ctrl-d.
+
+## {id="brr"} brr ("BedRock Report")
+
+This command gathers information about the Bedrock Linux system which may be
+useful in debugging issues.  When reporting an issue, strongly consider
+including a link to the `brr` output (from a paste website - there are many
+freely available ones online, take your pick) with the report.
+
+By default it prints to stdout.  It can be made to log to a file with the `-f`
+flag.
+
+Depending on the specific issue you've run into, consider running `brr` in the
+following situations (and reporting the results):
+
+- As a non-root user, especially if the issue only arises as a non-root user,
+  e.g. `/bedrock/bin/brr`
+- As a root user, as this will result in additional, root-eyes-only information
+  being made available, e.g. `sudo /bedrock/bin/brr`
+- From the ~{init stratum~}, e.g. `brc init /bedrock/bin/brr` and/or `sudo brc
+  init /bedrock/bin/brr`.
+- From the [`brn` debug shell](#brn).  Consider using `/bedrock/bin/brr -f
+  /bedrock/brr-out` in the debug shell then exiting the shell to continue the
+  boot.  From the booted system, read `/bedrock/brr-out` and make it available.
+  Depending on the severity of the issue, other more natural log locations such
+  as `/brr-out`, `/tmp/brr-out`, `/var/log/brr-out` `/var/run/brr-out` may not
+  work as expected.
+- From the very early init environment.  Consider (temporarily) changing
+  `init=~(...~)` in your bootloader's kernel boot line to `/bin/sh`.  From
+  there, run `/bedrock/bin/brr -f /bedrock/brr-out`.  You may continue booting
+  with `exec /bedrock/sbin/brn` or reboot with ctrl-alt-del.  Then make the
+  contents of `/bedrock/brr-out` available.
