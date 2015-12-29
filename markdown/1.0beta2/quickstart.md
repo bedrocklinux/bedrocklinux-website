@@ -393,11 +393,11 @@ to
 
 If you see "splash" in any of the GRUB configuration lines, such as
 
-    GRUB_CMDLINE_LINUX_DDEFAULT="quiet splash"
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
 remove it, leaving something like:
 
-    GRUB_CMDLINE_LINUX_DDEFAULT="quiet"
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 
 Finally, run
 
