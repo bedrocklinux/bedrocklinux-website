@@ -12,14 +12,14 @@ Nav: home.nav
 ## {id="introduction"} Introduction
 
 Linux distributions take software available and, in some sense or another,
-prepare it for end-users.  This typically means compiling and packaging it,
-however that is not always true; distros such as Gentoo prepare source code for
-easy and automated compilation by the end user.  This is an extremely useful
-service; it would not be practical for everyone to compile and package all of
-their software directly from upstream all of the time.
+prepare it for end-users.  Some distros compile the software and provide binary
+packages; others distribute the code in a way which ensures it is easy to
+automate compilation.  These services are extremely useful; it would not be
+practical for everyone to compile and package all of their software directly
+from upstream all of the time.
 
-However, the various groups doing this packaging do so with limited focus on
-having their packages directly inter-operate with those from other groups.
+However, the various groups doing this packaging work do so with limited focus
+on having their packages directly interoperate with those from other groups.
 End-users are forced to choose between the available sets of packages.  Do I
 want something stable from a RHEL clone or Debian?  Do I want something
 cutting-edge from Arch?  Ubuntu is quite popular and has a lot of software
