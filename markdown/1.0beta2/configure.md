@@ -347,6 +347,19 @@ item will be chosen when the timeout expires.
 
 ## {id="fstab"} fstab
 
+The content below revolves around two `fstab` files:
+
+- `/etc/fstab`
+- `/bedrock/etc/fstab`
+
+The former - `/etc/fstab` - is ~{global~} by default.  If you are editing it at
+install time - when you're not yet actually running Bedrock Linux - the file
+may be at `$GLOBAL/etc/fstab` (e.g. `/bedrock/strata/global/etc/fstab`), and
+**not** directly at `/etc/fstab` quite yet.  The latter should be at
+`/bedrock/etc/fstab` irrelevant of the circumstances: either you're hijacking
+such that it is on the root, or you're doing a manual install and have made a
+symlink for `/bedrock`.
+
 Bedrock Linux provides a menu on boot to let the user choose which init system
 to use for the given session.  Naturally this menu must be provided before the
 init system is run, which means it must be provided before `/etc/fstab` is
@@ -369,14 +382,19 @@ Other common mount points - such as `/home` and `/tmp` - can use `/etc/fstab`
 just as they are utilized in other distros.  Nonetheless, if you would like to
 have `/bedrock/etc/fstab` mount partitions such as `/home` it can do so.
 
+Be sure not to include the same mount item in *both* `/etc/fstab` *and*
+`/bedrock/etc/fstab` - any given mount should only appear in one or the other.
+
+
 For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
-`/etc/fstab`.  However, there are a few special things to keep in mind:
+`/etc/fstab`.  However, there are a few special things to keep in mind for
+`/bedrock/etc/fstab`:
 
 - `/bedrock/etc/fstab` is mounted by the Bedrock Linux provided busybox
   executable in a limited environment.  It may not understand some less common
   fstab features which would have been understood in `/etc/fstab`.  For those
   features, `/etc/fstab` will be required.  It is possible to run into a
-  catch-22 in which some special fstab command that busybox doeas not
+  catch-22 in which some special fstab command that busybox does not
   understand is required to provide a given init - avoid these situations.
 
 - Since `/bedrock/etc/fstab` is mounted so early - before init - various
@@ -385,7 +403,10 @@ For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
   everyone's point-of-view or that ~{rootfs~} stratum's files are available at
   the explicit path `/bedrock/strata/~(rootfs-stratum-name~)/` are not yet
   enabled.  Thus, special consideration must be utilized when mounting into
-  either the ~{global~} or ~{rootfs~} ~{strata~}.
+  either the ~{global~} or ~{rootfs~} ~{strata~}.  Note that anything placed in
+  `/etc/fstab`, such the ~{global~} mount point `/home`, should be placed directly
+  at `/home` without these concerns as the Bedrock Linux subsystems will be
+  able to handle the situation at that time.
 
 - The ~{rootfs stratum~} is on the root of the filesystem tree, i.e. `/`, from
   `/bedrock/etc/fstab`'s point of view.  Thus, if you would like to place
@@ -397,14 +418,16 @@ For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
   For example, if you have `/bedrock/strata` on its own partition, it should
   mount the partition onto `/bedrock/strata`.
 
-- Any global mount points, such as `/home` or `/tmp`, should be mounted in the
+- Any ~{global~} mount points, such as `/home` or `/tmp`, should be mounted in the
   ~{global stratum~}.  If ~{global~} is also ~{rootfs~}, then `/home` should be
   mounted to `/home`.  However, if ~{global~} is not ~{rootfs~}, `/home` should
   be mounted to `/bedrock/strata/~(global-stratum-name~)/home`.  The default
   framework settings will then ensure it is accessible in the other strata.
 
-- Order matters.  If you mount `/bedrock/strata/global/home` before mounting
-  `/bedrock/strata` things may go awry.
+- Order matters.  Any mount point which contains a directory in which another
+  device will be mounted should be mounted first.  For example,
+  `/bedrock/strata` should be mounted *before* `/bedrock/strata/global/home`.
+  Generally, shorter paths should be mounted first.
 
 Additionally, the default framework should be made aware of some of these
 additional mount points; place such changes into

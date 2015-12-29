@@ -639,12 +639,17 @@ as well.
 
 ### {id="configure-fstab"} Configure fstab
 
-Bedrock Linux has two files that need to be updated for any partitions outside
-of the typical root and swap partitions, `fstab` and the default `strata.conf`
-framework.  If your partitioning scheme is more complicated than simply a root
-filesystem and a bootloader, configure `/bedrock/etc/fstab` and the default
-framework as described [here](configure.html#fstab) then return to these
-instructions.  Consider opening that link in another tab or window.
+Bedrock Linux has three files that need to be updated for any partitions outside
+of the typical root and swap partitions:
+
+- `$GLOBAL/etc/fstab`
+- `/bedrock/etc/fstab`
+- `/bedrock/etc/strata.conf`
+
+If your partitioning scheme is more complicated than simply a root filesystem
+and a bootloader, configure these three files as described
+[here](configure.html#fstab) then return to these instructions.  Consider
+opening that link in another tab or window.
 
 ## {id="kernel"} Linux kernel and associated files
 
@@ -790,8 +795,8 @@ That should output "1".  If it does not we'll need to make a new pair of
 `passwd` and `shadow` files:
 
 - {class="rcmd"}
-- echo 'root:x:0:0:,,,:/root:/bedrock/bin/brsh' > /etc/passwd
-- echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > /etc/shadow
+- grep -q "^root:" /etc/passwd || echo 'root:x:0:0:,,,:/root:/bedrock/bin/brsh' > /etc/passwd
+- grep -q "^root:" /etc/shadow || echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > /etc/shadow
 
 Set the root user's password:
 
@@ -819,31 +824,32 @@ Next, check if your desired normal user exists.  It may have been inherited
 from the hijacked install:
 
 - {class="rcmd"}
-- grep -c "^~(desired-username~):" /etc/passwd
+- export NON_ROOT_USERNAME=~(non-root-username~)
+- grep -c "^$NON_ROOT_USERNAME:" /etc/passwd
 
 If that does not print "1", add the user:
 
 - {class="rcmd"}
-- mkdir -p /home
-- adduser -s /bedrock/bin/brsh -D ~(username~)
+- grep -q "^$NON_ROOT_USERNAME:" || mkdir -p /home
+- grep -q "^$NON_ROOT_USERNAME:" || adduser -s /bedrock/bin/brsh -D ~(username~)
 
 Set the user's password:
 
 - {class="rcmd"}
-- passwd -a sha512 ~(username~)
+- passwd -a sha512 $NON_ROOT_USERNAME
 
 And ensure the user is using `brsh`:
 
 - {class="rcmd"}
-- awk 'BEGIN{IFS=":";OFS=":"} /^~(username~):/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
+- awk 'BEGIN{FS=OFS=":"} /^$NON_ROOT_USERNAME:/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
 - mv /etc/new-passwd /etc/passwd
 
 If you'd like a emergency-drop-to-`/bin/sh` alias for this user as well, you
 can optionally create one:
 
 - {class="rcmd"}
-- sed -n 's/^~(username~):/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
-- sed -n 's/^~(username~):/br&/p' /etc/shadow >> /etc/shadow
+- sed -n 's/^$NON_ROOT_USERNAME:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
+- sed -n 's/^$NON_ROOT_USERNAME:/br&/p' /etc/shadow >> /etc/shadow
 
 Next we'll need to add expected users and groups.  If you get a "in use" error,
 this simply indicates you already have the user or group; no harm done.
@@ -951,11 +957,11 @@ to
 
 If you see "splash" in any of the GRUB configuration lines, such as
 
-    GRUB_CMDLINE_LINUX_DDEFAULT="quiet splash"
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
 remove it, leaving something like:
 
-    GRUB_CMDLINE_LINUX_DDEFAULT="quiet"
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 
 Finally, run
 
