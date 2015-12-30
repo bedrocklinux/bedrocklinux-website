@@ -5,7 +5,7 @@ Bedrock Linux 1.0beta2 Nyla
 ===========================
 
 These are a collection of files used to create and document the second beta of
-Bedrock Linux, named "Nyla", which was released TODO (September 23th, 2015?)
+Bedrock Linux, named "Nyla", which was released TODO (January 4th, 2015?)
 
 - [Changelog](changelog.html)
 - [System Requirements](systemrequirements.html)

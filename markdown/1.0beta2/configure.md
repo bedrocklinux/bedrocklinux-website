@@ -347,15 +347,16 @@ item will be chosen when the timeout expires.
 
 ## {id="fstab"} fstab
 
-The content below revolves around two `fstab` files:
+The content below revolves around three configuration files:
 
 - `/etc/fstab`
 - `/bedrock/etc/fstab`
+- `/bedrock/etc/frameworks.d/default`
 
-The former - `/etc/fstab` - is ~{global~} by default.  If you are editing it at
+The first - `/etc/fstab` - is ~{global~} by default.  If you are editing it at
 install time - when you're not yet actually running Bedrock Linux - the file
 may be at `$GLOBAL/etc/fstab` (e.g. `/bedrock/strata/global/etc/fstab`), and
-**not** directly at `/etc/fstab` quite yet.  The latter should be at
+**not** directly at `/etc/fstab` quite yet.  The latter two should be at
 `/bedrock/etc/fstab` irrelevant of the circumstances: either you're hijacking
 such that it is on the root, or you're doing a manual install and have made a
 symlink for `/bedrock`.
@@ -363,10 +364,10 @@ symlink for `/bedrock`.
 Bedrock Linux provides a menu on boot to let the user choose which init system
 to use for the given session.  Naturally this menu must be provided before the
 init system is run, which means it must be provided before `/etc/fstab` is
-mounted.  If the init system is on a partition other than the boot-time root
-partition, this partition must be mounted by something other than `/etc/fstab`.
-For these mounts Bedrock Linux provides its own pre-init time fstab file at
-`/bedrock/etc/fstab`.
+parsed by the init system.  If the init system is on a partition other than the
+boot-time root partition, this partition must be mounted by something other
+than `/etc/fstab`.  For these mounts Bedrock Linux provides its own pre-init
+time fstab file at `/bedrock/etc/fstab`.
 
 Some users prefer to make a partition specifically for `/bedrock/strata` or one
 for each ~{strata~} within `/bedrock/strata` (e.g. a partition for
@@ -384,7 +385,8 @@ have `/bedrock/etc/fstab` mount partitions such as `/home` it can do so.
 
 Be sure not to include the same mount item in *both* `/etc/fstab` *and*
 `/bedrock/etc/fstab` - any given mount should only appear in one or the other.
-
+When you place anything in `/bedrock/etc/fstab` make sure you do not also have
+it within `/etc/fstab`.
 
 For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
 `/etc/fstab`.  However, there are a few special things to keep in mind for
@@ -403,10 +405,7 @@ For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
   everyone's point-of-view or that ~{rootfs~} stratum's files are available at
   the explicit path `/bedrock/strata/~(rootfs-stratum-name~)/` are not yet
   enabled.  Thus, special consideration must be utilized when mounting into
-  either the ~{global~} or ~{rootfs~} ~{strata~}.  Note that anything placed in
-  `/etc/fstab`, such the ~{global~} mount point `/home`, should be placed directly
-  at `/home` without these concerns as the Bedrock Linux subsystems will be
-  able to handle the situation at that time.
+  either the ~{global~} or ~{rootfs~} ~{strata~}.
 
 - The ~{rootfs stratum~} is on the root of the filesystem tree, i.e. `/`, from
   `/bedrock/etc/fstab`'s point of view.  Thus, if you would like to place
@@ -425,9 +424,7 @@ For the most part, `/bedrock/etc/fstab` utilizes the same syntax as the typical
   framework settings will then ensure it is accessible in the other strata.
 
 - Order matters.  Any mount point which contains a directory in which another
-  device will be mounted should be mounted first.  For example,
-  `/bedrock/strata` should be mounted *before* `/bedrock/strata/global/home`.
-  Generally, shorter paths should be mounted first.
+  device will be mounted should be mounted first.
 
 Additionally, the default framework should be made aware of some of these
 additional mount points; place such changes into
@@ -438,12 +435,17 @@ partition, add
     bind = /bedrock/strata
 
 and the `/bedrock/strata` mounted in in `/bedrock/etc/fstab` will be made
-accessible in the other ~{strata~}.
+accessible in the other ~{strata~}.  Careful not to double up - ensure there is
+only one `bind` item for any given `bind` directory.  For example, by default
+Bedrock Linux is configured with a `bind` item for `/bedrock/run` - no need to
+make another one for that directory.
 
 Any mount global mount points should be configured as `share` items.  For
-example, if you made `/home` its own partition, add
+example, if you made `/var/log` its own partition and wish for it to be
+considered global, add
 
-    bind = /home
+    share = /var/log
 
-and the `/home` mounted in in `/bedrock/etc/fstab` will be made
-accessible in the other ~{strata~}.
+to the default framework.  Again, careful not to double up - ensure there is
+only one instance of any given `share` item.  For example, `/home` should be
+configured as a `share` item by default and should not be added again.
