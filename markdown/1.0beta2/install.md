@@ -704,7 +704,7 @@ of the typical root and swap partitions:
 
 - `$GLOBAL/etc/fstab`
 - `/bedrock/etc/fstab`
-- `/bedrock/etc/strata.conf`
+- `/bedrock/etc/frameworks.d/default`
 
 If your partitioning scheme is more complicated than simply a root filesystem
 and a bootloader, configure these three files as described
