@@ -774,6 +774,7 @@ Once you have located at least one set of these files, copy them into `$ROOTFS/b
 For example, if copying Arch Linux's initrd and kernel image:
 
 - {class="rcmd"}
+- mkdir -p $ROOTFS/boot/
 - cp -p /bedrock/strata/arch/boot/initramfs-linux.img /bedrock/strata/arch/boot/vmlinuz-linux $ROOTFS/boot/
 
 ### {id="modules"} modules
