@@ -938,8 +938,8 @@ this simply indicates you already have the user or group; no harm done.
 It may be desirable to add your normal user to the "audio" and "video" groups:
 
 - {class="rcmd"}
-- addgroup ~(username~) audio
-- addgroup ~(username~) video
+- addgroup $NONROOTUSERNAME audio
+- addgroup $NONROOTUSERNAME video
 
 If you plan to use systemd as your init at some point, even just temporarily,
 it is a good idea to ensure some of the users and groups it expects exist, as
