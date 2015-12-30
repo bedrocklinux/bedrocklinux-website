@@ -885,32 +885,32 @@ Next, check if your desired normal user exists.  It may have been inherited
 from the hijacked install:
 
 - {class="rcmd"}
-- export NON_ROOT_USERNAME=~(non-root-username~)
-- grep -c "^$NON_ROOT_USERNAME:" /etc/passwd
+- export NONROOTUSERNAME=~(non-root-username~)
+- grep -c "^$NONROOTUSERNAME:" /etc/passwd
 
 If that does not print "1", add the user:
 
 - {class="rcmd"}
-- grep -q "^$NON_ROOT_USERNAME:" || mkdir -p /home
-- grep -q "^$NON_ROOT_USERNAME:" || adduser -s /bedrock/bin/brsh -D ~(username~)
+- grep -q "^$NONROOTUSERNAME:" || mkdir -p /home
+- grep -q "^$NONROOTUSERNAME:" || adduser -s /bedrock/bin/brsh -D ~(username~)
 
 Set the user's password:
 
 - {class="rcmd"}
-- passwd -a sha512 $NON_ROOT_USERNAME
+- passwd -a sha512 $NONROOTUSERNAME
 
 And ensure the user is using `brsh`:
 
 - {class="rcmd"}
-- awk 'BEGIN{FS=OFS=":"} /^$NON_ROOT_USERNAME:/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
+- awk 'BEGIN{FS=OFS=":"} /^$NONROOTUSERNAME:/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
 - mv /etc/new-passwd /etc/passwd
 
 If you'd like a emergency-drop-to-`/bin/sh` alias for this user as well, you
 can optionally create one:
 
 - {class="rcmd"}
-- sed -n 's/^$NON_ROOT_USERNAME:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
-- sed -n 's/^$NON_ROOT_USERNAME:/br&/p' /etc/shadow >> /etc/shadow
+- sed -n 's/^$NONROOTUSERNAME:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
+- sed -n 's/^$NONROOTUSERNAME:/br&/p' /etc/shadow >> /etc/shadow
 
 Next we'll need to add expected users and groups.  If you get a "in use" error,
 this simply indicates you already have the user or group; no harm done.
