@@ -909,8 +909,8 @@ If you'd like a emergency-drop-to-`/bin/sh` alias for this user as well, you
 can optionally create one:
 
 - {class="rcmd"}
-- sed -n 's/^$NONROOTUSERNAME:/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
-- sed -n 's/^$NONROOTUSERNAME:/br&/p' /etc/shadow >> /etc/shadow
+- sed -n 's/^'"$NONROOTUSERNAME:"'/br&/p' /etc/passwd | sed 's,:[^:]\*$,:/bin/sh,' >> /etc/passwd
+- sed -n 's/^'"$NONROOTUSERNAME:"'/br&/p' /etc/shadow >> /etc/shadow
 
 Next we'll need to add expected users and groups.  If you get a "in use" error,
 this simply indicates you already have the user or group; no harm done.
