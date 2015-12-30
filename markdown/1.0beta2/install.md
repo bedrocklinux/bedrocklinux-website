@@ -136,20 +136,57 @@ one.  Some background to help you make your choice:
 	- gettext (needed for FUSE)
 	- fakeroot (for building tarball with proper permissions)
 
-Once you've chosen the distro, install it.  For the most part, whatever you
-normally do during installation should be fine here.  If you like to make
-multiple partitions for different directories, keep in mind that the majority
-of your userland will end up in a new, Bedrock Linux-specific directory at
-`/bedrock/strata/`.  You could make `/bedrock/strata` its own partition, or
-perhaps make one for each ~{stratum~} that ends up in that directory.  Such
-partitioning schemes require a more configuration than simpler schemes; skim
-[the fstab config page](configure.html#fstab) to be sure you understand the
-changes that will need to be made for such schemes.  The simplest scheme - one
-large partition for the data and one for swap - is the easiest to setup and
-configure.
+Once you've chosen the distro, install it.
+
+During installation, you will likely be queried for partitioning preferences.
+Here are some things to keep in mind:
+
+- The simplest common partitioning scheme is two partitions: one for all of
+  your data and one for swap.  This is the easiest to set up and is recommended
+  if you're new to such things.
+- Encrypted `/home` directories can be made to work under Bedrock Linux with
+  certain constraints, but the hooks to decrypt them on login may require
+  special work to setup if you try to switch init systems; generally they're
+  best avoided in Bedrock Linux.
+- Full Disk Encryption is supported.  However, it may constrain you to continue
+  using the installation distro you're hijacking's kernel, initrd and
+  bootloader.
+- If you prefer having various directories such as `/home` or `/tmp` on their
+  own partition, this is perfectly fine as well.  However, Bedrock Linux needs
+  to be made aware of such things - be sure to inform it of such changes in the
+  fstab configuration step further down in these instructions.  In fact, it may
+  be advisable to skim [the fstab configuration details](configure.html#fstab)
+  before partitioning (then return here).
+- Some things must be on the root filesystem partition and cannot be mounted
+  another partition which is mounted in via `fstab`.  This includes things in
+  `/bedrock` which are required for boot and setup - things such as
+  `/bedrock/sbin/brn`, its dependencies such as `/bedrock/libexec/busybox` and
+  configuration in `/bedrock/etc/`.  With the special exception of
+  `/bedrock/strata` and its contents (which will be expanded upon below), it is
+  best to consider `/bedrock` to be part of the root partition.
+- In addition to `/bedrock`, the ~{global stratum~} must be part of the root
+  partition.  This avoids a troublesome catch-22 scenario.  If you consider
+  making `/bedrock/strata` its own partition, you'll be required to have
+  ~{rootfs stratum~} the same as the ~{global stratum~}.  Consider skimming
+  [the rootfs section](#configure-rootfs) and [the global
+  section](#configure-global) of the installation docs to understand the
+  significance of this (then return here).
+- In most distros, the majority of the operating system data typically goes
+  into `/usr`.  With Bedrock Linux, however, the majority of this kind of data
+  will go into `/bedrock/strata`; if you typically prefer having `/usr` on its
+  own directory for other distros, consider having `/bedrock/strata` on its own
+  directory for Bedrock Linux.  Or, alternatively, consider having a partition
+  for each ~{stratum~} under `/bedrock/strata` - one for
+  `/bedrock/strata/arch`, one for `/bedrock/strata/gentoo`, etc.  This
+  partitioning scheme will extra require care around issues such as the [the fstab
+  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~}
+  - it is not advisable for newer Bedrock Linux users.
 
 If you aren't sure what to do here, just follow the recommendations provided by
-the distro you are installing.
+the distro you are installing.  Just make sure there's plenty of space in the
+root partition (`/`).  The biggest concerns above - such as not partitioning
+`/bedrock` off the root partition - will *probably* not be hit by most major
+distro recommendations.
 
 Next, boot into the install you're about to hijack.
 
@@ -176,23 +213,46 @@ distro can provide the following requirements for compiling Bedrock Linux:
 - gettext (needed for FUSE)
 - fakeroot (for building tarball with proper permissions)
 
-Partition via preferred tools, e.g. fdisk or gparted.  Very simple partitioning
-setups - such as just a root partition, maybe a boot partition, and swap, work
-well with Bedrock Linux.  More complicated partition settings can be made to
-work but require additional Bedrock Linux configuration and are not recommended
-unless you have a firm grasp of Bedrock Linux configuration concepts (e.g. what
-a `bind` item is).  A few things to keep in mind:
+Partition via preferred tools, e.g. fdisk or gparted.  Some things to keep in
+mind:
 
-- `/bedrock/sbin/brn` needs to be on the root partition so the bootloader can
-  find it, and thus you should not create another partition just for `/bedrock`
-  or `/bedrock/sbin`.
-- The majority of your userland will end up in a new, Bedrock
-  Linux-specific directory at `/bedrock/strata/`.  You could make
-  `/bedrock/strata` its own partition, or perhaps make one for each ~{stratum~}
-  that ends up in that directory.  If you do this, make sure to [configure
-  /bedrock/etc/fstab](configure.md#fstab) and the [default strata.conf
-  framework](configure.html#strata.conf) accordingly when you get to the
-  configuration section below.
+- The simplest common partitioning scheme is two partitions: one for all of
+  your data and one for swap.  This is the easiest to set up and is recommended
+  if you're new to such things.
+- Full Disk Encryption is supported if you can figure out how to install it
+  manually.  Keep in mind you'll need to continue having initrds which
+  understand how to decrypt the FDE setup - you can't just grab an initrd from
+  another distro which does not understand such things.
+- If you prefer having various directories such as `/home` or `/tmp` on their
+  own partition, this is perfectly fine as well.  However, Bedrock Linux needs
+  to be made aware of such things - be sure to inform it of such changes in the
+  fstab configuration step further down in these instructions.  In fact, it may
+  be advisable to skim [the fstab configuration details](configure.html#fstab)
+  before partitioning (then return here).
+- Some things must be on the root filesystem partition and cannot be mounted
+  another partition which is mounted in via `fstab`.  This includes things in
+  `/bedrock` which are required for boot and setup - things such as
+  `/bedrock/sbin/brn`, its dependencies such as `/bedrock/libexec/busybox` and
+  configuration in `/bedrock/etc/`.  With the special exception of
+  `/bedrock/strata` and its contents (which will be expanded upon below), it is
+  best to consider `/bedrock` to be part of the root partition.
+- In addition to `/bedrock`, the ~{global stratum~} must be part of the root
+  partition.  This avoids a troublesome catch-22 scenario.  If you consider
+  making `/bedrock/strata` its own partition, you'll be required to have
+  ~{rootfs stratum~} the same as the ~{global stratum~}.  Consider skimming
+  [the rootfs section](#configure-rootfs) and [the global
+  section](#configure-global) of the installation docs to understand the
+  significance of this (then return here).
+- In most distros, the majority of the operating system data typically goes
+  into `/usr`.  With Bedrock Linux, however, the majority of this kind of data
+  will go into `/bedrock/strata`; if you typically prefer having `/usr` on its
+  own directory for other distros, consider having `/bedrock/strata` on its own
+  directory for Bedrock Linux.  Or, alternatively, consider having a partition
+  for each ~{stratum~} under `/bedrock/strata` - one for
+  `/bedrock/strata/arch`, one for `/bedrock/strata/gentoo`, etc.  This
+  partitioning scheme will extra require care around issues such as the [the fstab
+  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~}
+  - it is not advisable for newer Bedrock Linux users.
 
 If you aren't sure what to do here, one big partition for the root directory
 and a swap partition about 2.5 times your RAM size should be fine.
