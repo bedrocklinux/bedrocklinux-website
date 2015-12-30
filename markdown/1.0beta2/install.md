@@ -902,7 +902,7 @@ Set the user's password:
 And ensure the user is using `brsh`:
 
 - {class="rcmd"}
-- awk 'BEGIN{FS=OFS=":"} /^$NONROOTUSERNAME:/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
+- awk 'BEGIN{FS=OFS=":"} /^'"$NONROOTUSERNAME"':/{$NF = "/bedrock/bin/brsh"} 1' /etc/passwd > /etc/new-passwd
 - mv /etc/new-passwd /etc/passwd
 
 If you'd like a emergency-drop-to-`/bin/sh` alias for this user as well, you
