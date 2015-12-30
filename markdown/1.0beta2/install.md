@@ -976,7 +976,7 @@ done, exit the chroot.
 - {class="rcmd"}
 - exit
 
-Consider editing other global configuration files such as `/etc/sudoers` now.
+Consider editing other global configuration files such as `$GLOBAL/etc/sudoers` now.
 
 ## {id="configure-bootloader"} Configure bootloader
 
