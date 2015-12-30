@@ -891,8 +891,8 @@ from the hijacked install:
 If that does not print "1", add the user:
 
 - {class="rcmd"}
-- grep -q "^$NONROOTUSERNAME:" /et/passwd || mkdir -p /home
-- grep -q "^$NONROOTUSERNAME:" /et/passwd || adduser -s /bedrock/bin/brsh -D $NONROOTUSERNAME
+- grep -q "^$NONROOTUSERNAME:" /etc/passwd || mkdir -p /home
+- grep -q "^$NONROOTUSERNAME:" /etc/passwd || adduser -s /bedrock/bin/brsh -D $NONROOTUSERNAME
 
 Set the user's password:
 
