@@ -302,6 +302,8 @@ this simply indicates you already have the user or group; no harm done.
 - addgroup utmp
 - addgroup plugdev
 - addgroup uucp
+- addgroup kvm
+- addgroup syslog
 
 It may be desirable to add your normal user to the "audio" and "video" groups:
 
