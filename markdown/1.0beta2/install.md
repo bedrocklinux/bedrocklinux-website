@@ -266,7 +266,10 @@ no instructions are provided here to do so.  If you want to utilize such
 technologies, either find instructions elsewhere or use the hijack installation
 method with a distro that provides full disk encryption, RAID, etc.
 
-Mount the partitions wherever you like.
+Mount the root partition wherever you like.  `/mnt/bedrock/` is the
+conventional place to mount the root of the filesystem.  If you have other
+partitions, such as `/home`, mount them within the root bedrock filesystem
+mount accordingly.
 
 Note the instructions below merge with the hijack installation method; they
 will mention things such as "if you are doing a hijack install" or "if you are
@@ -598,6 +601,12 @@ Ensure you have a global fstab
 
 - {class="rcmd"}
 - touch $GLOBAL/etc/fstab
+
+Ensure `/tmp` exists and has the proper permissions:
+
+- {class="rcmd"}
+- mkdir $GLOBAL/tmp
+- chmod a+rwxt $GLOBAL/tmp
 
 The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
 later confusion:
