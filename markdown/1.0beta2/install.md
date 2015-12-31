@@ -594,6 +594,10 @@ Otherwise, create a sudoers file to ensure, if you do get `sudo` later, the
 - chown root:root $GLOBAL/etc/sudoers
 - chmod 440 $GLOBAL/etc/sudoers
 
+Ensure you have a global fstab
+
+- {class="rcmd"}
+- touch $GLOBAL/etc/fstab
 
 The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
 later confusion:

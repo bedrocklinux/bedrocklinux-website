@@ -241,6 +241,11 @@ The default hostname is "bedrock-box".  To change this, edit
 Change "bedrock-box" in `/etc/hosts` to your desired hostname
 as well.
 
+Ensure you have a global fstab
+
+- {class="rcmd"}
+- touch $GLOBAL/etc/fstab
+
 ## {id="manage-users-groups"} Manage users and groups
 
 Different `adduser` implementations have different flags.  For consistency,
