@@ -8,6 +8,7 @@ These are a collection of files used to create and document the second beta of
 Bedrock Linux, named "Nyla", which was released TODO (January 4th, 2015?)
 
 - [Changelog](changelog.html)
+- [Major features](features.html)
 - [System Requirements](systemrequirements.html)
 - [Concepts, Theory and Terminology](concepts.html)
 - [Quick Start Installation Instructions](quickstart.html)
