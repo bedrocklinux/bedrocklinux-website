@@ -615,7 +615,7 @@ later confusion:
 - {class="rcmd"}
 - rm -r /bedrock/global-files
 
-### {it="configure-time"} Configure time
+### {id="configure-time"} Configure time
 
 Bedrock Linux 1.0beta2 Nyla's system for managing time is particularly weak at
 the moment.  While everything one would need should be possible to do, there is
@@ -703,7 +703,7 @@ set to "-1" it wait indefinitely.  For example:
     default_cmd = /sbin/init
     timeout = 10
 
-### {it="configure-hostname"} Configure hostname
+### {id="configure-hostname"} Configure hostname
 
 The default hostname is "bedrock-box".  To change this, edit
 `$GLOBAL/etc/hostname` as desired.
@@ -731,8 +731,7 @@ Next you'll need a set of related files usually tied to the Linux kernel to be
 placed in specific locations.  At a minimum you need one set, but more could
 be desired.  If you are doing a hijack install where ~{global~} and
 ~{rootfs~} are the same ~{stratum~}, you should already have one set of these files
-in place.  If that is the case, you can skip down to the [configure
-bootloader](#configure-bootloader) step.
+in place.  If that is the case, you can skip down to the [Manager users and groups](#manage-users-groups) step.
 
 ### {id="boot-files"} /boot files
 
