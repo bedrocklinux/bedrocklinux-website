@@ -5,7 +5,7 @@ News Archive
 ============
 
 ## {id="nyla-release"} Bedrock Linux 1.0beta2 Nyla released
-<small>2015-01-16</small>
+<small>2016-01-16</small>
 
 The second beta of Bedrock linux, 1.0beta2 Nyla, has been released.  See the
 [major features](1.0beta2/features.html), the [high-level
