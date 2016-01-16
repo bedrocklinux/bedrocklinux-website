@@ -1,4 +1,4 @@
-Title: Bedrock Linux 1.0beta2 Nyla
+Title: Bedrock Linux 1.0beta2 Nyla Syslinux Guide
 Nav: nyla.nav
 
 Syslinux Installation
