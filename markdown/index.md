@@ -13,10 +13,19 @@ clone) yet still have easy access to cutting-edge packages (from, say, Arch
 Linux), automate compiling packages with Gentoo's portage, and ensure that
 software aimed only for the ever popular Ubuntu will run smoothly - all at the
 same time, in the same distribution - Bedrock Linux will provide a means to
-achieve this.  [Watch a
-demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
+achieve this.  See a [feature list](1.0beta2/features.html), [watch a
+(old/outdated) demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
+
+## {id="nyla-release"} Bedrock Linux 1.0beta2 Nyla released
+<small>2015-01-16</small>
+
+The second beta of Bedrock linux, 1.0beta2 Nyla, has been released.  See the
+[major features](1.0beta2/features.html), the [high-level
+changelog](1.0beta2/changelog.html), and either the [full installation
+instructions](1.0beta2/install.html) or, if you'd like to expedite the install
+process, the [quickstart installation instructions](1.0beta2/quickstart.md).
 
 ## {id="nyla-release-soon"} Bedrock Linux 1.0beta2 Nyla in final development stages
 <small>2015-10-03</small>

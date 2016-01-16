@@ -4,7 +4,7 @@ Nav: hawky.nav
 # Bedrock Linux 1.0beta1 Hawky Plans
 
 This page serves to describe plans for the then-upcoming release of Bedrock Linux,
-1.0beta1 "Hawky". Hawky is scheduled to be released July 1st, 2014.
+1.0beta1 "Hawky". Hawky has since been released on July 17th, 2014.
 
 ## New fuse-based brp
 
