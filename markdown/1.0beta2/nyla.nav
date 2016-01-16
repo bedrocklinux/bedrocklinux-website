@@ -3,4 +3,14 @@
 Bedrock Linux 1.0beta2 Nyla
 
 - [Root Nyla page](index.html)
+- [Major features](features.html)
+- [Changelog](changelog.html)
+- [System Requirements](systemrequirements.html)
+- [Concepts, Theory and Terminology](concepts.html)
+- [Quick Start Installation Instructions](quickstart.html)
+- [Full Installation Instructions](install.html)
+- [Strata setup instructions](strata.html)
+- [Tips, Tricks and Troubleshooting](troubleshooting.html)
+- [Configuration instructions](configure.html)
+- [Command Overview](commands.html)
 - [Design Plans](plans.html)

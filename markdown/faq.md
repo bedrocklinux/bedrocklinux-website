@@ -7,6 +7,9 @@ Nav:   home.nav
 - [How does Bedrock Linux work?](#how_bedrock_work)
 - [Why should I use Bedrock?](#why_use_bedrock)
 - [Why should I not use Bedrock?](#why_not_use_bedrock)
+- [How secure is Bedrock Linux?](#security)
+- [How stable is Bedrock Linux?](#stability)
+- [Is Bedrock Linux far enough along for me to use?](#ready_status)
 - [How can I contribute?](#contribute)
 - [How is this different from/preferable to using a virtual machine?](#vs_virtual_machine)
 - [How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?](#vs_container)
@@ -25,8 +28,9 @@ See the Introduction to [Bedrock](introduction.html).
 
 ## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
 
-The exact details may change drastically from release-to-release, but the
-general concept is explained [here](introduction.html#concepts).
+The exact details may change drastically from release-to-release.
+Documentation for the general concepts behind the current release at the time
+of writing (1.0beta2 Nyla) can be found [here](1.0beta2/concepts.html).
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
@@ -49,18 +53,131 @@ for this specific issue than debug the root of the problem.
 ## {id="why\_not\_use\_bedrock"} Why should I not use Bedrock?
 
 - If you are happy with all of the functionality provided by another Linux
-distribution, and you have no interest in features it does not provide, it
-would likely be best to simply use that other Linux distribution.
-- If you value stability/reliability, note that while this is a priority for
-Bedrock Linux, Bedrock Linux is still largely new and untested; a
-tried-and-true stable/reliable Linux distribution such as Debian or a Red Hat
-Enterprise Linux clone would likely be better suited.
-- If you value security, note that Bedrock Linux probably has the highest
-attack surface of just about any Linux distribution, mostly because its attack
-surface is the sum of the attack surfaces of just about every other Linux
-distribution combined. While steps can be taken to alleviate this to some
-degree, ultimately, a locked-down Bedrock Linux can never truly reach the
-security offered by a locked-down standard Linux distribution.
+  distribution, and you have no interest in features it does not provide, it
+  would likely be best to simply use that other Linux distribution.
+
+- Bedrock Linux is still in deep development with a relatively small community.
+  While stability, reliability, and accessibility are high priorities for the
+  eventual "stable" release, they may be lacking in the project's current place
+  in the development cycle.  If you are willing to put up with some rough edges
+  more testers are certainly welcome, but if you are looking for a stable,
+  well-proven or user-friendly distro Bedrock Linux may not yet meet your
+  needs.  See the [stability FAQ entry below](#stability).
+
+- While Bedrock Linux can acquire beneficial attributes of other distributions,
+  it can also take in some negative attributes, namely *lax security*.  A
+  Bedrock Linux system composed of carefully chosen, curated components from
+  other distributions with properly configured hardening techniques may be more
+  secure than most other distros out there; however, one composed of a
+  cacophony of overly-complicated insecure packages from poorly designed and
+  ill maintained distros could easily be much worse than most other distros.
+  In other words, Bedrock Linux's flexibility lets you shoot yourself in the
+  foot in wholly new and unique ways.  See the [security FAQ entry
+  below](#security).
+
+- Just as security issues are additive, so is complexity.  Any two distros *x*
+  and *y* would each be, individually, simpler than a Bedrock Linux system
+  which is composed of packages from both distros *x* and *y*.  While this
+  complexity is manageable in practice, those looking for extreme
+  minimal/simple distros may prefer to look elsewhere.
+
+## {id="secuity"} How secure is Bedrock Linux?
+
+A Bedrock Linux system is composed of packages from other distributions.  If
+you limit yourself to packages from secure, well-proven, hardened distros,
+security could be comparable to those distros themselves.  If you use less
+secure packages from less secure distros, Bedrock Linux's security will suffer
+accordingly.  In theory Bedrock Linux allows one to build a system out of every
+package from every major distro without any access controls in place, which
+would have an incredible attack surface and be a terrible idea.  Don't do that.
+
+In practice, Bedrock Linux does offer some notable security benefits over
+traditional distros:
+
+- If a distro does not provide a desired version of a desired package, a user
+  is typically expected to go acquire it outside of the distro's repositories.
+  It then falls on the user to maintain the package himself/herself.  While it
+  is possible a given user is extremely diligent about maintaining such
+  packages, there is a strong possibility the user may fail to follow proper
+  diligence and let security updates languish.  With Bedrock Linux, the package
+  may be acquired from another, maintained distribution whose security team the
+  user can depend on.
+
+- Some hardening techniques from one distro may protect software from others.
+  For example, a hardened kernel from one distro may be used with packages from
+  another distro that does not provide such a hardened kernel.  Access control
+  mechanisms such as SELinux as provided by one distro may be configured to
+  extend to packages from other distros that would not have natively provided
+  such access control mechanisms at all.
+
+There are also some downsides to Bedrock Linux from a security
+point-of-view:
+
+- `chroot()`-hardening techniques will break Bedrock Linux.  Some people
+  attempt to misuse `chroot()` as a security tool, unaware of the many ways
+  `chroot()` "contained" things can influence the rest of the system.  These
+  hardening techniques attempt to shore up these limitations of using
+  `chroot()` as a pseudo-container.  Bedrock Linux uses `chroot()` to a nuanced
+  degree, taking advantage of the areas where it does *not* contain things;
+  changes there will break Bedrock Linux.  If you need to lock down `chroot()`,
+  consider changing or expanding your strategy to include things such as using
+  `pivot_root` and namespaces.
+
+- Some distros provide security mechanisms such as SELinux policies or
+  intrusion detection systems which may not "just work" across packages from
+  different, unrelated distros in a Bedrock Linux system.  It may be possible
+  to manually extend such policies and mechanisms to cover the entirety of a
+  Bedrock Linux system composed of packages from a variety of distros, but
+  additional work would be required; it won't "just work".
+
+## {id="stability"} How stable is Bedrock Linux?
+
+Stability and, where that fails, resilience to otherwise potentially breaking
+issues, is a high priority for the project. The original reason Bedrock Linux
+started was to allow access to newer packages without the sacrifice in
+stability provided by distros such as Debian and RHEL
+
+However, at the moment, Bedrock Linux is in deep development and it is very
+possible that stability issues may arise.  Moreover, the community is
+relatively small, limiting our ability to properly test and quality-assure
+the project in its current state.  While stability is a valued eventual
+goal, it may be lacking to some degree or another at the current time.
+
+Even when 1.0 stable is reached, Bedrock Linux's flexibility may allow for
+unstable configurations.  A Bedrock Linux system is composed of packages from
+other distributions.  If you limit yourself to packages from stable,
+well-proven distros, stability will follow. If you use less stable packages
+packages from less stable distros, Bedrock Linux's stability will suffer
+accordingly.
+
+Neither an all-very-stable package collection nor an all-bleeding-edge
+package collection is required.  Rather, a blend of the two is where
+Bedrock Linux is able to excel.  In such a setup, a user can keep around
+and depend on stable software while still having access to less dependable,
+more cutting edge software.  Should some software fail - most likely the
+bleeding-edge software, but not impossibly the older software software -
+packages from other distros can fill the functionality gap, minimizing the
+hit.  This even works with things such as init systems: should an init
+system fail, traditional distros would be rendered unbootable without
+manual efforts to resolve.  With Bedrock Linux one can simply chose
+an init system from another distro.
+
+## {id="ready\_status"} Is Bedrock Linux far enough along for me to use?
+
+Bedrock Linux's development has largely focused on the under-the-hood
+technology that makes it work rather than user-facing policy.  The installation
+procedure, for example, is notably rough at the time of writing; this is a
+blocker for many people who are not accustomed to getting their hands dirty
+compiling things and editing configuration files directly.
+
+If you are seeking a polished, it-just-works distribution, Bedrock Linux is not
+yet far enough along to meet that constraint; it may be advisable to use
+another distribution for the time being.
+
+If you are accustomed to more hands-on/low-level distributions such as Arch,
+Gentoo, and Linux from Scratch, and are okay with using a "beta" system that is
+still in active development, Bedrock Linux may be far enough along for you to
+utilize.
 
 ## {id="contribute"} How can I contribute?
 
@@ -72,7 +189,7 @@ security offered by a locked-down standard Linux distribution.
   [IRC](http://webchat.freenode.net/?channels=bedrock).  Or make a new issue if
   you have an idea.
 - There is always a need to improve the documentation.  For example, you could
-  add instructions for setting up an obscure distro as a ~{client~} Bedrock Linux,
+  add instructions for setting up an obscure distro as a ~{stratum~} Bedrock Linux,
   or something as simple as fixing typos.  Once you have something to submit,
   stop by the [website git
   repo](https://github.com/bedrocklinux/bedrocklinux-website).
@@ -88,16 +205,16 @@ distribution, all running in an X11 server from a third Linux distribution.
 This all happens transparently; it all feels like one single cohesive Linux
 distribution. Virtual machines cannot do this type of transparency nearly as
 well.
-- Bedrock's ability to access programs from other Linux distributions has
-extremely minimal overhead as compared to virtual machines. This is especially
+- Bedrock's ability to access software from other Linux distributions has
+significantly less overhead than virtual machines do. This is especially
 true with respect to 3D/video acceleration, which "just works" (assuming no
 proprietary driver issues) as well as it does in a normal Linux distribution.
 Such things typically do not work very well at all in virtual machines.
 - Bedrock, by its very design, interweaves other Linux distributions together;
 it ensures they share quite a bit. This means if there is a security
-vulnerability in one of the ~{clients~}, there is little to stop it from affecting
+vulnerability in one of the ~{strata~}, there is little to stop it from affecting
 the rest of the system. Virtual machines, by their very design, sandbox the
-~{clients~}, such that an attack on one of them will have a difficult time
+VMs such that an attack on one of them will have a difficult time
 propagating to others.
 
 ## {id="vs\_container"} How is this different from/preferable to containers (Docker/LXC/OpenVZ/etc)?
@@ -152,10 +269,10 @@ the specific release. If not, then it will be released when it is done.
 ## {id="why\_name"} Why that name?
 
 Bedrock Linux does not do very much by itself; rather, it is the foundation
-upon which other Linux distributions are placed. Initial ideas for a name were
-intent on reflecting this fact. Other proposed names included "Foundation
-Linux", "Frame Linux" and "Scaffolding Linux". The name chosen has nothing to
-do with the television show *The Flintstones*.
+upon which parts of other Linux distributions are placed. Initial ideas for a
+name were intent on reflecting this fact. Other proposed names included
+"Foundation Linux", "Frame Linux" and "Scaffolding Linux". The name chosen has
+nothing to do with the television show *The Flintstones*.
 
 ## {id="release\_names"} Where do the release names come from?
 
@@ -171,42 +288,45 @@ system requirements for the initial alpha can be found
 
 ## {id="why\_own\_distro"} Why does this need to be its own distribution?
 
-At the time of writing, the immediate goal is to figure out *how* to do
-everything Bedrock Linux is trying to do.  Retaining full control of the
-underlying system simplifies development, and so that is what we are doing at
-this point in time.  Bedrock Linux changes so much between releases it is not
-possible to say whether, when it has achieved the desired feature set, the
-techniques it is using could be cleanly implemented on top of another
-distribution.  If it is found to be cleanly possible, the Bedrock Linux
-developers will likely attempt to package and provide code for other use on top
-of other distributions.  That is still too far out to say.
+This question is a bit difficult to answer, as Bedrock Linux somewhat blurs the
+definition of what constitutes a "Linux distribution".
 
-However, even if it is possible to run Bedrock Linux code on top of another
-distribution get the desired effect, there will be a number of downsides to
-doing so, and so Bedrock Linux will still benefit from being its own
-distribution.  In theory, once Bedrock Linux is feature complete, the base
-distribution would not be able to provide anything one would not be able to get
-from a ~{client~}.  As a result, the base distribution should be as small as is
-possible while still being able to provide the necessarily functionality to
-utilize ~{client~}s.  Consider:
+If someone is using equal parts of multiple different distributions, what
+should one call the resulting operating system?  Say, for example, that exactly
+one third of the installed and in use for a given Linux distro "install" comes
+from Arch Linux, another third from Alpine Linux, and the last third from
+Gentoo Linux.  Which distro is the user running?  Answering the question with a
+simple "Arch", "Alpine" or "Gentoo" would be misleading.  One cannot tie it to
+typically "hard" concepts such as the init system, the kernel, or even the root
+filesystem, as these are fluid concepts in Bedrock Linux.  It is possible to
+switch any of those with a reboot while still using the *exact* same rest of
+the system.  Instead of expecting people to answer the question of "which
+distro are you running?" with a long explanation going into the intricacies of
+how things are intermixed between multiple distributions, someone could simply
+answer "Bedrock Linux".
 
-- Anything more than being able to utilize things from ~{clients~} is
-  unnecessary overhead.  Most distributions would consume disk and RAM
-  unnecessarily in this situation.
+People have proposed having Bedrock Linux act as a meta package manager which
+sits on top of another distro.  By virtue of its meta-distro nature, Bedrock
+Linux supports this workflow, while not being constrained to it.  You can
+install Bedrock Linux by hijacking another distro's install.  If you would
+like, you are then free to continue using the original distro's software while
+utilizing Bedrock Linux to access software from other distros.  Functionally,
+this is very similar to installing some other package manager into a distro.
+The key difference is that, from Bedrock Linux's point of view, there is no
+major difference between the files from the distro install you've hijacked and
+the files from the other distros.  You're free to remove all of the original
+install's files (sans a few key install-related things such as the bootloader
+and possibly initrd if it is needed to decrypt full disk encryption, etc).  [If
+you install some distro, such as Slackware, then hijack it into Bedrock Linux,
+then remove all of the files of the original Slackware install, are you still
+running Slackware?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
 
-- If code from a ~{client~} breaks, one should be able to easily get it from
-  another ~{client~}.  However, the base distribution is a single-point of
-  failure and, thus, it should be minimized.
-
-- Bedrock Linux provides some useful functionality for maintain ~{client~}s.
-  However, this would not extend to the base distribution.  Thus, again, the
-  base distribution should be minimized to limit maintenance.
-
-Finally, consider the possibility that there may not end up being a functional
-difference between installing Bedrock Linux as the base and some other
-distribution as a ~{client~}, and installing Bedrock Linux "on top" of some
-other distribution, only to end up morphing it into the exact same system.
-What really *is* a "base"?
+Bedrock Linux is described as a (meta) Linux distribution because this is the
+most accurate answer when restricted to preexisting concepts.  It does not
+"need" to be treated as such; the system is sufficiently flexible to fill other
+workflows, such as acting as though it is a package installed onto some other
+distribution.  However, describing it by these other workflows alone would be
+misleading.
 
 ## {id="on\_which\_distro"} On which distribution is Bedrock Linux based?
 
@@ -214,7 +334,9 @@ Bedrock Linux is not based on or an offshoot of any other Linux distribution;
 it was written "from scratch." It has unusual twin goals of needing to be as
 minimal as possible while supporting the features necessary for a full-blown
 desktop. Rather than attempting to tweak an existing distribution into such a
-shape a new one was made from the ground up.
+shape a new one was made from the ground up.  Or, if you prefer to look at it
+from another point of view, it is "based" on every other major distribution, as
+that is where it gets the majority of its software.
 
 ## {id="overly-ambitious"} This sounds overly-ambitious. Do you really think you can pull this off?
 
@@ -256,10 +378,10 @@ Traditional-Linux-and-Android:
 - The Android file system layout is significantly different from traditional
   Linux distributions.  PATH and bind-mount system changes may be required.
 
-- Android does some unusual things with its UID/GIDs.  For example, does not
-  seem to be a UID-username map at /etc/passwd as one would expect from other
-  Linux-based operating systems.  UID namespaces and brc-style translation
-  programs may be necessary.
+- Android does some unusual things with its UID/GIDs.  For example, there does
+  not seem to be a UID-username map at /etc/passwd as one would expect from
+  other Linux-based operating systems.  UID namespaces and brc-style
+  translation programs may be necessary.
 
 Android-on-Android:
 
