@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# check for dependencies
+markdown version > /dev/null
+if [[ $? != 0 ]]; then
+  echo "unmet dependency: markdown"
+  exit
+fi
+
 # ensure working directory is clean
 rm -r html 2>/dev/null
 mkdir html 2>/dev/null
