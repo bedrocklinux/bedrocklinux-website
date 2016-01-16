@@ -1,11 +1,14 @@
 #!/bin/sh
 
 # check for dependencies
-markdown version > /dev/null
-if [[ $? != 0 ]]; then
-  echo "unmet dependency: markdown"
-  exit
-fi
+for dep in markdown gawk
+do
+	if ! $dep --version >/dev/null 2>&1
+	then
+		echo "\"$dep\" is required but not found"
+		exit
+	fi
+done
 
 # ensure working directory is clean
 rm -r html 2>/dev/null
