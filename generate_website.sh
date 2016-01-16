@@ -12,7 +12,7 @@ rm -r html 2>/dev/null
 mkdir html 2>/dev/null
 
 # move into markdown directory to make some path stuff easier
-cd ./markdown
+cd markdown
 
 # make directory structure
 for DIRECTORY in $(find . -mindepth 1 -type d)
