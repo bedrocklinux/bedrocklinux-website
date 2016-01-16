@@ -179,8 +179,8 @@ Here are some things to keep in mind:
   for each ~{stratum~} under `/bedrock/strata` - one for
   `/bedrock/strata/arch`, one for `/bedrock/strata/gentoo`, etc.  This
   partitioning scheme will extra require care around issues such as the [the fstab
-  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~}
-- it is not advisable for newer Bedrock Linux users.
+  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~};
+  it is not advisable for newer Bedrock Linux users.
 
 If you aren't sure what to do here, just follow the recommendations provided by
 the distro you are installing.  Just make sure there's plenty of space in the
@@ -251,8 +251,8 @@ mind:
   for each ~{stratum~} under `/bedrock/strata` - one for
   `/bedrock/strata/arch`, one for `/bedrock/strata/gentoo`, etc.  This
   partitioning scheme will extra require care around issues such as the [the fstab
-  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~}
-  - it is not advisable for newer Bedrock Linux users.
+  configuration](configure.html#) as well as ensuring ~{rootfs~} is ~{global~};
+  it is not advisable for newer Bedrock Linux users.
 
 If you aren't sure what to do here, one big partition for the root directory
 and a swap partition about 2.5 times your RAM size should be fine.
