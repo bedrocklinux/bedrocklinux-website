@@ -602,11 +602,12 @@ Ensure you have a global fstab
 - {class="rcmd"}
 - touch $GLOBAL/etc/fstab
 
-Ensure `/tmp` exists and has the proper permissions:
+Ensure `/tmp` and `/var/tmp` exist and have the proper permissions:
 
 - {class="rcmd"}
-- mkdir $GLOBAL/tmp
+- mkdir $GLOBAL/tmp $GLOBAL/var/tmp
 - chmod a+rwxt $GLOBAL/tmp
+- chmod a+rwxt $GLOBAL/var/tmp
 
 The `/bedrock/global-files` directory is no longer needed.  Remove it to avoid
 later confusion:
