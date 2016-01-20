@@ -9,6 +9,7 @@ Bedrock Linux, named "Nyla", which was released on January 16th, 2016
 
 - [Changelog](changelog.html)
 - [Major features](features.html)
+- [Known issues](knownissues.html)
 - [System Requirements](systemrequirements.html)
 - [Concepts, Theory and Terminology](concepts.html)
 - [Quick Start Installation Instructions](quickstart.html)
