@@ -81,7 +81,7 @@ for this specific issue than debug the root of the problem.
   complexity is manageable in practice, those looking for extreme
   minimal/simple distros may prefer to look elsewhere.
 
-## {id="secuity"} How secure is Bedrock Linux?
+## {id="security"} How secure is Bedrock Linux?
 
 A Bedrock Linux system is composed of packages from other distributions.  If
 you limit yourself to packages from secure, well-proven, hardened distros,
