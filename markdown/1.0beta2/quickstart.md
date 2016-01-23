@@ -208,19 +208,19 @@ Confirm you've got a file at `/etc/adjtime`.  If it looks like you don't,
 create one:
 
 - {class="rcmd"}
-- [ -e "$GLOBAL/etc/adjtime" ] || printf '0.000000 0.000000 0.000000\n0\nUTC\n' > $GLOBAL/etc/adjtime
+- [ -e "/etc/adjtime" ] || printf '0.000000 0.000000 0.000000\n0\nUTC\n' > /etc/adjtime
 
 If you already have a `/etc/sudoers` file, append a Bedrock Linux `$PATH`
 setting to it:
 
 - {class="rcmd"}
-- [ -e "$GLOBAL/etc/sudoers" ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> /etc/sudoers
+- [ -e "/etc/sudoers" ] && echo 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"' >> /etc/sudoers
 
 Otherwise, create a sudoers file to ensure, if you do get `sudo` later, the
 `$PATH` is setup properly:
 
 - {class="rcmd"}
-- [ -e "$GLOBAL/etc/sudoers" ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > /etc/sudoers
+- [ -e "/etc/sudoers" ] || printf 'Defaults secure_path="/bedrock/bin:/bedrock/sbin:/bedrock/brpath/pin/bin:/bedrock/brpath/pin/sbin:/usr/local/bin:/opt/bin:/usr/bin:/bin:/usr/local/sbin:/opt/sbin:/usr/sbin:/sbin:/bedrock/brpath/bin:/bedrock/brpath/sbin"\n\nroot ALL=(ALL) ALL\n' > /etc/sudoers
 - chown root:root /etc/sudoers
 - chmod 440 /etc/sudoers
 
@@ -235,16 +235,10 @@ For example:
 - {class="rcmd"}
 - cp -p /usr/share/zoneinfo/America/New\_York /bedrock/etc/localtime
 
-The default hostname is "bedrock-box".  To change this, edit
-`/etc/hostname` as desired.
-
-Change "bedrock-box" in `/etc/hosts` to your desired hostname
-as well.
-
 Ensure you have a global fstab
 
 - {class="rcmd"}
-- touch $GLOBAL/etc/fstab
+- touch /etc/fstab
 
 ## {id="manage-users-groups"} Manage users and groups
 
