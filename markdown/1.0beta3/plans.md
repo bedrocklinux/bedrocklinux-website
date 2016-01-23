@@ -7,7 +7,7 @@ Bedrock Linux 1.0beta3 Poki Plans
 This page serves to describe plans for the upcoming release of Bedrock Linux
 1.0beta3 Poki.
 
-## brg: a utility to automate bootstrapping base files for various distros
+## {id="brg"} brg: a utility to automate bootstrapping base files for various distros
 
 Typical Bedrock Linux installations acquire most of their software through the
 package managers provided by other distributions.  If one would like some
@@ -42,7 +42,7 @@ Bedrock Linux system's native architecture, configure it as a stratum including
 coming up with a name, and apply any tweaks necessary to ensure it interacts
 properly with the rest of the Bedrock Linux system.
 
-### Acquisition strategies
+### {id="brg-strategies"} Acquisition strategies
 
 Some distros provide a tarball or image of a filesystem which can be downloaded
 and used directly.  For example, Gentoo provides "stage 3" tarballs which are
@@ -67,7 +67,7 @@ Some distros provide disk images intended to be burned to a disk and booted
 from as part of the distro's installation process.  These disks often contain a
 local repository of packages which can be used to bootstrap the system.
 
-### Automatic naming scheme
+### {id="brg-naming-scheme"} Automatic naming scheme
 
 While users are free to name stratum themselves, an automated system can be
 used to determine a default name:
@@ -85,7 +85,7 @@ used to determine a default name:
   to automate naming will be aborted; the user will have to determine a name in
   this situation.
 
-## brh: a utility to automate hijack automation
+## {id="brh"} brh: a utility to automate hijack automation
 
 As of Nyla, Bedrock Linux has two broad installation methods:
 
@@ -131,7 +131,7 @@ situations that it does not support early on to ensure the user does not end up
 with a broken or partially-hijacked system.  If possible, it may allow the user
 to manually do the steps it cannot while automating the rest.
 
-### Native packages
+### {id="brh-native-packages"} Native packages
 
 In addition the portable `brh` script, the Bedrock Linux build system may also
 create packages for various popular package managers.  For example, it may
