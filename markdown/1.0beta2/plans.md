@@ -5,7 +5,7 @@ Bedrock Linux 1.0beta2 Nyla Plans
 =================================
 
 This page serves to describe plans for the then-upcoming release of Bedrock
-Linux 1.0beta2 "Nyla".  Nyla has since been released on TODO.
+Linux 1.0beta2 "Nyla".  Nyla has since been released on January 16th, 2016.
 
 ## Init from clients
 
