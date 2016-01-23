@@ -18,6 +18,14 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="nyla-plans"} Bedrock Linux 1.0beta3 Poki Plans, project roadmap
+<small>2016-01-23</small>
+
+The design plans for the upcoming release of Bedrock Linux, 1.0beta3 Poki, are
+available [here](1.0beta3/plans.html).
+
+A rough roadmap for Bedrock Linux is available [here](roadmap.html).
+
 ## {id="nyla-release"} Bedrock Linux 1.0beta2 Nyla released
 <small>2016-01-16</small>
 
