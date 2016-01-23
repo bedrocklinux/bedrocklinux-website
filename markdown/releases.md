@@ -4,6 +4,11 @@ Nav:   home.nav
 Releases
 ========
 
+Upcoming Release
+----------------
+
+- [1.0beta3 "Poki" (upcoming)](1.0beta3/)
+
 Current Release
 ---------------
 

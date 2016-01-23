@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="nyla-plans"} Bedrock Linux 1.0beta3 Poki Plans, project roadmap
+<small>2016-01-23</small>
+
+The design plans for the upcoming release of Bedrock Linux, 1.0beta3 Poki, are
+available [here](1.0beta3/plans.html).
+
+A rough roadmap for Bedrock Linux is available [here](roadmap.html).
+
 ## {id="nyla-release"} Bedrock Linux 1.0beta2 Nyla released
 <small>2016-01-16</small>
 
