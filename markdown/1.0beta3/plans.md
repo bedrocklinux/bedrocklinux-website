@@ -136,8 +136,9 @@ to manually do the steps it cannot while automating the rest.
 In addition the portable `brh` script, the Bedrock Linux build system may also
 create packages for various popular package managers.  For example, it may
 create `.deb` or `.rpm` packages.  These packages, when installed, will
-automate hijacking the distribution.  It will effectively the same as `brh`'s
-auto-detect/default mode.  Thus, a user may be able to install Debian then do:
+automate hijacking the distribution.  It will effectively be the same as
+`brh`'s auto-detect/default mode.  Thus, a user may be able to install Debian
+then do:
 
 - {class="rcmd"}
 - dpkg -i bedrock_linux_1.0beta3_hijack.deb && reboot
