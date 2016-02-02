@@ -141,7 +141,7 @@ automate hijacking the distribution.  It will effectively be the same as
 then do:
 
 - {class="rcmd"}
-- dpkg -i bedrock_linux_1.0beta3_hijack.deb && reboot
+- dpkg -i bedrock\_linux\_1.0beta3_hijack.deb && reboot
 
 and find him/herself with a Bedrock Linux system.
 
