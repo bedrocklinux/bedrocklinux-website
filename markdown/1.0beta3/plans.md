@@ -116,7 +116,7 @@ internet access will be strictly required (although may be beneficial).
   during the hijack process.  For example, the installer will prompt for
   whether or not ~{global~} should be its own stratum or shared with another
   one.
-- One in which the it attempts to auto-detect or default to some value for
+- One in which it attempts to auto-detect or default to some value for
   all of the information it requires.  This will allow for a fully automated
   process with minimal expectations on the user, ideal for people who want to
   jump into Bedrock Linux quickly.

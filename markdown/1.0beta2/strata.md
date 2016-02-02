@@ -177,7 +177,7 @@ in [the configuration page](configure.html), such as:
 
 There is a utility called `rinse` which can be utilized to acquire various
 `yum`-based distros.  Acquire `rinse`, either [from its
-website]((http://collab-maint.alioth.debian.org/rinse/) (then manually
+website](http://collab-maint.alioth.debian.org/rinse/) (then manually
 acquiring its dependencies) or from a ~{stratum~}'s repository (e.g. Debian has
 it, Arch has it in AUR, etc).  Then use it to acquire the desired files.
 
