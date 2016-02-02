@@ -23,6 +23,7 @@ Nav:   home.nav
 - [What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?](#other-os)
 - [Is Bedrock Linux practical?](#practicality)
 - [Why was Bedrock Linux started?](#why-started)
+- [What distros does Bedrock Linux support as strata?](#supported-distros)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -407,7 +408,9 @@ OSX:
 
 Bedrock Linux is not intended as an academic exercise or a purely research
 project.  It aims to result in a functional, practical system which solves
-[real-world problems](#introduction.html#real_world).
+[real-world problems](#introduction.html#real_world).  However, the
+requirements to be practically useful varies across people and purposes.
+Bedrock Linux may not be useful for everyone.
 
 ## {id="why-started"} Why was Bedrock Linux started?
 
@@ -422,3 +425,15 @@ specific collective name or ultimate end-goal in mind.  It was not until
   problems and would be worth further pursuit.
 
 that the project became organized with a specific name and drive.
+
+## {id="supported-distros"} What distros does Bedrock Linux support as strata?
+
+All of the examples of distros Bedrock Linux supports as strata are just that:
+examples.  Bedrock Linux's approach is largely generic and will likely work
+with many distros that have been given no specific attention by the Bedrock
+Linux developers.  If you do not see a specific distro mentioned on the Bedrock
+Linux website this does not indicate it will not work properly; most major
+"traditional" distros should be expected to work to some degree.  However -
+especially given the "beta" status of the project - there may be hiccups here
+or there with some distros or features of distros that have not been well
+tested under Bedrock Linux.
