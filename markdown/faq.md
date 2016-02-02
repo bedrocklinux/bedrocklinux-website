@@ -21,6 +21,8 @@ Nav:   home.nav
 - [On which distribution is Bedrock Linux based?](#on_which_distro)
 - [This sounds overly-ambitious. Do you really think you can pull this off?](#overly-ambitious)
 - [What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?](#other-os)
+- [Is Bedrock Linux practical?](#practicality)
+- [Why was Bedrock Linux started?](#why-started)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -80,6 +82,8 @@ for this specific issue than debug the root of the problem.
   which is composed of packages from both distros *x* and *y*.  While this
   complexity is manageable in practice, those looking for extreme
   minimal/simple distros may prefer to look elsewhere.
+
+- Bedrock Linux uses a non-negligible amount of disk over traditional distros.
 
 ## {id="security"} How secure is Bedrock Linux?
 
@@ -398,3 +402,23 @@ OSX:
 
 - No investigation has been done into porting Bedrock Linux to OSX.
 - If the BSDs look promising, at least Darwin could be possible.
+
+## {id="practicality"} Is Bedrock Linux practical?
+
+Bedrock Linux is not intended as an academic exercise or a purely research
+project.  It aims to result in a functional, practical system which solves
+[real-world problems](#introduction.html#real_world).
+
+## {id="why-started"} Why was Bedrock Linux started?
+
+What ended up becoming Bedrock Linux was originally a series of experiments and
+exercises with various Linux subsystems and technologies which did not have a
+specific collective name or ultimate end-goal in mind.  It was not until
+
+- Answering the question "What distro do you run?" became difficult to answer
+  due to the fact the resulting system was equal parts of various other distros
+  and that none of the original "underlying" distro remained.
+- It became evident that the proto-Bedrock Linux system solved real world
+  problems and would be worth further pursuit.
+
+that the project became organized with a specific name and drive.
