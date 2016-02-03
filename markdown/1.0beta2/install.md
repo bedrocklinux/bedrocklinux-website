@@ -560,7 +560,8 @@ stratum~}.  The Bedrock Linux userland tarball included a standard set of some
 of these files.  Copy them into place:
 
 - {class="rcmd"}
-- cp -rpT /bedrock/global-files $GLOBAL
+- mkdir -p $GLOBAL
+- cp -rp /bedrock/global-files/* $GLOBAL
 
 The tarball did not include all of the required ~{global~} files; it does not
 include things such as `/etc/passwd.`  You'll need to get those next.
