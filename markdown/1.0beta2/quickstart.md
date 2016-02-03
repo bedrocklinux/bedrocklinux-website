@@ -206,7 +206,7 @@ The tarball did not "install" quite all of the files it contained.  Copy the
 rest of the files into place:
 
 - {class="rcmd"}
-- cp -rpT /bedrock/global-files / && rm -r /bedrock/global-files
+- cp -rp /bedrock/global-files* / && rm -r /bedrock/global-files
 
 Confirm you've got a file at `/etc/adjtime`.  If it looks like you don't,
 create one:
