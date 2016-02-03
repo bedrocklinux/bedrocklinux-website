@@ -122,8 +122,11 @@ one.  Some background to help you make your choice:
 
 - You will need to compile a Bedrock Linux userland tarball.  While this can be
   done from another distro/machine and copied over to the installation distro
-  install, it may be easier to have the installation distro compile it.  This
-  will then require the installation distro can provide the following:
+  install, it may be easier to have the installation distro compile it.
+  **There have been reports of difficulties building the tarball on musl-based
+  systems such as Alpine; until this is remedied the tarball easiest to build
+  on glibc based systems (which includes most major distros).**  This will then
+  require the installation distro can provide the following:
 
 	- gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  It would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 	- make
@@ -213,6 +216,10 @@ distro can provide the following requirements for compiling Bedrock Linux:
 - gettext (needed for FUSE)
 - fakeroot (for building tarball with proper permissions)
 
+**There have been reports of difficulties building the tarball on musl-based
+systems such as Alpine; until this is remedied the tarball easiest to build on
+glibc based systems (which includes most major distros).**
+
 Partition via preferred tools, e.g. fdisk or gparted.  Some things to keep in
 mind:
 
@@ -296,6 +303,9 @@ You'll need the following dependencies:
 - gettext (needed for FUSE)
 - fakeroot (for building tarball with proper permissions)
 
+**There have been reports of difficulties building the tarball on musl-based
+systems such as Alpine; until this is remedied the tarball easiest to build on
+glibc based systems (which includes most major distros).**
 
 As a normal user, acquire this release's source code:
 
