@@ -72,6 +72,10 @@ build dependencies:
 - gettext (needed for FUSE)
 - fakeroot (for building tarball with proper permissions)
 
+**There have been reports of difficulties building the tarball on musl-based
+systems such as Alpine; until this is remedied the tarball easiest to build on
+glibc based systems (which includes most major distros).**
+
 As a normal user, acquire this release's source code:
 
 - {class="cmd"}
