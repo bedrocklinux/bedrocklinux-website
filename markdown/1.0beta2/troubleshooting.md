@@ -41,7 +41,7 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 Rather than typing `brc ~(stratum~)`, one can shave some keystrokes by
 generating aliases for all of the ~{strata~}, like so:
 
-	for STRATUM in $(bri -i)
+	for STRATUM in $(bri -l)
 	do
 		alias $STRATUM="brc $STRATUM"
 		alias s$STRATUM="sudo brc $STRATUM"
