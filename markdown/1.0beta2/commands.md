@@ -25,13 +25,14 @@ user runs a command, a specific rule set will decide which instance of an
 executable is run if multiple are available.  To bypass this rule set and
 ~{explicitly~} specify which is to be run one can use the `brc` command.
 
-If `firefox` is installed in multiple ~{strata~} (such as Arch and Fedora),
+If `firefox` is provided by multiple ~{strata~} (such as Arch and Fedora),
 and the user would like to specify which is to run (rather than allowing
 Bedrock Linux to chose the default), one can ~{explicitly~} call `brc`, like so:
-`brc fedora firefox`.
+
+    brc fedora firefox
 
 If no command is given, `brc` will attempt to use the user's current `$SHELL`.
-If the value of `$SHELL` is not available in the ~{stratum~} it will fall back to
+If the value of `$SHELL` is not provided by the ~{stratum~} it will fall back to
 `/bin/sh`.
 
 ## {id="bri"} bri ("BedRock Information")
