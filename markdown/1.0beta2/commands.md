@@ -38,6 +38,7 @@ If the value of `$SHELL` is not available in the ~{stratum~} it will fall back t
 
 The `bri` command will provide information about the ~{strata~} based on which
 flag is used.
+
 - `bri -c` will print Config values for the specified ~{stratum~}.
 - `bri -e` will populate the `/etc/bedrock_stratum` file.  This provides small
   performance improvement for `bri -n`.
