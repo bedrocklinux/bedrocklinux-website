@@ -23,7 +23,7 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 
 Bedrock Linux now has a forum available on linuxquestions.org at:
 
-http://www.linuxquestions.org/questions/bedrock-linux-118/
+[http://www.linuxquestions.org/questions/bedrock-linux-118/](http://www.linuxquestions.org/questions/bedrock-linux-118/)
 
 ## {id="nyla-plans"} Bedrock Linux 1.0beta3 Poki Plans, project roadmap
 <small>2016-01-23</small>
