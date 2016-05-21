@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="reddit-ama"} Bedrock Linux "AMA" on /r/AskLinuxUsers
+<small>2016-05-21</small>
+
+/u/ParadigmComplex will represent Bedrock Linux during an "Ask Me Anything"
+("AMA") session at
+[http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers) at
+10:00AM PDT / 1:00PM EDT on 2016-05-21.
+
 ## {id="forums"} Bedrock Linux forum hosted on LinuxQuestions.org
 <small>2016-03-01</small>
 

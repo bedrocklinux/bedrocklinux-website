@@ -18,6 +18,14 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="reddit-ama"} Bedrock Linux "AMA" on /r/AskLinuxUsers
+<small>2016-05-21</small>
+
+/u/ParadigmComplex will represent Bedrock Linux during an "Ask Me Anything"
+("AMA") session at
+[http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers) at
+10:00AM PDT / 1:00PM EDT on 2016-05-21.
+
 ## {id="forums"} Bedrock Linux forum hosted on LinuxQuestions.org
 <small>2016-03-01</small>
 
