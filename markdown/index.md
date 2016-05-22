@@ -21,10 +21,9 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 ## {id="reddit-ama"} Bedrock Linux "AMA" on /r/AskLinuxUsers
 <small>2016-05-21</small>
 
-/u/ParadigmComplex will represent Bedrock Linux during an "Ask Me Anything"
+/u/ParadigmComplex represented Bedrock Linux during an "Ask Me Anything"
 ("AMA") session at
-[http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers) at
-10:00AM PDT / 1:00PM EDT on 2016-05-21.
+[http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers).  The session is now over, and the resulting discussion can be found [here](https://www.reddit.com/r/AskLinuxUsers/comments/4ke9ss/i_am_the_founder_and_lead_developer_of_bedrock/).
 
 ## {id="forums"} Bedrock Linux forum hosted on LinuxQuestions.org
 <small>2016-03-01</small>
