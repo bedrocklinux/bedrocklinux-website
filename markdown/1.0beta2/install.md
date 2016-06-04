@@ -253,8 +253,8 @@ mind:
 - In most distros, the majority of the operating system data typically goes
   into `/usr`.  With Bedrock Linux, however, the majority of this kind of data
   will go into `/bedrock/strata`; if you typically prefer having `/usr` on its
-  own directory for other distros, consider having `/bedrock/strata` on its own
-  directory for Bedrock Linux.  Or, alternatively, consider having a partition
+  own partition for other distros, consider having `/bedrock/strata` on its own
+  partition for Bedrock Linux.  Or, alternatively, consider having a partition
   for each ~{stratum~} under `/bedrock/strata` - one for
   `/bedrock/strata/arch`, one for `/bedrock/strata/gentoo`, etc.  This
   partitioning scheme will extra require care around issues such as the [the fstab
