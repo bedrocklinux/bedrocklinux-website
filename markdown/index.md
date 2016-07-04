@@ -18,7 +18,7 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
-## {id="reddit-ama"} Bedrock Linux "AMA" on /r/AskLinuxUsers
+## {id="reddit-ama"} Bedrock Linux AMA on /r/AskLinuxUsers
 <small>2016-05-21</small>
 
 /u/ParadigmComplex represented Bedrock Linux during an "Ask Me Anything"
