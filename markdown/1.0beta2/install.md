@@ -593,6 +593,9 @@ Or, alternatively, you can create a new set of these files (root password is
 - [ -e "$GLOBAL/etc/passwd" ] || echo 'root:x:0:0:,,,:/root:/bedrock/bin/sh' > $GLOBAL/etc/passwd
 - [ -e "$GLOBAL/etc/shadow" ] || echo 'root:$1$t03vz3.6$tDptA3cYB6E3gnrY07D/S/:15695:0:99999:7:::' > $GLOBAL/etc/shadow
 - [ -e "$GLOBAL/etc/group" ] || printf 'root:x:0:\ntty:x:5:\ndisk:x:6:\nlp:x:7:\nkmem:x:15:\ndialout:x:20:\ncdrom:x:24:\nfloppy:x:25:\ntape:x:26:\naudio:x:29:\nvideo:x:44:\nstaff:x:50:\n' > $GLOBAL/etc/group
+- chown root:root $GLOBAL/etc/passwd $GLOBAL/etc/group $GLOBAL/etc/shadow
+- chmod 644 /etc/passwd /etc/group
+- chmod 600 $GLOBAL/etc/shadow
 
 If you already have a `/etc/sudoers` file, append a Bedrock Linux `$PATH`
 setting to it:
