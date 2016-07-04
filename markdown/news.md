@@ -4,7 +4,7 @@ Nav: home.nav
 News Archive
 ============
 
-## {id="reddit-ama"} Bedrock Linux "AMA" on /r/AskLinuxUsers
+## {id="reddit-ama"} Bedrock Linux AMA on /r/AskLinuxUsers
 <small>2016-05-21</small>
 
 /u/ParadigmComplex represented Bedrock Linux during an "Ask Me Anything"
