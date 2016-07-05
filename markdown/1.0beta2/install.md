@@ -139,6 +139,11 @@ one.  Some background to help you make your choice:
 	- gettext (needed for FUSE)
 	- fakeroot (for building tarball with proper permissions)
 
+**NOTE**:  At least one user reported Slackware's initrd does not respect "rw"
+on the bootloader line.  This may make things a bit harder; for the time being
+it may be advisable to pick another distro.  The "rw" requirement will be
+dropped later to ensure Slackware becomes a viable option here.
+
 Once you've chosen the distro, install it.
 
 During installation, you will likely be queried for partitioning preferences.
