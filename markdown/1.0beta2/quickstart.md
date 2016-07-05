@@ -52,6 +52,11 @@ some later steps.  This is useful to expedite things and is in the spirit of
 these "quick start" instructions.  More complicated partitioning schemes will
 require additional configuration later.
 
+*NOTE**:  At least one user reported Slackware's initrd does not respect "rw"
+on the bootloader line.  This may make things a bit harder; for the time being
+it may be advisable to pick another distro.  The "rw" requirement will be
+dropped later to ensure Slackware becomes a viable option here.
+
 Once you've installed it, boot into it and set up things such as your desired
 users and network access.
 
