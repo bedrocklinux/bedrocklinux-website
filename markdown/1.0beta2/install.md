@@ -124,7 +124,7 @@ one.  Some background to help you make your choice:
   done from another distro/machine and copied over to the installation distro
   install, it may be easier to have the installation distro compile it.
   **There have been reports of difficulties building the tarball on musl-based
-  systems such as Alpine; until this is remedied the tarball easiest to build
+  systems such as Alpine; until this is remedied the tarball is easiest to build
   on glibc based systems (which includes most major distros).**  This will then
   require the installation distro can provide the following:
 
