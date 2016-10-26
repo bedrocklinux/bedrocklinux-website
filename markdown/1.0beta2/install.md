@@ -11,7 +11,7 @@ Bedrock Linux 1.0beta2 Nyla Installation Instructions
 - [Install Bedrock Linux userland](#install-userland)
 - [Acquire other strata](#acquire-strata)
 - [Configure](#configure)
-	- [Configure rootfs stratum](#configure-roofs)
+	- [Configure rootfs stratum](#configure-rootfs)
 	- [Configure global stratum](#configure-global)
 	- [Configure time](#configure-time)
 	- [Configure init](#configure-init)
@@ -380,7 +380,7 @@ cover the minimum you need to configure before booting into Bedrock Linux,
 skipping some of the details on what is going on under-the-hood.  If you would
 like further details on configuration, see [here](configure.html).
 
-### {id="configure-roofs"} Configure rootfs stratum
+### {id="configure-rootfs"} Configure rootfs stratum
 
 All of Bedrock Linux's files have some corresponding ~{stratum~}.  `/boot`,
 `/bedrock`, and if you are doing a hijack install, the hijacked
