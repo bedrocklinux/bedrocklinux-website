@@ -136,13 +136,13 @@ header p {
 	font-family:monospace, serif;
 	line-height:1.2;
 	background:none;
-	color:#fff
+	color:#fff;
+	white-space: pre;
 }
 @media only screen and (max-width: 30em){
 	html{
 		font-size:0.938rem
 	}
-
 }
 @media only screen and (min-width: 60em){
 	html{
@@ -268,4 +268,10 @@ div.main h1 {
 }
 div.footer {
 	margin-top: 20px;
+}
+
+/* Fixing issue with commands breaking the pages container */
+pre, .cmd, .rcmd {
+	word-wrap: break-word;
+	white-space: normal;
 }
