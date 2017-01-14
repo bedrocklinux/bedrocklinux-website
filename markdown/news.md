@@ -4,6 +4,19 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="poki-scope-increase"} Increase in scope for upcoming Bedrock Linux 1.0beta3 Poki
+<small>2017-01-14</small>
+
+The current Bedrock Linux release, 1.0beta2 Nyla, saw a substantial increase in
+community feedback.  Given the focus on accessibility of the upcoming 1.0beta3
+Poki release it is likely to see an even greater increase in user base.  It is
+desirable to clear the backlog of smaller issues and toughen up the project
+infrastructure before this projected uptick.  While the major features planned
+on the roadmap are retained as the key goals, additional work will be put in to
+clean up the code base, add tests, and rework the build system, amongst other
+improvements.  This will likely push back the upcoming release but will help
+ensure the upcoming increased attention is manageable.
+
 ## {id="reddit-ama"} Bedrock Linux AMA on /r/AskLinuxUsers
 <small>2016-05-21</small>
 
