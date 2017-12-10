@@ -16,6 +16,7 @@ tracker](https://github.com/bedrocklinux/bedrocklinux-userland/issues?state=open
 - [One cannot use a stratum as a stand-alone system](#stand-alone)
 - [Manual work is required to manage time, firmware](#manual-handling-time-firmware)
 - [Cannot boot with a read-only filesystem](#cannot-read-only-boot)
+- [Some users cannot use keyboard in init-choosing menu](#no-keyboard)
 
 ## {id="init"} Only init stratum's init hooks work
 
@@ -92,3 +93,11 @@ the bootloader's kernel line should use "rw" to indicate that the filesystem
 should be mounted as read-write.  Most init systems should be flexible enough
 to handle such a setup situation; so far testing as not found any major issues
 with it.  Nonetheless this constraint should be removed.
+
+## {id="no-keyboard"} Some users cannot use keyboard in init-choosing menu
+
+Some users have reported that they are unable to utilize the keyboard in the
+init selection menu.  No one on the development team has been able to reproduce
+this, making it difficult to debug.  If you run into this and have the
+time/capability/interest in helping debug, please bring it up in the IRC
+channel.
