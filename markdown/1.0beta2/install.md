@@ -130,13 +130,15 @@ one.  Some background to help you make your choice:
 
 	- gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  It would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 	- make
-	- git.  This will be used to acquire source code, both Bedrock Linux's
-	  and source code for required third party software.
+	- git version 1.8 or above.  This will be used to acquire source code,
+	  both Bedrock Linux's and source code for required third party
+	  software.
 	- standard UNIX tools such as sh, grep, sed, awk, and tar.
 	- autoconf (needed for FUSE)
 	- automake (needed for FUSE)
 	- libtool (needed for FUSE)
 	- gettext (needed for FUSE)
+		- and possibly gettext-dev or gettext-devel depending on your distro
 	- fakeroot (for building tarball with proper permissions)
 
 **NOTE**:  At least one user reported Slackware's initrd does not respect "rw"
@@ -212,13 +214,14 @@ distro can provide the following requirements for compiling Bedrock Linux:
 
 - gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  Thus, it would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 - make
-- git.  This will be used to acquire source code, both Bedrock Linux's
-  and source code for required third party software.
+- git version 1.8 or above.  This will be used to acquire source code, both
+  Bedrock Linux's and source code for required third party software.
 - standard UNIX tools such as sh, grep, sed, awk, and tar.
 - autoconf (needed for FUSE)
 - automake (needed for FUSE)
 - libtool (needed for FUSE)
 - gettext (needed for FUSE)
+	- and possibly gettext-dev or gettext-devel depending on your distro
 - fakeroot (for building tarball with proper permissions)
 
 **There have been reports of difficulties building the tarball on musl-based
@@ -299,13 +302,14 @@ You'll need the following dependencies:
 
 - gcc.  Note there is a bug in gcc 4.8.2 and 4.9.0 (and 4.9.1?) which will keep it from being able to properly compile one of Bedrock Linux's dependences, the musl libc.  Thus, it would be useful to pick a distro that can provide either an older or newer version of gcc, such as 4.7.X or below, or 4.9.2 or higher.
 - make
-- git.  This will be used to acquire source code, both Bedrock Linux's
-  and source code for required third party software.
+- git version 1.8 or above.  This will be used to acquire source code, both
+  Bedrock Linux's and source code for required third party software.
 - standard UNIX tools such as sh, grep, sed, awk, and tar.
 - autoconf (needed for FUSE)
 - automake (needed for FUSE)
 - libtool (needed for FUSE)
 - gettext (needed for FUSE)
+	- and possibly gettext-dev or gettext-devel depending on your distro
 - fakeroot (for building tarball with proper permissions)
 
 **There have been reports of difficulties building the tarball on musl-based
