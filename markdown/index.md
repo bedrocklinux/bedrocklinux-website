@@ -18,6 +18,25 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="status-2017"} Project status as of the end of 2017
+<small>2017-12-10</small>
+
+Development over the past year and a half has been very slow due to unrelated
+priorities consuming Bedrock Linux development time.  These priorities are
+largely passed, and development should restart in earnest within the first
+half of 2018.
+
+There has been a fair bit of research towards the upcoming 1.0beta3 Poki
+release before the development stagnation.  However, there is still some
+research left to do, as well as a lot of time consuming development and
+testing, and so it is unlikely that Poki will be released any time soon.  It is
+unclear at this time if the increased scope for Poki mentioned in the last news
+item will remain in place, or if it will be scoped back to hit an earlier
+release date.
+
+Apologies for the delay.  Hang in there, we want the next release at least as
+much as you do.
+
 ## {id="poki-scope-increase"} Increase in scope for upcoming Bedrock Linux 1.0beta3 Poki
 <small>2017-01-14</small>
 
@@ -61,33 +80,5 @@ The second beta of Bedrock linux, 1.0beta2 Nyla, has been released.  See the
 changelog](1.0beta2/changelog.html), and either the [full installation
 instructions](1.0beta2/install.html) or, if you'd like to expedite the install
 process, the [quickstart installation instructions](1.0beta2/quickstart.html).
-
-## {id="nyla-release-soon"} Bedrock Linux 1.0beta2 Nyla in final development stages
-<small>2015-10-03</small>
-
-All major features and changes for Bedrock Linux 1.0beta2 Nyla are complete; it
-is currently undergoing final testing and bug squashing.  The release should be
-soon.
-
-## {id="nyla-delay"} Bedrock Linux 1.0beta2 Nyla delayed
-<small>2015-02-22</small>
-
-A large number of complications have arisen since Nyla's original release date
-was set, including the numerous hardware failures.  Moreover, while working on
-Nyla many of the required changes have been found to require much more time to
-implement than previously expected.  Thus, Nyla's release is being delayed.
-The new tentative release date is end-of-summer 2015.
-
-## {id="colug-slides"} Columbus Linux User Group presentation
-<small>2014-11-20</small>
-
-Slides from a presentation on Bedrock Linux to the Columbus Linux User Group on
-2014-11-19 are available [here](media/bedrocklinux-colug.pdf).
-
-## {id="nyla-plans"} Bedrock Linux 1.0beta2 Nyla Plans
-<small>2014-06-28</small>
-
-The design plans for the upcoming release of Bedrock Linux, 1.0beta2 Nyla, are
-available [here](1.0beta2/plans.html).
 
 [See older news items](news.html)
