@@ -16,6 +16,7 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 	- [root/sudo path issues](#root-path)
 	- ["grantpt failed" error](#grantpt-failed)
 	- [time issues](#time)
+	- [fstab not mounting](#fstab)
 - [stratum specific issues](#stratum-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Locale packages](#locale)
@@ -210,6 +211,26 @@ Write to the hardware clock with
 
 - {class="rcmd"}
 - hwclock -w
+
+### {id="fstab"} fstab not mounting
+
+When `mount` goes to prepare `fstab`, it will skip target directories which are
+already a mount point.  It may thus become confused by bind mounts Bedrock
+Linux sets up before `fstab` is parsed.
+
+However, running a `mount` command directly, without using fstab, results in it
+mounting over existing mount points.  Thus, to work around this issue, have
+your init system run the various mount commands separately, such as via
+`/etc/rc.local`.  For example, instead of mounting `/home` in an `fstab` like
+so:
+
+    /dev/sda2 /home ext4 defaults 0 0
+
+consider placing a line in `/etc/rc.local` (or your init system's equivalent) like so:
+
+    mount -odefaults /dev/sda2 /home
+
+Do this for every line which fstab will not mount.
 
 ## {id="stratum-specific"} stratum specific issues
 
