@@ -4,6 +4,25 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="status-2017"} Project status as of the end of 2017
+<small>2017-12-10</small>
+
+Development over the past year and a half has been very slow due to unrelated
+priorities consuming Bedrock Linux development time.  These priorities are
+largely passed, and development should restart in earnest within the first
+half of 2018.
+
+There has been a fair bit of research towards the upcoming 1.0beta3 Poki
+release before the development stagnation.  However, there is still some
+research left to do, as well as a lot of time consuming development and
+testing, and so it is unlikely that Poki will be released any time soon.  It is
+unclear at this time if the increased scope for Poki mentioned in the last news
+item will remain in place, or if it will be scoped back to hit an earlier
+release date.
+
+Apologies for the delay.  Hang in there, we want the next release at least as
+much as you do.
+
 ## {id="poki-scope-increase"} Increase in scope for upcoming Bedrock Linux 1.0beta3 Poki
 <small>2017-01-14</small>
 
@@ -16,6 +35,24 @@ on the roadmap are retained as the key goals, additional work will be put in to
 clean up the code base, add tests, and rework the build system, amongst other
 improvements.  This will likely push back the upcoming release but will help
 ensure the upcoming increased attention is manageable.
+
+## {id="status-2017"} Project status as of the end of 2017
+<small>2017-12-10</small>
+
+Development over the past year and a half has been very slow due to unrelated
+priorities consuming Bedrock Linux development time.  These priorities are
+largely passed, and development should restart in earnest within the first
+half of 2018.
+
+There has been a fair bit of research towards the upcoming 1.0beta3 Poki
+release before the development stagnation.  However, there is still some
+research left to do and a lot of time consuming development, and so it is
+unlikely that Poki will be released any time soon.  It is unclear at this time
+if the increased scope for Poki mentioned in the last news item will remain in
+place, or if it will be scoped back to hit an earlier release date.
+
+Apologies for the delay.  Hang in there, we want the next release at least as
+much as you do.
 
 ## {id="reddit-ama"} Bedrock Linux AMA on /r/AskLinuxUsers
 <small>2016-05-21</small>
