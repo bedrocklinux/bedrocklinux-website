@@ -17,6 +17,7 @@ and ~{strata~} for Bedrock Linux 1.0beta2 Nyla.
 	- ["grantpt failed" error](#grantpt-failed)
 	- [time issues](#time)
 	- [fstab not mounting](#fstab)
+	- [No keyboard in init-choosing menu](#no-kbd-brn)
 - [stratum specific issues](#stratum-specific)
 	- [Debian-based Linux distributions](#debian-based)
 		- [Locale packages](#locale)
@@ -231,6 +232,17 @@ consider placing a line in `/etc/rc.local` (or your init system's equivalent) li
     mount -odefaults /dev/sda2 /home
 
 Do this for every line which fstab will not mount.
+
+### {id="no-kbd-brn"} No keyboard in init-choosing menu
+
+Some users have reported that they are unable to utilize the keyboard in the
+init selection menu.  No one on the development team has been able to reproduce
+this, making it difficult to debug.  If you run into this and have the
+time/capability/interest in helping debug, please bring it up in the IRC
+channel.
+
+As a work around, configure defaults in `/bedrock/etc/brn.conf` to what you
+want and a relatively low timeout.
 
 ## {id="stratum-specific"} stratum specific issues
 
