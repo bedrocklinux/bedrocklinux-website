@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="poki-progress-2018-05"} May 2018 Poki Progress Update
+<small>2018-05-05</small>
+
+Given the relatively long release cycle, it seems prudent to provide an
+occasional progress update.  Poki's development progress, updated 2018-05-05,
+can be found [here](1.0beta3/progress.html).  While a substantial amount of
+work has been done, much is left to do before the release is ready.
+
 ## {id="status-2017"} Project status as of the end of 2017
 <small>2017-12-10</small>
 
