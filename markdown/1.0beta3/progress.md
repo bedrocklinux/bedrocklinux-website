@@ -102,7 +102,8 @@ The build system has seen various improvements:
   removes them from the busybox build, resulting in a small
   distribution/install size.  The `x86_64` installer is currently projected to
   be under 1.44MB and, in theory, distributable on a 3.5 inch floppy disk.
-- The build system's file structure has been reorganized.
+- The build system's file structure has been reorganized to more cleanly
+  segregate conceptual components.
 - The build system now supports embedding GnuPG signatures into the output
   distributable.  `brl update` will verify these signatures before applying
   updates.
@@ -113,7 +114,7 @@ Nyla's `brc` has been renamed to `strat` as part of a general move away from
 the `br*` executable naming pattern.
 
 - `strat` has been updated to support the new filesystem layout and configuration.
-- `strat` now can now set `argv[0]`.
+- `strat` can now set `argv[0]` via `-`/`--arg0`.
 	- This is needed to properly support cross-stratum login shells, as
 	  `/sbin/login` communicates to the given shell that it is a login
 	  shell through `argv[0]`.  Nyla's `brsh` had to work around this in
@@ -121,11 +122,11 @@ the `br*` executable naming pattern.
 	- Some other programs also make use of `argv[0]`, such as `busybox`.
 - `strat` now uses more aggressive security checks.
 - With Nyla, it was found to occasionally be necessary to disable cross-stratum
-  functionality.  For example, when building system, it may be useful to ensure
+  functionality.  For example, when building something, it may be useful to ensure
   the build is not dependent across strata.  `strat` now supports
   `-l`/`--local` which disables cross-stratum functionality for its subcommand.
-  For example, `strat -l arch make` will run arch's `make` where `make` only
-  sees arch's executables.
+  For example, `strat -l arch make` will run arch's `make` such that this
+  instance of `make` will only see arch's executables.
 
 ## {id="bouncer"} bouncer (completion: 100%)
 
@@ -136,15 +137,16 @@ Nyla made use of scripts such as:
 
 to create user-facing commands that transparently redirect to the appropriate
 stratum's instance.  However, `#!` executables lose `argv[0]` and these scripts
-were found to be unsuitable situations which leverage `argv[0]`.  A new binary
-executable was created to fulfill this role while retaining `argv[0]`:
+were found to be unsuitable in situations which leverage `argv[0]`.  A new
+binary executable was created to fulfill this role while retaining `argv[0]`:
 `bouncer`.
 
-Modifying bouncer's internal content to indicate the desired stratum/command,
-as is done with the `#!` scripts, may be unwise.  Instead, `bouncer` checks its
-own `user.bedrock.stratum` and `user.bedrock.localpath` extended filesystem
-attributes to determine which stratum/executable to redirect to, then executes
-`strat` with the appropriate flags.
+Modifying bouncer's internal content - compiled executable binary - to indicate
+the desired stratum/command, as is done with the `#!` scripts, may be unwise.
+Instead, `bouncer` checks its own `user.bedrock.stratum` and
+`user.bedrock.localpath` extended filesystem attributes to determine which
+stratum/executable to redirect to, then executes `strat` with the appropriate
+flags.
 
 ## {id="crossfs"} crossfs (previously: brp) (completion: 95%)
 
@@ -153,11 +155,19 @@ the `br*` executable naming pattern.
 
 - `brp`'s performance was found to be lacking in Nyla, and thus a fair bit of
   effort has been placed into improving `crossfs` performance in Poki.
-	- Single threaded performance has improved by about 35% in `ls -l` tests on large directories.
-	- Multithreading support has been added, further improving performance in multi-threaded scenarios (dependent on the number of simultaneous accesses).
-	- Work has been made to support FUSE's "readdirplus".  [Sadly "readdirplus" does not appear to work with the latest libfuse and Linux kernel](https://sourceforge.net/p/fuse/mailman/fuse-devel/thread/878tcgxvp2.fsf@vostro.rath.org/#msg36209107).  Once it is fixed, `brl update` should be able to push out an update to take advantage of it for further performance improvements.
-- `crossfs` populates the extended filesystem attributes on its files.  This is both used for `bouncer` to learn where to redirect and for `brl which` to determine which stratum provides a given file in `crossfs`'s path.
-- `crossfs` supports merging font directories.  This allows Poki to support fonts across strata.  One may install a font in one stratum, and both xorg servers and xorg client programs from other strata will detect the new font.
+	- Single threaded performance takes about 65% of the time Nyla's
+	  equivalent did in `ls -l` tests on large directories.
+	- Multithreading support has been added, further improving performance
+	  in multi-threaded scenarios (dependent on the number of simultaneous
+	  accesses).
+	- Work has been made to support FUSE's "readdirplus" functionality.  [Sadly "readdirplus" does not appear to work with the latest libfuse and Linux kernel](https://sourceforge.net/p/fuse/mailman/fuse-devel/thread/878tcgxvp2.fsf@vostro.rath.org/#msg36209107).  Once it is fixed, `brl update` should be able to push out an update to take advantage of it for further performance improvements.
+- `crossfs` populates the Bedrock-specific extended filesystem attributes on
+  its files.  This is both used for `bouncer` to learn where to redirect and
+  for `brl which` to determine which stratum provides a given file in
+  `crossfs`'s path.
+- `crossfs` supports merging font directories.  This allows Poki to support
+  fonts across strata.  One may install a font in one stratum, and both xorg
+  servers and xorg client programs from other strata will detect the new font.
 - `crossfs` configuration handling has been improved.
 
 ## {id="etcfs"} etcfs (previously bru) (completion: 25%)
@@ -177,8 +187,8 @@ the `br*` executable naming pattern.
 	  argument list.
 	- `bru` had to have one instance per stratum.  Early research shows
 	  `etcfs` may be able to get away with a single instance irrelevant of
-	  the number of strata.  As a beneficial side effect, this may also
-	  reduce RAM usage.
+	  the number of strata.  In addition to taking less room in a process
+	  list, this may also reduce RAM usage.
 - Nyla made use of two different systems to enforce configuration values in
   `/etc` files, both of which were enforced at stratum-enable time.  Both were
   found to be inadequate, in part because the files may be updated between
@@ -213,7 +223,7 @@ Work which has been completed on `brl` includes:
 
 Planned features include:
 
-- Various stratum-management subcommands including: `remove`, `rename`,
+- Various stratum management subcommands including: `remove`, `rename`,
   `enable`, `disable`, `fix`, `ignore`, `unignore`, `alias`, and `deref`.
 - `update`, a subcommand which updates the Bedrock install.
 - `report`, a subcommand which creates a report about the current Bedrock
