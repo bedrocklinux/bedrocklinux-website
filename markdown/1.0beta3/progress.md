@@ -242,12 +242,15 @@ In order to work, Bedrock runs code before the target init system runs.
 Amongst other things, this provides a menu which can be used to select the
 desired init for the given session.
 
-In Nyla, the hijacked distro's `/sbin/init` had to be retained, and thus `brn`
-had to be elsewhere on the filesystem.  To ensure `brn` was run rather than
-`/sbin/init`, the user was expected to configure the bootloader.  This was
-found to be problematic.  Poki's new filesystem layout moves the hijacked
-distro's `/sbin/init` elsewhere and allows Poki to place its own init system at
-the `/sbin/init` path most bootloaders default to using.
+In Nyla, the hijacked distro's `/sbin/init` had to be retained on the root of
+the offline filesystem, and thus `brn` had to be elsewhere on the filesystem.
+To ensure `brn` was run rather than what the bootloader saw at `/sbin/init`,
+the user was expected to configure the bootloader.  This was found to be
+problematic.  Poki's new filesystem layout moves all of the hijacked install's
+~{local files~} (including `/sbin/init`) from the root of the offline
+filesystem to `/bedrock/strata/~(stratum~)/`.  This frees Poki to place its own
+init system at `/sbin/init` on the offline filesystem, which is the path most
+bootloaders default to utilizing.
 
 ## {id="documentation"} Documentation (completion: 0%)
 
