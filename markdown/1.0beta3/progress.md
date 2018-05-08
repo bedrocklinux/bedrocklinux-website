@@ -4,7 +4,7 @@ Nav: poki.nav
 Bedrock Linux "Poki" Progress
 =============================
 
-This documents the state of Bedrock Linux's "Poki" release as of 2018-05-05.
+This documents the state of Bedrock Linux's "Poki" release as of 2018-05-08.
 
 ## {id="rationale"} Rationale for feature choice
 
@@ -108,7 +108,7 @@ The build system has seen various improvements:
   distributable.  `brl update` will verify these signatures before applying
   updates.
 
-## {id="strat"} strat (previously: brc) (completion: 95%)
+## {id="strat"} strat (previously: brc) (completion: 100%)
 
 Nyla's `brc` has been renamed to `strat` as part of a general move away from
 the `br*` executable naming pattern.
