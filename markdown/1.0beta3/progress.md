@@ -4,7 +4,7 @@ Nav: poki.nav
 Bedrock Linux "Poki" Progress
 =============================
 
-This documents the state of Bedrock Linux's "Poki" release as of 2018-05-08.
+This documents the state of Bedrock Linux's "Poki" release as of 2018-05-09.
 
 ## {id="rationale"} Rationale for feature choice
 
@@ -148,7 +148,7 @@ Instead, `bouncer` checks its own `user.bedrock.stratum` and
 stratum/executable to redirect to, then executes `strat` with the appropriate
 flags.
 
-## {id="crossfs"} crossfs (previously: brp) (completion: 95%)
+## {id="crossfs"} crossfs (previously: brp) (completion: 100%)
 
 Nyla's `brp` has been renamed to `crossfs` as part of a general move away from
 the `br*` executable naming pattern.
