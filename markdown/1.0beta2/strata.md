@@ -402,7 +402,7 @@ Clean up:
 Enable desired openrc services, such as hostname:
 
 - {class="rcmd"}
-- ln -s hostname /bedrock/strata/~(alpine~)/etc/init.d/hostname
+- rc-update add hostname default
 
 Finally, create an entry in `/bedrock/etc/strata.conf` file as explained
 in [the configuration page](configure.html), such as:
