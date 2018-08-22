@@ -4,7 +4,7 @@ Nav: poki.nav
 Bedrock Linux "Poki" Progress
 =============================
 
-This documents the state of Bedrock Linux's "Poki" release as of 2018-05-09.
+This documents the state of Bedrock Linux's "Poki" release as of 2018-08-22.
 
 ## {id="rationale"} Rationale for feature choice
 
@@ -43,10 +43,10 @@ necessarily be fully implemented:
   Moving to one master command with user-friendly subcommand names alleviates
   most of the concern.  Non-user-facing commands are also being renamed away
   from `br*` to names that communicate something about their usage as well.
-- Some users found to be hesitant to perform operations on Bedrock subsystems
-  which are not explicitly listed as allowed, such as removing strata.  To
-  alleviate this, such operations are explicitly listed as subcommands of
-  `brl`, e.g. `brl remove` and `brl alias`.
+- Some users were found to be hesitant to perform operations on Bedrock
+  subsystems which are not explicitly listed as allowed, such as removing
+  strata.  To alleviate this, such operations are explicitly listed as
+  subcommands of `brl`, e.g. `brl remove` and `brl alias`.
 - In Nyla, various pieces of configuration had to be updated in multiple
   places; there was no single source of truth.  For example, creating a stratum
   alias required both updating `strata.conf` and creating a symlink in
@@ -124,8 +124,8 @@ the `br*` executable naming pattern.
 - With Nyla, it was found to occasionally be necessary to disable cross-stratum
   functionality.  For example, when building something, it may be useful to ensure
   the build is not dependent across strata.  `strat` now supports
-  `-l`/`--local` which disables cross-stratum functionality for its subcommand.
-  For example, `strat -l arch make` will run arch's `make` such that this
+  `-r`/`--restrict` which disables cross-stratum functionality for its subcommand.
+  For example, `strat -r arch make` will run arch's `make` such that this
   instance of `make` will only see arch's executables.
 
 ## {id="bouncer"} bouncer (completion: 100%)
@@ -170,7 +170,7 @@ the `br*` executable naming pattern.
   servers and xorg client programs from other strata will detect the new font.
 - `crossfs` configuration handling has been improved.
 
-## {id="etcfs"} etcfs (previously bru) (completion: 25%)
+## {id="etcfs"} etcfs (previously bru) (completion: 100%)
 
 Nyla's `bru` has been renamed to `etcfs` as part of a general move away from
 the `br*` executable naming pattern.
@@ -178,17 +178,17 @@ the `br*` executable naming pattern.
 `etcfs` has only had preliminary work completed thus far.
 
 - `etcfs` is less performance sensitive than `crossfs` and has more permissions
-  related concerns (e.g. `crossfs` is read-only).  `etcfs` will likely receive
-  a subset of the `crossfs` performance improvements (e.g. multithreading), but not all.
-- Nyla's `bru` made process lists ugly.  This should be remedied with Poki's `etcfs`.
+  related concerns (e.g. `crossfs` is read-only).  `etcfs` has received bset of
+  the `crossfs` performance improvements (e.g. multithreading), but not all.
+- Nyla's `bru` made process lists ugly.  This is remedied with Poki's `etcfs`.
 	- `bru` took configuration via a very long list of command line
-	  arguments which flooded `htop` output.  `etcfs` will likely inherit
+	  arguments which flooded process list output.  `etcfs` has inherited
 	  `crossfs` runtime configuration handling and have a more reasonable
 	  argument list.
-	- `bru` had to have one instance per stratum.  Early research shows
-	  `etcfs` may be able to get away with a single instance irrelevant of
-	  the number of strata.  In addition to taking less room in a process
-	  list, this may also reduce RAM usage.
+	- `bru` had to have one instance per stratum.  `etcfs` is able to get
+	  away with a single instance irrelevant of the number of strata.  In
+	  addition to taking less room in a process list, this reduces also
+	  reduce RAM usage.
 - Nyla made use of two different systems to enforce configuration values in
   `/etc` files, both of which were enforced at stratum-enable time.  Both were
   found to be inadequate, in part because the files may be updated between
