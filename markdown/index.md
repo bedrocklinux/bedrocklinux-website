@@ -18,6 +18,17 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="poki-feature-complete"} Poki feature complete, undergoing internal testing
+<small>2018-09-29</small>
+
+An internal build of the upcoming Bedrock Linux release is now feature
+complete.  Internal testing and bug fixing is now underway.
+
+A release candidate is expected to be made public sometime in October or
+November for further testing.  Any assistance testing at that time will be
+greatly appreciated.  The proper release will follow, likely before the end of
+2018.
+
 ## {id="poki-progress-2018-05"} May 2018 Poki Progress Update
 <small>2018-05-05</small>
 
@@ -64,29 +75,5 @@ ensure the upcoming increased attention is manageable.
 /u/ParadigmComplex represented Bedrock Linux during an "Ask Me Anything"
 ("AMA") session at
 [http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers).  The session is now over, and the resulting discussion can be found [here](https://www.reddit.com/r/AskLinuxUsers/comments/4ke9ss/i_am_the_founder_and_lead_developer_of_bedrock/).
-
-## {id="forums"} Bedrock Linux forum hosted on LinuxQuestions.org
-<small>2016-03-01</small>
-
-Bedrock Linux now has a forum available on linuxquestions.org at:
-
-[http://www.linuxquestions.org/questions/bedrock-linux-118/](http://www.linuxquestions.org/questions/bedrock-linux-118/)
-
-## {id="nyla-plans"} Bedrock Linux 1.0beta3 Poki Plans, project roadmap
-<small>2016-01-23</small>
-
-The design plans for the upcoming release of Bedrock Linux, 1.0beta3 Poki, are
-available [here](1.0beta3/plans.html).
-
-A rough roadmap for Bedrock Linux is available [here](roadmap.html).
-
-## {id="nyla-release"} Bedrock Linux 1.0beta2 Nyla released
-<small>2016-01-16</small>
-
-The second beta of Bedrock linux, 1.0beta2 Nyla, has been released.  See the
-[major features](1.0beta2/features.html), the [high-level
-changelog](1.0beta2/changelog.html), and either the [full installation
-instructions](1.0beta2/install.html) or, if you'd like to expedite the install
-process, the [quickstart installation instructions](1.0beta2/quickstart.html).
 
 [See older news items](news.html)
