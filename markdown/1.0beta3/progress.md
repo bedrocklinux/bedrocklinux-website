@@ -230,7 +230,7 @@ Various commands have all been moved under the banner of a new, single command:
   issues.
 
 Moreover, limited tab completion has been implemented for `brl` (and `strat`)
-for `bash`, `fish`, and `zsh.  Improved tab completion may follow post release.
+for `bash`, `fish`, and `zsh`.  Improved tab completion may follow post release.
 
 ## {id="installer-updater"} The installer/updater (completion: 100%)
 
