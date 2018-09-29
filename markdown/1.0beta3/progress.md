@@ -4,7 +4,7 @@ Nav: poki.nav
 Bedrock Linux "Poki" Progress
 =============================
 
-This documents the state of Bedrock Linux's "Poki" release as of 2018-08-22.
+This documents the state of Bedrock Linux's "Poki" release as of 2018-09-29.
 
 ## {id="rationale"} Rationale for feature choice
 
@@ -197,53 +197,59 @@ the `br*` executable naming pattern.
   read.  Sadly this will likely come at the cost of increased code complexity
   and a slight performance hit, but it should prove to be worthwhile.
 
-## {id="brl"} brl (previously various executables) (completion: 25%)
+## {id="brl"} brl (previously various executables) (completion: 90%)
 
 Various commands have all been moved under the banner of a new, single command:
 `brl`.
 
-`brl` has only had preliminary work completed thus far.
+- `brl strat` simply passes through to `strat` which is described above  Given
+  how frequently `strat` is expected to be used, it makes sense to be
+  accessible without the `brl` prefix.  However, also including it under `brl`
+  eases discovery for new users.
+- `brl which` which will identify which stratum provides a specified object
+  such as a file or PID.
+- `brl list` which lists strata.
+- `brl fetch` can automatically acquire files from various supported other
+  distros for use as strata.  It attempts to detect and set up everything
+  necessary to minimize user effort to utilize it.  It will initially be
+  restricted to a handful of reasonably well tested distros on `x86_64`, but
+  support for other distros and architectures may follow post release.
+- `brl remove` which removes strata.
+- `brl rename` which renames strata.
+- `brl status` which indicates a given stratum is enabled or disabled, as well
+  as if there are any issues with its integration into the rest of the system.
+- `brl enable`, `brl disable`, and `brl reenable` which manage integration and
+  de-integration of specified strata with the rest of the system.
+- `brl hide` and `brl show` which can be used to manage if a given stratum is
+  automatically utilized in certain contexts.
+- `brl alias` and `brl deref` which manage strata aliases.
+- `brl update` which updates the `bedrock stratum`.
+- `brl reload` which applies `/bedrock/etc/bedrock.conf` configuation.
+- `brl version` which prints the current Bedrock Linux version.
+- `brl report` which generates a report used for debugging various possible
+  issues.
 
-Work which has been completed on `brl` includes:
+Moreover, limited tab completion has been implemented for `brl` (and `strat`)
+for `bash`, `fish`, and `zsh.  Improved tab completion may follow post release.
 
-- `brl strat` which simply passes through to `strat`.
-- Prototyping work for `brl fetch`, a subcommand which automatically acquires
-  strata.  The prototype supports twelve distros (plus one distro variation):
-  alpine, arch, centos, crux, debian, devuan, fedora, gentoo, opensuse, solus,
-  ubuntu, void, void-musl.  This is likely the extent of what will be pursued
-  for Poki's initial release, but additional distros may be added with point
-  updates post release.
-- Most of `brl which`, a subcommand which indicates which stratum provides
-  a given object.  This supports not only executables in your `$PATH` (like the
-  "normal" `which` command), but also filepaths, processes, and xorg windows
-  (provided `xprop` is available).
-- Some tab-completion for `bash`, `zsh`, and `fish`.  Full tab completion for
-  those three shells is expected for both `strat` and all `brl` subcommands by
-  Poki's release.
+## {id="installer-updater"} The installer/updater (completion: 100%)
 
-Planned features include:
-
-- Various stratum management subcommands including: `remove`, `rename`,
-  `enable`, `disable`, `fix`, `ignore`, `unignore`, `alias`, and `deref`.
-- `update`, a subcommand which updates the Bedrock install.
-- `report`, a subcommand which creates a report about the current Bedrock
-  system.  This is intended to be used to aid debugging problems.
-
-## {id="installer-updater"} The installer/updater (completion: 5%)
-
-The build system produces a single eventual output file, named something along the lines of
+The build system produces a single eventual output file, named:
 
 	bedrock-linux-${version}-${arch}.sh
 
-Only preliminary work completed thus far on this feature.
+This can be used to:
 
-It is planned to serve three purposes:
+- Hijack a given install of a traditional distro and turn it into a Bedrock Linux install.
+- Update a given Bedrock Linux install.
+	- Note this will only update Poki; it will not support updating a Nyla install.
 
-- It will hijack existing Linux distribution installs, converting them into Bedrock installs.
-- It will support installing into a directory for use with "manual" installs.
-- It will support updating existing Bedrock installs of the same major version.
+There has been discussion about also utilizing this to install Poki to a fresh
+partition wihtout an existing distro to hijack.  It is unlikely this will be
+implemented for Poki's initial release.  It is unclear if it will be
+implemented later; further discussion is needed.
 
-## {id="init"} init (previously brn) (completion: 5%)
+## {id="init"} init (previously brn) (completion: 100%)
 
 Nyla's `brn` has been renamed to `init` as part of a general move away from
 the `br*` executable naming pattern.
@@ -262,6 +268,12 @@ filesystem to `/bedrock/strata/~(stratum~)/`.  This frees Poki to place its own
 init system at `/sbin/init` on the offline filesystem, which is the path most
 bootloaders default to utilizing.
 
+## {id="testing"} Testing and bug fixes (completion: 20%)
+
+Poki is feature complete and undergoing internal testing.  This includes not
+only fixing technical bugs, but also tweaking the UI to be more natural and
+consistent.
+
 ## {id="documentation"} Documentation (completion: 0%)
 
 A full suite of documentation must be created to accompany Poki's release.
@@ -270,8 +282,9 @@ documentation load to a significant degree.  However, no documentation for
 Poki's release has yet been written.
 
 Depending on time constraints, man pages may or may not be created for `brl`
-and `strat`.  If they are not, the website's documentation and `--help` are
-expected to suffice.
+and `strat` by Poki's release.  If they are not, the website's documentation
+and `--help` are expected to suffice.  Man pages will likely follow in a later
+update.
 
 ## {id="presentation"} Video presentation (20%)
 

@@ -4,6 +4,17 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="poki-feature-complete"} Poki feature complete, undergoing internal testing
+<small>2018-09-29</small>
+
+An internal build of the upcoming Bedrock Linux release is now feature
+complete.  Internal testing and bug fixing is now underway.
+
+A release candidate is expected to be made public sometime in October or
+November for further testing.  Any assistance testing at that time will be
+greatly appreciated.  The proper release will follow, likely before the end of
+2018.
+
 ## {id="poki-progress-2018-05"} May 2018 Poki Progress Update
 <small>2018-05-05</small>
 
