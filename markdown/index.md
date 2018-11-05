@@ -18,6 +18,13 @@ achieve this.  See a [feature list](1.0beta2/features.html), [watch a
 [two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
 [introduction](introduction.html) and [FAQ](faq.html) for more.
 
+## {id="poki-public-beta"} Poki public beta testing
+<small>2018-11-05</small>
+
+Pre-release builds of Bedrock Linux 0.7 Poki are now available for testing.
+See [here](0.7/beta-test.html) for further details.  If you have the time and
+resources, assistance testing would be appreciated.
+
 ## {id="poki-feature-complete"} Poki feature complete, undergoing internal testing
 <small>2018-09-29</small>
 
@@ -68,12 +75,5 @@ on the roadmap are retained as the key goals, additional work will be put in to
 clean up the code base, add tests, and rework the build system, amongst other
 improvements.  This will likely push back the upcoming release but will help
 ensure the upcoming increased attention is manageable.
-
-## {id="reddit-ama"} Bedrock Linux AMA on /r/AskLinuxUsers
-<small>2016-05-21</small>
-
-/u/ParadigmComplex represented Bedrock Linux during an "Ask Me Anything"
-("AMA") session at
-[http://reddit.com/r/AskLinuxUsers](http://reddit.com/r/AskLinuxUsers).  The session is now over, and the resulting discussion can be found [here](https://www.reddit.com/r/AskLinuxUsers/comments/4ke9ss/i_am_the_founder_and_lead_developer_of_bedrock/).
 
 [See older news items](news.html)
