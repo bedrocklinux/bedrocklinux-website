@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="poki-public-beta"} Poki public beta testing
+<small>2018-11-05</small>
+
+Pre-release builds of Bedrock Linux 0.7 Poki are now available for testing.
+See [here](0.7/beta-test.html) for further details.  If you have the time and
+resources, assistance testing would be appreciated.
+
 ## {id="poki-feature-complete"} Poki feature complete, undergoing internal testing
 <small>2018-09-29</small>
 

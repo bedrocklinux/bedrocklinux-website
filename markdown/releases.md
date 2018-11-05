@@ -7,7 +7,7 @@ Releases
 Upcoming Release
 ----------------
 
-- [1.0beta3 "Poki" (upcoming)](1.0beta3/)
+- [0.7 "Poki" (upcoming)](0.7/)
 
 Current Release
 ---------------
