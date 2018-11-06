@@ -19,6 +19,8 @@ not be a major hindrance.
 
 **This is intended for pre-release testing and is not suitable for production systems.  There is a substantial amount of new code with limited testing.  There are likely many still undiscovered bugs.  Only install on test machines for the time being.**
 
+**See known issue list before installing.  Hijacking some distros may be known to be broken at this point in time.**
+
 Poki is currently targeting `x86_64`.  Additional architectures may be added later.
 
 Install a traditional `x86_64` Linux distribution such as Arch, Debian, Fedora,
@@ -172,6 +174,10 @@ If you would like to specify which non-global file to read or write, prefix
 
 Here is a list of known issues and other to-do items.  Given the current beta testing phase, there are likely more issues to be discovered.
 
+- There are reports that hijacking a Void install did not work.
+	- Early guess is that it failed due to `/sbin/` being a symlink and so it may fail on other distros with similar `/sbin/` symlinks.
+- Auto-detecting distro via `os-release` fails in non-trivial cases.
+	- This should be easy to fix, as `os-release` was explicitly intended to be parsed by shell scripts such as the installer.
 - If the hijacked system is using GRUB, the hijack process should update the GRUB menu item to indicate it is now Bedrock.
 - Login shells set to a local path will not work with login prompts from strata which do not provide the shell locally.  Have some automation update login shells to use `/bedrock/cross/` paths to avoid potential problems here.
 - Arch's `zsh` does not pick up Bedrock completion.
