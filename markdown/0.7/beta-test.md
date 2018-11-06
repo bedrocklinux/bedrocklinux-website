@@ -17,6 +17,8 @@ not be a major hindrance.
 
 ## {id="install"} Installation instructions
 
+**This is intended for pre-release testing and is not suitable for production systems.  There is a substantial amount of new code with limited testing.  There are likely many still undiscovered bugs.  Only install on test machines for the time being.**
+
 Poki is currently targeting `x86_64`.  Additional architectures may be added later.
 
 Install a traditional `x86_64` Linux distribution such as Arch, Debian, Fedora,
