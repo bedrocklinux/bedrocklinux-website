@@ -178,8 +178,6 @@ Here is a list of known issues and other to-do items.  Given the current beta te
 - The /etc/fstab information indicating the root drive needs to be fscked is disabled during the hijack install.  The intent is for Bedrock to take responsibility for this.  However, it does not currently do so.
 - If the hijacked system is using GRUB, the hijack process should update the GRUB menu item to indicate it is now Bedrock.
 - Arch's `zsh` does not pick up Bedrock completion.
-- Execute-only cross-bin items do not work.  For example, void's `sudo`.
-	- Naively, there would be no problem having the bouncer ignore the non-readable status of its underlying file and be readable.  However, some thought should be applied here before executing such a change.
 - Cross-fonts can break.  For example, `xbps-install font-hack-ttf` results in problems with `/bedrock/cross/fonts/TTF/fonts.dir`.
 - Add a feature to set the desired init on the kernel command line.  This would bypass the init-selection menu.
 - Consider taking control of the motd to print a Bedrock specific message.
