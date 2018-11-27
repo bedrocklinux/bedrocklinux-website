@@ -174,11 +174,21 @@ If you would like to specify which non-global file to read or write, prefix
 
 Here is a list of known issues and other to-do items.  Given the current beta testing phase, there are likely more issues to be discovered.
 
-- Login shells set to a local path will not work with login prompts from strata which do not provide the shell locally.  Have some automation update login shells to use `/bedrock/cross/` paths to avoid potential problems here.
-- The /etc/fstab information indicating the root drive needs to be fscked is disabled during the hijack install.  The intent is for Bedrock to take responsibility for this.  However, it does not currently do so.
-- If the hijacked system is using GRUB, the hijack process should update the GRUB menu item to indicate it is now Bedrock.
-- Arch's `zsh` does not pick up Bedrock completion.
-- Cross-fonts can break.  For example, `xbps-install font-hack-ttf` results in problems with `/bedrock/cross/fonts/TTF/fonts.dir`.
-- Add a feature to set the desired init on the kernel command line.  This would bypass the init-selection menu.
-- Consider taking control of the motd to print a Bedrock specific message.
-- Determine and document build requirements.
+- Unconfirmed issues that require more attention:
+	- Cannot hijack OpenSUSE
+	- Under certain conditions cannot use audio as non-root user
+		- This may be because `/run/user/1000` has the wrong permissions under certain circumstances.
+
+- Confirmed issues that should be fixed before Poki's post-beta release:
+	- Login shells set to a local path will not work with login prompts from strata which do not provide the shell locally.  Have some automation update login shells to use `/bedrock/cross/` paths to avoid potential problems here.
+	- The /etc/fstab information indicating the root drive needs to be fscked is disabled during the hijack install.  The intent is for Bedrock to take responsibility for this.  However, it does not currently do so.
+	- Arch's `zsh` does not pick up Bedrock completion.
+	- Add a feature to set the desired init on the kernel command line.  This would bypass the init-selection menu.
+	- Consider taking control of the motd to print a Bedrock specific message.
+	- Determine and document build requirements.
+
+- Confirmed issues, limitations, and other items that are not planned to be improved before Poki's post-beta release:
+	- `/bedrock` and everything under it needs to be part of the root partition.  Cannot have separate partitions for `/bedrock/strata` or each stratum under `/bedrock/strata`.
+	- Each stratum's init (e.g. systemd) only knows about its own configuration.  One stratum's init will not automatically launch another stratum's daemon at boot.
+	- Each stratum's display manager (e.g. lightdm) only knows about its own stratum's desktop environments.  One stratum's display manager will not automatically list another stratum's desktop environments as login options.
+	- If the hijacked system is using GRUB, the hijack process should update the GRUB menu item to indicate it is now Bedrock.
