@@ -21,7 +21,7 @@ and if you see questions you are confident you know how to answer, help out.
 
 ## {id="documentation-and-code-review"} Documentation and code review
 
-[Consider reviewing Bedrock Linux's documentation and code.  If you find issues, report them.  If you have time and capability, consider submitting fixes.](https://en.wikipedia.org/wiki/Linus%27s_Law)
+Consider reviewing Bedrock Linux's [website/documentation](https://github.com/bedrocklinux/bedrocklinux-website) and [code](https://github.com/bedrocklinux/bedrocklinux-userland).  If you find issues, report them.  If you have time and capability, consider submitting fixes.
 
 ## {id="distro-maintainer"} Become a distro maintainer
 
