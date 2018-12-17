@@ -4,6 +4,12 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="poki-released"} Bedrock Linux 0.7 Poki released
+<small>2018-12-17</small>
+
+Bedrock Linux 0.7 Poki has exited beta and is ready for general consumption.
+See [here](0.7/index.html) for the release's documentation.
+
 ## {id="poki-public-beta"} Poki public beta testing
 <small>2018-11-05</small>
 

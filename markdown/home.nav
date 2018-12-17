@@ -4,12 +4,10 @@ Main Nav
 
 - [Introduction](introduction.html)
 - [FAQ](faq.html)
-- [Major features](1.0beta2/features.html)
-- [Full installation instructions](1.0beta2/install.html)
-- [Quick installation instructions](1.0beta2/quickstart.html)
-- [Current release (1.0beta2)](1.0beta2/)
+- [Installation instructions](0.7/index.html)
+- [Current release (0.7)](0.7/)
 - [All releases](releases.html)
-- [Long term roadmap](roadmap.html)
+- [Contributing](contributing.html)
 - [News Archive](news.html)
 - [Media](media/)
 
@@ -20,5 +18,3 @@ External Links
 - [reddit.com/r/bedrocklinux](http://reddit.com/r/bedrocklinux)
 - [Git repo for userland](https://github.com/bedrocklinux/bedrocklinux-userland)
 - [Git repo for website](https://github.com/bedrocklinux/bedrocklinux-website)
-- [Issue tracker for userland](https://github.com/bedrocklinux/bedrocklinux-userland/issues)
-- [Issue tracker for website](https://github.com/bedrocklinux/bedrocklinux-website/issues)

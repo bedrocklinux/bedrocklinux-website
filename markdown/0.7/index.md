@@ -1,11 +1,17 @@
-Title: Bedrock Linux 1.0beta3 Poki
+Title: Bedrock Linux 0.7 Poki
 Nav: poki.nav
 
 Bedrock Linux 0.7 Poki
 ======================
 
-Poki is currently undergoing pre-release testing.  To expedite development,
-this testing coincides with documentation writing.  This area will be further
-developed once Poki is closer to a stable release.
+These pages document Bedrock Linux 0.7 Poki which was released on December 17th, 2018.
 
-- [Beta test](beta-test.html)
+- [Installation instructions](installation-instructions.html)
+- [Basic usage](basic-usage.html)
+- [Concepts and terminology](concepts-and-terminology.html)
+- [Commands](commands.html)
+- [Configuration](configuration.html)
+- [Compatibility and work-arounds](compatibility-and-workarounds.html)
+- [Known issues](known-issues.html)
+- [Debugging](debugging.html)
+- [Future](future.html)

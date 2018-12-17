@@ -3,4 +3,12 @@
 Bedrock Linux 0.7 Poki
 
 - [Root Poki page](index.html)
-- [Beta test](beta-test.html)
+- [Installation instructions](installation-instructions.html)
+- [Basic usage](basic-usage.html)
+- [Concepts and terminology](concepts-and-terminology.html)
+- [Commands](commands.html)
+- [Configuration](configuration.html)
+- [Compatibility and work-arounds](compatibility-and-workarounds.html)
+- [Known issues](known-issues.html)
+- [Debugging](debugging.html)
+- [Future](future.html)
