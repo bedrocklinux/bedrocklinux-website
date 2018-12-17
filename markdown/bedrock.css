@@ -227,6 +227,11 @@ ul.rcmd li:before{
 
 table {
 	width: 100%;
+	border-collapse: collapse;
+}
+th, td {
+	border-bottom: 1px dashed white;
+	border-top: 1px dashed white;
 }
 div.description {
 	margin-top: 20px;

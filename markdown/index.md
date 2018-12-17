@@ -4,19 +4,28 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
-Bedrock Linux is a Linux distribution created with the aim of making most of
-the (often seemingly mutually-exclusive) benefits of various other Linux
-distributions available simultaneously and transparently.
+Bedrock Linux is a meta Linux distribution which allows users to utilize
+features from other, typically mutually exclusive distributions.  Essentially,
+users can mix-and-match components as desired.  For example, one could have:
 
-If one would like a rock-solid stable base (for example, from Debian or a RHEL
-clone) yet still have easy access to cutting-edge packages (from, say, Arch
-Linux), automate compiling packages with Gentoo's portage, and ensure that
-software aimed only for the ever popular Ubuntu will run smoothly - all at the
-same time, in the same distribution - Bedrock Linux will provide a means to
-achieve this.  See a [feature list](1.0beta2/features.html), [watch a
-(old/outdated) demonstration](http://www.youtube.com/watch?v=MuYMBCcgs98) or
-[two](https://www.youtube.com/watch?v=YOXGE_oV4XU) and read the
-[introduction](introduction.html) and [FAQ](faq.html) for more.
+- The bulk of the system from an old/stable distribution such as CentOS or Debian.
+- Access to cutting-edge packages from Arch Linux.
+- Access to Arch's AUR.
+- The ability to automate compiling packages with Gentoo's portage
+- Library compatibility with Ubuntu, such as for desktop-oriented proprietary software.
+- Library compatibility with CentOS, such as for workstation/server oriented proprietary software.
+
+All at the same time, all working together like one, largely cohesive operating system.
+
+A new video demonstrating such features as of the newly released Bedrock Linux
+0.7 Poki is currently in development and will be listed here in the near
+future.
+
+## {id="poki-released"} Bedrock Linux 0.7 Poki released
+<small>2018-12-17</small>
+
+Bedrock Linux 0.7 Poki has exited beta and is ready for general consumption.
+See [here](0.7/index.html) for the release's documentation.
 
 ## {id="poki-public-beta"} Poki public beta testing
 <small>2018-11-05</small>
@@ -43,37 +52,5 @@ Given the relatively long release cycle, it seems prudent to provide an
 occasional progress update.  Poki's development progress, updated 2018-05-05,
 can be found [here](1.0beta3/progress.html).  While a substantial amount of
 work has been done, much is left to do before the release is ready.
-
-## {id="status-2017"} Project status as of the end of 2017
-<small>2017-12-10</small>
-
-Development over the past year and a half has been very slow due to unrelated
-priorities consuming Bedrock Linux development time.  These priorities are
-largely passed, and development should restart in earnest within the first
-half of 2018.
-
-There has been a fair bit of research towards the upcoming 1.0beta3 Poki
-release before the development stagnation.  However, there is still some
-research left to do, as well as a lot of time consuming development and
-testing, and so it is unlikely that Poki will be released any time soon.  It is
-unclear at this time if the increased scope for Poki mentioned in the last news
-item will remain in place, or if it will be scoped back to hit an earlier
-release date.
-
-Apologies for the delay.  Hang in there, we want the next release at least as
-much as you do.
-
-## {id="poki-scope-increase"} Increase in scope for upcoming Bedrock Linux 1.0beta3 Poki
-<small>2017-01-14</small>
-
-The current Bedrock Linux release, 1.0beta2 Nyla, saw a substantial increase in
-community feedback.  Given the focus on accessibility of the upcoming 1.0beta3
-Poki release it is likely to see an even greater increase in user base.  It is
-desirable to clear the backlog of smaller issues and toughen up the project
-infrastructure before this projected uptick.  While the major features planned
-on the roadmap are retained as the key goals, additional work will be put in to
-clean up the code base, add tests, and rework the build system, amongst other
-improvements.  This will likely push back the upcoming release but will help
-ensure the upcoming increased attention is manageable.
 
 [See older news items](news.html)

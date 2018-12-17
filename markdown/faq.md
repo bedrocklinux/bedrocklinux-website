@@ -24,6 +24,7 @@ Nav:   home.nav
 - [Is Bedrock Linux practical?](#practicality)
 - [Why was Bedrock Linux started?](#why-started)
 - [What distros does Bedrock Linux support as strata?](#supported-distros)
+- [Why did the versioning system change?](#version-system)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -32,8 +33,11 @@ See the Introduction to [Bedrock](introduction.html).
 ## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
 
 The exact details may change drastically from release-to-release.
-Documentation for the general concepts behind the current release at the time
-of writing (1.0beta2 Nyla) can be found [here](1.0beta2/concepts.html).
+Broadly, it uses various virtual filesystem layer tools such as `chroot`,
+`pivot_root`, bind mounts (including shared subtree control), and FUSE
+filesystems, and symlinks.  It also manipulates various files to enforce
+certain bits configuration and controls the init system to set things up before
+handing control off to the desired init.
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
@@ -96,8 +100,8 @@ accordingly.  In theory Bedrock Linux allows one to build a system out of every
 package from every major distro without any access controls in place, which
 would have an incredible attack surface and be a terrible idea.  Don't do that.
 
-In practice, Bedrock Linux does offer some notable security benefits over
-traditional distros:
+Bedrock Linux does offer some minor theoretical security benefits over
+traditional distros of negligible value:
 
 - If a distro does not provide a desired version of a desired package, a user
   is typically expected to go acquire it outside of the distro's repositories.
@@ -110,10 +114,7 @@ traditional distros:
 
 - Some hardening techniques from one distro may protect software from others.
   For example, a hardened kernel from one distro may be used with packages from
-  another distro that does not provide such a hardened kernel.  Access control
-  mechanisms such as SELinux as provided by one distro may be configured to
-  extend to packages from other distros that would not have natively provided
-  such access control mechanisms at all.
+  another distro that does not provide such a hardened kernel.
 
 There are also some downsides to Bedrock Linux from a security
 point-of-view:
@@ -169,35 +170,14 @@ an init system from another distro.
 
 ## {id="ready\_status"} Is Bedrock Linux far enough along for me to use?
 
-Bedrock Linux's development has largely focused on the under-the-hood
-technology that makes it work rather than user-facing policy.  The installation
-procedure, for example, is notably rough at the time of writing; this is a
-blocker for many people who are not accustomed to getting their hands dirty
-compiling things and editing configuration files directly.
-
-If you are seeking a polished, it-just-works distribution, Bedrock Linux is not
-yet far enough along to meet that constraint; it may be advisable to use
-another distribution for the time being.
-
-If you are accustomed to more hands-on/low-level distributions such as Arch,
-Gentoo, and Linux from Scratch, and are okay with using a "beta" system that is
-still in active development, Bedrock Linux may be far enough along for you to
-utilize.
+Difficult to say.  Typically issues become evident in relatively early use, and
+if early experimentation proves fruitful with your workflow it will likely
+continue to work.  Consider trying Bedrock Linux in a VM or on a spare machine
+and exercise your general workflow as a test.
 
 ## {id="contribute"} How can I contribute?
 
-- Pop into [IRC](http://webchat.freenode.net/?channels=bedrock) and ask around.
-- Take a look at the
-  [issues](https://github.com/bedrocklinux/bedrocklinux-userland/issues) and,
-  if you feel you can tackle something, mention it in the issue tracker or
-  discuss it with "paradigm" in
-  [IRC](http://webchat.freenode.net/?channels=bedrock).  Or make a new issue if
-  you have an idea.
-- There is always a need to improve the documentation.  For example, you could
-  add instructions for setting up an obscure distro as a ~{stratum~} Bedrock Linux,
-  or something as simple as fixing typos.  Once you have something to submit,
-  stop by the [website git
-  repo](https://github.com/bedrocklinux/bedrocklinux-website).
+See [the contributing page](contributing.html).
 
 ## {id="vs\_virtual\_machine"} How is this different from/preferable to using a virtual machine?
 
@@ -286,10 +266,11 @@ Nickelodeon television program *Avatar: The Last Air Bender.*
 
 ## {id="system\_requirements"} What are the system requirements?
 
-The system requirements are listed in the specific pages for each release. This
-is done in case changes between versions alter the system requirements. The
-system requirements for the initial alpha can be found
-[here](http://bedrocklinux.org/1.0alpha1/systemrequirements.html).
+The system requirements are not closely tracked.  Bedrock has been found to
+work adequately on relatively low end machines such as a Raspberry Pi 3b+ and
+Eeepc 701.  Generally, Bedrock requires a handful of megabytes more RAM than
+the traditional distros that make up its strata, but a non-trivial amount of
+extra disk.
 
 ## {id="why\_own\_distro"} Why does this need to be its own distribution?
 
@@ -302,13 +283,12 @@ one third of the installed and in use for a given Linux distro "install" comes
 from Arch Linux, another third from Alpine Linux, and the last third from
 Gentoo Linux.  Which distro is the user running?  Answering the question with a
 simple "Arch", "Alpine" or "Gentoo" would be misleading.  One cannot tie it to
-typically "hard" concepts such as the init system, the kernel, or even the root
-filesystem, as these are fluid concepts in Bedrock Linux.  It is possible to
-switch any of those with a reboot while still using the *exact* same rest of
-the system.  Instead of expecting people to answer the question of "which
-distro are you running?" with a long explanation going into the intricacies of
-how things are intermixed between multiple distributions, someone could simply
-answer "Bedrock Linux".
+typically "hard" concepts such as the init system or the kernel, as these are
+fluid concepts in Bedrock Linux.  It is possible to switch any of those with a
+reboot while still using the *exact* same rest of the system.  Instead of
+expecting people to answer the question of "which distro are you running?" with
+a long explanation going into the intricacies of how things are intermixed
+between multiple distributions, someone could simply answer "Bedrock Linux".
 
 People have proposed having Bedrock Linux act as a meta package manager which
 sits on top of another distro.  By virtue of its meta-distro nature, Bedrock
@@ -320,11 +300,10 @@ this is very similar to installing some other package manager into a distro.
 The key difference is that, from Bedrock Linux's point of view, there is no
 major difference between the files from the distro install you've hijacked and
 the files from the other distros.  You're free to remove all of the original
-install's files (sans a few key install-related things such as the bootloader
-and possibly initrd if it is needed to decrypt full disk encryption, etc).  [If
-you install some distro, such as Slackware, then hijack it into Bedrock Linux,
-then remove all of the files of the original Slackware install, are you still
-running Slackware?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
+install's files (sans a few key install-related things such as the bootloader).
+[If you install some distro, such as Slackware, then hijack it into Bedrock
+Linux, then remove all of the files of the original Slackware install, are you
+still running the original distro?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
 
 Bedrock Linux is described as a (meta) Linux distribution because this is the
 most accurate answer when restricted to preexisting concepts.  It does not
@@ -355,54 +334,12 @@ but the core idea has been proven quite definitively to work.
 
 ## {id="other-os"} What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?
 
-It should be noted that no other operating system family has such a disparate
-variety of userlands which all run on the same kernel.  Bedrock Linux's
-strengths wouldn't be nearly as beneficial anywhere else.  Attempting to do
-something such as Bedrock Linux will inherently require leveraging
-operating-system-specific tools, and so it may require a fair bit of additional
-research to port Bedrock Linux's tools to another platform.
-Bedrock Linux is still under heavily development and changes quite a bit
-between releases.  It may be best to first wait for Bedrock Linux to settle on
-one strategy before putting the efforts to port it elsewhere to avoid wasted effort.
-
-BSD:
-
-- Porting Bedrock Linux to one or more of the BSD operating systems may be
-possible.
-- Differences in things such as chroot(), namespaces, cgroup, etc may
-make it take a fair bit of work.
-- The Bedrock Linux FUSE utilites may "just work" on the BSDs.
-
-Traditional-Linux-and-Android:
-
-- Android's utilities may be dependent on Android's patches to the Linux
-  kernel.  However, "traditional" Linux programs seem to run fine on the
-  Android kernel.  Thus, any port of Bedrock Linux to android would likely
-  require an Android kernel to be used.
-
-- The Android file system layout is significantly different from traditional
-  Linux distributions.  PATH and bind-mount system changes may be required.
-
-- Android does some unusual things with its UID/GIDs.  For example, there does
-  not seem to be a UID-username map at /etc/passwd as one would expect from
-  other Linux-based operating systems.  UID namespaces and brc-style
-  translation programs may be necessary.
-
-Android-on-Android:
-
-- This may be possible.  Most of the issues mentioned for the other platforms
-  are unlikely to happen here.
-
-Windows:
-
-- The low-level differences between Windows and Linux are quite significant,
-  and thus the possibility does not seem promising; however, no serious
-  investigation has been done to confirm this.
-
-OSX:
-
-- No investigation has been done into porting Bedrock Linux to OSX.
-- If the BSDs look promising, at least Darwin could be possible.
+The techniques Bedrock Linux utilizes are fairly specific to Linux.  While it
+may possible to create a similar meta-distro for other kernels, they would
+require substantial new R&D and are not being pursued by anyone on the Bedrock
+Linux team.  While Android does use the Linux kernel, its userland is
+sufficiently distant that it, too, would require substantial R&D and is not
+currently being pursued.
 
 ## {id="practicality"} Is Bedrock Linux practical?
 
@@ -416,7 +353,7 @@ Bedrock Linux may not be useful for everyone.
 
 What ended up becoming Bedrock Linux was originally a series of experiments and
 exercises with various Linux subsystems and technologies which did not have a
-specific collective name or ultimate end-goal in mind.  It was not until
+specific collective name or ultimate end-goal in mind.  It was not until:
 
 - Answering the question "What distro do you run?" became difficult to answer
   due to the fact the resulting system was equal parts of various other distros
@@ -428,12 +365,11 @@ that the project became organized with a specific name and drive.
 
 ## {id="supported-distros"} What distros does Bedrock Linux support as strata?
 
-All of the examples of distros Bedrock Linux supports as strata are just that:
-examples.  Bedrock Linux's approach is largely generic and will likely work
-with many distros that have been given no specific attention by the Bedrock
-Linux developers.  If you do not see a specific distro mentioned on the Bedrock
-Linux website this does not indicate it will not work properly; most major
-"traditional" distros should be expected to work to some degree.  However -
-especially given the "beta" status of the project - there may be hiccups here
-or there with some distros or features of distros that have not been well
-tested under Bedrock Linux.
+Broadly support falls into two categories:
+
+- Distros Bedrock can hijack.  Generally, most traditional distros work fine, and so it's shorter to list those that.  At the time of wring, Bedrock has known issues with: GoboLinux, NixOS, GuixSD, and live distros such as Knoppix or Slax.
+- Distros Bedrock can fetch.  At the time of writing, Bedrock knows how to fetch (on `x86_64`): Alpine, Arch, Centos, Debian, Devuan, Fedora, Gentoo, Ubuntu, and Void (both glibc and musl).  More may have been added since this was written.
+
+## {id="version-system"} Why did the version system change?
+
+Bedrock Linux's early version numbers were chosen under the assumption that remaining open problems were unlikely to be solved in the near future.  Thus, the versions pressed towards a `1.0 stable` release.  However, over the years major issues were resolved over and over, each with a substantial under-the-hood rework.  It became evident that semantic versioning's pre-1.0 non-alpha/beta/rc releases better express Bedrock's state, and the version system was updated accordingly.
