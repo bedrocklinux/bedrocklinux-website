@@ -262,7 +262,8 @@ nothing to do with the television show *The Flintstones*.
 ## {id="release\_names"} Where do the release names come from?
 
 All of the Bedrock Linux releases are named after characters from the
-Nickelodeon television program *Avatar: The Last Air Bender.*
+Nickelodeon television programs *Avatar: The Last Air Bender* and *The Legend
+of Korra*.
 
 ## {id="system\_requirements"} What are the system requirements?
 
