@@ -35,7 +35,7 @@ every file on a Bedrock Linux system is associated with some ~{stratum~}.
 
 [Bedrock provides commands to manage strata](commands.html#strata-management).
 
-## {id="depdency-types"} Dependency types
+## {id="dependency-types"} Dependency types
 
 A ~{hard dependency~} is a dependency on either:
 
