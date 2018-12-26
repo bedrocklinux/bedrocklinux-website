@@ -58,8 +58,7 @@ Some examples:
 - {class="cmd"}
 - brl which reboot # void
 - brl which pacman # arch
-- sudo yum update^Z
-- brl which $(pidof python | cut -d' ' -f1) # fedora
+- sudo yum update & brl which $(pidof python | cut -d' ' -f1) # fedora
 
 If you would like a specific instance, you may specify it with `strat`:
 
