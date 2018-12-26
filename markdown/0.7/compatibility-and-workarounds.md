@@ -17,17 +17,17 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata executables</td>
 <td>just works</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata application</td>
 <td><a href="#application-launchers">minor workaround</a></td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata bash completion</td>
-<td>just works</td>
-<td>install bash-completion in all strata</td>
+<td>mostly works</td>
+<td>install bash-completion in all strata; some completions fail.</td>
 </tr>
 <tr>
 <td>cross-strata fish completion</td>
@@ -36,8 +36,8 @@ do not work at all.  See the table below.
 </tr>
 <tr>
 <td>cross-strata zsh completion</td>
-<td>just works</td>
-<td>install zsh in all strata</td>
+<td>mostly works</td>
+<td>install zsh in all strata; some completions fail</td>
 </tr>
 </tr>
 <td>cross-stratum login shells</td>
@@ -47,7 +47,7 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata dbus</td>
 <td>just works</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata firmware</td>
@@ -55,9 +55,19 @@ do not work at all.  See the table below.
 <td>kernel will detect firmware across strata, initrd-building software may not</td>
 </tr>
 <tr>
-<td>cross-strata fonts</td>
+<td>cross-strata Xorg fonts</td>
 <td>just works</td>
-<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>cross-strata vt fonts</td>
+<td>does not work</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cross-strata Wayland fonts</td>
+<td>needs testing</td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata themes</td>
@@ -67,28 +77,28 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata info pages</td>
 <td>just works</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata man pages</td>
 <td>just works</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata desktop environments</td>
-<td><a href="#desktop-environments">minor work-around</a></td>
-<td></td>
+<td>does not work</td>
+<td>get your init, display manager, and desktop environment from the same stratum.</td>
 </tr>
 <td>any stratum's init</td>
 <td>just works</td>
 <td>select the desired init in the init-selection menu at boot</td>
 </tr>
-</tr>
+<tr>
 <td>any stratum's kernel</td>
 <td>just works</td>
 <td>install kernel from stratum then update bootloader</td>
 </tr>
-</tr>
+<tr>
 <td>cross-stratum init configuration</td>
 <td><a href="#init-configuration">major work-around</a></td>
 <td>-</td>
@@ -103,22 +113,32 @@ do not work at all.  See the table below.
 <td><a href="#steam">minor workaround</a></td>
 <td></td>
 </tr>
+<tr>
+<td>Arch AUR</td>
+<td>minor work-around</td>
+<td>prefix with `strat -r arch`</td>
 </tr>
+<tr>
 <td>SELinux</td>
 <td>does not work</td>
 <td>Bedrock disables it on hijack</td>
 </tr>
+<tr>
+<td>AppArmor, TOMOYO, SMACK</td>
+<td>testing needed</td>
+<td>Default profiles probably will not work</td>
 </tr>
+<tr>
 <td>ACLs</td>
 <td>do not work on /etc</td>
 <td>-</td>
 </tr>
-</tr>
+<tr>
 <td>cross-stratum libraries</td>
 <td>does not work</td>
 <td>theoretically possible but unsupported due to complexity/messiness concerns</td>
 </tr>
-</tr>
+<tr>
 <td>neofetch</td>
 <td>in progress</td>
 <td><a href="https://github.com/dylanaraps/neofetch/pull/1118">see github PR to add bedrock support</a></td>
@@ -137,15 +157,6 @@ Linux systems typically store *the full path* to a login shell in `/etc/passwd`.
 
 If you would like to use a *specific* ~{stratum~}'s shell [rather than the highest priority one](configuration.html#cross-priority), [create a pin entry in cross-bin](configuration.html#cross-bin) with the desired shell.  After `brl apply`ing the new configuration, add the new pin path to `/etc/shells` and `chsh` to it.
 
-### {id="desktop-environments"} Desktop environments
-
-Bedrock will generate ~{cross~}-~{strata~} `.desktop` files for desktop environments at `/bedrock/cross/xsessions`.  However, it does not install them in `/usr/share/xsessions/`.  To inform one ~{stratum~}'s display manager about another ~{stratum~}'s desktop environment, symlink `/bedrock/cross/~(desktop~).desktop` to `/bedrock/strata/~(stratum~)/usr/share/xsessions/~(desktop~).desktop`.  For example, to teach Ubuntu's display manager about another ~{stratum~}'s `openbox`, run (as root):
-
-- {class="rcmd"}
-- ln -s /bedrock/cross/xsessions/openbox.desktop /bedrock/strata/ubuntu/usr/share/xsessions/openbox.desktop
-
-For ~{cross~}-~{strata~} desktop environments to work, their runtime dependencies must be running.  Bedrock cannot make a systemd-dependent desktop environment work without systemd.
-
 ### {id="init-configuration"} Init configuration
 
 Every ~{stratum~} sees its own init configuration and only its own init configuration.  By default, an init from one ~{stratum~} will not know how to manage a service from another ~{stratum~}'s init.
@@ -161,7 +172,7 @@ Most Linux graphics drivers have two components:
 - A kernel module
 - A userland component
 
-Most F/OSS Linux graphics drivers strive to make the two components forward and backward compatible such that their versions do not have to sync up perfectly.  This allows a kernel from one ~{stratum~} to work with an Xorg server from another ~{stratum~}.  However, the proprietary Nvidia drivers require these two components be in sync.  Since the kernel module is shared across ~{strata~}, this means every ~{stratum~} requires the exact same version.  Bedrock does not know how to enforce this itself.  To work around this, one must manually install distro-agnostic portable proprietary Nvidia in all ~{strata~}.
+Most F/OSS Linux graphics drivers strive to make the two components forward and backward compatible such that their versions do not have to sync up perfectly.  This allows a kernel from one ~{stratum~} to work with an Xorg server from another ~{stratum~}.  However, the proprietary Nvidia drivers require these two components be in sync.  Since the kernel module is shared across ~{strata~}, this means every ~{stratum~} that does anything with the graphics card requires the exact same version.  Bedrock does not know how to enforce this itself.  To work around this, one must manually install distro-agnostic portable proprietary Nvidia in all ~{strata~}.
 
 [Download the proprietary Nvidia driver](https://www.nvidia.com/object/unix.html).  Then run
 
@@ -176,6 +187,8 @@ Next, run
 - strat -r ~(stratum~) sh ./NVIDIA-Linux-~(arch~)-~(versino~).run --no-kernel-module
 
 for all remaining ~(strata~) that require graphics drivers.
+
+The `bedrock` stratum and other strata that do not utilize the graphics acceleration do not require the Nvidia drivers.
 
 ### {id="steam"} steam
 
