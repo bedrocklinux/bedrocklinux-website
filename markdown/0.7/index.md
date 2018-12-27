@@ -16,4 +16,3 @@ These pages document Bedrock Linux 0.7 Poki which was released on December 17th,
 - [Compatibility and work-arounds](compatibility-and-workarounds.html)
 - [Known issues](known-issues.html)
 - [Debugging](debugging.html)
-- [Future](future.html)
