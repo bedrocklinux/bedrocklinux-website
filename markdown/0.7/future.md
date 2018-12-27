@@ -32,3 +32,7 @@ At the time of writing, Bedrock Linux 0.7 Poki supports `x86_64` and `armv7l`.  
 ##{id="man-pages"} Man pages
 
 Bedrock provides documentation on its website and the various commands have `--help` flags, but we do not currently have man pages for our own utilities.  This should be remedied.
+
+##{id="build-with-clang"} Support clang with build system.
+
+Bedrock's build system currently hardcodes `gcc`.  If possible, this should be generalized to be independent of the compiler.  Otherwise, explicit support for `clang` should be added.
