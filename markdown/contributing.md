@@ -40,3 +40,9 @@ If you are seriously considering this, contact paradigm.
 While quite a lot "just works" with Bedrock, some things require work-arounds and others do not work at all.  You could perform R&D towards removing the need for work-arounds.  Note that there is no guarantee that a solution is actually possible, or that some solutions may require a problematic trade-off.
 
 If you are seriously considering this, contact paradigm.
+
+## {id="future-work"} R&D for future work
+
+There are more ways to improve Bedrock than add support for new distros or cross-stratum compatibility for new subsystems.  Various other possible future improvements are listed [here](future.html).
+
+If you are seriously considering this, contact paradigm.

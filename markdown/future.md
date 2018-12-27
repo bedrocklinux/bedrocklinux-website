@@ -1,10 +1,10 @@
-Title: Bedrock Linux 0.7 Poki Future
-Nav: poki.nav
+Title: Bedrock Linux Possible Future Work
+Nav: home.nav
 
-Bedrock Linux 0.7 Poki Future
-=============================
+Bedrock Linux Possible Future Work
+==================================
 
-Possible future updates for Bedrock Linux 0.7 Poki.
+Possible future updates for Bedrock Linux may include:
 
 ##{id="performance"} Performance improvements
 
@@ -14,7 +14,7 @@ Possible future updates for Bedrock Linux 0.7 Poki.
 
 ##{id="compatibility"} Compatibility improvements
 
-Efforts should be made to improve [the various compatibility items which do not just work](compatibility-and-workarounds.html).  For example, users should not have to manually create symlinks for desktop environment detection to work across ~{strata~}.
+Efforts should be made to improve [the various compatibility items which do not just work](0.7/compatibility-and-workarounds.html).  For example, users should not have to manually create symlinks for desktop environment detection to work across ~{strata~}.
 
 ##{id="pmm"} Package Manager Manager
 
