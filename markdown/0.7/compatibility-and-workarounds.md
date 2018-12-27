@@ -22,7 +22,7 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata application</td>
 <td><a href="#application-launchers">minor workaround</a></td>
-<td>-</td>
+<td><a href="known-issues.html#missing-application-icons">application icons may be missing</a></td>
 </tr>
 <tr>
 <td>cross-strata bash completion</td>
