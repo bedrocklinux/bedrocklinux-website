@@ -42,7 +42,7 @@ do not work at all.  See the table below.
 </tr>
 <td>cross-stratum login shells</td>
 <td>just works</td>
-<td><a href="login-shells">specifying stratum requires special configuration</a></td>
+<td><a href="#login-shells">specifying stratum requires special configuration</a></td>
 </tr>
 <tr>
 <td>cross-strata dbus</td>
