@@ -6,16 +6,6 @@ Bedrock Linux 0.7 Poki Known Issues
 
 Issues listed here are supplemental to [issues listed in the compatibility section](compatibility-and-workarounds.html).
 
-## {id="init-menu"} Hidden init-selection menu
-
-Some distros, most notably Ubuntu, use a `vt_handoff` feature which hides Bedrock's init-selection menu.
-
-If you run into this, waiting for the init selection menu timeout (which is, by default, 30 seconds) grants access to the system.  To disable `vt_handoff`, remove `splash` from `/etc/default/grub` and regenerate `/boot/grub/grub.cfg` (e.g. with `grub-mkconfig -o /boot/grub/grub.cfg`).
-
-*Some* subsystem presumably disables `vt_handoff` at some point in the boot process making virtual terminals visible.  The ideal solution would be for Bedrock to trigger this itself.  However, where `vt_handoff` gets turned off is unknown.
-
-A future Bedrock update may either replicate the `vt_handoff` disabling code or, if we are unable to determine how to do that, enforce the absence of `splash` from `/etc/default/grub`.
-
 ## {id="lvm"} lvm mount failures
 
 Some users have reported issues with lvm partitions, most notably `/home`, not mounting.
@@ -23,18 +13,6 @@ Some users have reported issues with lvm partitions, most notably `/home`, not m
 Typical init systems do not mount `/etc/fstab` values corresponding to ~{global~} directories such as `/home`, and thus Bedrock is required to do so itself.  However, Bedrock does not currently know how to populate `/dev/mapper` files required for lvm.
 
 A future Bedrock update may embed `dmsetup` into Bedrock to allow it to populate `/dev/mapper` and mount ~{global~} lvm partitions such as `/home`.
-
-## {id="tray-icons"} Missing tray icons
-
-Some users have reported issues with tray icons not working across strata boundaries.
-
-## {id="brl-update-out-of-range"} brl update prints "sh: out of range"
-
-Running `brl update` prints `sh: out of range`.  This is a harmless aesthetic issue.
-
-## {id="brl-which-bedrock-strata"} brl which on /bedrock/strata
-
-`brl which` currently misreports some paths within `/bedrock/strata` as ~{global~} when they should be ~{cross~}.
 
 ## {id="x11-repeated"} /bedrock/cross/bin/X11/
 
@@ -50,7 +28,7 @@ Bedrock Linux has two FUSE filesystems, etcfs and crossfs.  Ideally, both should
 
 ## {id="unmount-warnings"} Unmount warnings on shutdown
 
-Bedrock uses a Linux kernel feature which propogates some mount and unmount operations.  When an init system performs an umount operation on shutdown, this may actually unmount multiple mount points.  Some init systems are confused by this, as it is not a commonly used feature, and print warnings about being unable to unmount directories because they already unmounted them.  These warnings are harmless aesthetic issues.  Note that this does not mean *all* warnings about mount difficulties on shutdown are harmless and only refers to a specific subset.
+Bedrock uses a Linux kernel feature which propagates some mount and unmount operations.  When an init system performs an umount operation on shutdown, this may actually unmount multiple mount points.  Some init systems are confused by this, as it is not a commonly used feature, and print warnings about being unable to unmount directories because they already unmounted them.  These warnings are harmless aesthetic issues.  Note that this does not mean *all* warnings about mount difficulties on shutdown are harmless and only refers to a specific subset.
 
 ## {id="fsck-root"} Root filesystem fsck may be skipped
 
