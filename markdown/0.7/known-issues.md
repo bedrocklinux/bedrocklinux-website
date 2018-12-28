@@ -41,23 +41,3 @@ Some initrds will `fsck` the root filesystem, but not all.  Bedrock should offer
 Bedrock has a `localegen` field in `bedrock.conf` which, if populated, will be used to configure the locale of fetched strata.  However, it only understands a single value.  This should be expanded to support multiple localegen values.
 
 Moreover, research should be performed into the viability of making `/etc/locale.gen` global.  This would remove the need for Bedrock to understand this field.
-
-## {id="missing-application-icons"} Some application launchers do not show cross-stratum icons
-
-Bedrock Linux ensures application launchers see applications from other strata.  However, some application launches do not show the application's icon.
-
-This appears to be due to the application launcher interpreting the freedesktop.org standard differently than the Bedrock Linux developers.  The standard indicates [here](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables) that `$XDG_DATA_DIRS` is a colon-separated list of possible entires.  For example, by default Bedrock Linux sets it to:
-
-	XDG_DATA_DIRS=/usr/local/share:/usr/share:/bedrock/cross/
-
-Which would indicate that `/usr/local/share/`, `/usr/share`, and `/bedrock/cross/` should be searched for data.
-
-The also standard indicates [here](https://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html#directory_layout) that icons can be found in `$XDG_DATA_DIRS/icons`.
-
-Bedrock Linux interprets this to mean that, if
-
-	XDG_DATA_DIRS=/usr/local/share:/usr/share:/bedrock/cross/
-
-applications search search for icons in `/usr/local/share/icons`, `/usr/share/icons`, and `/bedrock/cross/icons`.  However, it seems many application launchers do not search all of `XDG_DATA_DIRS`; they either only search the first element, or they interpret the entire contents as a single file path.
-
-Bedrock Linux cannot cleanly resolve this on its end.  Patches should be submitted upstream to the various application launchers to get them to support the full list of `$XDG_DATA_DIRS` paths.
