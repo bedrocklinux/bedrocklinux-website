@@ -22,7 +22,6 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata application</td>
 <td><a href="#application-launchers">minor workaround</a></td>
-<td><a href="known-issues.html#missing-application-icons">application icons may be missing</a></td>
 </tr>
 <tr>
 <td>cross-strata bash completion</td>
@@ -149,7 +148,9 @@ do not work at all.  See the table below.
 
 ### {id="application-launchers"} Application launchers
 
-Many application launchers cache known applications at `~/.cache/menus`.  Some may fail to recognize new applications in `/bedrock/cross/applications` and automatically update the cache.  If this happens, delete the cache at `~/.cache/menus` to force the application launcher to re-scan the applications.
+Many application launchers cache known applications and/or their icons.  Some may fail to recognize new applications in `/bedrock/cross/applications` or icons in `/bedrock/cross/icons`.
+
+Some such applications can be prompted to build the cache by removing `~/.cache/menus`.  Others may need to be restarted (such as by logging out and back in, or rebooting the computer).
 
 ### {id="login-shells"} Login shells
 
