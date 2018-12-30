@@ -14,6 +14,12 @@ By default, Bedrock will wait 30 seconds for input at the init selection menu.  
 
 If you run into this, please contact paradigm indicating which distro provided your kernel, initrd, and any pertinent hardware details.
 
+## {id="proxy"} brl-update and brl-fetch fail with proxy
+
+Some users have reported issues with `brl update` and `brl fetch` failing when behind a proxy.
+
+This issue appears to be specific https URLs.  It may be possible to work around `brl update` failing by manually downloading the update and running it with the `--update` flag, and it may be possible to work around `brl fetch` failing by specifying an http (non-https) mirror.
+
 ## {id="lvm"} lvm mount failures
 
 Some users have reported issues with lvm partitions, most notably `/home`, not mounting.
