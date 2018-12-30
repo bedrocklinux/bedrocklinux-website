@@ -6,6 +6,14 @@ Bedrock Linux 0.7 Poki Known Issues
 
 Issues listed here are supplemental to [issues listed in the compatibility section](compatibility-and-workarounds.html).
 
+## {id="init-menu-no-keyboard"} With some hardware or initrds, keyboard input is not recognized in init selection menu
+
+Some users have reported their keyboard inputs are not recognized during Bedrock's init selection menu.
+
+By default, Bedrock will wait 30 seconds for input at the init selection menu.  Once that expires, it will automatically continue with the default choice.  If you run into this issue, simply wait out the default.  Going forward, consider shortening the timeout in `/bedrock/etc/bedrock.conf`.  You can use another init in another session either by changing the default in `bedrock.conf` or by placing `bedrock_init=<stratum>:<init-path>` on the kernel line in your boot loader.
+
+If you run into this, please contact paradigm indicating which distro provided your kernel, initrd, and any pertinent hardware details.
+
 ## {id="lvm"} lvm mount failures
 
 Some users have reported issues with lvm partitions, most notably `/home`, not mounting.
