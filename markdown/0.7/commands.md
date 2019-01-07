@@ -36,13 +36,18 @@ This workflow is sufficiently common that `strat` is included directly in the de
 - strat debian apt install vim # use Debian's apt
 - strat ubuntu apt install vim # use Ubuntu's apt
 
-Occasionally it is desirable to temporarily disable cross-~{stratum~} integration.  For example, when building some software it may be useful to restrict the build system to one ~{stratum~}'s files to ensure one does not accidentally introduce cross-~{stratum~} hard dependencies.  `strat` provides an `-r` flag to restrict some cross-~{stratum~} hooks for the child process.  For example:
+Compilation and build tools may become confused when scanning the environment
+for dependencies and finding them from different distributions.  For these
+situations, `strat`'s `-r` flag should be used to restrict the command to the
+given stratum.  For example:
 
 - {class="cmd"}
 - # restrict build system to Debian
 - strat -r debian ./configure && strat -r make
 - # restrict build system to Arch
 - strat -r arch makepkg
+
+The build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies, just as one would do on the native distro.
 
 ### {id="brl-list"} brl list
 

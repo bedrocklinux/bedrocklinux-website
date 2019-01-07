@@ -25,7 +25,10 @@ Then to acquire new ~{strata~}, run (as root):
 
 	{class="rcmd"} brl fetch ~(distros~)
 
-Once that has completed you may run commands from the new ~{strata.~}  For
+That may fail if it auto-detects a bad mirror.  If so, manually find a good
+mirror for the distro and provide it to `brl fetch` with the `-m` flag.
+
+Once that has completed you may run commands from the new ~{strata~}.  For
 example, the following series of commands make sense on a Bedrock system:
 
 - {class="cmd"}
@@ -108,5 +111,18 @@ If you would like to specify which non-~{global~} file to read or write, prefix
 - brl which /bedrock/strata/ubuntu/etc/apt/sources.list # ubuntu
 - # edit debian's sources.list with ubuntu's vi
 - sudo strat ubuntu vi /bedrock/strata/debian/etc/apt/sources.list
+
+Compilation and build tools may become confused when scanning the environment
+for dependencies and finding them from different distributions.  For these
+situations, `strat`'s `-r` flag should be used to restrict the command to the
+given stratum.  For example:
+
+- {class="cmd"}
+- # restrict build system to Debian
+- strat -r debian ./configure && strat -r make
+- # restrict build system to Arch
+- strat -r arch makepkg
+
+The build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies, just as one would do on the native distro.
 
 This is enough information for most users to begin exploring and experimenting with Bedrock Linux.  However, if you would like to learn Bedrock more deeply, consider continuing to [concept and terminology overview](concepts-and-terminology.html) which expands on the details described here.

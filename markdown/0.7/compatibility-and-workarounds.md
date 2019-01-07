@@ -113,9 +113,9 @@ do not work at all.  See the table below.
 <td></td>
 </tr>
 <tr>
-<td>Arch AUR</td>
+<td>make, configure scripts, Arch AUR</td>
 <td>minor work-around</td>
-<td>prefix with `strat -r arch`</td>
+<td>prefix with `strat -r <stratum>` and install missing dependencies</td>
 </tr>
 <tr>
 <td>SELinux</td>
