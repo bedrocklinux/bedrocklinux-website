@@ -49,7 +49,7 @@ forth, all at the same time on the same distribution.
 These are all examples of real-world situations which benefited from Bedrock
 Linux.
 
-- With only a few days to go before presenting Compiz at a local Free/Open
+- With only a few minutes to go before presenting Compiz at a local Free/Open
   Source Software enthusiast club, the presenter found Debian's video drivers
   for his laptop were overly old to support the 3D acceleration needed for
   Compiz. While Arch Linux's X11 video drivers were new enough, its Compiz
