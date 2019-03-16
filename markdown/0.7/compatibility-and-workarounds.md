@@ -22,6 +22,7 @@ do not work at all.  See the table below.
 <tr>
 <td>cross-strata application</td>
 <td><a href="#application-launchers">minor workaround</a></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-strata bash completion</td>
@@ -110,7 +111,15 @@ do not work at all.  See the table below.
 </tr>
 <td>steam</td>
 <td><a href="#steam">minor workaround</a></td>
-<td></td>
+<td>-</td>
+</tr>
+<td>GDB</td>
+<td><a href="#GDB">minor workaround</a></td>
+<td>-</td>
+</tr>
+<td>signal-desktop</td>
+<td><a href="#signal-desktop">minor workaround</a></td>
+<td>-</td>
 </tr>
 <tr>
 <td>make, configure scripts, Arch AUR</td>
@@ -196,3 +205,14 @@ The `bedrock` stratum and other strata that do not utilize the graphics accelera
 [A bug in steam](https://github.com/ValveSoftware/steam-for-linux/issues/5612) breaks the ability to log into its friends/chat service with Bedrock's timezone handling.  To work around this, run steam with `TZ` set to your Olson time zone.  For example:
 
 	TZ="America/New_York" steam
+
+### {id="signaldesktop"} signal-desktop
+[Sinal-desktop does not support TZ pointing to a file](https://github.com/signalapp/Signal-Desktop/issues/3085). It is likely related to a [bug in chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=811403). This breaks the preference window. The work around is the same as for steam. Simply run signal-desktop with `TZ` set to your Olson time zone, e.g.:
+
+	TZ="America/New_York" signal-desktop
+
+
+### {id="gdb"} gdb
+[GDB runs your program using the shell indicated by your SHELL environment variable if](ftp://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_19.html). This may cause trouble because by default Bedrock sets `SHELL=/bedrock/cross/bin/bash` to ensure that everything using `SHELL` is using the cross subsystem. Thus running `strat -r gdb <program>` may not be enough. It may be necessary to run it with `SHELL` set to your preferred shell in that stratum, e.g.:
+
+	SHELL=/bin/sh strat -r <stratum> gdb <program>
