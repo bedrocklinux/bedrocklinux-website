@@ -119,7 +119,7 @@ given stratum.  For example:
 
 - {class="cmd"}
 - # restrict build system to Debian
-- strat -r debian ./configure && strat -r make
+- strat -r debian ./configure && strat -r debian make
 - # restrict build system to Arch
 - strat -r arch makepkg
 
