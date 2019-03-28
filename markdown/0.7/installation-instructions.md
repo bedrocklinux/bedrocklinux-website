@@ -15,10 +15,10 @@ install include:
 
 - Bedrock Linux currently supports `x86_64` and `arm7vl`.
 	- Other architectures may work but will require you compile the installer and updates yourself.  They will also lack `brl fetch` functionality.
-- Almost all of the initial install's distro-specific files may later be easily removed.  The notable exception is the bootloader.
-	- It may be best to think of the hijack install process as installing Bedrock *under* the initial install, not *over* it.  Bedrock becomes the "base" of the system, with the initial install's files a removable layer on top.  Hence Bedrock's name.
+- All of the initial install's distro-specific files may later be easily removed.
+	- It may be best to think of the hijack install process as installing Bedrock *under* the initial install, not *over* it.  Bedrock becomes the base of the system, with the initial install's files a removable layer on top.  Hence Bedrock's name.
 - People have reported success hijacking Debian, Fedora, Manjaro, OpenSUSE, Ubuntu, and Void Linux (both glibc and musl).  Most other, similar distros should work as well.
-- There are known difficulties with CRUX, Devuan, GoboLinux, GuixSD, NixOS, and Slackware.
+- There are known difficulties hijacking CentOS, CRUX, Devuan, GoboLinux, GuixSD, NixOS, and Slackware.
 
 Prepare the install as you usually would.  Setup a user account, networking, etc.
 
@@ -28,7 +28,9 @@ Run the script as root with the `--hijack` flag:
 
     {class="rcmd"} sh bedrock-linux-~(release~)-~(arch~).sh --hijack
 
-and reboot.
+Confirm at the prompt you understand what the script is doing, then allow it to
+convert the existing install into Bedrock Linux.  Finally, once it has
+completed successfully, reboot.
 
 If you see a new init selection menu during the boot process, congratulations!  You're now running Bedrock Linux.
 

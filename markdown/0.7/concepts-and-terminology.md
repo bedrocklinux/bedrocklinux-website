@@ -30,8 +30,9 @@ One may have an Arch ~{stratum~}, a Debian ~{stratum~}, a Gentoo ~{stratum~},
 etc.  However, they do not have to be related to Linux distributions.  For
 example, one may have a stratum that is composed of a single man page.
 
-With the exception of ~{global~} files (discussed below), *every* process and
-every file on a Bedrock Linux system is associated with some ~{stratum~}.
+*Every* process and every file on a Bedrock Linux system is associated with
+some ~{stratum~}.  ~{Global~} files (described below) are associated with the
+`bedrock` ~{stratum~}.
 
 [Bedrock provides commands to manage strata](commands.html#strata-management).
 
@@ -44,7 +45,7 @@ A ~{hard dependency~} is a dependency on either:
 
 In contrast, a ~{soft dependency~} is a dependency that a given file or process exists, but allows for freedom around the dependency's specific build or location.  For example, a process may require an Xorg server to display a window, but it may not care about which specific Xorg build is used.
 
-Bedrock operates under the assumption that all of a given ~{stratum~}'s ~{hard dependencies~} are provided by that same ~{stratum~}.  For example, if a ~{stratum~}'s `/usr/bin/vim` requires a specific libc at `/lib/x86_64-linux-gnu/libc.so.6`, that same ~{stratum~} should provide such a file at that location.  However, ~{soft dependencies~} may be missing from a given ~{stratum~} so long as another ~{stratum~} provides them.  For example, a ~{stratum~} may have a script which requires *some* build of `gcc`, but does not care which specific `gcc` or which specific file path provides the `gcc`, in which case another ~{stratum~} may fulfill the ~{gcc~} ~{soft dependency~}.
+Bedrock operates under the assumption that all of a given ~{stratum~}'s ~{hard dependencies~} are provided by that same ~{stratum~}.  For example, if a ~{stratum~}'s `/usr/bin/vim` requires a specific libc at `/lib/x86_64-linux-gnu/libc.so.6`, that same ~{stratum~} should provide such a file at that location.  Typical distro package managers usually ensure this is the case.  However, ~{soft dependencies~} may be missing from a given ~{stratum~} so long as another ~{stratum~} provides them.  For example, a ~{stratum~} may have a script which requires *some* build of `jq`, but does not care which specific `jq` or which specific file path provides the `jq`, in which case another ~{stratum~} may fulfill the `jq` ~{soft dependency~}.
 
 ## {id="filepath-types"} Filepath types
 
@@ -57,6 +58,12 @@ In contrast to ~{local~} files are ~{global~} files.  All processes see the same
 By default, most file paths are ~{local~}.  The [bedrock.conf global section](configuration.html#global) is used to configure which are ~{global~}, and the [bedrock.conf cross sections](configuration.html#cross) are used to configure ~{cross~} paths.  The [brl which command](commands.html#brl-which) can be used to query which ~{stratum~} provides a given path.
 
 To execute a specific ~{stratum~}'s ~{local~} executable, prefix the command with `strat ~(stratum~)`.  For example, to run Debian's `vim` (rather than, say, Ubuntu's), run `strat debian vim`.  To read or write a specific ~{stratum~}'s ~{local~} file, prefix the file path with `/bedrock/strata/~(stratum~)`.  For example, to edit Ubuntu's `/etc/apt/sources.list` (in contrast to, say, Debian's), run `vim /bedrock/strata/ubuntu/etc/apt/sources.list`.  These can be combine.  For example, to use Debian's `vim` to edit Ubuntu's `/etc/apt/sources.list`, run `strat debian vim /bedrock/strata/ubuntu/etc/apt/sources.list`.
+
+## {id="restriction"} Restriction
+
+Build tools often become confused by Bedrock's environment when attempting to find build dependencies.  As a solution, Bedrock provides the ability to ~{restrict~} processes from *automatically* seeing ~{cross~} paths by removing ~{cross~} entries from environment variables.  To be clear, this is not a security mechanism; such ~{restricted~} processes can still access ~{cross~} paths if they know to search them via some other means, such as a user instruction.
+
+Processes can be ~{restricted~} by running their command with `strat -r ~(stratum~) ~(command~)`, where `-r` tells Bedrock to restrict the process to the ~(stratum~)'s ~{local~} files (and the system's ~{global~} files).  This can also be done by configuring Bedrock to ~{restrict~} a configured list of commands such as `makepkg` in `bedrock.conf`.
 
 ## {id="strata-state"} Strata state
 

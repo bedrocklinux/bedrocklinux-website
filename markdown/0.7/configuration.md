@@ -6,6 +6,8 @@ Bedrock Linux 0.7 Poki Configuration
 
 All Bedrock Linux configuration is centralized in a single ini-format file at `/bedrock/etc/bedrock.conf`.  After making any changes to it, run (as root) `brl apply` to apply them.
 
+It may be worthwhile to read through the comments in `/bedrock/etc/bedrock.conf`.
+
 ## {id="locale"} Locale
 
 ### {id="locale-timezone"} timezone
@@ -94,11 +96,11 @@ Files within `[cross-pass]` are populated in the corresponding `/bedrock/cross` 
 
 ## {id="cross-bin"} cross-bin
 
-`[cross-bin`] file paths are populated with binaries that internally redirect to the corresponding ~{stratum~}'s binary.
+`[cross-bin]` file paths are populated with binaries that internally redirect to the corresponding ~{stratum~}'s binary.
 
-## {id="cross-bin"} cross-bin
+## {id="cross-bin-restrict"} cross-bin-restrict
 
-`[cross-bin`] file paths are populated with binaries that internally redirect to the corresponding ~{stratum~}'s binary.
+`[cross-bin-restrict]` file paths are populated with binaries that internally redirect to the corresponding ~{stratum~}'s binary, and are implicitly ran through `strat -r`'s restrictions.
 
 ## {id="cross-ini"} cross-ini
 

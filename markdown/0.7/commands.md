@@ -12,10 +12,10 @@ and `brl ~(command~) --help` for details on its sub-commands.
 
 ### {id="brl-strat"} brl strat
 
-If you have multiple ~{strata~} provide the same command, absent any additional
+If multiple ~{strata~} provide the same command, absent any additional
 indication of which to use Bedrock will choose one by default in a given
-context.  For example, if you have both Debian and Ubuntu ~{strata~}, you will have
-two `apt` commands:
+context.  For example, if you have both Debian and Ubuntu ~{strata~}, you will
+have two `apt` commands:
 
 - {class="rcmd"}
 - brl fetch debian ubuntu
@@ -44,10 +44,14 @@ given stratum.  For example:
 - {class="cmd"}
 - # restrict build system to Debian
 - strat -r debian ./configure && strat -r make
-- # restrict build system to Arch
-- strat -r arch makepkg
 
-The build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies, just as one would do on the native distro.
+By default, Bedrock is configured to restrict some commands by default, such as Arch's `makepkg`.  To run such commands _without_ restricting them, run them through `strat` _without_ `-r`:
+
+- {class="cmd"}
+- # unrestrict build system to Arch
+- strat arch makepkg
+
+When restricted, build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies, just as one would do on the native distro.
 
 ### {id="brl-list"} brl list
 
@@ -55,10 +59,10 @@ One may use `brl list` to list all of the ~{strata~} on the system.  For example
 
 - {class="cmd"}
 - sudo brl fetch arch debian gentoo
-- brl list # prints bedrock, hijacked opensuse, arch, debian, and gentoo
+- brl list # prints bedrock, opensuse (hijacked), arch, debian, and gentoo
 
 By default `brl list` only lists enabled, non-hidden ~{strata~}.  However it
-has various flags to print ~{strata~} states as well as ~{aliases~}:
+has various flags to control what is listed:
 
 	<none>                 defaults to --enabled
 	-e, --enabled-strata   enabled stratum
@@ -83,7 +87,7 @@ Bedrock's intermixing of files from different ~{strata~} can be confusing for ne
 If no flag is provided, `brl which` will guess what type of object the query is about from context.  For example:
 
 - {class="cmd"}
-- brl which # no object specified, default to calling process (e.g. a shell) PID
+- brl which # no object specified, default to calling process (e.g. a shell)
 - brl which 1 # object is a number, probably a PID
 - brl which ~/.vimrc # object contains a `/`, probably a file path
 - brl which vim # no number or /, probably a $PATH entry
@@ -126,7 +130,7 @@ The desired name, release, and mirror for newly fetched ~{strata~} can be specif
 
 `brl fetch`'s logic for detecting a mirror or release may fail if the upstream distro changes details or lists bad mirrors.  If `brl fetch` does not work or takes too long, try manually looking up the mirror or release and specifying it.
 
-~{Strata~} are ~{hidden~} and ~{disabled~} mid-fetch.  By default, they are ~{shown~} and ~{enabled~} immediately after a successful fetch for use.  However, you may disable the post-fetch ~{showing~}/~{enable~} via flags:
+~{Strata~} are ~{hidden~} and ~{disabled~} mid-fetch to avoid accidentally using them before they are ready.  By default, they are ~{shown~} and ~{enabled~} immediately after a successful fetch for use.  However, you may disable the post-fetch ~{showing~}/~{enable~} via flags:
 
 	-e, --dont-enable       do not enable newly fetched strata
 	-s, --dont-show         do not show newly fetched strata
@@ -141,7 +145,7 @@ An ~{enabled~} ~{stratum~} cannot be removed, and by default `brl remove` will e
 
 The `bedrock` ~{stratum~} cannot be removed, as it is essential for the system to function.
 
-The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for removal.  However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disableable ~{stratum~} becomes available to be disabled and removed.
+The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for removal.  However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disable-able ~{stratum~} becomes available to be disabled and removed.
 
 ### {id="brl-rename"} brl rename
 
@@ -151,17 +155,17 @@ Similar to removing ~{strata~}, one should not attempt to rename a ~{stratum~} w
 
 The `bedrock` ~{stratum~} cannot be renamed, as it internally has hard-coded references to itself which are essential for the system to function.
 
-The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for renaming.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disablable ~{stratum~} becomes available to be disabled and renamed.
+The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for renaming.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disable-able ~{stratum~} becomes available to be disabled and renamed.
 
 ### {id="brl-copy"} brl copy
 
 Similar to removing and renaming ~{strata~}, one should not attempt to copy a ~{stratum~} with `cp` for fear of tripping on various Bedrock hooks.  Instead, the `brl copy` command is provided.  This only works on ~{disabled~} ~{strata~}.  If you would like to copy an ~{enabled~} ~{stratum~}, `brl disable` it first.
 
-`brl remove` also copies ~{aliases~}.
+`brl copy` dereferences aliases when copying; it cannot copy ~{aliases~} themselves.  To effectively make a copy of an ~{alias~}, simply create a new alias targeting the same ~{stratum~}.
 
 The `bedrock` ~{stratum~} cannot be disabled in preparation for copying.
 
-The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for copying.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disablable ~{stratum~} becomes available to be disabled and copied.
+The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for copying.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disable-able ~{stratum~} becomes available to be disabled and copied.
 
 ## {id="strata-status-management"} Strata status management commands
 
@@ -186,7 +190,7 @@ To ~{disable~} an ~{enabled~} or ~{broken~} ~{stratum~}, one may use `brl disabl
 
 The `bedrock` ~{stratum~} cannot be disabled.
 
-The ~{stratum~} *currently* providing PID1 cannot be disabled, which is a prerequisite for copying.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disablable ~{stratum~} becomes available to be disabled.
+The ~{stratum~} *currently* providing PID1 cannot be disabled.   However, one may reboot and select another ~{stratum~} to provide the init system, after which the previously un-disablable ~{stratum~} becomes available to be disabled.
 
 ### {id="brl-repair"} brl repair
 
@@ -206,7 +210,7 @@ A ~{stratum~} may be ~{hidden~} from various Bedrock subsystems.  This is useful
 
 ### {id="brl-hide"} brl hide
 
-If you would like to keep a ~{stratum~}'s files on your system but out of the way, you may ~{hide~} it with the `brl hide` command.  While most users either hide it from or show it to all subsystems, the functionality is more fine grained and may only specific subsystems may be specified:
+If you would like to keep a ~{stratum~}'s files on your system but out of the way, you may ~{hide~} it with the `brl hide` command.  While most users either hide it from or show it to all subsystems, the functionality is more fine grained and specific subsystems may be specified:
 
 	<none>       defaults to --all
 	-a, --all    hide stratum in all available subsystems
@@ -256,7 +260,7 @@ By default `brl update` reads the `mirror` value in `/bedrock/etc/bedrock.conf` 
 
 Some Bedrock subsystems cannot have their update applied live and require a reboot.  This is undesirable, but no alternative is currently known.
 
-Some updates recommend changes to `/bedrock/etc/bedrock.conf`.  These will create new reference configuration files at `/bedrock/etc/bedrock.conf-~(version~)`.  Compare these files against your `bedrock.conf` and apply changes as appropriate, then remove the reference `bedrock.conf-~(version~).
+Some updates recommend changes to `/bedrock/etc/bedrock.conf`.  These will create new reference configuration files at `/bedrock/etc/bedrock.conf-~(version~)`.  Compare these files against your `bedrock.conf` and apply changes as appropriate, then remove the reference `bedrock.conf-~(version~)`.
 
 ### {id="brl-version"} brl version
 

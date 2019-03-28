@@ -34,7 +34,7 @@ This seems silly - if someone already packaged the specific version of the
 specific package desired, why not just use that?  Sadly, there are various
 technical reasons one cannot directly install software from one release of one
 distribution onto another release of another distribution.  Bedrock Linux
-provides a technical solution to remove these problems.  On a Bedrock Linux
+provides technical means to work around these problems.  On a Bedrock Linux
 system an end user should be able to install most of the software available
 from most of the other traditional Linux distributions so that it works just as
 well as one would have expected had the package been intended for the

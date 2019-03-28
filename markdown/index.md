@@ -18,8 +18,12 @@ users can mix-and-match components as desired.  For example, one could have:
 All at the same time, all working together like one, largely cohesive operating system.
 
 A new video demonstrating such features as of the newly released Bedrock Linux
-0.7 Poki is currently in development and will be listed here in the near
-future.
+0.7 Poki is currently in development and will be listed here in the future.
+
+## {id="0.7.2-released"} Bedrock Linux 0.7.2 released
+<small>2019-03-27</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md).
 
 ## {id="0.7.1-released"} Bedrock Linux 0.7.1 released
 <small>2018-12-27</small>
