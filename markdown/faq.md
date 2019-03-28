@@ -32,12 +32,13 @@ See the Introduction to [Bedrock](introduction.html).
 
 ## {id="how\_bedrock\_work"} How does Bedrock Linux Work?
 
-The exact details may change drastically from release-to-release.
-Broadly, it uses various virtual filesystem layer tools such as `chroot`,
-`pivot_root`, bind mounts (including shared subtree control), and FUSE
-filesystems, and symlinks.  It also manipulates various files to enforce
-certain bits configuration and controls the init system to set things up before
-handing control off to the desired init.
+The exact details may change drastically from release-to-release.  Broadly, it
+uses various virtual filesystem layer tools such as `chroot`, `pivot_root`,
+bind mounts (including shared subtree control), and FUSE filesystems, and
+symlinks to control exactly which instance of a file a given process sees in a
+given situation.  It also manipulates various files to enforce configuration
+and controls the init system to set things up before handing control off to the
+desired init.
 
 ## {id="why\_use\_bedrock"} Why should I use Bedrock?
 
@@ -101,7 +102,7 @@ package from every major distro without any access controls in place, which
 would have an incredible attack surface and be a terrible idea.  Don't do that.
 
 Bedrock Linux does offer some minor theoretical security benefits over
-traditional distros of negligible value:
+traditional distros:
 
 - If a distro does not provide a desired version of a desired package, a user
   is typically expected to go acquire it outside of the distro's repositories.
@@ -208,7 +209,7 @@ Containers contain things.  They, purposefully, keep the contained software
 from interacting with the rest of the system.  This has numerous benefits:
 
 - If something goes wrong - an innocent bug or a malicious attacker - the
-  damage done is restricted to the container.
+  damage done is (ideally) restricted to the container.
 - Software in the container is largely self-sufficient and can be easily made
   to run on a variety of Linux distributions without worry about things
   conflicting.  If one has an older distribution such as a RHEL clone but wants
@@ -256,8 +257,8 @@ the specific release. If not, then it will be released when it is done.
 Bedrock Linux does not do very much by itself; rather, it is the foundation
 upon which parts of other Linux distributions are placed. Initial ideas for a
 name were intent on reflecting this fact. Other proposed names included
-"Foundation Linux", "Frame Linux" and "Scaffolding Linux". The name chosen has
-nothing to do with the television show *The Flintstones*.
+"Foundation Linux", "Frame Linux" and "Scaffolding Linux". The choice was made
+without consideration of the television show *The Flintstones*.
 
 ## {id="release\_names"} Where do the release names come from?
 
@@ -280,11 +281,11 @@ definition of what constitutes a "Linux distribution".
 
 If someone is using equal parts of multiple different distributions, what
 should one call the resulting operating system?  Say, for example, that exactly
-one third of the installed and in use for a given Linux distro "install" comes
+one third of the installed and in use for a given Linux distro install comes
 from Arch Linux, another third from Alpine Linux, and the last third from
 Gentoo Linux.  Which distro is the user running?  Answering the question with a
-simple "Arch", "Alpine" or "Gentoo" would be misleading.  One cannot tie it to
-typically "hard" concepts such as the init system or the kernel, as these are
+simple "Arch," "Alpine," or "Gentoo" would be misleading.  One cannot tie it to
+typically firm concepts such as the init system or the kernel, as these are
 fluid concepts in Bedrock Linux.  It is possible to switch any of those with a
 reboot while still using the *exact* same rest of the system.  Instead of
 expecting people to answer the question of "which distro are you running?" with
@@ -301,14 +302,14 @@ this is very similar to installing some other package manager into a distro.
 The key difference is that, from Bedrock Linux's point of view, there is no
 major difference between the files from the distro install you've hijacked and
 the files from the other distros.  You're free to remove all of the original
-install's files (sans a few key install-related things such as the bootloader).
-[If you install some distro, such as Slackware, then hijack it into Bedrock
-Linux, then remove all of the files of the original Slackware install, are you
-still running the original distro?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
+install's files .  [If you install some distro, such as Slackware, then hijack
+it into Bedrock Linux, then remove all of the files of the original Slackware
+install, are you still running the original
+distro?](https://en.wikipedia.org/wiki/Ship_of_Theseus)
 
 Bedrock Linux is described as a (meta) Linux distribution because this is the
-most accurate answer when restricted to preexisting concepts.  It does not
-"need" to be treated as such; the system is sufficiently flexible to fill other
+most accurate answer when restricted to preexisting concepts.  It does not need
+to be treated as such; the system is sufficiently flexible to fill other
 workflows, such as acting as though it is a package installed onto some other
 distribution.  However, describing it by these other workflows alone would be
 misleading.
@@ -316,12 +317,9 @@ misleading.
 ## {id="on\_which\_distro"} On which distribution is Bedrock Linux based?
 
 Bedrock Linux is not based on or an offshoot of any other Linux distribution;
-it was written "from scratch." It has unusual twin goals of needing to be as
-minimal as possible while supporting the features necessary for a full-blown
-desktop. Rather than attempting to tweak an existing distribution into such a
-shape a new one was made from the ground up.  Or, if you prefer to look at it
-from another point of view, it is "based" on every other major distribution, as
-that is where it gets the majority of its software.
+it was written from scratch. Or, if you prefer to look at it from another point
+of view, it is based on every other major distribution, as that is where it
+gets the majority of its software.
 
 ## {id="overly-ambitious"} This sounds overly-ambitious. Do you really think you can pull this off?
 
@@ -368,8 +366,14 @@ that the project became organized with a specific name and drive.
 
 Broadly support falls into two categories:
 
-- Distros Bedrock can hijack.  Generally, most traditional distros work fine, and so it's shorter to list those that.  At the time of wring, Bedrock has known issues with: GoboLinux, NixOS, GuixSD, and live distros such as Knoppix or Slax.
-- Distros Bedrock can fetch.  At the time of writing, Bedrock knows how to fetch (on `x86_64`): Alpine, Arch, Centos, Debian, Devuan, Fedora, Gentoo, Ubuntu, and Void (both glibc and musl).  More may have been added since this was written.
+- Distros Bedrock can hijack.  Generally, most traditional distros work fine,
+  and so it's shorter to list those that do not.  At the time of wring, Bedrock
+  has known issues with: Slackware, CRUX, GoboLinux, NixOS, GuixSD, and live
+  distros such as Knoppix or Slax.
+- Distros Bedrock can fetch.  At the time of writing, Bedrock knows how to
+  fetch (on `x86_64`): Alpine, Arch, Centos, Debian, Devuan, Fedora, Gentoo,
+  Ubuntu, and Void (both glibc and musl).  More may have been added since this
+  was written.
 
 ## {id="version-system"} Why did the version system change?
 

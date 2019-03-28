@@ -15,27 +15,27 @@ do not work at all.  See the table below.
 <td></td>
 </tr>
 <tr>
-<td>cross-strata executables</td>
+<td>cross-stratum executables</td>
 <td>just works</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata application</td>
+<td>cross-stratum application</td>
 <td><a href="#application-launchers">minor workaround</a></td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata bash completion</td>
+<td>cross-stratum bash completion</td>
 <td>mostly works</td>
 <td>install bash-completion in all strata; some completions fail.</td>
 </tr>
 <tr>
-<td>cross-strata fish completion</td>
+<td>cross-stratum fish completion</td>
 <td>just works</td>
 <td>install fish in all strata</td>
 </tr>
 <tr>
-<td>cross-strata zsh completion</td>
+<td>cross-stratum zsh completion</td>
 <td>mostly works</td>
 <td>install zsh in all strata; some completions fail</td>
 </tr>
@@ -45,47 +45,47 @@ do not work at all.  See the table below.
 <td><a href="#login-shells">specifying stratum requires special configuration</a></td>
 </tr>
 <tr>
-<td>cross-strata dbus</td>
+<td>cross-stratum dbus</td>
 <td>just works</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata firmware</td>
+<td>cross-stratum firmware</td>
 <td>mostly works</td>
 <td>kernel will detect firmware across strata, initrd-building software may not</td>
 </tr>
 <tr>
-<td>cross-strata Xorg fonts</td>
-<td>just works</td>
-<td>-</td>
+<td>cross-stratum Xorg fonts</td>
+<td>mostly works</td>
+<td><a href="#firefox-fonts">firefox needs about:config tweak</a></td>
 </tr>
 <tr>
-<td>cross-strata vt fonts</td>
+<td>cross-stratum vt fonts</td>
 <td>does not work</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata Wayland fonts</td>
+<td>cross-stratum Wayland fonts</td>
 <td>needs testing</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata themes</td>
+<td>cross-stratum themes</td>
 <td>mostly works</td>
 <td>themes that support XDG_DATA_DIRS work</td>
 </tr>
 <tr>
-<td>cross-strata info pages</td>
+<td>cross-stratum info pages</td>
 <td>just works</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata man pages</td>
+<td>cross-stratum man pages</td>
 <td>just works</td>
 <td>-</td>
 </tr>
 <tr>
-<td>cross-strata desktop environments</td>
+<td>cross-stratum desktop environments</td>
 <td>does not work</td>
 <td>get your init, display manager, and desktop environment from the same stratum.</td>
 </tr>
@@ -108,23 +108,20 @@ do not work at all.  See the table below.
 <td><a href="#nvidia-drivers">medium work-around</a></td>
 <td>-</td>
 </tr>
-</tr>
-<td>steam</td>
-<td><a href="#steam">minor workaround</a></td>
-<td>-</td>
-</tr>
-<td>GDB</td>
-<td><a href="#GDB">minor workaround</a></td>
-<td>-</td>
-</tr>
-<td>signal-desktop</td>
-<td><a href="#signal-desktop">minor workaround</a></td>
-<td>-</td>
+<tr>
+<td>chromium-based programs (e.g. chromium, chrome, discord, electron, signal, steam, etc)</td>
+<td><a href="#chromium">minor workaround</a></td>
+<td></td>
 </tr>
 <tr>
-<td>make, configure scripts, Arch AUR</td>
+<td>build tools (e.g. make, configure scripts, gcc, etc)</td>
 <td>minor work-around</td>
 <td>prefix with `strat -r <stratum>` and install missing dependencies</td>
+</tr>
+<tr>
+<td>ptrace (e.g. gdb, strace)</td>
+<td>minor work-around</td>
+<td>install in same stratum as traced program, use strat to specify stratum</td>
 </tr>
 <tr>
 <td>SELinux</td>
@@ -142,14 +139,14 @@ do not work at all.  See the table below.
 <td>-</td>
 </tr>
 <tr>
+<td>SysV init (e.g. Slackware, CRUX)</td>
+<td>does not work</td>
+<td>needs investigation</td>
+</tr>
+<tr>
 <td>cross-stratum libraries</td>
 <td>does not work</td>
 <td>theoretically possible but unsupported due to complexity/messiness concerns</td>
-</tr>
-<tr>
-<td>neofetch</td>
-<td>in progress</td>
-<td><a href="https://github.com/dylanaraps/neofetch/pull/1118">see github PR to add bedrock support</a></td>
 </tr>
 </table>
 
@@ -165,13 +162,13 @@ Some such applications can be prompted to build the cache by removing `~/.cache/
 
 Linux systems typically store *the full path* to a login shell in `/etc/passwd`.  Default login shell paths are ~{local~} and will not be visible to another ~{stratum~}'s init system.  Bedrock automatically changes any ~{local~} login shell to a ~{cross~} path in `/bedrock/cross/bin/` to work around this concern.
 
-If you would like to use a *specific* ~{stratum~}'s shell [rather than the highest priority one](configuration.html#cross-priority), [create a pin entry in cross-bin](configuration.html#cross-bin) with the desired shell.  After `brl apply`ing the new configuration, add the new pin path to `/etc/shells` and `chsh` to it.
+If you would like to use a *specific* ~{stratum~}'s shell [rather than the highest priority one](configuration.html#cross-priority), [create a pin entry in cross-bin](workflows.html#pinning) with the desired shell.  After `brl apply`ing the new configuration, add the new pin path to `/etc/shells` and `chsh` to it.
 
 ### {id="init-configuration"} Init configuration
 
 Every ~{stratum~} sees its own init configuration and only its own init configuration.  By default, an init from one ~{stratum~} will not know how to manage a service from another ~{stratum~}'s init.
 
-It is possible to work-around this by hand crafting init configuration.  For example, one may make a runit run directory whose `run` file calls `strat`.  For another example, one may make a systemd unit file whose `Exec=` line calls `strat`.
+It is possible to work around this by hand crafting init configuration.  For example, one may make a runit run directory whose `run` file calls `strat`.  For another example, one may make a systemd unit file whose `Exec=` line calls `strat`.
 
 If you find hand creating init configuration is intimidating or bothersome, consider simply picking one ~{stratum~} to provide your init and get all init-related services from that ~{stratum~}.
 
@@ -200,19 +197,14 @@ for all remaining ~(strata~) that require graphics drivers.
 
 The `bedrock` stratum and other strata that do not utilize the graphics acceleration do not require the Nvidia drivers.
 
-### {id="steam"} steam
+### {id="chromium"} Chromium
 
-[A bug in steam](https://github.com/ValveSoftware/steam-for-linux/issues/5612) breaks the ability to log into its friends/chat service with Bedrock's timezone handling.  To work around this, run steam with `TZ` set to your Olson time zone.  For example:
+[A bug in Chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=811403) results in Chromium and everything which builds upon it, including Chrome, Discord, Electron, [Signal](https://github.com/signalapp/Signal-Desktop/issues/3085), and [Steam](https://github.com/ValveSoftware/steam-for-linux/issues/5612) failing to properly understand the (common, standard) `TZ` format Bedrock utilizes.  While there have been efforts to fix this upstream, [they appear to have stalled](https://chromium-review.googlesource.com/c/chromium/deps/icu/+/1006219/).
 
-	TZ="America/New_York" steam
+To work around this, run the program with `TZ` set to your Olson time zone.  For example:
 
-### {id="signaldesktop"} signal-desktop
-[Sinal-desktop does not support TZ pointing to a file](https://github.com/signalapp/Signal-Desktop/issues/3085). It is likely related to a [bug in chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=811403). This breaks the preference window. The work around is the same as for steam. Simply run signal-desktop with `TZ` set to your Olson time zone, e.g.:
+	TZ="America/New_York" chromium
 
-	TZ="America/New_York" signal-desktop
+### {id="firefox-fonts"} Firefox fonts
 
-
-### {id="gdb"} gdb
-[GDB runs your program using the shell indicated by your SHELL environment variable if](ftp://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_19.html). This may cause trouble because by default Bedrock sets `SHELL=/bedrock/cross/bin/bash` to ensure that everything using `SHELL` is using the cross subsystem. Thus running `strat -r gdb <program>` may not be enough. It may be necessary to run it with `SHELL` set to your preferred shell in that stratum, e.g.:
-
-	SHELL=/bin/sh strat -r <stratum> gdb <program>
+Firefox's sandboxing mechanisms disallows fonts from other strata by default.  See [this page on the Mozilla wiki](https://wiki.mozilla.org/Security/Sandbox).  To lessen the sandboxing strictness, go to `about:config` and change `security.sandbox.content.level` from the default `4` down to `2`.  Otherwise, if you prefer the default stricter sandboxing, install the desired font in the `firefox`-providing ~{stratum~}.
