@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="distrowatch"} Bedrock Linux now listed on DistroWatch
+<small>2019-04-08</small>
+
+Bedrock Linux was submitted to DistroWatch on 2012-08-04, almost seven years
+ago.  DistroWatch had (understandable) requirements Bedrock failed to meet
+until very recently.  It is now listed
+[here](https://distrowatch.com/table.php?distribution=bedrock).
+
 ## {id="0.7.2-released"} Bedrock Linux 0.7.2 released
 <small>2019-03-27</small>
 
