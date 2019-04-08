@@ -20,6 +20,14 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="distrowatch"} Bedrock Linux now listed on DistroWatch
+<small>2019-04-08</small>
+
+Bedrock Linux was submitted to DistroWatch on 2012-08-04, almost seven years
+ago.  DistroWatch had (understandable) requirements Bedrock failed to meet
+until very recently.  It is now listed
+[here](https://distrowatch.com/table.php?distribution=bedrock).
+
 ## {id="0.7.2-released"} Bedrock Linux 0.7.2 released
 <small>2019-03-27</small>
 
@@ -53,13 +61,5 @@ A release candidate is expected to be made public sometime in October or
 November for further testing.  Any assistance testing at that time will be
 greatly appreciated.  The proper release will follow, likely before the end of
 2018.
-
-## {id="poki-progress-2018-05"} May 2018 Poki Progress Update
-<small>2018-05-05</small>
-
-Given the relatively long release cycle, it seems prudent to provide an
-occasional progress update.  Poki's development progress, updated 2018-05-05,
-can be found [here](1.0beta3/progress.html).  While a substantial amount of
-work has been done, much is left to do before the release is ready.
 
 [See older news items](news.html)
