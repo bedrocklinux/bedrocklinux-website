@@ -109,11 +109,6 @@ do not work at all.  See the table below.
 <td>-</td>
 </tr>
 <tr>
-<td>chromium-based programs (e.g. chromium, chrome, discord, electron, signal, steam, etc)</td>
-<td><a href="#chromium">minor workaround</a></td>
-<td></td>
-</tr>
-<tr>
 <td>build tools (e.g. make, configure scripts, gcc, etc)</td>
 <td>minor work-around</td>
 <td>prefix with `strat -r <stratum>` and install missing dependencies</td>
@@ -196,14 +191,6 @@ Next, run
 for all remaining ~(strata~) that require graphics drivers.
 
 The `bedrock` stratum and other strata that do not utilize the graphics acceleration do not require the Nvidia drivers.
-
-### {id="chromium"} Chromium
-
-[A bug in Chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=811403) results in Chromium and everything which builds upon it, including Chrome, Discord, Electron, [Signal](https://github.com/signalapp/Signal-Desktop/issues/3085), and [Steam](https://github.com/ValveSoftware/steam-for-linux/issues/5612) failing to properly understand the (common, standard) `TZ` format Bedrock utilizes.  While there have been efforts to fix this upstream, [they appear to have stalled](https://chromium-review.googlesource.com/c/chromium/deps/icu/+/1006219/).
-
-To work around this, run the program with `TZ` set to your Olson time zone.  For example:
-
-	TZ="America/New_York" chromium
 
 ### {id="firefox-fonts"} Firefox fonts
 

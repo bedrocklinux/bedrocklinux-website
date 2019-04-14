@@ -49,9 +49,3 @@ Bedrock uses a Linux kernel feature which propagates some mount and unmount oper
 Due to a quirk in how Bedrock works, init systems may not mount the root directory read-only in preparation for providing it to `fsck`.  Bedrock attempts to disable this by changing the corresponding field in `/etc/fstab`.
 
 Some initrds will `fsck` the root filesystem, but not all.  Bedrock should offer the option of calling `fsck` on the root filesystem itself.  However, it currently does not.
-
-## {id="localegen-single"} Bedrock localegen only understands single value
-
-Bedrock has a `localegen` field in `bedrock.conf` which, if populated, will be used to configure the locale of fetched strata.  However, it only understands a single value.  This should be expanded to support multiple localegen values.
-
-Moreover, research should be performed into the viability of making `/etc/locale.gen` global.  This would remove the need for Bedrock to understand this field.
