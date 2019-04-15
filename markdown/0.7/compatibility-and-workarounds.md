@@ -116,7 +116,7 @@ do not work at all.  See the table below.
 <tr>
 <td>ptrace (e.g. gdb, strace)</td>
 <td>minor work-around</td>
-<td>install in same stratum as traced program, use strat to specify stratum</td>
+<td>install in same stratum as traced program, strat -r</td>
 </tr>
 <tr>
 <td>SELinux</td>
