@@ -17,8 +17,7 @@ install include:
 	- Other architectures may work but will require you compile the installer and updates yourself.  They will also lack `brl fetch` functionality.
 - All of the initial install's distro-specific files may later be easily removed.
 	- It may be best to think of the hijack install process as installing Bedrock *under* the initial install, not *over* it.  Bedrock becomes the base of the system, with the initial install's files a removable layer on top.  Hence Bedrock's name.
-- People have reported success hijacking Debian, Fedora, Manjaro, OpenSUSE, Ubuntu, and Void Linux (both glibc and musl).  Most other, similar distros should work as well.
-- There are known difficulties hijacking CentOS, CRUX, Devuan, GoboLinux, GuixSD, NixOS, and Slackware.
+- See [the distro support page](distro-support.html) for distros which Bedrock is known to be able to hijack well.
 
 Prepare the install as you usually would.  Setup a user account, networking, etc.
 
