@@ -1,10 +1,10 @@
-Title: Bedrock Linux 0.7 Poki Compatibility and Work-Arounds
+Title: Bedrock Linux 0.7 Poki Compatibility and workarounds
 Nav: poki.nav
 
-Bedrock Linux 0.7 Poki Compatibility and Work-Arounds
+Bedrock Linux 0.7 Poki Compatibility and workarounds
 =====================================================
 
-While much of Bedrock Linux "just works", some features require work-arounds or
+While much of Bedrock Linux "just works", some features require workarounds or
 do not work at all.  See the table below.
 
 <table>
@@ -16,136 +16,136 @@ do not work at all.  See the table below.
 </tr>
 <tr>
 <td>cross-stratum executables</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum application</td>
-<td><a href="#application-launchers">minor workaround</a></td>
-<td>-</td>
+<td><span style="color:#888800">minor workaround</span></td>
+<td><a href="#application-launchers">may need to clear cache</a></td>
 </tr>
 <tr>
 <td>cross-stratum bash completion</td>
-<td>mostly works</td>
+<td><span style="color:#00aa55">mostly works</span></td>
 <td>install bash-completion in all strata; some completions fail.</td>
 </tr>
 <tr>
 <td>cross-stratum fish completion</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>install fish in all strata</td>
 </tr>
 <tr>
 <td>cross-stratum zsh completion</td>
-<td>mostly works</td>
+<td><span style="color:#00aa55">mostly works</span></td>
 <td>install zsh in all strata; some completions fail</td>
 </tr>
 </tr>
 <td>cross-stratum login shells</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td><a href="#login-shells">specifying stratum requires special configuration</a></td>
 </tr>
 <tr>
 <td>cross-stratum dbus</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum firmware</td>
-<td>mostly works</td>
+<td><span style="color:#00aa55">mostly works</span></td>
 <td>kernel will detect firmware across strata, initrd-building software may not</td>
 </tr>
 <tr>
 <td>cross-stratum Xorg fonts</td>
-<td>mostly works</td>
+<td><span style="color:#00aa55">mostly works</span></td>
 <td><a href="#firefox-fonts">firefox needs about:config tweak</a></td>
 </tr>
 <tr>
 <td>cross-stratum vt fonts</td>
-<td>does not work</td>
+<td><span style="color:#aa0055">does not work</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum Wayland fonts</td>
-<td>needs testing</td>
+<td><span style="color:#888800">needs testing</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum themes</td>
-<td>mostly works</td>
+<td><span style="color:#00aa55">mostly works</span></td>
 <td>themes that support XDG_DATA_DIRS work</td>
 </tr>
 <tr>
 <td>cross-stratum info pages</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum man pages</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>-</td>
 </tr>
 <tr>
 <td>cross-stratum desktop environments</td>
-<td>does not work</td>
+<td><span style="color:#aa0055">does not work</span></td>
 <td>get your init, display manager, and desktop environment from the same stratum.</td>
 </tr>
 <td>any stratum's init</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>select the desired init in the init-selection menu at boot</td>
 </tr>
 <tr>
 <td>any stratum's kernel</td>
-<td>just works</td>
+<td><span style="color:#00aa55">just works</span></td>
 <td>install kernel from stratum then update bootloader</td>
 </tr>
 <tr>
 <td>cross-stratum init configuration</td>
-<td><a href="#init-configuration">major work-around</a></td>
-<td>-</td>
+<td><span style="color:#aa0055">major workaround</span></td>
+<td><a href="#init-configuration">create configs manually</a></td>
 </tr>
 <tr>
 <td>nvidia proprietary drivers</td>
-<td><a href="#nvidia-drivers">medium work-around</a></td>
-<td>-</td>
+<td><span style="color:#aa0055">medium workaround</span></td>
+<td><a href="#nvidia-drivers">manually install drivers</a></td>
 </tr>
 <tr>
 <td>build tools (e.g. make, configure scripts, gcc, etc)</td>
-<td>minor work-around</td>
+<td><span style="color:#888800">minor workaround</span></td>
 <td>prefix with `strat -r <stratum>` and install missing dependencies</td>
 </tr>
 <tr>
 <td>ptrace (e.g. gdb, strace)</td>
-<td>minor work-around</td>
+<td><span style="color:#888800">minor workaround</span></td>
 <td>install in same stratum as traced program, strat -r</td>
 </tr>
 <tr>
 <td>SELinux</td>
-<td>does not work</td>
+<td><span style="color:#aa0055">does not work</span></td>
 <td>Bedrock disables it on hijack</td>
 </tr>
 <tr>
 <td>AppArmor, TOMOYO, SMACK</td>
-<td>testing needed</td>
+<td><span style="color:#888800">needs testing</span></td>
 <td>Default profiles probably will not work</td>
 </tr>
 <tr>
 <td>ACLs</td>
-<td>do not work on /etc</td>
-<td>-</td>
+<td><span style="color:#00aa55">mostly works</span></td>
+<td>does not work on /etc</td>
 </tr>
 <tr>
 <td>SysV init (e.g. Slackware, CRUX)</td>
-<td>does not work</td>
+<td><span style="color:#aa0055">does not work</span></td>
 <td>needs investigation</td>
 </tr>
 <tr>
 <td>cross-stratum libraries</td>
-<td>does not work</td>
+<td><span style="color:#aa0055">does not work</span></td>
 <td>theoretically possible but unsupported due to complexity/messiness concerns</td>
 </tr>
 </table>
 
-## {id="work-arounds"} Work-arounds
+## {id="workarounds"} workarounds
 
 ### {id="application-launchers"} Application launchers
 
