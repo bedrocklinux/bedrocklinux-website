@@ -6,9 +6,9 @@ Bedrock Linux 0.7 Poki Debugging
 
 ## {id="strat-r"} strat -r
 
-Occasionally Bedrock's ability to integrate ~{strata~} can confuse software.  For example, when compiling software a build system may attempt to detect build dependencies on the system and become confused to see `python2`, `python3`, *and*` python`.
+Occasionally Bedrock's ability to integrate ~{strata~} can confuse software.  For example, when compiling software a build system may attempt to detect build dependencies on the system and become confused to see `python2`, `python3`, *and* ` python`.
 
-If a command acts weird, considering prefixing it with `strat -r ~(stratum~)` to restrict it to the given ~{stratum~}'s commands.  For example:
+If a command acts strangely, considering prefixing it with `strat -r ~(stratum~)` to restrict it to the given ~{stratum~}'s commands.  For example:
 
 - {class="cmd"}
 - # restrict build system to Debian
