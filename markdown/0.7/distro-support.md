@@ -18,119 +18,119 @@ The ~{fetch~}-able indicates whether or not Bedrock's `brl fetch` utility is abl
 </tr>
 <tr>
 <td>Alpine Linux</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Arch Linux</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>CentOS</td>
-<td>Known issues</td>
-<td>Yes</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Clear Linux</td>
-<td>Yes</td>
-<td>Experimental support</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 </tr>
 <tr>
 <td>CRUX</td>
-<td>Known issues</td>
-<td>No</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#00aa55">No</span></td>
 </tr>
 <tr>
 <td>Debian</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Devuan</td>
-<td>Needs Investigation</td>
-<td>Yes</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Elementary OS</td>
-<td>Needs Investigation</td>
-<td>No</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>Fedora</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Gentoo Linux</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>GoboLinux</td>
-<td>Known issues</td>
-<td>No</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>GuixSD</td>
-<td>Needs Investigation</td>
-<td>No</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>Manjaro</td>
-<td>Needs Investigation</td>
-<td>No</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>Mint</td>
-<td>Needs Investigation</td>
-<td>No</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>MX Linux</td>
-<td>Known issues</td>
-<td>No</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>NixOS</td>
-<td>Known issues</td>
-<td>No</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>OpenSUSE</td>
-<td>Yes</td>
-<td>Experimental support</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 </tr>
 <tr>
 <td>OpenWRT</td>
-<td>Needs Investigation</td>
-<td>Experimental support</td>
+<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 </tr>
 <tr>
 <td>Raspbian</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <td>Slackware Linux</td>
-<td>Known issues</td>
-<td>Experimental support</td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 </tr>
 <td>Solus</td>
-<td>Yes</td>
-<td>Experimental support</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 </tr>
 <td>Ubuntu</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Void Linux (glibc)</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 <tr>
 <td>Void Linux (musl)</td>
-<td>Yes</td>
-<td>Yes</td>
+<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 </tr>
 </table>
