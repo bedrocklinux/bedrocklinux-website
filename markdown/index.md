@@ -20,6 +20,15 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="0.7.5-released"} Bedrock Linux 0.7.5 released
+<small>2019-04-28</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+This is a fix for an issue found 0.7.4's handling of sandboxed software whose
+local files do not map directly to those of any particular stratum.  Most
+notably, this fixes crashes in Chromium.
+
 ## {id="0.7.4-blocked"} Bedrock Linux 0.7.4 blocked
 <small>2019-04-28</small>
 
@@ -60,23 +69,5 @@ A point update has been released for 0.7.  To update to it, run `{class="rcmd"} 
 
 Bedrock Linux 0.7 Poki has exited beta and is ready for general consumption.
 See [here](0.7/index.html) for the release's documentation.
-
-## {id="poki-public-beta"} Poki public beta testing
-<small>2018-11-05</small>
-
-Pre-release builds of Bedrock Linux 0.7 Poki are now available for testing.
-See [here](0.7/beta-test.html) for further details.  If you have the time and
-resources, assistance testing would be appreciated.
-
-## {id="poki-feature-complete"} Poki feature complete, undergoing internal testing
-<small>2018-09-29</small>
-
-An internal build of the upcoming Bedrock Linux release is now feature
-complete.  Internal testing and bug fixing is now underway.
-
-A release candidate is expected to be made public sometime in October or
-November for further testing.  Any assistance testing at that time will be
-greatly appreciated.  The proper release will follow, likely before the end of
-2018.
 
 [See older news items](news.html)
