@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.4-blocked"} Bedrock Linux 0.7.4 blocked
+<small>2019-04-28</small>
+
+The Bedrock Linux 0.7.4 update was found to cause Chromium to crash.  The update has been temporarily pulled while the issue is being investigated.
+
+There are no known security or data-loss concerns with any 0.7.X release at this time.
+
 ## {id="0.7.4-released"} Bedrock Linux 0.7.4 released
 <small>2019-04-28</small>
 
