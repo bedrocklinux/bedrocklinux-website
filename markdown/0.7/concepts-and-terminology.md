@@ -63,7 +63,7 @@ To execute a specific ~{stratum~}'s ~{local~} executable, prefix the command wit
 
 Build tools often become confused by Bedrock's environment when attempting to find build dependencies.  As a solution, Bedrock provides the ability to ~{restrict~} processes from *automatically* seeing ~{cross~} paths by removing ~{cross~} entries from environment variables.  To be clear, this is not a security mechanism; such ~{restricted~} processes can still access ~{cross~} paths if they know to search them via some other means, such as a user instruction.
 
-Processes can be ~{restricted~} by running their command with `strat -r ~(stratum~) ~(command~)`, where `-r` tells Bedrock to restrict the process to the ~(stratum~)'s ~{local~} files (and the system's ~{global~} files).  This can also be done by configuring Bedrock to ~{restrict~} a configured list of commands such as `makepkg` in `bedrock.conf`.
+[Bedrock provides configuration to manage restriction](commands.html#restriction).  This may be overridden by providing `strat` either the `-r` flag to indicate the given command should be restricted or `-u` flag indicating it should not.
 
 ## {id="strata-state"} Strata state
 
@@ -102,7 +102,9 @@ Some example situations where this may be useful:
 
 Bedrock automatically creates a `hijacked` ~{alias~} during the hijack install to track which stratum corresponds to the initial install.  This is solely for the benefit of the user, and you are free to remove this.
 
-Bedrock also automatically creates and updates an `init` ~{alias~} corresponding to the ~{stratum~} that is providing the init system for the current session.  Bedrock's default `bedrock.conf` functionality leverages this to ensure init-related commands such as `reboot` are provided by the correct ~{stratum~}.  If you are not intimately familiar with how Bedrock works it is best to leave the `init` ~{alias~} untouched.
+Bedrock automatically creates and updates an `init` ~{alias~} corresponding to the ~{stratum~} that is providing the init system for the current session.  Bedrock's default `bedrock.conf` functionality leverages this to ensure init-related commands such as `reboot` are provided by the correct ~{stratum~}.  If you are not intimately familiar with how Bedrock works it is best to leave the `init` ~{alias~} untouched.
+
+Bedrock automatically creates and updates an `local` ~{alias~} corresponding to the ~{stratum~} reading the ~{alias~}.  Bedrock's default `bedrock.conf` functionality leverages this to ensure ~{restricted~} commands are provided by the ~{local~} ~{stratum~} if available there before ~{crossing~} to other ~{strata~}.
 
 [Bedrock provides commands to manage aliases](commands.html#alias-management).
 

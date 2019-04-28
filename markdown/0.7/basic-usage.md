@@ -30,7 +30,7 @@ Then to acquire new ~{strata~}, run (as root):
 
 	{class="rcmd"} brl fetch ~(distros~)
 
-That may fail if it auto-detects a bad mirror.  If so, manually find a good
+This may fail if it auto-detects a bad mirror.  If so, manually find a good
 mirror for the distro and provide it to `brl fetch` with the `--mirror` flag.
 
 You may remove strata with
@@ -51,8 +51,8 @@ Bedrock's integration is not limited to the command line commands.  Other
 features which work across ~{strata~} include:
 
 - Graphical application menus or launchers will automatically pick up
-  applications across ~{strata.~}  For example, Ubuntu's Unity will offer launching
-  Gentoo's `vlc`.
+  applications across ~{strata.~}  For example, OpenSUSE's KDE will offer
+  launching Gentoo's `vlc`.
 - Shell tab completion.  For example, Gentoo's `zsh` will tab complete Arch's
   `pacman`.
 - The Linux kernel will detect firmware across ~{strata~}.
@@ -147,11 +147,11 @@ In general, if software is not acting as expected, try ~{restricting~} it with
 
 This occurs sufficiently often with Arch's `makepkg` that Bedrock is configured
 to run `makepkg` through `strat -r` automatically under-the-hood.  To bypass
-this, call it with `strat` _without_ `-r`.
+this, call it with `strat` with the `-u` flag.
 
 - {class="cmd"}
 - # unrestrict makepkg
-- strat arch makepkg
+- strat -u arch makepkg
 
 When ~{restricted~}, build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies in the build tool's stratum, just as one would do on the native distro.
 

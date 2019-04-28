@@ -4,32 +4,12 @@ Nav: poki.nav
 Bedrock Linux 0.7 Poki Installation Instructions
 ================================================
 
-Bedrock Linux's goal of letting users enjoy features from other Linux
-distributions includes the installation process.  To achieve, this Bedrock
-provides a script which hijacks a given traditional Linux distribution install
-and converts it into a Bedrock Linux install.
+To install Bedrock Linux:
 
-Thus, the first step is to install a traditional Linux distribution.  Some
-considerations to help you decide which traditional Linux distribution to
-install include:
-
-- Bedrock Linux currently supports `x86_64` and `arm7vl`.
-	- Other architectures may work but will require you compile the installer and updates yourself.  They will also lack `brl fetch` functionality.
-- All of the initial install's distro-specific files may later be easily removed.
-	- It may be best to think of the hijack install process as installing Bedrock *under* the initial install, not *over* it.  Bedrock becomes the base of the system, with the initial install's files a removable layer on top.  Hence Bedrock's name.
-- See [the distro support page](distro-support.html) for distros which Bedrock is known to be able to hijack well.
-
-Prepare the install as you usually would.  Setup a user account, networking, etc.
-
-Download the latest installer corresponding to your CPU architecture [from here](https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases) or build your own [from here](https://github.com/bedrocklinux/bedrocklinux-userland/tree/0.7).
-
-Run the script as root with the `--hijack` flag:
-
-    {class="rcmd"} sh bedrock-linux-~(release~)-~(arch~).sh --hijack
-
-Confirm at the prompt you understand what the script is doing, then allow it to
-convert the existing install into Bedrock Linux.  Finally, once it has
-completed successfully, reboot.
+- Install a traditional Linux distro to use as a starting point.  See [here](distro-support.html) for reports of how well Bedrock interacts with various distros.
+- Download the latest installer corresponding to your CPU architecture [from here](https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases) or build your own [from here](https://github.com/bedrocklinux/bedrocklinux-userland/tree/0.7).
+- Run the script as root with the `--hijack` flag: `{class="rcmd"} sh ./bedrock-linux-~(release~)-~(arch~).sh --hijack`
+- Reboot.
 
 If you see a new init selection menu during the boot process, congratulations!  You're now running Bedrock Linux.
 
