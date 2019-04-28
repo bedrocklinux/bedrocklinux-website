@@ -37,19 +37,20 @@ This workflow is sufficiently common that `strat` is included directly in the de
 - strat ubuntu apt install vim # use Ubuntu's apt
 
 Compilation and build tools may become confused when scanning the environment
-for dependencies and finding them from different distributions.  For these
-situations, `strat`'s `-r` flag should be used to restrict the command to the
-given stratum.  For example:
+for dependencies and finding them from different distributions, and so Bedrock
+will automatically [restrict](concepts-and-terminology.md#restriction) them.
+To override Bedrock's ~{restriction~} configuration, `strat` may be called with
+the `-r` flag to indicate the given command should be restricted:
 
 - {class="cmd"}
 - # restrict build system to Debian
 - strat -r debian ./configure && strat -r make
 
-By default, Bedrock is configured to restrict some commands by default, such as Arch's `makepkg`.  To run such commands _without_ restricting them, run them through `strat` _without_ `-r`:
+or with the `-u` flag indicating it should not:
 
 - {class="cmd"}
 - # unrestrict build system to Arch
-- strat arch makepkg
+- strat -u arch makepkg
 
 When restricted, build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies, just as one would do on the native distro.
 
