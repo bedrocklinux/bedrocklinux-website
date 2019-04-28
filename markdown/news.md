@@ -4,6 +4,15 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.5-released"} Bedrock Linux 0.7.5 released
+<small>2019-04-28</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+This is a fix for an issue found 0.7.4's handling of sandboxed software whose
+local files do not map directly to those of any particular stratum.  Most
+notably, this fixes crashes in Chromium.
+
 ## {id="0.7.4-blocked"} Bedrock Linux 0.7.4 blocked
 <small>2019-04-28</small>
 
