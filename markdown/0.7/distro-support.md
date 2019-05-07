@@ -78,7 +78,7 @@ The ~{fetch~}-able indicates whether or not Bedrock's `brl fetch` utility is abl
 </tr>
 <tr>
 <td>Manjaro</td>
-<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#888800">Yes</span></td>
 <td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
