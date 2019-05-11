@@ -4,6 +4,19 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.6-released"} Bedrock Linux 0.7.6 released
+<small>2019-05-11</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added experimental non-native CPU architecture strata support.
+	- Requires `qemu-user-static`.
+- Added experimental non-native CPU capabilities to brl-fetch.
+	- See new `-a` and `-A` flags in `brl fetch --help`.
+- Added official installer/update binaries for additional CPU architectures.
+- Fixed Firefox font handling issue.  Work-around is no longer needed.
+- Various minor fixes and improvements.
+
 ## {id="0.7.5-released"} Bedrock Linux 0.7.5 released
 <small>2019-04-28</small>
 
