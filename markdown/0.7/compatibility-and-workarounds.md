@@ -56,8 +56,8 @@ do not work at all.  See the table below.
 </tr>
 <tr>
 <td>cross-stratum Xorg fonts</td>
-<td><span style="color:#00aa55">mostly works</span></td>
-<td><a href="#firefox-fonts">firefox needs about:config tweak</a></td>
+<td><span style="color:#00aa55">just works</span></td>
+<td>-</td>
 </tr>
 <tr>
 <td>cross-stratum vt fonts</td>
@@ -191,7 +191,3 @@ Next, run
 for all remaining ~(strata~) that require graphics drivers.
 
 The `bedrock` stratum and other strata that do not utilize the graphics acceleration do not require the Nvidia drivers.
-
-### {id="firefox-fonts"} Firefox fonts
-
-Firefox's sandboxing mechanisms disallows fonts from other strata by default.  See [this page on the Mozilla wiki](https://wiki.mozilla.org/Security/Sandbox).  To lessen the sandboxing strictness, go to `about:config` and change `security.sandbox.content.level` from the default `4` down to `2`.  Otherwise, if you prefer the default stricter sandboxing, install the desired font in the `firefox`-providing ~{stratum~}.

@@ -15,7 +15,7 @@ distribution installs: one may have an Arch ~{stratum~}, a Debian ~{stratum~}, a
 ~{stratum~}, etc.  Bedrock integrates these ~{strata~} together creating a single,
 largely cohesive system.
 
-To list the currently installed (and enabled) ~{strata,~} run:
+To list the currently installed (and enabled) ~{strata~}, run:
 
 	{class="cmd"} brl list
 
