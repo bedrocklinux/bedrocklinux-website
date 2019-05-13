@@ -36,12 +36,12 @@ There are no known security or data-loss concerns with any 0.7.X release at this
 ## {id="0.7.4-released"} Bedrock Linux 0.7.4 released
 <small>2019-04-28</small>
 
-A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md).
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md#074).
 
 ## {id="0.7.3-released"} Bedrock Linux 0.7.3 released
 <small>2019-04-14</small>
 
-A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md).
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md#073).
 
 ## {id="distrowatch"} Bedrock Linux now listed on DistroWatch
 <small>2019-04-08</small>
