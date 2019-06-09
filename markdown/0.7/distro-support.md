@@ -39,7 +39,7 @@ The ~{fetch~}-able indicates whether or not Bedrock's `brl fetch` utility is abl
 <tr>
 <td>CRUX</td>
 <td><span style="color:#aa0055">Known issues</span></td>
-<td><span style="color:#00aa55">No</span></td>
+<td><span style="color:#aa0055">No</span></td>
 </tr>
 <tr>
 <td>Debian</td>
