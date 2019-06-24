@@ -145,8 +145,8 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <td>Solus</td>
-<td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#888800">Experimental support</span></td>
+<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#aa0055">Known issues</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <td>Ubuntu</td>
