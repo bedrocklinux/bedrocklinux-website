@@ -76,7 +76,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Fedora</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#aa0055">Recently broke, fix in development</span></td>
 <td>paradigm</td>
 </tr>
 <tr>
