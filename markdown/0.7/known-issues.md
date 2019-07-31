@@ -26,7 +26,7 @@ Some users have reported issues with lvm partitions, most notably `/home`, not m
 
 Typical init systems do not mount `/etc/fstab` values corresponding to ~{global~} directories such as `/home`, and thus Bedrock is required to do so itself.  However, Bedrock does not currently know how to populate `/dev/mapper` files required for lvm.
 
-A future Bedrock update may embed `dmsetup` into Bedrock to allow it to populate `/dev/mapper` and mount ~{global~} lvm partitions such as `/home`.
+The next release will include full LVM support.
 
 ## {id="x11-repeated"} /bedrock/cross/bin/X11/
 
