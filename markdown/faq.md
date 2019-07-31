@@ -25,7 +25,7 @@ Nav:   home.nav
 - [Why was Bedrock Linux started?](#why-started)
 - [What distros does Bedrock Linux support as strata?](#supported-distros)
 - [Why did the versioning system change?](#version-system)
-- [Can I put the installer on a floppy disk?](#floppy)
+- [What is the size of the installer?](#installer-size)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -380,6 +380,8 @@ Broadly support falls into two categories:
 
 Bedrock Linux's early version numbers were chosen under the assumption that remaining open problems were unlikely to be solved in the near future.  Thus, the versions pressed towards a `1.0 stable` release.  However, over the years major issues were resolved over and over, each with a substantial under-the-hood rework.  It became evident that semantic versioning's pre-1.0 non-alpha/beta/rc releases better express Bedrock's state, and the version system was updated accordingly.
 
-## {id="floppy"} Can I put the installer on a floppy disk?
+## {id="installer-size"} What is the size of the installer?
 
-Yes, but you can't install it on a floppy disk.
+The installer is only 1.07 MB (v0.7.6 x86_64) in size and downloads nothing from the internet.
+You can even put it on a floppy disk.
+If there is a newer version released but the size here is not updated you can always look [here](https://github.com/bedrocklinux/bedrocklinux-userland/releases).
