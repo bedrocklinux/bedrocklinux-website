@@ -20,14 +20,6 @@ Some users have reported issues with `brl update` and `brl fetch` failing when b
 
 This issue appears to be specific https URLs.  It may be possible to work around `brl update` failing by manually downloading the update and running it with the `--update` flag, and it may be possible to work around `brl fetch` failing by specifying an http (non-https) mirror.
 
-## {id="lvm"} lvm mount failures
-
-Some users have reported issues with lvm partitions, most notably `/home`, not mounting.
-
-Typical init systems do not mount `/etc/fstab` values corresponding to ~{global~} directories such as `/home`, and thus Bedrock is required to do so itself.  However, Bedrock does not currently know how to populate `/dev/mapper` files required for lvm.
-
-The next release will include full LVM support.
-
 ## {id="x11-repeated"} /bedrock/cross/bin/X11/
 
 The `/bedrock/cross/bin/X11` directory recursively contains many `X11` directories.
