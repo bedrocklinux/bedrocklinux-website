@@ -25,6 +25,7 @@ Nav:   home.nav
 - [Why was Bedrock Linux started?](#why-started)
 - [What distros does Bedrock Linux support as strata?](#supported-distros)
 - [Why did the versioning system change?](#version-system)
+- [Can I put the installer on a floppy disk?](#floppy)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -378,3 +379,7 @@ Broadly support falls into two categories:
 ## {id="version-system"} Why did the version system change?
 
 Bedrock Linux's early version numbers were chosen under the assumption that remaining open problems were unlikely to be solved in the near future.  Thus, the versions pressed towards a `1.0 stable` release.  However, over the years major issues were resolved over and over, each with a substantial under-the-hood rework.  It became evident that semantic versioning's pre-1.0 non-alpha/beta/rc releases better express Bedrock's state, and the version system was updated accordingly.
+
+## {id="floppy"} Can I put the installer on a floppy disk?
+
+Yes, but you can't install it on a floppy disk.
