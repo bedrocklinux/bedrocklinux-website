@@ -23,7 +23,7 @@ Nav:   home.nav
 - [What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?](#other-os)
 - [Is Bedrock Linux practical?](#practicality)
 - [Why was Bedrock Linux started?](#why-started)
-- [What distros does Bedrock Linux support as strata?](#supported-distros)
+- [What distros do Bedrock Linux support as strata?](#supported-distros)
 - [Why did the versioning system change?](#version-system)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
@@ -362,7 +362,7 @@ specific collective name or ultimate end-goal in mind.  It was not until:
 
 that the project became organized with a specific name and drive.
 
-## {id="supported-distros"} What distros does Bedrock Linux support as strata?
+## {id="supported-distros"} What distros do Bedrock Linux support as strata?
 
 Broadly support falls into two categories:
 

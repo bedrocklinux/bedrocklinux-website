@@ -55,7 +55,7 @@ The ~{stratum~} resulting from the ~{hijack~} of the initial install may be remo
 
 ## {id="pinning"} Pinning executables to strata
 
-If you multiple strata provide the same command, absent any additional indication of which to use Bedrock will choose one by default in a given context.  Which it chooses may be configured, which is referred to as "pinning."
+If multiple strata provide the same command, absent any additional indication of which to use Bedrock will choose one by default in a given context.  Which it chooses may be configured, which is referred to as "pinning."
 
 `/bedrock/etc/bedrock.conf`'s `[cross-bin]` section is used to configure executable binaries in `/bedrock/cross`.  In this section,
 
