@@ -23,23 +23,29 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td>Alpine Linux</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Arch Linux</td>
 <td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#aa0055">No</span></td>
+<td><span style="color:#00aa55">paradigm</span></td>
+</tr>
+<tr>
+<td>Artix Linux</td>
+<td><span style="color:#888800">Yes, but limited testing</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <tr>
 <td>CentOS</td>
 <td><span style="color:#aa0055">Known issues</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <tr>
 <td>Clear Linux</td>
-<td><span style="color:#aa0055">Mixed reports</span></td>
+<td><span style="color:#aa0055">Known issues</span></td>
 <td><span style="color:#888800">Experimental support</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
@@ -53,13 +59,13 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td>Debian</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Devuan</td>
-<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#888800">Yes, but limited testing</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Elementary OS</td>
@@ -71,19 +77,19 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td>Exherbo</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#888800">In development</span></td>
-<td>Wulf C. Krueger</td>
+<td><span style="color:#00aa55">Wulf C. Krueger</span></td>
 </tr>
 <tr>
 <td>Fedora</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#aa0055">Recently broke, fix in development</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Gentoo Linux</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>GoboLinux</td>
@@ -105,7 +111,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 </tr>
 <tr>
 <td>Mint</td>
-<td><span style="color:#888800">Needs investigation</span></td>
+<td><span style="color:#888800">Yes, but limited testing</span></td>
 <td><span style="color:#aa0055">No</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
@@ -137,7 +143,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td>Raspbian</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <td>Slackware Linux</td>
 <td><span style="color:#aa0055">Known issues</span></td>
@@ -146,18 +152,18 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 </tr>
 <td>Solus</td>
 <td><span style="color:#aa0055">Known issues</span></td>
-<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#888800">Experimental Support</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <td>Ubuntu</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Void Linux</td>
 <td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td>paradigm</td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 </table>
