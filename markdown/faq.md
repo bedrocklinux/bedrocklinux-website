@@ -25,6 +25,7 @@ Nav:   home.nav
 - [Why was Bedrock Linux started?](#why-started)
 - [What distros do Bedrock Linux support as strata?](#supported-distros)
 - [Why did the versioning system change?](#version-system)
+- [Why can't I un-hijack my install?](#unhijack)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -378,3 +379,11 @@ Broadly support falls into two categories:
 ## {id="version-system"} Why did the version system change?
 
 Bedrock Linux's early version numbers were chosen under the assumption that remaining open problems were unlikely to be solved in the near future.  Thus, the versions pressed towards a `1.0 stable` release.  However, over the years major issues were resolved over and over, each with a substantial under-the-hood rework.  It became evident that semantic versioning's pre-1.0 non-alpha/beta/rc releases better express Bedrock's state, and the version system was updated accordingly.
+
+## {id="unhijack"} Why can't I un-hijack my install?
+
+The central idea behind Bedrock Linux is to offer a way to get features from a mix of other distributions.  This includes not only things like the kernel, init, and web browser, but also the install process.  In order to utilize another distribution's install process, one first installs that distro, then runs a Bedrock script which converts the install into a Bedrock Linux install.  While most of the original install's files are (optionally) retained for use by the resulting Bedrock system, the system is arguably no longer running the original distro anymore.
+
+After the hijack process is completed, the hijacked install's files are no longer in any way special; it's simply another Bedrock stratum.  One may remove the hijacked install's files with `brl remove $(brl deref hijacked)`.  At this point there is nothing to "un-hijack" *to*.
+
+It is inadvisable to model Bedrock as something which is installed "on top" of another distro.  This is comparable to modelling a hypervisor as something which is installed "on top" of a VM; it's functionally backwards.  Rather, is often best modelled Bedrock as a(n unusual) Linux distribution.  With most distros - Arch, Debian, CentOS, etc - installing is a destructive operation and removes data which previously existed on the installed-to medium.  If you want to retain the option to revert to what you had before installing Arch, Debian, CentOS, etc, you need to back up before you install over it.  Bedrock should be treated similarly here.
