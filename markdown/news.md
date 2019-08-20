@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="beta-channel"} Bedrock Linux beta channel available
+<small>2019-08-20</small>
+
+Bedrock Linux now offers a beta channel for those who are interested in testing
+upcoming updates.  [See the documentation here.](0.7/beta-channel.html)
+
+Future beta updates will not necessarily be announced.
+
 ## {id="0.7.6-released"} Bedrock Linux 0.7.6 released
 <small>2019-05-11</small>
 

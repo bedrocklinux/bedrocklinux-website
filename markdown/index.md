@@ -20,6 +20,15 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="beta-channel"} Bedrock Linux beta channel available
+<small>2019-08-20</small>
+
+Bedrock Linux now offers a beta channel for those who are interested in helping
+to test upcoming updates and are willing to take the associated elevated risk.
+[See the documentation here.](0.7/beta-channel.html)
+
+Future beta updates will not necessarily be announced.
+
 ## {id="0.7.6-released"} Bedrock Linux 0.7.6 released
 <small>2019-05-11</small>
 
@@ -66,21 +75,5 @@ Bedrock Linux was submitted to DistroWatch on 2012-08-04, almost seven years
 ago.  DistroWatch had (understandable) requirements Bedrock failed to meet
 until very recently.  It is now listed
 [here](https://distrowatch.com/table.php?distribution=bedrock).
-
-## {id="0.7.2-released"} Bedrock Linux 0.7.2 released
-<small>2019-03-27</small>
-
-A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md#072).
-
-## {id="0.7.1-released"} Bedrock Linux 0.7.1 released
-<small>2018-12-27</small>
-
-A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.  [See the release notes here](https://github.com/bedrocklinux/bedrocklinux-userland/blob/0.7/ReleaseNotes.md#071).
-
-## {id="poki-released"} Bedrock Linux 0.7 Poki released
-<small>2018-12-17</small>
-
-Bedrock Linux 0.7 Poki has exited beta and is ready for general consumption.
-See [here](0.7/index.html) for the release's documentation.
 
 [See older news items](news.html)
