@@ -20,6 +20,34 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="0.7.7-released"} Bedrock Linux 0.7.7 released
+<small>2019-08-27</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added brl-fetch KISS Linux support
+- Added brl-report check for environment variables
+- Added brl-update support for verifying signature of offline updates
+- Added brl-update support scanning multiple configured mirrors
+- Added init message about bedrock.conf
+- Added installer check for corrupt embedded tarball
+- Added installer check for grub2-mkrelpath bug
+- Added installer message about bedrock.conf
+- Added official installer/update binaries for ppc64le
+- Fixed brl-fetch arch
+- Fixed brl-fetch fedora
+- Fixed brl-fetch mirrors with paths in http indexes
+- Fixed brl-fetch non-native void
+- Fixed brl-fetch solus
+- Fixed installer handling of quotes in distro name
+- Fixed login.defs handling bug
+- Fixed resolv.conf handling for some distros
+- Fixed various shell tab completion issues
+- Improved etcfs robustness to power outages
+- Removed /var/tmp from share list
+- Update expiration date of signing key
+- Various minor fixes and improvements.
+
 ## {id="beta-channel"} Bedrock Linux beta channel available
 <small>2019-08-20</small>
 
