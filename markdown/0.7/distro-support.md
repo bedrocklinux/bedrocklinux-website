@@ -28,13 +28,13 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Arch Linux</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#aa0055">No</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Artix Linux</td>
 <td><span style="color:#888800">Yes, but limited testing</span></td>
-<td><span style="color:#00aa55">Yes</span></td>
+<td><span style="color:#aa0055">No</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <tr>
@@ -76,13 +76,13 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Exherbo</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#888800">In development</span></td>
+<td><span style="color:#888800">In 0.7.8beta1</span></td>
 <td><span style="color:#00aa55">Wulf C. Krueger</span></td>
 </tr>
 <tr>
 <td>Fedora</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#aa0055">Recently broke, fix in development</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>

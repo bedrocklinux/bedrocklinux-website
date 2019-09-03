@@ -136,6 +136,11 @@ The desired name, release, and mirror for newly fetched ~{strata~} can be specif
 	-e, --dont-enable       do not enable newly fetched strata
 	-s, --dont-show         do not show newly fetched strata
 
+Provided `qemu-user-static` is installed in some stratum, Bedrock supports strata from non-native CPU architectures.  `brl fetch` can fetch such strata with the `-a` and `-A` flags:
+
+	-A, --archs             list architectures for [distros]
+	-a, --arch [arch]       specify desired CPU architecture
+
 ### {id="brl-remove"} brl remove
 
 When a ~{stratum~} is ~{enabled~} (or ~{broken~}), it has various hooks integrating it with the rest of the system.  When ~{disabled~} the hooks *should* be removed, but if something goes wrong some may still be in place.  **`rm -r` may follow these hooks to other ~{strata~} and should not be used to remove any ~{stratum~}.**  Instead, Bedrock provides `brl remove` which takes care to avoid tripping on any hooks.
@@ -254,6 +259,8 @@ All Bedrock configuration is centralized in the `/bedrock/etc/bedrock.conf` file
 ### {id="brl-update"} brl update
 
 ~{Strata~} are responsible for maintaining their own updates.  An Arch ~{stratum~} may be updated with `pacman`, a Debian ~{stratum~} may be updated with `apt`, etc.  Similarly, the `bedrock` ~{stratum~} is responsible for updating itself.  This is achieved with the `brl update` command.
+
+If `brl update` is run without any parameters, it will attempt to fetch an update online.  If you wish to update an offline system, you may download an installer/updater for the corresponding version and provide it as a parameter to `brl update`.
 
 By default `brl update` reads the `mirror` value in `/bedrock/etc/bedrock.conf` to determine which Bedrock mirror to use.  However, this can be overridden with `-m`.
 
