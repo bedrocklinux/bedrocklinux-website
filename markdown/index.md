@@ -20,6 +20,18 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="tipping"} On Tipping Bedrock Linux Developer
+<small>2019-09-03</small>
+
+There have been repeated requests for avenues to tip the lead Bedrock Linux
+developer.
+
+Bedrock Linux development is not limited by funding, and there is no intended
+obligation associated with benefiting from Bedrock Linux development efforts.
+
+If you are interested in tipping the lead developer as a thanks for his
+efforts, see [here](tipping.html).
+
 ## {id="0.7.7-released"} Bedrock Linux 0.7.7 released
 <small>2019-08-27</small>
 

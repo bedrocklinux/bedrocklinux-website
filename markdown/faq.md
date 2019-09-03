@@ -26,6 +26,7 @@ Nav:   home.nav
 - [What distros do Bedrock Linux support as strata?](#supported-distros)
 - [Why did the versioning system change?](#version-system)
 - [Why can't I un-hijack my install?](#unhijack)
+- [How can I tip the lead developer?](#tipping)
 
 ## {id="what\_is\_bedrock"} What is Bedrock Linux?
 
@@ -387,3 +388,11 @@ The central idea behind Bedrock Linux is to offer a way to get features from a m
 After the hijack process is completed, the hijacked install's files are no longer in any way special; it's simply another Bedrock stratum.  One may remove the hijacked install's files with `brl remove $(brl deref hijacked)`.  At this point there is nothing to "un-hijack" *to*.
 
 It is inadvisable to model Bedrock as something which is installed "on top" of another distro.  This is comparable to modelling a hypervisor as something which is installed "on top" of a VM; it's functionally backwards.  Rather, is often best modelled Bedrock as a(n unusual) Linux distribution.  With most distros - Arch, Debian, CentOS, etc - installing is a destructive operation and removes data which previously existed on the installed-to medium.  If you want to retain the option to revert to what you had before installing Arch, Debian, CentOS, etc, you need to back up before you install over it.  Bedrock should be treated similarly here.
+
+## {id="tipping"} How can I tip the lead developer?
+
+Bedrock Linux development is not limited by funding, and there is no intended
+obligation associated with benefiting from Bedrock Linux development efforts.
+
+If you are interested in tipping the lead developer as a thanks for his
+efforts, see [here](tipping.html).
