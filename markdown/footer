@@ -1,7 +1,13 @@
 </section>
 <footer>
 <p>© <a href=/>Bedrock Linux</a> 2012-2019</p>
-<p><a href="http://www.linuxfoundation.org/programs/legal/trademark/attribution">Linux® is a registered trademark<br> of Linus Torvalds</a></p>
+<p><a href="http://www.linuxfoundation.org/programs/legal/trademark/attribution">
+The registered trademark Linux®<br>
+is used pursuant to a sublicense<br>
+from the Linux Foundation, the<br>
+exclusive licensee of Linus<br>
+Torvalds, owner of the mark<br>
+on a world-wide basis.</a></p>
 </footer>
 </body>
 </html>
