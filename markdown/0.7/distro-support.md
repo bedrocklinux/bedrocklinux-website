@@ -76,7 +76,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Exherbo</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#888800">In 0.7.8beta1</span></td>
+<td><span style="color:#00aa55">Yes</span></td>
 <td><span style="color:#00aa55">Wulf C. Krueger</span></td>
 </tr>
 <tr>

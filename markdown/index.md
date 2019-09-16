@@ -20,6 +20,29 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="0.7.8-released"} Bedrock Linux 0.7.8 released
+<small>2019-09-15</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added LVM support
+- Added brl-fetch Arch Linux 32
+- Added brl-fetch Exherbo
+- Added caching support
+- Added debug subsystem
+	- Add etcfs debug support
+	- Add brl-fetch debug support
+- Added i386, i486, i586, and i686 support
+- Added wait for keyboard initialisation
+	- This fixed no keyboard in init selection menu issue
+- Fixed brl-fetch exherbo
+- Fixed crossfs handling of live bouncer changes
+- Fixed etcfs file descriptor leak
+	- This fixed Void init emergence shell issue
+- Improved build system performance
+- Restrict apt-key by default
+- Restrict debuild by default
+
 ## {id="tipping"} On Tipping Bedrock Linux Developer
 <small>2019-09-03</small>
 
