@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.9-released"} Bedrock Linux 0.7.9 released
+<small>2019-09-20</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+This fixes a bug in 0.7.8 update code which may break crossfs access.
+
 ## {id="0.7.8-released"} Bedrock Linux 0.7.8 released
 <small>2019-09-15</small>
 
