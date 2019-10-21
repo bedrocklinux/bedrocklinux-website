@@ -34,14 +34,14 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Artix Linux</td>
 <td><span style="color:#888800">Yes, but limited testing</span></td>
-<td><span style="color:#aa0055">No</span></td>
+<td><span style="color:#888800">Experimental support</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <tr>
 <td>CentOS</td>
-<td><span style="color:#aa0055">Known issues</span></td>
+<td><span style="color:#aa0055">Yes, but limited testing</span></td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#aa0055">N/A</span></td>
+<td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
 <td>Clear Linux</td>
@@ -106,7 +106,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Manjaro</td>
 <td><span style="color:#888800">Yes, but pamac/octopi broken</span></td>
-<td><span style="color:#aa0055">No</span></td>
+<td><span style="color:#aa0055">In progress</span></td>
 <td><span style="color:#aa0055">N/A</span></td>
 </tr>
 <tr>
