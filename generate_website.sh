@@ -38,6 +38,7 @@ do
 		sed "s,RELATIVEPATH,$RELATIVEPATH," > $OUTFILE
 	markdown $DIRNAME/$NAVFILE |\
 		sed 's/<ul>/<ul id=nav>/' >> $OUTFILE
+	cat footer >> $OUTFILE
 	cat header2 >> $OUTFILE
 	sed '1,2d' $PAGE |\
 		markdown |\
@@ -67,7 +68,7 @@ do
 		sed 's/<\([^>]\+\)>{\([^}]\+\)}[ ]\+/<\1 \2>/g' |\
 		sed 's,<pre><code,<pre,g' |\
 		sed 's,</code></pre>,</pre>,g' >> $OUTFILE
-	cat footer >> $OUTFILE
+	#cat footer >> $OUTFILE
 done
 
 # copy non-page files
