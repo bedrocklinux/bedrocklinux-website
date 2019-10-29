@@ -82,7 +82,7 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <tr>
 <td>Fedora</td>
 <td><span style="color:#00aa55">Yes</span></td>
-<td><span style="color:#00aa55">Yes</span></td>
+<td><a href="#fedora-31-zstd">Work-around available</a></td>
 <td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 <tr>
@@ -167,3 +167,15 @@ Maintainer indicates the individual(s) responsible for maintaining Bedrock inter
 <td><span style="color:#00aa55">paradigm</span></td>
 </tr>
 </table>
+
+### {id="fedora-31-zstd"} Fedora 31 zstd work-around
+
+Fedora 31 [now compress their rpm packages with zstd](https://fedoraproject.org/wiki/Changes/Switch_RPMs_to_zstd_compression#Release_Notes).  As of Bedrock 0.7.10, the time of writing, `brl fetch` is unable to handle these packages.  A fix is in progress.  In the mean time, you can work around this by installing `zstd` in some stratum which provides it, then opening `/bedrock/libexec/brl-fetch` and changing [line 572](https://github.com/bedrocklinux/bedrocklinux-userland/blob/89744ead0d73b7271f4d7186956137bffc8d476e/src/slash-bedrock/libexec/brl-fetch#L572):
+
+	dd if="\$pkg" ibs=\$o skip=1 | lzma -d
+
+to
+
+	dd if="\$pkg" ibs=\$o skip=1 | /bedrock/cross/bin/zstd -d
+
+This might break fetching rpm distros which compress their rpm packages with lzma.  If so, revert the change to fetch those distros.
