@@ -20,6 +20,19 @@ All at the same time, all working together like one, largely cohesive operating 
 A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
+## {id="0.7.11-released"} Bedrock Linux 0.7.11 released
+<small>2019-12-14</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added brl-tutorial command
+- Added basics tutorial
+- Added brl-fetch tutorial
+- Added brl-fetch support for Fedora 31
+- Added brl-fetch support for Manjaro
+- Fixed brl-fetch debug handling
+- Fixed brl-disable handling of invalid stratum
+
 ## {id="0.7.10-released"} Bedrock Linux 0.7.10 released
 <small>2019-10-21</small>
 
