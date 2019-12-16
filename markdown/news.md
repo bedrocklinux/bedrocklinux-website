@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.12-released"} Bedrock Linux 0.7.12 released
+<small>2019-12-16</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Fixed brl-fetch artix
+- Fixed bash completion for brl-tutorial
+
 ## {id="0.7.11-released"} Bedrock Linux 0.7.11 released
 <small>2019-12-14</small>
 
