@@ -21,7 +21,7 @@ A new video demonstrating such features as of the newly released Bedrock Linux
 0.7 Poki is currently in development and will be listed here in the future.
 
 ## {id="0.7.13-released"} Bedrock Linux 0.7.13 released
-<small>2019-01-06</small>
+<small>2020-01-06</small>
 
 A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
 
