@@ -100,7 +100,7 @@ b,strong{
 	color:#c4c4c4;
 	font-weight:700
 }
-/* didn't like simonlc's choice here - probably an oversite */
+/* didn't like simonlc's choice here - probably an oversight */
 code,kbd,pre,samp{
 	/*color:#c4c4c4;*/
 	color:#00aa55;
@@ -142,7 +142,6 @@ header p {
 	html{
 		font-size:0.938rem
 	}
-
 }
 @media only screen and (min-width: 60em){
 	html{
@@ -152,7 +151,7 @@ header p {
 		max-width:53.4rem
 	}
 	header,footer{
-		max-width:35%;
+		max-width:33%;
 		float:left;
 		position:fixed
 	}
@@ -160,7 +159,7 @@ header p {
 		bottom: -14px;
 	}
 	section{
-		max-width:65%;
+		width:66%;
 		float:right
 	}
 	h1:first-child{
@@ -172,7 +171,6 @@ header p {
 	html{
 		font-size:1.188rem
 	}
-
 }
 
 /* stuff paradigm added */
@@ -180,11 +178,9 @@ header p {
 small{
 	color: #999;
 }
-
 code.keyword{
 	color: #f0f;
 }
-
 pre.cmd:before{
 	content: "$ ";
 }
@@ -222,6 +218,15 @@ ul.rcmd{
 ul.rcmd li:before{
 	content: "# ";
 }
+.okay{
+	color: #00aa55;
+}
+.warn{
+	color: #888800;
+}
+.alert{
+	color: #aa0055;
+}
 
 /* issues stuff - thanks Phr33d0m! */
 
@@ -229,9 +234,12 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 }
-th, td {
-	border-bottom: 1px dashed white;
-	border-top: 1px dashed white;
+th {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+td {
+	border-bottom: 1px solid gray;
 }
 div.description {
 	margin-top: 20px;
