@@ -33,6 +33,7 @@ Nav: poki.nav
 | ptrace (e.g. gdb, strace)                        | ~^Minor Work-around  | Install in same ~{stratum~} as traced program, `strat -r` |
 | SELinux                                          | ~!Does Not Work      | ~+Bedrock~x disabled on hijack |
 | systemd-shim                                     | ~!Major Issue        | [logind access denied](#systemd-shim) |
+| timeshift                                        | ~!Major Issue        | Confused by filesystem layout; do not use with ~+Bedrock~x |
 
 ### {id="application-launchers"} Application Launchers
 

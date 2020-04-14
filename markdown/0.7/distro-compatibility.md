@@ -25,7 +25,7 @@ Nav: poki.nav
 | ~+NixOS          | ~!Very Low              | ~!many [†](#nixos) | ~!No    | ~!N/A      |
 | ~+OpenSUSE       | ~!Very Low              | ~!defaults to grub+btrfs [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No    | ~!N/A      |
 | ~+OpenWRT        | ~!Very Low              | ~%N/A        | ~^Unmaintained | ~!N/A      |
-| ~+Pop!\_OS       | ~^Low                   | ~%N/A        | ~!No           | ~!N/A      |
+| ~+Pop!\_OS       | ~^Low                   | ~^hidden init menu [†](#popos) | ~!No           | ~!N/A      |
 | ~+QubesOS        | ~!None                  | ~%N/A        | ~!No           | ~!N/A      |
 | ~+Raspbian       | ~!Medium                | ~%N/A        | ~%Yes          | ~%paradigm |
 | ~+Slackware      | ~^Low                   | ~!BSD-style SysV init [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
@@ -50,10 +50,29 @@ non-local components, such as `/etc` files, changing out from under it.
 
 ## {id="solus"} Solus
 
-~+Solus~x's "stateless" concept means it does not create various files in `/etc` ~+Bedrock~x expects.  This might be done to avoid fighting with users over `/etc` file changes.
+~+Solus~x's "stateless" concept means it does not create various files in
+`/etc` ~+Bedrock~x expects.  This might be done to avoid fighting with users
+over `/etc` file changes.
 
-~+Solus~x _does_ provide default versions of these files, but outside of `/etc`.  The expectation might be that the user copies them over at his/her whim.
+~+Solus~x _does_ provide default versions of these files, but outside of
+`/etc`.  The expectation might be that the user copies them over at his/her
+whim.
 
-This is likely removable with adequate effort.  ~+Bedrock~x could be configured to understand this concept via `bedrock.conf` lists of stateless copy locations.  If the required file is missing but another location has it, ~+Bedrock~x would then copy it over when ~{enabling~} the ~{stratum~}.
+This is likely removable with adequate effort.  ~+Bedrock~x could be configured
+to understand this concept via `bedrock.conf` lists of stateless copy
+locations.  If the required file is missing but another location has it,
+~+Bedrock~x would then copy it over when ~{enabling~} the ~{stratum~}.
 
-~+Clear Linux~x also calls itself "stateless."  Efforts here should be tested against ~+Clear~x as well.
+~+Clear Linux~x also calls itself "stateless."  Efforts here should be tested
+against ~+Clear~x as well.
+
+## {id="popos"} Pop!\_OS
+
+Users have reported that on EFI systems Pop!\_OS's boot time splash screen
+hides the init selection menu.  To make the init selection menu visible, run
+
+	{class="rcmd"} kernelstub -d splash
+
+Ideally things should work without alterations to the bootloader.  Rather than
+disabling splash via configuration, the init selection menu should stop it at
+runtime to reveal the menu.  This is an open research item.
