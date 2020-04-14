@@ -227,6 +227,12 @@ ul.rcmd li:before{
 .alert{
 	color: #aa0055;
 }
+.distro{
+	color: #aaaa00;
+}
+.comment{
+	color: #888888;
+}
 
 /* issues stuff - thanks Phr33d0m! */
 

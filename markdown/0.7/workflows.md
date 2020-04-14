@@ -1,8 +1,9 @@
-Title: Bedrock Linux 0.7 Poki Workflows
+Title: Bedrock Linux 0.7 Poki Advanced Workflows
 Nav: poki.nav
 
-Bedrock Linux 0.7 Poki Workflows
-================================
+# Bedrock Linux 0.7 Poki Advanced Workflows
+
+TableOfContents
 
 ## {id="manually-adding-strata"} Manually Adding Strata
 
@@ -73,14 +74,4 @@ Multiple ~{stratum~}:~{path~} pairs may be specified, in which case the first wh
 
 `~(stratum~):` may be left off with only a ~(path~) provided, in which case all enabled ~{strata~} are considered.  However, this is not useful for pinning.
 
-If you typically [~{restrict~} the command](basic-usage.html#restriction), you can specify it should be ~{restricted~} by default by placing it under the `[cross-bin-restrict]` section instead.  Just as `strat` can be used to specify which ~{stratum~} should provide a given command, overriding the above described pinning, `strat` without `-r` will disable any configured ~{restriction~}.
-
-## {id="chroot-fix-boot"} Chrooting into Bedrock to fix /boot
-
-Bedrock is dependent on various runtime items being in placed, and thus one may not simply mount a Bedrock partition and `chroot` into it.
-
-One common need to `choot` into some system is to fix a broken `/boot`.  While a generalized `chroot` is not available, a limited one for this purpose is.  There are three main differences from a typical rescue `chroot`:
-
-- Instead of setting up and `chroot`'ing directly into the mount, setup and `chroot` into `~(mount~)/bedrock/strata/~(stratum~)` for some ~{stratum~} which will perform the repair operation.
-- In addition to the typical `proc`, `dev`, etc setup, also bind-mount `~(mount~)/boot` to `~(mount~)/bedrock/strata/~(stratum~)/boot`.  This will make the ~{global~} `/boot` accessible for manipulation by the given ~{stratum~}.
-- Try to avoid installing packages, manipulating users or groups, or other things which may consider ~{global~} or ~{cross~} file paths, as without Bedrock's hooks in place this may cause subtle problems.  Restrict operations within the `chroot` to repairing `/boot`.
+If you typically [~{restrict~} the command](basic-usage.html#restriction), be sure to configure it under [the restriction section as well](configuration.html#restriction).

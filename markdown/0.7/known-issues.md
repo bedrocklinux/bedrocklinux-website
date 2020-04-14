@@ -1,16 +1,18 @@
 Title: Bedrock Linux 0.7 Poki Known Issues
 Nav: poki.nav
 
-Bedrock Linux 0.7 Poki Known Issues
-===================================
-
-Issues listed here are supplemental to [issues listed in the compatibility section](compatibility-and-workarounds.html).
+# Bedrock Linux 0.7 Poki Known Issues
 
 ## {id="proxy"} brl-update and brl-fetch fail with proxy
 
 Some users have reported issues with `brl update` and `brl fetch` failing when behind a proxy.
 
-This issue appears to be specific https URLs.  It may be possible to work around `brl update` failing by manually downloading the update and running it with the `--update` flag, and it may be possible to work around `brl fetch` failing by specifying an http (non-https) mirror.
+This issue appears to be specific https URLs.  For `brl update`, possible work-arounds include:
+
+- Downloading the update with some other software and providing it as the parameter to `brl update`
+- Configuring `brl update` to use another ~+Bedrock~x mirror.
+
+There are no obvious work-arounds for `brl fetch`.
 
 ## {id="x11-repeated"} /bedrock/cross/bin/X11/
 
@@ -19,10 +21,6 @@ The `/bedrock/cross/bin/X11` directory recursively contains many `X11` directori
 This is because many distros contain a symlink at `/usr/bin/X11` which points to `.` which `/bedrock/cross/bin` tries to expand.
 
 A possible fix for this would be for `cross-bin` to ignore directories.
-
-## {id="fuse-sigterm"} etcfs and crossfs sigterm handling
-
-Bedrock Linux has two FUSE filesystems, etcfs and crossfs.  Ideally, both should unmount themselves on SIGTERM, such as when the system is shutting down.  Currently they do not do so.  This may cause problems with sysv inits which have shutdown scripts within `/etc`.
 
 ## {id="unmount-warnings"} Unmount warnings on shutdown
 

@@ -8,13 +8,34 @@
 
 OBJECTS=$(shell find markdown/ -type f ! -name "header" ! -name "footer" ! -name "*.nav" | sed -e 's/^markdown/html/g' -e 's/[.]md/.html/g') html/atom.xml
 
-all: check-dependencies $(OBJECTS)
+all: check-dependencies symlinks $(OBJECTS)
+
+clean:
+	rm -rf ./html
 
 check-dependencies:
 	@ command -v markdown >/dev/null 2>&1 || (echo "Missing dependency: markdown" ; false)
 
-clean:
-	rm -rf ./html
+# make resolves symlinks; can't just have them be targets directly.
+symlinks:
+	@ if [ "$$(readlink html/0.7/compatibility-and-workarounds.html)" != "feature-compatibility.html" ]; then \
+		echo rm -f html/0.7/compatibility-and-workarounds.html; \
+		rm -f html/0.7/compatibility-and-workarounds.html; \
+	fi
+	@ if [ "$$(readlink html/0.7/distro-support.html)" != "distro-compatibility.html" ]; then \
+		echo rm -f html/0.7/distro-support.html; \
+		rm -f html/0.7/distro-support.html; \
+	fi
+	@ if ! [ -h html/0.7/compatibility-and-workarounds.html ]; then \
+		mkdir -p html/0.7; \
+		echo ln -s feature-compatibility.html html/0.7/compatibility-and-workarounds.html; \
+		ln -s feature-compatibility.html html/0.7/compatibility-and-workarounds.html; \
+	fi
+	@ if ! [ -h html/0.7/distro-support.html ]; then \
+		mkdir -p html/0.7; \
+		echo ln -s distro-compatibility.html html/0.7/distro-support.html; \
+		ln -s distro-compatibility.html html/0.7/distro-support.html; \
+	fi
 
 # Generate atom.xml
 html/atom.xml: html/news.html
@@ -72,26 +93,44 @@ html/atom.xml: html/news.html
 	' html/news.html > html/atom.xml
 
 # Translate markdown
-html/%.html: markdown/%.md markdown/header markdown/footer
+html/%.html: markdown/%.md markdown/header markdown/footer markdown/*.nav markdown/*/*.nav
 	@ echo "Creating $@"
 	@ # Ensure containing directory exists
 	@ mkdir -p $$(dirname $@)
-	@ # Create header and navigation bar
+	@ # Create header
 	@ sed \
 		-e "s@TITLEGOESHERE@$$(sed -n 's/^Title:[ ]\+//p' $<)@" \
 		-e "s@RELATIVEPATH@$$(dirname $@ | sed -e 's/[^\/]\+/../g' -e 's/^.//')@" \
 		markdown/header > $@
+	@ # Create naviation bar
 	@ markdown $$(dirname $<)/$$(sed -n 's/^Nav:[ ]\+//p' $<) | sed 's/<ul>/<ul id=nav>/' >> $@
 	@ cat markdown/footer >> $@
-	@ # Create body
-	@ # - initial sed cuts the non-standard-markdown Title: and Nav: lines
-	@ # - awk block creates tables
-	@ # - awk block allows first unordered-list entry to indicate class for entire list
-	@ # - sed substitutions control inline class
-	@ # - sed substitutions remove markdown default of <code> automatically nested in <pre>
 	@ echo '<section>' >> $@
+	@ # cut the non-standard-markdown Title: and Nav: lines
 	@ sed '1,2d' $< |\
+		# Create table of contents \
+		awk ' \
+			$$0 == "TableOfContents" { \
+				while ((getline < "$<") > 0) { \
+					if (!/^#.*{id=/) { \
+						continue \
+					} \
+					split($$0, a, "} "); \
+					title = a[2]; \
+					split($$0, a, "\""); \
+					link = a[2]; \
+					indent = substr($$0, 3); \
+					gsub(/[^#]/, "", indent); \
+					gsub(/#/, "\t", indent); \
+					printf "%s- [%s](#%s)\n", indent, title, link \
+				} \
+				next \
+			} \
+			1 \
+		' |\
+		# Convert markdown to html \
 		markdown |\
+		# Create tables \
 		awk '\
 			/^<p>[|]/ { \
 				in_table = 1; \
@@ -107,7 +146,7 @@ html/%.html: markdown/%.md markdown/header markdown/footer
 				print "<tr>"; \
 				len = split($$0, a, / *[|] */); \
 				for (i = 2; i < len; i++) { \
-					print "<td>"a[i]"</td>" \
+					print "<td align=\"center\">"a[i]"</td>" \
 				} \
 				print "</tr>"; \
 				next \
@@ -125,6 +164,7 @@ html/%.html: markdown/%.md markdown/header markdown/footer
 				} \
 			} \
 		' |\
+		# First unordered-list entry indicates class for entire list \
 		awk -F"[{}]" ' \
 			$$0 == "<ul>" { \
 				getline; \
@@ -137,11 +177,15 @@ html/%.html: markdown/%.md markdown/header markdown/footer
 			} \
 			1 \
 		' |\
+		# Substitutions for inline classes \
+		# Remove markdown default of <code> automatically nested in <pre> \
 		sed \
 			-e 's,~(,<code class="changethis">,g' \
 			-e 's,~),</code>,g' \
 			-e 's,~{,<code class="keyword">,g' \
 			-e 's,~},</code>,g' \
+			-e 's,~#,<span class="comment">,g' \
+			-e 's,~+,<span class="distro">,g' \
 			-e 's,~%,<span class="okay">,g' \
 			-e 's,~^,<span class="warn">,g' \
 			-e 's,~!,<span class="alert">,g' \

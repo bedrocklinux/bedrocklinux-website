@@ -4,6 +4,18 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.14-released"} Bedrock Linux 0.7.14 released
+<small>2020-04-14</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add ppc and ppc64 support
+- Add Package Manager Manager ("pmm")
+- Add code to recover from bad bedrock.conf timezone values
+- Add sanity check against GRUB+BTRFS/ZFS issue
+- Fix Path and TryExec handling in crossfs ini filter
+- Fix brl-fetch centos, kiss, void, void-musl, and debian sid
+
 ## {id="0.7.13-released"} Bedrock Linux 0.7.13 released
 <small>2020-01-06</small>
 

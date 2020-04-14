@@ -3,84 +3,83 @@ Nav: home.nav
 
 # Introduction to Bedrock Linux
 
-- [Introduction](#introduction)
-	- [What Bedrock Linux Does](#what_bedrock_does)
-	- [Additional functionality](#additional_functionality)
-- [Real-World Examples of where Bedrock Linux Shines](#real_world)
-- [Concepts and Terminology](#concepts)
+TableOfContents
 
-## {id="introduction"} Introduction
+## {id="purpose"} Bedrock Linux's Purpose
 
-Linux distributions take software available and, in some sense or another,
-prepare it for end-users.  Some distros compile the software and provide binary
-packages while others distribute the code in a way which ensures it is easy to
-automate compilation.  These services are extremely useful; it would not be
-practical for everyone to compile and package all of their software directly
-from upstream all of the time.
+Linux distributions take software and, in some sense or another, make it
+accessible to end-users.  Some distros provide binary packages while others
+distribute code in a way which ensures it is easy to automate compilation.
+These services are extremely useful as it would not be practical for everyone
+to compile and package all of their software directly from upstream all of the
+time.
 
-However, the various groups doing this packaging work do so with limited focus
-on having their packages directly interoperate with those from other groups.
-End-users are forced to choose between the available sets of packages.  Do I
-want something stable from a CentOS or Debian?  Do I want something
-cutting-edge from Arch?  Ubuntu is quite popular and has a lot of software
-tested against its libraries - maybe that would be best.  Gentoo's ability to
-automate compiling packages with configured settings is also quite desirable.
-The list goes on.  Typically, any Linux user would have to chose *one* of the
-available distros and either get all of their packages from that distribution
-or fall back to taking the distribution developer's job of preparing software
-for their environment.
+The various groups doing this packaging work do so without considering
+interoperation with other groups.  This forces end users to choose one distro
+ecosystem and forgo features provided by others.  Do I want something stable
+from a ~+CentOS~x or ~+Debian~x?  Do I want something cutting-edge from
+~+Arch~x?  ~+Ubuntu~x is quite popular and has a lot of desktop software tested
+against its libraries.  ~+Gentoo~x's ability to automate compiling packages
+with configured settings is also quite desirable.
 
-This seems silly - if someone already packaged the specific version of the
-specific package desired, why not just use that?  Sadly, there are various
-technical reasons one cannot directly install software from one release of one
-distribution onto another release of another distribution.  Bedrock Linux
-provides technical means to work around these problems.  On a Bedrock Linux
-system an end user should be able to install most of the software available
-from most of the other traditional Linux distributions so that it works just as
-well as one would have expected had the package been intended for the
-distribution.  Bedrock Linux should allow its end-users to get most of his or
-her system from something rock solid such as CentOS or Debian, while still
-retaining access to cutting-edge packages from Arch and its AUR, library
-compatibility with Ubuntu, the ability to leverage Gentoo's portage, and so
-forth, all at the same time on the same distribution.
+Given someone already expended the effort to package the specific version of
+the specific piece of software a given user desires for one distro, the
+inability to use it with software from another distro seems wasteful.
 
-## {id="real\_world"} Real-World Examples of Bedrock Linux
+~+Bedrock Linux~x provides a technical means to work around cross-distro
+compatibility limitations and, in many instances, resolve this limitation.
 
-These are all examples of real-world situations which benefited from Bedrock
-Linux.
+## {id="itself"} Bedrock Linux itself
 
-- With only a few minutes to go before presenting Compiz at a local Free/Open
-  Source Software enthusiast club, the presenter found Debian's video drivers
-  for his laptop were overly old to support the 3D acceleration needed for
-  Compiz. While Arch Linux's X11 video drivers were new enough, its Compiz
-  package did not work at the time. Bedrock Linux allowed for a quick and easy
-  solution: use Arch Linux's X11 with Debian's Compiz.
-- When Quake Live's Linux release came out, there was a bug which only seemed
-  to manifest itself against Debian's X11. The development team most likely
-  tested against Ubuntu, and so the situation was resolved by using Ubuntu's
-  X11 (and only that from Ubuntu, with the majority of the rest of the system
-  remained Debian). Just as Debian was too old for Quake Live at its release,
-  Arch Linux users later faced the flip side of that coin: their cutting-edge
-  libraries were causing issues with Quake Live. One way this was resolved was
-  to play with `LD_PRELOAD`. Bedrock Linux users, however, could continue using
-  Arch Linux's cutting-edge packages and use Quake Live without having to touch
-  `LD_PRELOAD`.
-- Arch Linux is one of the few Linux distributions with the mathematics program
-  Sage available in its repository. However, for a period of time Sage was
-  dropped from the repository due to compatibility issues with Arch Linux. Sage
-  is only pre-packaged for and tested against a handful of Linux distributions,
-  one of which is Ubuntu. Thus, when Sage mathematics was dropped for a period
-  of time from the Arch Linux repository, all Bedrock Linux users had to do was
-  to download it for Ubuntu. When it was returned, it was trivial to again get
-  it from the Arch Linux repository. Arch Linux temporarily lost access to
-  Sage, and Ubuntu users never benefited having Sage in a repository.
-- When developing Bedrock Linux 0.7 Poki, `libfuse` required `meson` to build.
-  Debian Stable's `meson` was too old, and Arch's was to new.  Debian Testing
-  had a goldilocks version which worked.
+~+Bedrock Linux~x is a _meta_ Linux distribution.  Similar in spirit to ~+Linux
+From Scratch~x or ~+Gentoo~x, it distributes a means to install a Linux based
+operating system even if it does not distribute most of the resulting binary
+files directly.
 
-## {id="concepts"} Concepts and Terminology
+The files distributed by the ~+Bedrock Linux~x project are primarily glue for
+components from other Linux distributions.  Some, such as the hijack installer
+and `strat` command, are user facing.  Others, such as `crossfs`, operate
+largely behind the scenes to make as much as possible "just work."  ~+Bedrock~x
+also provides some quality of life utilities for managing a system composed of
+components from multiple other distros such as `brl fetch` and `pmm`.
 
-Bedrock Linux is still in heavy development, and specific underlying concepts
-and terminology change from release to release.  At the time of writing,
-documentation for the current release (0.7 Poki) corresponding to
-underlying concepts and terminology can be found [here](0.7/concepts-and-terminology.html).
+A ~+Bedrock~x system is composed of ~{strata~}, which are collections of
+interrelated files.  These are often one-to-one with traditional Linux
+distribution installs: one may have an ~+Arch~x ~{stratum~}, a ~+Debian~x
+~{stratum~}, a ~+Gentoo~x ~{stratum~}, etc.  ~+Bedrock~x's "glue" carefully
+integrates these so that they can interact with each other without tripping on
+distro compatibility concerns.
+
+## {id="integrated-features"} Integrated features
+
+~+Bedrock~x strives to make as many features from other distros available and
+work across ~{stratum~} boundaries as possible.  A non-comprehensive list of
+what is available at the time of writing includes:
+
+- Command line commands
+- Graphical applications
+- `bash`, `zsh`, and `fish` tab completion
+- Linux kernel firmware detection
+- Xorg fonts
+- Man and info pages
+- Init systems
+- Bootloaders
+
+## {id="examples"} Example use cases
+
+~+Bedrock~x's flexibility opens so many options it can difficult to provide a
+comprehensive, concrete picture of how it may be useful to potential users.
+Some reported real-world use cases include:
+
+- Access to both "stable" features from distros such as ~+Debian~x and
+  ~+CentOS~x
+- Access to features from cutting edge from ~+Arch~x or ~+Void~x.
+- A mix of source based packages, such as from ~+Gentoo~x, with binary
+  packages.
+- Access to ~+Arch~x's AUR.
+- Access to distros where specific software is likely tested and supported,
+  such as desktop software aimed at ~+Ubuntu~x or business software aimed at
+  ~+CentOS~x.
+- Access to distros which support specific hardware particularly well, such as
+  ~+Raspbian~x.
+- Access to a desired init system.

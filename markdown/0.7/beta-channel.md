@@ -1,8 +1,7 @@
 Title: Bedrock Linux 0.7 Poki Beta Channel
 Nav: poki.nav
 
-Bedrock Linux 0.7 Poki Beta Channel
-===================================
+# Bedrock Linux 0.7 Poki Beta Channel
 
 Bedrock Linux offers a beta channel for those who are interested in testing
 upcoming updates and willing to bear the associated risk.
@@ -12,14 +11,13 @@ After some time it will be made available in the beta channel, then after any
 newly discovered issues are resolved, filtered down to the stable channel.
 
 Beta releases are not generally announced.  To stay on top of such releases,
-either watch the beta release document:
+either watch the beta release file:
 
 <https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7beta/releases>
 
 or, if you have configured your system to watch for beta updates, simply run
 
-- {class="rcmd"}
-- brl update
+	{class="rcmd"} brl update
 
 ## {id="using-beta"} Using the beta channel
 
@@ -31,7 +29,7 @@ and beta 0.7 Poki releases are at:
 
 <https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7beta/releases>
 
-If you are interested in beta releases, it is best to configure your system to watch both so that you also receive any stable updates which supersede beta ones.
+If you are interested in beta releases, configure your system to watch both so that you also receive any stable updates which supersede beta ones.
 
 In your `/bedrock/etc/bedrock.conf` you should find a `mirrors` field under either `[miscellaneous]` or `[brl-update]`.  To configure your system to watch both mirrors, set the field to them, comma separated:
 
@@ -45,7 +43,7 @@ To revert to the stable channel, first first change the `mirrors` field under ei
 
 `mirrors = https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases`
 
-This will only restrict future updates, but will not revert the existing install to a previous one.  To revert to a stable release, download the latest stable release from
+This will restrict future updates.  However, it will not alone change the existing install.  To revert to a stable release, download the latest stable release from
 
 <https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases>
 
@@ -61,4 +59,4 @@ If your system is broken to the point where this does not work, you can run the 
 
 However, this bypasses the cryptographic signature verification `brl update` would have performed, and thus should be avoided if `brl update` is available.
 
-Upgrading to a newer release will indicate whether or not a reboot is required.  However, downgrading will not.  It may be wise to reboot following a downgrade just in case.
+Upgrading to a newer release will indicate whether or not a reboot is required.  Downgrading will not.  It may be wise to reboot following a downgrade just in case.

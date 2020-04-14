@@ -1,21 +1,27 @@
 - [Home](index.html)
 
-Main Nav
+Introductory Material
 
 - [Introduction](introduction.html)
 - [FAQ](faq.html)
-- [Installation instructions](0.7/installation-instructions.html)
-- [Current release (0.7)](0.7/index.html)
-- [All releases](releases.html)
-- [Possible future work](future.html)
-- [Contributing](contributing.html)
-- [News Archive](news.html)
-- [Media](media/)
 
-External Links
+Current Release (0.7 Poki)
+
+- [Release overview](0.7/index.html)
+- [Installation instructions](0.7/installation-instructions.html)
+- [Basic usage instructions](0.7/basic-usage.html)
+
+Miscellaneous
+
+- [News Archive](news.html)
+- [Past releases](releases.html)
+- [Contributing](contributing.html)
+- [Tipping](tipping.html)
+
+Community
 
 - [IRC: #bedrock on freenode](https://webchat.freenode.net/?channels=bedrock)
-- [forum](http://www.linuxquestions.org/questions/bedrock-linux-118/)
-- [reddit.com/r/bedrocklinux](http://reddit.com/r/bedrocklinux)
-- [Git repo for userland](https://github.com/bedrocklinux/bedrocklinux-userland)
-- [Git repo for website](https://github.com/bedrocklinux/bedrocklinux-website)
+- [LQ forum](http://www.linuxquestions.org/questions/bedrock-linux-118/)
+- [Reddit](http://reddit.com/r/bedrocklinux)
+- [Userland Github](https://github.com/bedrocklinux/bedrocklinux-userland)
+- [Website Github](https://github.com/bedrocklinux/bedrocklinux-website)

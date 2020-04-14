@@ -1,28 +1,37 @@
 Title: Bedrock Linux 0.7 Poki Basic Usage
 Nav: poki.nav
 
-Bedrock Linux 0.7 Poki Basic Usage
-==================================
+# Bedrock Linux 0.7 Poki Basic Usage
 
-This is the minimum Bedrock Linux-specific background required to manage a
-Bedrock Linux system.
+This page will introduce you to the minimum ~+Bedrock Linux~x-specific
+background required to utilize and manage a ~+Bedrock~x system.
+
+An interactive version of this content is available on ~+Bedrock~x systems via
+the `brl tutorial basics` command.
+
+TableOfContents
 
 ## {id="strata"} Strata
 
-A Bedrock Linux system is composed of ~{strata~}, which are collections of
-interrelated files.  These are often one-to-one with traditional Linux
-distribution installs: one may have an Arch ~{stratum~}, a Debian ~{stratum~}, a Gentoo
-~{stratum~}, etc.  Bedrock integrates these ~{strata~} together creating a single,
-largely cohesive system.
+A ~+Bedrock~x system is composed of ~{strata~}, which are collections of
+interrelated files and processes.  These typically correspond to Linux distro
+installs: one may have a ~+Debian~x ~{stratum~}, an ~+Arch~x ~{stratum~}, etc.
+~+Bedrock~x integrates these into a single, largely cohesive system.
 
 To list the currently installed (and enabled) ~{strata~}, run:
 
 	{class="cmd"} brl list
 
-A fresh install will have two ~{strata~}: Bedrock itself and the initial install.
+A fresh install will have two ~{strata~}:
+
+- `bedrock`, which is the stratum providing ~+Bedrock~x-specific functionality.
+- The ~{hijacked~} stratum, which provides the files corresponding to the
+  ~{hijacked~} install.
+
+
 This, alone, is of little more immediate value than just the initial install.
-To benefit from Bedrock more ~{strata~} are needed.  To list distros Bedrock knows
-how to acquire as ~{strata~}, run:
+To benefit from ~+Bedrock~x more ~{strata~} are needed.  To list distros
+~+Bedrock~x knows how to acquire as ~{strata~}, run:
 
 	{class="cmd"} brl fetch --list
 
@@ -33,128 +42,349 @@ Then to acquire new ~{strata~}, run (as root):
 This may fail if it auto-detects a bad mirror.  If so, manually find a good
 mirror for the distro and provide it to `brl fetch` with the `--mirror` flag.
 
-You may remove strata with
+## {id="cross-stratum-commands"} Cross Stratum Commands
 
-	{class="rcmd"} brl remove ~(strata~)
+Many features from ~{strata~} should work just as they would in their normal
+environments.  For example, if you `brl fetch`'d ~+Alpine~x and ~+Void~x
+strata, you can run both ~+Alpine~x's package manager:
 
-## {id="cross-stratum-features"} Cross-stratum features
+	{class="cmd"} apk --help
 
-Once `brl fetch` has completed you may run commands from the new ~{strata~}.  For
-example, the following series of commands make sense on a Bedrock system:
+and ~+Void~x's package manager:
 
-- {class="cmd"}
-- sudo brl fetch arch debian
-- sudo pacman -S mupdf && sudo apt install texlive
-- pdflatex file.tex && mupdf file.pdf
+	{class="cmd"} xbps-install --help
 
-Bedrock's integration is not limited to the command line commands.  Other
-features which work across ~{strata~} include:
+These can be used to install packages from each stratum such as ~+Alpine~x's `jq` and
+~+Void~x's `jo`:
 
-- Graphical application menus or launchers will automatically pick up
-  applications across ~{strata.~}  For example, OpenSUSE's KDE will offer
-  launching Gentoo's `vlc`.
-- Shell tab completion.  For example, Gentoo's `zsh` will tab complete Arch's
-  `pacman`.
-- The Linux kernel will detect firmware across ~{strata~}.
-- Xorg fonts work across ~{strata~}.  For example, Arch's `firefox` will detect
-  Gentoo's terminus font.
-- Various graphical theming information work across ~{strata~}.
-- Man and info pages work across ~{strata~}.  For example, Arch's `man` will
-  display Void's `xbps-install` man page.
+- {class="rcmd"}
+- apk add jq
+- xbps-install -y jo
 
-## {id="strat-command"} The strat command
-
-If multiple ~{strata~} provide an executable Bedrock will select one by default in
-a given context.  If there are hints it can pick up on for which one to use, it
-is *typically* correct.  `brl which` can be used to query which ~{stratum~}'s
-executable Bedrock will select in a given context.
-
-Some examples:
+The commands can interact just as they would were they from the same distro.
+This command works just as it would if `jo` and `jq` came from the same distro:
 
 - {class="cmd"}
-- brl which reboot # void
-- brl which pacman # arch
-- brl which ls # debian
+- jo "distro=bedrock" | jq ".distro"
 
-If you would like a specific instance, you may specify it with the `strat` command:
+## {id="other-cross-stratum-features"} Other Cross Stratum Features
 
-- {class="cmd"}
-- sudo brl fetch arch debian ubuntu
-- # only one pacman, and so this is unambiguous
-- sudo pacman -S vlc
-- # multiple apt's - bedrock will pick one by default
-- sudo apt install vlc
-- # specify debian's apt is desired
-- sudo strat debian apt install vlc
-- # specify ubuntu's apt is desired
-- sudo strat ubuntu apt install vlc
-- # multiple vlc's - bedrock will pick one by default
-- vlc /path/to/video
-- # specify arch's vlc
-- strat arch vlc /path/to/movie
-- # specify debian's vlc
-- strat debian vlc /path/to/video
-- # specify ubuntu's vlc
-- strat ubuntu vlc /path/to/video
+~+Bedrock~x integrates more than just terminal commands.  It strives to make as
+much as it can work transparently and cohesively across ~{strata~}, including:
 
-## {id="file-path-types"} Local, global, and cross file paths
+- Graphical application menu contents
+- Shell tab completion
+- Kernel firmware detection
+- Xorg fonts
+- Some themes
 
-To avoid conflicts, processes from one ~{stratum~} may see its own
-~{stratum~}'s instance of a given file.  For example, Debian's `apt` and
-Ubuntu's `apt` must both see their own instance of `/etc/apt/sources.list`.
-Such file paths are referred to as ~{local~} paths.
+Lets try another example: `man` pages.  We can get ~+Alpine~x's `jq` `man`
+page and ~+Void~x's `man` executable:
 
-Other files must be shared across ~{strata~} to ensure they work together, and
-thus all ~{strata~} see the same file.  For example, `/home` must be shared.
-Such shared files are referred to as ~{global~}.
+- {class="rcmd"}
+- apk add jq-doc
+- xbps-install -y man
 
-Which ~{stratum~} provides a file in a given context can be queried by `brl which`:
+Then have ~+Void~x's `man` read ~+Alpinex's `jq` documentation:
 
 - {class="cmd"}
-- # which stratum provides ~/.vimrc?
-- brl which ~/.vimrc # global
-- # which stratum provides /etc/lsb-release?
-- brl which /etc/lsb-release # local to gentoo
+- man jq
 
-Finally, ~{cross~} paths are used to allow processes from one ~{stratum~} to
-see ~{local~} files from another.  These are available through the
-`/bedrock/strata` and `/bedrock/cross` directories.
+which, again, works as it would had the `man` executable and `jq` man page come
+from the same distribution.
 
-If you would like to specify which ~{stratum~}'s ~{local~} file to read or write, prefix
-`/bedrock/strata/~(stratum~)/` to its path.
+## {id="brl-which"} brl which
+
+On a ~+Bedrock~x system, every file and every process is associated with some
+~{stratum~}.  The `brl which` command can be used to query ~+Bedrock~x for this
+association.
+
+Running
 
 - {class="cmd"}
-- brl which /etc/lsb-release # local to gentoo
-- brl which /bedrock/strata/debian/etc/apt/sources.list # cross to debian
-- brl which /bedrock/strata/ubuntu/etc/apt/sources.list # cross to ubuntu
-- # edit debian's sources.list with ubuntu's vi
-- sudo strat ubuntu vi /bedrock/strata/debian/etc/apt/sources.list
+- brl which apk
+- brl which xbps-install
+
+would indicate the ~+Alpine~x and ~+Void~x ~{strata~}, respectively.
+
+What about commands that multiple ~{strata~}, such as both ~+Alpine~x _and_
+~+Void~x, provide?  For example, `ls`:
+
+	{class="cmd"} brl which ls
+
+This will indicate one ~{stratum~}'s instance.  This is the one which will be
+run if `ls` is run in the given context.  How it picks this ~{stratum~} will be
+described further on.
+
+`brl which` can also be used for Process IDs.  To see which ~{stratum~}
+provides the running init system, one could run:
+
+	{class="cmd"} brl which 1
+
+File paths work as well:
+
+	{class="cmd"} brl which /
+
+indicates which ~{stratum~}'s root directory listing will be provided by a `ls
+/` in the given context.  How this is chosen, like the `ls` example above,
+described below.
+
+One last hint towards upcoming content: querying for the ~+Bedrock~x
+configuration file ~{stratum~}:
+
+	{class="cmd"} brl which /bedrock/etc/bedrock.conf
+
+prints `global`, which is not a ~{stratum~} name.
+
+## {id="local-file-paths"} Local File Paths
+
+To avoid conflicts, processes from one ~{stratum~} may see their own
+~{stratum~}'s instance of a given file (or lack of file) at a given file path.
+
+You can query ~+Bedrock~x for the ~{stratum~} associated with your shell:
+
+	{class="cmd"} brl which
+
+This ~{stratum~} will match queries the root directory example in the previous
+section:
+
+	{class="cmd"} brl which /
+
+If your shell ~{stratum~} has a `/etc/os-release` file, it
+will probably correspond to your shell ~{stratum~} distro:
+
+	{class="cmd"} cat /etc/os-release
+
+This is needed to avoid conflicts.  For example, ~+Debian~x's `apt` needs to
+see ~+Debian~x mirrors at `/etc/apt/sources.list` and ~{Ubuntu~}'s `apt` needs
+to see ~+Ubuntu~x's mirrors at the same path.  If they saw the same contents in
+`sources.list` these two programs would conflict with each other.
+
+In ~+Bedrock~x terminology, these file paths are described as ~{local~}.
+
+## {id="global-file-paths"} Global File Paths
+
+If all paths were ~{local~}, ~{strata~} would be unable to interact with each
+other.  For ~{strata~} to interact, there are also ~{global~} paths: file paths
+where every ~{stratum~} sees the same content.  Under-the-hood, these are
+`bedrock` ~{stratum~} files which are being shared with other ~{strata~}.
+
+For example, all ~{strata~} see the same contents in `/run` to communicate over
+common sockets:
+
+	{class="cmd"} brl which /run
+
+Directories like `/home` and `/tmp` are also ~{global~}.  You can have software
+from one ~{stratum~}, like ~+Alpine~x's `jq`, read files created by another
+~{stratum~}, like ~+Void~x's `jo`, provided the file is in a ~{global~} location:
+
+- {class="cmd"}
+- brl which /tmp
+- jo "path=global" > /tmp/tut
+- jq ".path" < /tmp/tut
+
+## {id="cross-file-paths"} Cross File Paths
+
+Sometimes processes from one ~{stratum~} need to access ~{local~} files from
+another.  This is achieved via ~{cross~} file paths.
+
+If you want to read or write to a ~{local~} file specific to a given ~{stratum~},
+prefix `/bedrock/strata/~(stratum~)` to the file path to ~{cross~} to that
+~{stratum~}.
+
+A previous example read the ~{local~} `/etc/os-release`, whose output was
+dependent on which process read it.  To read specifically `bedrock`'s
+`/etc/os-release`, run:
+
+	{class="cmd"} cat /bedrock/strata/bedrock/etc/os-release
+
+Similarly, a `gentoo` ~{stratum~}'s `/etc/os-release` can be read via:
+
+	{class="cmd"} cat /bedrock/strata/gentoo/etc/os-release
+
+## {id="strat-command"} The strat Command
+
+`/bedrock/strata/` is only suitable for reading and writing ~{cross~} files.  To
+execute a program from a specific ~{stratum~}, prefix `strat ~(stratum~)`.
+
+For example, if you have both a `debian` ~{stratum~} with an `apt` command and
+an `ubuntu` ~{stratum~} with an `apt` command, you could run:
+
+	{class="cmd} strat debian apt
+
+to run `debian`'s and
+
+	{class="cmd} strat ubuntu apt
+
+to run `ubuntu`'s.
+
+If you do not specify the desired ~{stratum~} with `strat`, ~+Bedrock~x will
+try to figure one out from context:
+
+- If ~+Bedrock~x is configured to ensure one ~{stratum~} always provides the
+given command, it will do so.  For example, init related commands should always
+correspond to the ~{stratum~} providing PID 1.  This is called ~{pinning~}.
+- If the command is not ~{pinned~} to a given ~{stratum~} but is available
+~{locally~}, ~+Bedrock~x will utilize the ~{local~} one.  This is to ensure
+distro-specific dependency quirks are met.
+- If the command is not ~{pinned~} and not available ~{locally~}, ~+Bedrock~x
+assumes the specific build of the command does not matter.  In these cases
+~+Bedrock~x will search other ~{strata~} and supply the first instance of the
+command it finds.
+
+The first bullet point above is how ~+Bedrock~x ensures the `reboot` comes from
+the `init` ~{stratum~} and why these two commands usually provide the same
+output:
+
+- {class="cmd"}
+- brl which reboot
+- brl which 1
+
+The second bullet point above is why the `ls` you get if you do not specify
+one with `strat` is probably from the same ~{stratum~} providing your shell and
+consequently why these two commands provide the same output:
+
+- {class="cmd"}
+- brl which ls
+- brl which
+
+Finally, the third rule above is why commands like `apk` and `xbps-install`
+work despite being from different ~{strata~}:
+
+- {class="cmd"}
+- brl which apk
+- brl which xbps-install
 
 ## {id="restriction"} Restriction
 
-Occasionally, software may become confused by Bedrock's environment.   Most
-notably this occurs with compilation and build tools when scanning the
-environment for dependencies and finding them from different distributions.
-For these situations, `strat`'s `-r` flag should be used to ~{restrict~} the
-command to the given ~{stratum~}.  For example:
+Occasionally, software may become confused by ~+Bedrock~x's environment.  Most
+notably this occurs when build tools scan the environment for dependencies and
+find them from different distributions.  To handle this situation, `strat`'s
+`-r` flag may be used to ~{restrict~} the command from seeing
+~{cross~}-~{stratum~} hooks.
 
-- {class="cmd"}
-- # restrict build system to Debian
-- strat -r debian ./configure && strat -r debian make
+For example, normally ~+Void~x shell can see an ~+Alpine~x ~{stratum~}'s `apk`.
+Provided the ~{strata~} are available, this command can be expected to work:
 
-In general, if software is not acting as expected, try ~{restricting~} it with
-`strat -r`.
+	{class="cmd"} strat void sh -c 'apk --help'
 
-This occurs sufficiently often with Arch's `makepkg` that Bedrock is configured
-to run `makepkg` through `strat -r` automatically under-the-hood.  To bypass
-this, call it with `strat` with the `-u` flag.
+But if you ~{restrict~} it this command will usually fail:
 
-- {class="cmd"}
-- # unrestrict makepkg
-- strat -u arch makepkg
+	{class="cmd"} strat -r void sh -c 'apk --help'
 
-When ~{restricted~}, build tools may then complain about missing dependencies, even if they're provided by other strata.  If so, install the dependencies in the build tool's stratum, just as one would do on the native distro.
+~+Bedrock~x will automatically ~{restrict~} some commands that it knows are
+related to compiling, such as ~+Arch~x's `makepkg`.  If this is a problem for
+any reason, you can un-~{restrict~} with `strat -u`.
 
-This is enough information for most users to begin exploring and experimenting with Bedrock Linux.  Consider running `brl --help` to being your exploration.  If you would like to configure anything, such as the init selection menu timeout, read through `/bedrock/etc/bedrock.conf`.
+In general, if something acts oddly under ~+Bedrock~x, the first thing you
+should try is to ~{restrict~} it.  This is especially true when it comes to
+compiling software.
 
-If you would like to learn Bedrock more deeply, consider continuing to [concept and terminology overview](concepts-and-terminology.html) which expands on the details described here.  If you run into issues, read through [debugging](debugging.html), [known issues](known-issues.html), and [compatibilty and work arounds](compatibility-and-workarounds.html).
+## {id="stratum-states"} Stratum states
+
+It is sometimes useful to have a ~{stratum~}'s files on disk without them being
+integrated into the rest of the system.  To do this, disable the ~{stratum~}
+with the `brl disable` command.  For example:
+
+	{class="rcmd"} brl disable void
+
+This will stop all of the ~{stratum~}'s running processes and block the ability
+to launch new ones.  This command will now fail:
+
+	{class="cmd"} strat void xbps-install --help
+
+The ~{stratum~} may be re-enabled:
+
+	{class="rcmd"} brl enable void
+
+after which this command will again work:
+
+	{class="cmd"} strat tut-void xbps-install --help
+
+## {id="updating"} Updating
+
+~{Strata~} are each responsible for updating themselves.  To update an ~+Alpine~x
+~{stratum~} we can tell its package manager to update:
+
+	{class="rcmd"} apk update && apk upgrade
+
+and to update a ~+Void~x ~{stratum~} we can similarly instruct its package
+manager:
+
+	{class="rcmd"} xbps-install -Syu
+
+~+Bedrock~x's ~{stratum~} can be updated via `brl update`:
+
+	{class="rcmd"} brl update
+
+## {id="removing-strata"} Removing Strata
+
+As a protective measure, ~{strata~} may not be removed while ~{enabled~}.  If you
+wish to remove a ~{stratum~}, first ~{disable~} it.
+
+- {class="rcmd"}
+- brl disable alpine
+- brl remove alpine
+
+If you know the target ~{stratum~} is ~{enabled~}, `brl remove` takes a `-d`
+flag to ~{disable~} prior to removing:
+
+- {class="rcmd"}
+- brl remove -d void
+
+## {id="special-strata"} Special strata.
+
+The ~{stratum~} currently providing PID 1 (the init) may not be ~{disabled~}, as the
+Linux kernel does not respond well to PID 1 dying.  If
+
+	{class="cmd"} brl which 1
+
+outputs `void`, this command will fail:
+
+	{class="rcmd"} brl disable void
+
+If you wish to remove the init-providing ~{stratum~}, first reboot and select
+another ~{stratum~} to provide your init for the given session.
+
+The `bedrock` ~{stratum~} glues the entire system together.  It is the only
+stratum which may not be removed.
+
+There is nothing particularly special about the ~{stratum~} created by
+hijacking another Linux install.  You are free to remove it, should you wish to
+do so.  Just make sure to install anything essential the ~{stratum~} is
+providing, such as a bootloader, kernel, or `sudo`, in another ~{stratum~}.
+
+## {id="manually-adding-strata"} Manually Adding Strata
+
+If you would like to make a ~{stratum~} from some distro that `brl fetch` does not
+support, simply:
+
+- Get that distro's files somehow, such as installing them in a VM and mounting
+the VM image.
+- Copy them into `/bedrock/strata/~(new-stratum-name~)`.  Be careful to preserve
+permissions and symbolic links!
+- Run `brl show ~(new-stratum-name~)` to register the new ~{stratum~} with ~+Bedrock~x.
+- Run `brl enable ~(new-stratum-name~)` to begin to use it.
+
+## {id="bedrock.conf"} bedrock.conf
+
+All ~+Bedrock~x configuration is placed in a single file,
+`/bedrock/etc/bedrock`.conf.  If it seems like something ~+Bedrock~x does should
+be configurable, look in there.  After making changes to `bedrock.conf` run
+`brl apply` to ensure they take effect.
+
+## {id="brl"} brl
+
+Most operations used to manage ~+Bedrock~x can be found in the `brl` command.
+This includes both those discussed earlier on this page as well as some
+which were skipped for brevity.
+
+Consider exploring `brl`:
+
+	{class="cmd"} brl --help
+
+going through provided tutorials:
+
+	{class="cmd"} brl tutorial --help
+
+or reading through `/bedrock/etc/bedrock.conf`.
