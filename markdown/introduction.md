@@ -17,7 +17,7 @@ time.
 The various groups doing this packaging work do so without considering
 interoperation with other groups.  This forces end users to choose one distro
 ecosystem and forgo features provided by others.  Do I want something stable
-from a ~+CentOS~x or ~+Debian~x?  Do I want something cutting-edge from
+from ~+CentOS~x or ~+Debian~x?  Do I want something cutting-edge from
 ~+Arch~x?  ~+Ubuntu~x is quite popular and has a lot of desktop software tested
 against its libraries.  ~+Gentoo~x's ability to automate compiling packages
 with configured settings is also quite desirable.
