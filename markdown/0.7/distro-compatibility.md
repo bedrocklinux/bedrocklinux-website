@@ -3,35 +3,39 @@ Nav: poki.nav
 
 # Bedrock Linux 0.7 Poki Distro Compatibility
 
-| Linux Distro     | Community Usage/Reports | Known Issues | Fetch Support  | Maintainer |
-| ~+Alpine Linux   | ~^Low                   | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Arch Linux     | ~%Very High             | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Artix Linux    | ~!Very Low              | ~%N/A        | ~^Unmaintained | ~!N/A      |
-| ~+CentOS         | ~!Very Low              | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Clear Linux    | ~!Very Low              | ~!Many issues [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained | ~!N/A |
-| ~+CRUX           | ~!None                  | ~!BSD-style SysV init [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
-| ~+Debian         | ~%Very High             | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Devuan         | ~^Low                   | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Elementary OS  | ~!Very Low              | ~%N/A        | ~!No           | ~!N/A      |
-| ~+Exherbo        | ~^Medium                | ~%N/A        | ~%Yes          | ~%Wulf C. Krueger |
-| ~+Fedora         | ~^Medium                | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Gentoo Linux   | ~%High                  | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+GoboLinux      | ~!None                  | ~%N/A        | ~!No           | ~!N/A      |
-| ~+GuixSD         | ~!None                  | ~%N/A        | ~!No           | ~!N/A      |
-| ~+KISS           | ~!Very Low              | ~%N/A        | ~^Unmaintained | ~!N/A      |
-| ~+Linux Mint     | ~^Low                   | ~%N/A        | ~!No           | ~!N/A      |
-| ~+Manjaro        | ~!Very Low              | ~!pamac/octopi [†](feature-compatibility.html#pamac) | ~^Unmaintained | ~!N/A |
-| ~+MX Linux       | ~!None                  | ~!systemd-shim [†](feature-compatibility.html#systemd-shim) | ~!No | ~!N/A |
-| ~+NixOS          | ~!Very Low              | ~!many [†](#nixos) | ~!No    | ~!N/A      |
-| ~+OpenSUSE       | ~!Very Low              | ~!defaults to grub+btrfs [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No    | ~!N/A      |
-| ~+OpenWRT        | ~!Very Low              | ~%N/A        | ~^Unmaintained | ~!N/A      |
-| ~+Pop!\_OS       | ~^Low                   | ~^hidden init menu [†](#popos) | ~!No           | ~!N/A      |
-| ~+QubesOS        | ~!None                  | ~%N/A        | ~!No           | ~!N/A      |
-| ~+Raspbian       | ~!Medium                | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Slackware      | ~^Low                   | ~!BSD-style SysV init [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
-| ~+Solus          | ~!Very Low              | ~!stateless [†](#solus) | ~^Unmaintained | ~!N/A |
-| ~+Ubuntu         | ~%Very High             | ~%N/A        | ~%Yes          | ~%paradigm |
-| ~+Void Linux     | ~%Very High             | ~%N/A        | ~%Yes          | ~%paradigm |
+The "Community Usage" column is a subjective rating of how heavily the given
+distro is used in ~+Bedrock Linux~x community intended to provide a level of
+confidence in the "Known Issues" column's accuracy and recency.
+
+| Linux Distro     | Community Usage | Known Issues | Fetch Support  | Maintainer |
+| ~+Alpine Linux   | ~^Low           | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Arch Linux     | ~%Very High     | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Artix Linux    | ~!Very Low      | ~%N/A        | ~^Unmaintained | ~!N/A      |
+| ~+CentOS         | ~!Very Low      | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Clear Linux    | ~!Very Low      | ~!Many issues [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained | ~!N/A |
+| ~+CRUX           | ~!None          | ~!BSD-style SysV init [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
+| ~+Debian         | ~%Very High     | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Devuan         | ~^Low           | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Elementary OS  | ~!Very Low      | ~%N/A        | ~!No           | ~!N/A      |
+| ~+Exherbo        | ~^Medium        | ~%N/A        | ~%Yes          | ~%Wulf C. Krueger |
+| ~+Fedora         | ~^Medium        | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Gentoo Linux   | ~%High          | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+GoboLinux      | ~!None          | ~%N/A        | ~!No           | ~!N/A      |
+| ~+GuixSD         | ~!None          | ~%N/A        | ~!No           | ~!N/A      |
+| ~+KISS           | ~!Very Low      | ~%N/A        | ~^Unmaintained | ~!N/A      |
+| ~+Linux Mint     | ~^Low           | ~%N/A        | ~!No           | ~!N/A      |
+| ~+Manjaro        | ~!Very Low      | ~!pamac/octopi [†](feature-compatibility.html#pamac) | ~^Unmaintained | ~!N/A |
+| ~+MX Linux       | ~!None          | ~!systemd-shim [†](feature-compatibility.html#systemd-shim) | ~!No | ~!N/A |
+| ~+NixOS          | ~!Very Low      | ~!many [†](#nixos) | ~!No    | ~!N/A      |
+| ~+OpenSUSE       | ~!Very Low      | ~!defaults to grub+btrfs [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No    | ~!N/A      |
+| ~+OpenWRT        | ~!Very Low      | ~%N/A        | ~^Unmaintained | ~!N/A      |
+| ~+Pop!\_OS       | ~^Low           | ~^hidden init menu [†](#popos) | ~!No           | ~!N/A      |
+| ~+QubesOS        | ~!None          | ~%N/A        | ~!No           | ~!N/A      |
+| ~+Raspbian       | ~!Medium        | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Slackware      | ~^Low           | ~!BSD-style SysV init [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
+| ~+Solus          | ~!Very Low      | ~!stateless [†](#solus) | ~^Unmaintained | ~!N/A |
+| ~+Ubuntu         | ~%Very High     | ~%N/A        | ~%Yes          | ~%paradigm |
+| ~+Void Linux     | ~%Very High     | ~%N/A        | ~%Yes          | ~%paradigm |
 
 ## {id="nixos"} NixOS
 
