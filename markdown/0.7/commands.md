@@ -33,15 +33,15 @@ specific instance, `brl strat
 ~(stratum~)` may be prefixed to the command.  For example:
 
 - {class="rcmd"}
-- brl strat debian apt install vim ~## use Debian's apt
-- brl strat ubuntu apt install vim ~## use Ubuntu's apt
+- brl strat debian apt install vim ~## use Debian's apt~x
+- brl strat ubuntu apt install vim ~## use Ubuntu's apt~x
 
 This workflow is sufficiently common that `strat` is included directly in the
 default `$PATH` and `brl` may be dropped.  Thus, it is more common to run:
 
 - {class="rcmd"}
-- strat debian apt install vim ~## use Debian's apt
-- strat ubuntu apt install vim ~## use Ubuntu's apt
+- strat debian apt install vim ~## use Debian's apt~x
+- strat ubuntu apt install vim ~## use Ubuntu's apt~x
 
 Compilation and build tools may become confused when scanning the environment
 for dependencies and finding them from different distributions.  These tools
@@ -52,13 +52,13 @@ To override ~{Bedrock~}'s ~{restriction~} configuration, `strat` may be called w
 the `-r` flag to indicate the given command should be ~{restricted~}:
 
 - {class="cmd"}
-- ~## restrict build system to Debian
+- ~## restrict build system to Debian~x
 - strat -r debian ./configure && strat -r make
 
 or with the `-u` flag indicating it should not:
 
 - {class="cmd"}
-- ~## unrestrict build system from Arch
+- ~## unrestrict build system from Arch~x
 - strat -u arch makepkg
 
 When ~{restricted~}, build tools may then complain about missing dependencies,
@@ -71,7 +71,7 @@ One may use `brl list` to list all of the ~{strata~} on the system.  For example
 
 - {class="cmd"}
 - sudo brl fetch arch debian gentoo
-- brl list ~## prints bedrock, opensuse (hijacked), arch, debian, and gentoo
+- brl list ~## prints bedrock, opensuse (hijacked), arch, debian, and gentoo~x
 
 By default `brl list` only lists enabled, non-hidden ~{strata~}.  However it
 has various flags to control what is listed:
@@ -99,10 +99,10 @@ has various flags to control what is listed:
 If no flag is provided, `brl which` will guess what type of object the query is about from context.  For example:
 
 - {class="cmd"}
-- brl which ~## no object specified, default to calling process (e.g. a shell)
-- brl which 1 ~## object is a number, probably a PID
-- brl which ~/.vimrc ~## object contains a slash, probably a file path
-- brl which vim ~## no number or slash, probably a $PATH entry
+- brl which ~## no object specified, default to calling process (e.g. a shell)~x
+- brl which 1 ~## object is a number, probably a PID~x
+- brl which ~/.vimrc ~## object contains a slash, probably a file path~x
+- brl which vim ~## no number or slash, probably a $PATH entry~x
 
 If there are concerns `brl which` will guess the wrong type of object, a flag
 may be provided to specify the desired type:
@@ -337,14 +337,14 @@ disallowed.  For example:
 
 - {class="rcmd"}
 - brl alias ubuntu bionic
-- diff /bedrock/strata/{ubuntu,bionic}/etc/os-release ~## no difference, same file
+- diff /bedrock/strata/{ubuntu,bionic}/etc/os-release ~## no difference, same file~x
 
 #### {id="brl-deref"} brl deref
 
 To dereference an ~{alias~}, one may use `brl deref`.  For example:
 
 - {class="rcmd"}
-- brl alias bionic ~## prints ubuntu 
+- brl alias bionic ~## prints ubuntu~x
 
 ### {id="miscellaneous-commands"} Miscellaneous commands
 
@@ -443,17 +443,17 @@ with something like:
 - pacman -Syu
 - xbps-install -Su
 
-Or one may wish to install a rare package and consequently manually searching
+Or one may wish to install a rare package and consequently manually search
 multiple package managers:
 
 - {class="rcmd"}
-- apk search ~## no results
-- strat debian apt search ~## no results
-- strat ubuntu apt search ~## no results
-- dnf search scron ~## no results
-- pacman -Ss scron ~## no results
-- xbps-query scron ~## found it!
-- xbps-install scron ~## install it
+- apk search scron ~## no results~x
+- strat debian apt search scron ~## no results~x
+- strat ubuntu apt search scron ~## no results~x
+- dnf search scron ~## no results~x
+- pacman -Ss scron ~## no results~x
+- xbps-query scron ~## found it!~x
+- xbps-install scron ~## install it~x
 
 ~+Bedrock~x provides an abstraction layer over package managers to ease such
 work flows.  It is ~+Bedrock~x's `P`ackage `M`anager `M`anager, or `pmm`.
@@ -466,18 +466,18 @@ The examples below may need to be adjusted accordingly.
 Rather than the series of commands provided above to upgrade all packages on a system, one may run:
 
 - {class="rcmd"}
-- pmm update && pmm full-upgrade ~## mimicking apt
+- pmm -Syu ~## mimicking pacman~x
 
 Regarding the second example of installing `scron`, one may run:
 
 - {class="rcmd"}
-- pmm -S scron ~## mimicking pacman
+- pmm add scron ~## mimicking apk~x
 
-etc and `pmm` will find and install the highest priority instance the command.
+and `pmm` will find and install the highest priority instance the command.
 
 `pmm` covers a large number of operations and some flags common to multiple
 package managers, including much more functionality than described here.  Once
-its `user_interface` is configured, run `pmm --help` to see a list of available
+its `user-interface` is configured, run `pmm --help` to see a list of available
 flags and operations.
 
 ### {id="pmm-specific-flags"} pmm specific flags
@@ -486,10 +486,14 @@ In addition to flags one may expect from other package managers, `pmm` has sever
 
 #### {id="pmm-every"} pmm --every flag
 
-By default, operations which change package states (e.g. installing a package) operate on the first instance `pmm` finds.  `pmm`'s `--every` flag may be used to indicate all available instances should be operated on.  `strace` does not work across ~{stratum~} boundaries, and thus one may want all ~{strata~} to have a copy:
+By default, operations which change package states (e.g. installing a package)
+operate on the first instance `pmm` finds.  `pmm`'s `--every` flag may be used
+to indicate all available instances should be operated on.  For example,
+cross-stratum `bash` completion requires all strata to have `bash-completion`
+installed, and so one may run:
 
 - {class="rcmd"}
-- pmm-install --every strace ~## mimicking xbps
+- pmm-install --every bash-completion ~## mimicking xbps~x
 
 #### {id="pmm-version-flags"} pmm version flags
 
@@ -507,7 +511,7 @@ Some workflows may have desire version constraints on packages, which `pmm` prov
 For example, to install the newest `abiword` available:
 
 - {class="rcmd"}
-- pmm --newest abiword ~## mimicking portage
+- pmm --newest abiword ~## mimicking portage~x
 
 
 ### {id="pmm-world-file"} pmm world file

@@ -332,7 +332,7 @@ flag to ~{disable~} prior to removing:
 - {class="rcmd"}
 - brl remove -d void
 
-## {id="special-strata"} Special strata.
+## {id="special-strata"} Special strata
 
 The ~{stratum~} currently providing PID 1 (the init) may not be ~{disabled~}, as the
 Linux kernel does not respond well to PID 1 dying.  If
