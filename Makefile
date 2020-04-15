@@ -11,7 +11,7 @@ OBJECTS=$(shell find markdown/ -type f ! -name "header" ! -name "footer" ! -name
 all: check-dependencies symlinks $(OBJECTS)
 
 clean:
-	rm -rf ./html
+	rm -rf ./html/*
 
 check-dependencies:
 	@ command -v markdown >/dev/null 2>&1 || (echo "Missing dependency: markdown" ; false)

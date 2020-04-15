@@ -9,13 +9,13 @@ Nav: poki.nav
 | cross-stratum `zsh` completion     | ~%Mostly Works      | Install `zsh` in all ~{strata~}; some completions fail |
 | cross-stratum applications         | ~^Minor Work-around | [Clear cache to update application menu](#application-launchers) |
 | cross-stratum dbus                 | ~%Just Works        | |
-| cross-stratum desktop environments | ~!Works Manually    | Sometimes works if launched manually.  DM detection does not work. |
+| cross-stratum desktop environments | ~!Major Issues      | [Requires hand-crafted, ~+Bedrock~x-aware configuation.](#desktop-environments) |
 | cross-stratum executables          | ~%Just Works        | |
 | cross-stratum firmware             | ~%Mostly Works      | Kernel will detect firmware across strata, initrd-building software needs investigation |
 | cross-stratum info pages           | ~%Just Works        | |
-| cross-stratum init configuration   | ~!Works Manually    | [Works with hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
+| cross-stratum init configuration   | ~!Major issues      | [Requires hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
 | cross-stratum libraries            | ~!Does Not Work     | Theoretically possible but unsupported due to complexity/messiness concerns |
-| cross-stratum login shells         | ~%Just Works        | [specifying stratum requires special configuration](#login-shells) |
+| cross-stratum login shells         | ~%Just Works        | [Specifying stratum requires special configuration](#login-shells) |
 | cross-stratum man pages            | ~%Just Works        | |
 | cross-stratum themes               | ~%Mostly Works      | Works work themes that support `$XDG_DATA_DIRS` |
 | cross-stratum vt fonts             | ~!Does Not Work     | Needs research |
@@ -77,6 +77,35 @@ For another example, one may make a systemd unit file whose `Exec=` line calls
 If you find hand creating init configuration is intimidating or bothersome,
 consider simply picking one ~{stratum~} to provide your init and get all
 init-related services from that ~{stratum~}.
+
+### {id="desktop-environments"} Desktop Environments
+
+Generally, getting:
+
+- Init system
+- Display Manager
+- Desktop Environment
+
+all from the same ~{stratum~} works as expected, and is the recommended
+workflow for most users.
+
+The wiring between these components does not work automatically register across
+~{stratum~} boundaries.  There are two components to this issue:
+
+- DMs are typically launched by an init system, and DEs often depend on other
+  services launched by an init system.  However, [cross-stratum init
+  configuration also remains an open research problem](#init-configuration).
+- DMs learn about DEs via files in `/usr/share/xsessions/` and only in that
+  location.  Unlike other resources, there does not appear to be a standard way
+  to to extend the list of resource look-up locations.  Consequently, there's
+  no obvious way to add cross-stratum DE registration without risking upsetting
+  a package manager.
+
+It is possible to make cross-stratum desktop environments work if the relevant
+init configuration is made by hand to launch all of the DE's dependencies.
+Whether `/usr/share/xsessions` changes are also needed depends on the specific
+init configuration strategy utilized.  This may be difficult for some users and
+is not broadly recommended.
 
 ### {id="bsd-style-sysv"} BSD Style SysV
 
