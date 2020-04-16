@@ -4,6 +4,15 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.15-released"} Bedrock Linux 0.7.15 released
+<small>2020-04-16</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add pmm to brl-tutorial
+- Fix brl-tutorial typo
+- Fix pmm apt no-cache package availability check
+
 ## {id="0.7.14-released"} Bedrock Linux 0.7.14 released
 <small>2020-04-14</small>
 
