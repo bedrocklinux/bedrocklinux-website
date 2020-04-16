@@ -257,7 +257,7 @@ double-counting package ownership.
 If the package manager you are adding supersedes another package manager,
 indicate so with `supersedes[]`:
 
-`supersedes["~(new-package-manager~)"] = "~(old-package-manager~)"
+`supersedes["~(new-package-manager~)"] = "~(old-package-manager~)"`
 
 ### {id="pmm-new-package-managers-user-interfaces"} user\_interfaces[]
 
