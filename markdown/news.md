@@ -4,6 +4,19 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.16-released"} Bedrock Linux 0.7.16 released
+<small>2020-04-29</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add cross-stratum /etc/crypttab support
+- Add cross-stratum /etc/profile.d/*.sh support
+- Add cross-stratum dkms support
+- Fix brl-fetch fedora, void, void-musl
+- Improve brl-fetch error messages
+- Improve pmm pacman/yay handling to only supersede identical commands
+- Restrict kiss package manager
+
 ## {id="0.7.15-released"} Bedrock Linux 0.7.15 released
 <small>2020-04-16</small>
 

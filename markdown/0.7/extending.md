@@ -271,9 +271,9 @@ The expected format is:
 
 For example:
 
-user_interfaces["apk", "upgrade-packages-full"] = "pmm upgrade"
+`user_interfaces["apk", "upgrade-packages-full"] = "pmm upgrade"`
 
-tells `pmm` that if it is configured to mimics `apk` and sees an input in the
+tells `pmm` that if it is configured to mimic `apk` and sees an input in the
 form `pmm upgrade` the request is to upgrade all packages.
 
 There are two types of interface items for second field:
@@ -299,7 +299,7 @@ contents is expected at that position.  For example:
 
 `user_interfaces["apk", "install-packages"] = "pmm add <pkgs>"`
 
-tells `pmm` that if it is configured to mimics `apk` and sees `pmm add`
+tells `pmm` that if it is configured to mimic `apk` and sees `pmm add`
 followed by at least one more term, the user requested is to install one or
 more packages.
 

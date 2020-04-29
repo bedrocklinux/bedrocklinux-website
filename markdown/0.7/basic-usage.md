@@ -85,7 +85,7 @@ page and ~+Void~x's `man` executable:
 - apk add jq-doc
 - xbps-install -y man
 
-Then have ~+Void~x's `man` read ~+Alpinex's `jq` documentation:
+Then have ~+Void~x's `man` read ~+Alpine~x's `jq` documentation:
 
 - {class="cmd"}
 - man jq
