@@ -21,6 +21,13 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.17-released"} Bedrock Linux 0.7.17 released
+<small>2020-04-30</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Fix sudoers injection return value
+
 ## {id="0.7.16-released"} Bedrock Linux 0.7.16 released
 <small>2020-04-29</small>
 
