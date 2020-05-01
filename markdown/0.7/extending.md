@@ -25,7 +25,7 @@ Support for a new distro may be added by creating a file at:
 - `/bedrock/share/brl-fetch/distros/~(distro-name~)` when testing on your
   system.
 - `src/slash-bedrock/share/brl-fetch/distros/~(distro-name~)` when adding to
-  ~+Bedrock~x's code base.
+  ~+Bedrock~x's [code base](https://github.com/bedrocklinux/bedrocklinux-userland).
 
 See surrounding files for examples.
 
@@ -211,7 +211,7 @@ Support for a new package manager may be added by creating a file at:
 - `/bedrock/share/pmm/package_managers/~(package-manager~)` when testing on
   your system.
 - `src/slash-bedrock/share/pmm/package_managers/~(package-manager~)` when
-  adding to ~+Bedrock~x's code base.
+  adding to ~+Bedrock~x's [code base](https://github.com/bedrocklinux/bedrocklinux-userland).
 
 See surrounding files for examples.
 
@@ -426,7 +426,7 @@ where:
 Additionally, add `--help` output for it to:
 
 - `/bedrock/share/pmm/help` when testing on your system.
-- `src/slash-bedrock/share/pmm/help` when adding to ~+Bedrock~x's code base.
+- `src/slash-bedrock/share/pmm/help` when adding to ~+Bedrock~x's [code base](https://github.com/bedrocklinux/bedrocklinux-userland).
 
 and add `user_interfaces[]` and `implementations[]` entries for each existing
 package manager per the [pmm new package manager
