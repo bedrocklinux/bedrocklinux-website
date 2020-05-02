@@ -37,8 +37,8 @@ then adds the previous install as a new ~+Bedrock~x ~{stratum~}.  It does this
 sufficiently quickly and smoothly that it is easy to misinterpret the process.
 
 The significance here is that ~+Bedrock~x becomes integral to the system after
-out and removed.
 the install while the ~{hijacked~} ~{stratum~}'s files may be trivially swapped
+out and removed.
 
 When one installs a traditional distro, the preceding install is wiped.  It is
 best to model installing ~+Bedrock~x as similar, even if the process to get
