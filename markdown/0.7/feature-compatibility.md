@@ -48,7 +48,7 @@ back in).
 
 Application Launcher specific cache updating techniques:
 
-- KDE: Run `kbuildsycoa5` or `kbuildsycoa5 --nonincremental`
+- KDE: Run `kbuildsycoca5` or `kbuildsycoca5 --nonincremental`
 
 ### {id="login-shells"} Login shells
 
