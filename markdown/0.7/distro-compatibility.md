@@ -7,35 +7,36 @@ The "Community Usage" column is a subjective rating of how heavily the given
 distro is used in ~+Bedrock Linux~x community intended to provide a level of
 confidence in the "Known Issues" column's accuracy and recency.
 
-| Linux Distro       | Community Usage   | Known Issues | Fetch Support  | Maintainer   |
-| ~+Alpine Linux~x   | ~^Low~x           | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Arch Linux~x     | ~%Very High~x     | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Artix Linux~x    | ~!Very Low~x      | ~%None~x     | ~^Unmaintained | ~!None~x     |
-| ~+CentOS~x         | ~!Very Low~x      | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Clear Linux~x    | ~!Very Low~x      | ~!Many issues~x [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained | ~!N/A |
-| ~+CRUX~x           | ~!None~x          | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!N/A |
-| ~+Debian~x         | ~%Very High~x     | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Devuan~x         | ~^Low~x           | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Elementary OS~x  | ~!Very Low~x      | ~%None~x     | ~!No           | ~!None~x     |
-| ~+Exherbo~x        | ~^Medium~x        | ~%None~x     | ~%Yes          | ~%Wulf C. Krueger~x |
-| ~+Fedora~x         | ~^Medium~x        | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Gentoo Linux~x   | ~%High~x          | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+GoboLinux~x      | ~!None~x          | ~%None~x     | ~!No           | ~!None~x     |
-| ~+GuixSD~x         | ~!None~x          | ~%None~x     | ~!No           | ~!None~x     |
-| ~+KISS~x           | ~!Very Low~x      | ~!Escapes restriction~x [†](#kiss) | ~^Unmaintained | ~!None~x     |
-| ~+Linux Mint~x     | ~^Low~x           | ~%None~x     | ~!No           | ~!None~x     |
-| ~+Manjaro~x        | ~!Very Low~x      | ~!pamac/octopi~x [†](feature-compatibility.html#pamac) | ~^Unmaintained | ~!None~x|
-| ~+MX Linux~x       | ~!None~x          | ~!systemd-shim~x [†](feature-compatibility.html#systemd-shim) | ~!No | ~!None~x|
-| ~+NixOS~x          | ~!Very Low~x      | ~!many~x [†](#nixos) | ~!No    | ~!None~x     |
-| ~+OpenSUSE~x       | ~!Very Low~x      | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No    | ~!None~x     |
-| ~+OpenWRT~x        | ~!Very Low~x      | ~%None~x     | ~^Unmaintained | ~!None~x     |
-| ~+Pop!\_OS~x       | ~^Low~x           | ~^hidden init menu~x [†](#popos) | ~!No           | ~!None~x     |
-| ~+QubesOS~x        | ~!None~x          | ~%None~x     | ~!No           | ~!None~x   |
-| ~+Raspbian~x       | ~^Medium~x        | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Slackware~x      | ~^Low~x           | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained | ~!None~x|
-| ~+Solus~x          | ~!Very Low~x      | ~!stateless~x [†](#solus) | ~^Unmaintained | ~!None~x|
-| ~+Ubuntu~x         | ~%Very High~x     | ~%None~x     | ~%Yes          | ~%paradigm~x |
-| ~+Void Linux~x     | ~%Very High~x     | ~%None~x     | ~%Yes          | ~%paradigm~x |
+| Linux Distro          | Community Usage   | Known Issues | Fetch Support    | Maintainer   |
+| ~+Alpine Linux~x      | ~^Low~x           | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Arch Linux~x        | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Artix Linux~x       | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
+| ~+CentOS~x            | ~!Very Low~x      | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Clear Linux~x       | ~!Very Low~x      | ~!Many issues~x [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained~x | ~!N/A~x |
+| ~+CRUX~x              | ~!None~x          | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!N/A~x |
+| ~+Debian~x            | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Devuan~x            | ~^Low~x           | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Elementary OS~x     | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+Exherbo~x           | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%Wulf C. Krueger~x |
+| ~+Fedora~x            | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Fedora Silverblue~x | ~!None~x          | ~!Read-only root~x [†](#silverblue) | ~!No~x | ~!None~x |
+| ~+Gentoo Linux~x      | ~%High~x          | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+GoboLinux~x         | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+GuixSD~x            | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+KISS~x              | ~!Very Low~x      | ~!Escapes restriction~x [†](#kiss) | ~^Unmaintained~x | ~!None~x |
+| ~+Linux Mint~x        | ~^Low~x           | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+Manjaro~x           | ~!Very Low~x      | ~!pamac/octopi~x [†](feature-compatibility.html#pamac) | ~^Unmaintained~x | ~!None~x |
+| ~+MX Linux~x          | ~!None~x          | ~!systemd-shim~x [†](feature-compatibility.html#systemd-shim) | ~!No~x | ~!None~x |
+| ~+NixOS~x             | ~!Very Low~x      | ~!many~x [†](#nixos) | ~!No~x   | ~!None~x     |
+| ~+OpenSUSE~x          | ~!Very Low~x      | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No~x | ~!None~x |
+| ~+OpenWRT~x           | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
+| ~+Pop!\_OS~x          | ~^Low~x           | ~^hidden init menu~x [†](#popos) | ~!No~x | ~!None~x |
+| ~+QubesOS~x           | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x   |
+| ~+Raspbian~x          | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Slackware~x         | ~^Low~x           | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!None~x |
+| ~+Solus~x             | ~!Very Low~x      | ~!stateless~x [†](#solus) | ~^Unmaintained~x | ~!None~x |
+| ~+Ubuntu~x            | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Void Linux~x        | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 
 ## {id="nixos"} NixOS
 
@@ -96,3 +97,12 @@ may result in Bedrock-specific error messages when using `kiss`.
 
 To properly support KISS Linux, Bedrock's `sudo` restriction escape hole should
 be resolved.
+
+## {id="silverblue"} Fedora Silverblue
+
+Fedora Silverblue uses a read-only root by default, which keeps the hijack
+installer from being able to do things like extract `/bedrock` onto the root
+directory.  Investigation needs to be done to understand the ramifications of
+simply remounting the root directory read-write for the duration of the
+install.  Silverblue's non-traditional nature will likely raise other issues as
+well.
