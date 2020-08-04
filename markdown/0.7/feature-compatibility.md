@@ -22,7 +22,7 @@ Nav: poki.nav
 | cross-stratum vt fonts             | ~!Does Not Work~x      | Needs research |
 | cross-stratum Wayland Fonts        | ~^Needs Testing~x      | Needs research |
 | cross-stratum Xorg fonts           | ~^Reports of inconsistency | Deeper investigation needed |
-| ACLs                                             | ~!Mostly Works~x       | Does not work in `/etc` |
+| ACLs                                             | ~%Mostly Works~x       | Does not work in `/etc` |
 | Any stratum's init                               | ~%Mostly Works~x       | Select init at init-selection menu during boot; [see BSD style SysV notes](#bsd-style-sysv) |
 | Any stratum's kernel                             | ~%Mostly Works~x       | Install kernel from ~{stratum~} then update bootloader |
 | AppArmor, TOMOYO, SMACK                          | ~^Needs Testing~x      | Default profiles unlikely to work |
@@ -203,7 +203,7 @@ both performance and implementation complexity concerns.
 When GRUB updates `grub.cfg` on BTRFS it adds a `subvol=` field.  Similarly, on
 ZFS it adds a `ZFS=` field.
 
-GRUB's logic to populate these fields via `grub-mkrelatph`/`grub2-mkrelpath`
+GRUB's logic to populate these fields via `grub-mkrelpath`/`grub2-mkrelpath`
 appears to be confused under ~+Bedrock~x and mis-populate the BTRFS and ZFS
 fields.  This will cause boot failures.
 

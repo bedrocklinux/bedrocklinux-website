@@ -338,8 +338,8 @@ variables for use in `implementations[]` commands:
   corresponding `user_interfaces[]` to be applicable for the given package
   manager.
 - `${items}`: this is a list of variable, operation specific items.  For most
-  commands where it is appropriate it is a list of one or more package
-  managers, but in some cases it may be a search string or other content.
+  commands where it is appropriate it is a list of one or more packages, but in
+  some cases it may be a search string or other content.
 
 Some `pmm` operations are combinations of primitive operations.  For example,
 the operation `update-package-database,upgrade-packages-full` first updates the
