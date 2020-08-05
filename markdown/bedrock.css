@@ -26,7 +26,8 @@ html{
 	background:#141414;
 	font-family:'Open Sans', sans-serif;
 	-webkit-text-size-adjust:100%;
-	-ms-text-size-adjust:100%
+	-ms-text-size-adjust:100%;
+	padding-bottom: 3px
 }
 img{
 	max-width:100%;
