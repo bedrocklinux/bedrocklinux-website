@@ -33,14 +33,18 @@ img{
 	max-width:100%;
 	border-radius:3px
 }
-::-moz-selection{
-	color:#fff;
-	background:#268bd2
+
+/* Selection colors */
+::-moz-selection {
+	color: black;
+	background-color: rgba(255,255,255,0.99);
 }
-::selection{
-	color:#fff;
-	background:#268bd2
+
+::selection {
+	color: black;
+	background-color: rgba(255,255,255,0.99);
 }
+
 a:link,a:visited{
 	color:#268bd2;
 	text-decoration:none
