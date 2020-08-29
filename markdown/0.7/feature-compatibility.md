@@ -17,7 +17,7 @@ Nav: poki.nav
 | cross-stratum init configuration   | ~!Major issues~x       | [Requires hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
 | cross-stratum libraries            | ~!Does Not Work~x      | Theoretically possible but unsupported due to complexity/messiness concerns |
 | cross-stratum login shells         | ~%Just Works~x         | [Specifying stratum requires special configuration](#login-shells) |
-| cross-stratum man pages            | ~%Just Works~x         | |
+| cross-stratum man pages            | ~%Mostly Works~x       | [mandoc man executable cannot read Gentoo man pages](#man) |
 | cross-stratum themes               | ~%Mostly Works~x       | Works work themes that support `$XDG_DATA_DIRS` |
 | cross-stratum vt fonts             | ~!Does Not Work~x      | Needs research |
 | cross-stratum Wayland Fonts        | ~^Needs Testing~x      | Needs research |
@@ -265,3 +265,21 @@ for all remaining ~(strata~) that require graphics drivers.
 
 The `bedrock` stratum and other strata that do not utilize the graphics
 acceleration do not require the Nvidia drivers.
+
+### {id="man"} Man pages
+
+Many Linux distros provide the `man` executable via one of the following:
+
+- [man-db](https://www.nongnu.org/man-db/)
+- [mandoc](https://mandoc.bsd.lv/)
+- [busybox](https://www.busybox.net/)
+
+For the most part, any of those three can read man pages from any distro.  One may use Debian's `man` to read Void Linux's `xbps-install` man page and one may use Void Linux's `man` to read Debian's `apt` man page, for example, despite the fact that Debian uses `man-db` and Void uses `mandoc`.
+
+There is one discovered exception: `mandoc` `man` executable, as provided by distros like Alpine Linux and Void Linux, cannot seem to read Gentoo's man pages.
+
+Work arounds include:
+
+- Manually call `strat gentoo man` when you want to read a Gentoo man page.
+- [Pin a man-db or busybox `man`](https://bedrocklinux.org/0.7/workflows.html#pinning).
+- Uninstall all `mandoc` man executables and install at least one other `man`.
