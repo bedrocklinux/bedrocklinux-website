@@ -6,7 +6,7 @@
 <meta name=viewport content="width=device-width">
 <link rel=alternate type=application/atom+xml title="Bedrock Linux Feed" href=RELATIVEPATH/atom.xml>
 <link rel=stylesheet href=RELATIVEPATH/bedrock.css>
-<link rel=icon href=./favicon.png>
+<link rel=icon href=RELATIVEPATH/favicon.png>
 </head>
 <body>
 <header>
