@@ -10,12 +10,13 @@ Nav: poki.nav
 | cross-stratum applications         | ~^Minor Work-around~x  | [Clear cache to update application menu](#application-launchers) |
 | cross-stratum dbus                 | ~%Just Works~x         | |
 | cross-stratum desktop environments | ~!Major Issues~x       | [Requires hand-crafted, ~+Bedrock~x-aware configuation.](#desktop-environments) |
-| cross-stratum dkms                 | ~^Mostly Works~x       | [Sometimes must pair dkms and kernel](#dkms) |
+| cross-stratum dkms                 | ~!Major issues~x       | [Must manually pair dkms and kernel](#dkms) |
 | cross-stratum executables          | ~%Just Works~x         | |
 | cross-stratum firmware             | ~%Mostly Works~x       | Kernel will detect firmware across strata, initrd-building software needs investigation |
+| cross-stratum fcitx                | ~%Mostly Works~x       | communication just-works, cross-stratum libraries don't; install fcitx in relevant strata |
 | cross-stratum info pages           | ~%Just Works~x         | |
 | cross-stratum init configuration   | ~!Major issues~x       | [Requires hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
-| cross-stratum libraries            | ~!Does Not Work~x      | Theoretically possible but unsupported due to complexity/messiness concerns |
+| cross-stratum libraries            | ~!Does Not Work~x      | Theoretically possible but unsupported due to complexity/messiness concerns; install redundant libraries in relevant strata |
 | cross-stratum login shells         | ~%Just Works~x         | [Specifying stratum requires special configuration](#login-shells) |
 | cross-stratum man pages            | ~%Mostly Works~x       | [mandoc man executable cannot read Gentoo man pages](#man) |
 | cross-stratum themes               | ~%Mostly Works~x       | Works work themes that support `$XDG_DATA_DIRS` |
@@ -110,56 +111,25 @@ is not broadly recommended.
 
 ### {id="dkms"} dkms
 
-~{Cross~}-~{stratum~} `dkms` usage on Bedrock _almost_ always works, with one
-exception.
+~+Bedrock~x supports ~{cross~}-~{stratum~} `dkms` given the following constraints:
 
-`dkms` needs to see two code bases to work:
+- The `dkms` executable should come from the kernel-providing stratum.
+- The `dkms` module version plays nicely with the kernel version.
 
-- The `dkms` module source.
-- The current kernel's headers.
+~+Bedrock~x does not enforce either of these constraints; the user must handle
+them manually.
 
-Bedrock can make the former work across ~{stratum~} boundaries.  A `dkms` from
-any ~{stratum~} will automatically be able to pick up and use things like
-nVidia or Virtualbox module code from other ~{strata~}.
+The expected user workflow is to:
 
-Bedrock's ability to make the latter work across ~{strata~} depends on how the
-kernel-providing distro sets up its kernel headers.  Some distros place the
-header source directly at
+- Install desired `dkms` modules in providing ~{strata~}.  Package managers may
+  try to compile these for the kernel and error; that's okay, ignore the error.
+- Install `dkms` in the kernel ~{stratum~}.  When this ~{stratum~} updates the
+  kernel, it should detect cross-strata module source and compile accordingly.
 
-	~(/usr~)/lib/modules/~(version~)/build/
-
-For example, Arch Linux does this.  If such a distro provides your kernel,
-`dkms` from non-kernel ~{strata~} can detect the kernel's headers.
-
-Other distros make the kernel header source directory a symlink to a ~{local~}
-location.  For example, Debian symlinks them into `/usr/src/`.  `dkms` from
-other non-kernel ~{strata~} will be unable to follow such symlinks.
-
-In practice, this means:
-
-- Installing or updating a kernel with `dkms` installed in the kernel stratum
-  should just work.
-- Installing or updating a dkms package, such as a VirtualBox host modules
-  package, will only create the dkms modules if the kernel providing
-  ~{stratum~} is a non-header-symlink distro.
-
-In the scenario where `dkms` does not detect headers ~{cross~}-~{stratum~}, one
-may manually run the kernel stratum's `dkms` with `strat` to build and install
-the module:
+If package managers are not automating `dkms`, one may manually tell `dkms` to
+build and install a module:
 
 `strat -r ~(target-kernel-stratum~) dkms install ~(module~)/~(module-version~) -k ~(target-kernel-version~)`
-
-#### Table
-
-| `dkms` binary is from kernel stratum | `dkms` module is from kernel stratum | kernel headers are ~{local~} symlink | Just Works |
-| Yes                                  | Yes                                  | Yes                                  | ~%Yes~x    |
-| Yes                                  | Yes                                  | No                                   | ~%Yes~x    |
-| Yes                                  | No                                   | Yes                                  | ~%Yes~x    |
-| Yes                                  | No                                   | No                                   | ~%Yes~x    |
-| No                                   | Yes                                  | Yes                                  | ~!No~x     |
-| No                                   | Yes                                  | No                                   | ~%Yes~x    |
-| No                                   | No                                   | No                                   | ~%Yes~x    |
-| No                                   | No                                   | Yes                                  | ~!No~x     |
 
 ### {id="bsd-style-sysv"} BSD Style SysV
 
