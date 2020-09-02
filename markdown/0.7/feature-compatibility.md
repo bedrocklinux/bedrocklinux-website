@@ -30,8 +30,8 @@ If a given feature does not work ~{cross~}-~{stratum~}, you may be able to get t
 |                      libraries            | ~!Does Not Work~x     | Theoretically possible but unsupported due to complexity/messiness concerns |
 |                      login shells         | ~%Just Works~x        | [Specifying stratum requires special configuration](#login-shells) |
 | 3#Shell Completion | `bash`     | ~%Mostly Works~x           | Install `bash-completion` in all ~{strata~} |
-|                      `fish`     | ~%Mostly Works~x           | Install `zsh` in all ~{strata~} |
-|                      `zsh`      | ~%Just Works~x             | |
+|                      `fish`     | ~%Just Works~x             | |
+|                      `zsh`      | ~%Mostly Works~x           | Install `zsh` in all ~{strata~} |
 | 5#Themes           | Cursor     | ~!Does Not Work~x          | Needs research |
 |                      Icon       | ~%Just Works~x             | |
 |                      GTK2       | ~^Minor Work-around~x      | [export `GTK2_RC_FILES`, install theme engine ](#gtk2-themes) |
