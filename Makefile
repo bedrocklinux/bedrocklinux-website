@@ -146,7 +146,14 @@ html/%.html: markdown/%.md markdown/header markdown/footer markdown/*.nav markdo
 				print "<tr>"; \
 				len = split($$0, a, / *[|] */); \
 				for (i = 2; i < len; i++) { \
-					print "<td align=\"center\">"a[i]"</td>" \
+					if (a[i] ~ /[0-9]#/) { \
+						span=a[i]; \
+						sub(/^[0-9]*#/, "", a[i]); \
+						sub(/#.*/, "", span); \
+						print "<td rowspan=\""span"\">"a[i]"</td>" \
+					} else { \
+						print "<td align=\"center\">"a[i]"</td>" \
+					} \
 				} \
 				print "</tr>"; \
 				next \

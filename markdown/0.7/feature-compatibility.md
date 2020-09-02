@@ -3,39 +3,68 @@ Nav: poki.nav
 
 # Bedrock Linux 0.7 Poki Feature Compatibility
 
-| Feature                            | How well it works    | Notes |
-| cross-stratum `bash` completion    | ~%Mostly Works~x       | Install `bash-completion` in all ~{strata~}; some completions fail |
-| cross-stratum `fish` completion    | ~%Just Works~x         | |
-| cross-stratum `zsh` completion     | ~%Mostly Works~x       | Install `zsh` in all ~{strata~}; some completions fail |
-| cross-stratum applications         | ~^Minor Work-around~x  | [Clear cache to update application menu](#application-launchers) |
-| cross-stratum dbus                 | ~%Just Works~x         | |
-| cross-stratum desktop environments | ~!Major Issues~x       | [Requires hand-crafted, ~+Bedrock~x-aware configuation.](#desktop-environments) |
-| cross-stratum dkms                 | ~!Major issues~x       | [Must manually pair dkms and kernel](#dkms) |
-| cross-stratum executables          | ~%Just Works~x         | |
-| cross-stratum firmware             | ~%Mostly Works~x       | Kernel will detect firmware across strata, initrd-building software needs investigation |
-| cross-stratum fcitx                | ~%Mostly Works~x       | communication just-works, cross-stratum libraries don't; install fcitx in relevant strata |
-| cross-stratum info pages           | ~%Just Works~x         | |
-| cross-stratum init configuration   | ~!Major issues~x       | [Requires hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
-| cross-stratum libraries            | ~!Does Not Work~x      | Theoretically possible but unsupported due to complexity/messiness concerns; install redundant libraries in relevant strata |
-| cross-stratum login shells         | ~%Just Works~x         | [Specifying stratum requires special configuration](#login-shells) |
-| cross-stratum man pages            | ~%Mostly Works~x       | [mandoc man executable cannot read Gentoo man pages](#man) |
-| cross-stratum themes               | ~%Mostly Works~x       | Works work themes that support `$XDG_DATA_DIRS` |
-| cross-stratum vt fonts             | ~!Does Not Work~x      | Needs research |
-| cross-stratum Wayland Fonts        | ~^Needs Testing~x      | Needs research |
-| cross-stratum Xorg fonts           | ~^Reports of inconsistency | Deeper investigation needed |
-| ACLs                                             | ~%Mostly Works~x       | Does not work in `/etc` |
-| Any stratum's init                               | ~%Mostly Works~x       | Select init at init-selection menu during boot; [see BSD style SysV notes](#bsd-style-sysv) |
-| Any stratum's kernel                             | ~%Mostly Works~x       | Install kernel from ~{stratum~} then update bootloader |
-| AppArmor, TOMOYO, SMACK                          | ~^Needs Testing~x      | Default profiles unlikely to work |
-| BSD-style SysV init                              | ~!Major Issue~x        | [Freezes on shutdown](#bsd-style-sysv) |
-| build tools (e.g. make, configure scripts, etc)  | ~^Minor Work-around~x  | Often confused without `strat -r` |
-| grubs+btrfs/zfs                                  | ~!Major Issue~x        | [GRUB miss-updates `grub.cfg` on btrfs/zfs in ~+Bedrock~x](#grub-btrfs-zfs) |
-| nVidia proprietary drivers                       | ~^Manual Work-around~x | [Manually install drivers in relevant ~{strata~}](#nvidia-drivers) |
-| pamac/octpoi                                     | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
-| ptrace (e.g. gdb, strace)                        | ~^Minor Work-around~x  | Install in same ~{stratum~} as traced program, `strat -r` |
-| SELinux                                          | ~!Does Not Work~x      | ~+Bedrock~x disabled on hijack |
-| systemd-shim                                     | ~!Major Issue~x        | [logind access denied](#systemd-shim) |
-| timeshift                                        | ~!Major Issue~x        | Confused by filesystem layout; do not use with ~+Bedrock~x |
+- [Cross-Stratum Features](#cross-stratum-features)
+- [Any-Stratum Features](#any-stratum-features)
+- [Miscellaneous-Feature-Issues](#miscellaneous-feature-issues)
+
+## {id="cross-stratum-features"} Cross-Stratum Features
+
+Features you can install in one stratum and use with programs from another.
+
+If a given feature does not work ~{cross~}-~{stratum~}, you may be able to get the desired effect by installing it redundantly in every corresponding ~{stratum~}.
+
+| Category           | Feature    | How well it works          | Notes |
+| 2#Docs             | info pages | ~%Just Works~x             | |
+|                      man pages  | ~%Mostly Works~x           | [mandoc man executable cannot read Gentoo man pages](#man) |
+| 3#Fonts            | vt         | ~!Does Not Work~x          | Needs research |
+|                      Wayland    | ~^Needs Testing~x          | Needs research |
+|                      Xorg       | ~^Reports of inconsistency | Deeper investigation needed |
+| 10#Misc            | applications         | ~^Minor Work-around~x | [Clear cache to update application menu](#application-launchers) |
+|                      dbus                 | ~%Just Works~x        | |
+|                      desktop environments | ~!Major Issues~x      | [Requires hand-crafted, ~+Bedrock~x-aware configuation.](#desktop-environments) |
+|                      dkms                 | ~!Major issues~x      | [Must manually pair dkms and kernel](#dkms) |
+|                      executables          | ~%Just Works~x        | |
+|                      fcitx                | ~%Mostly Works~x      | communication just-works, cross-stratum libraries don't; install fcitx in relevant strata |
+|                      firmware             | ~%Mostly Works~x      | Kernel will detect firmware across strata, initrd-building software needs investigation |
+|                      init configuration   | ~!Major issues~x      | [Requires hand-crafted, ~+Bedrock~x-aware configuration.](#init-configuration) |
+|                      libraries            | ~!Does Not Work~x     | Theoretically possible but unsupported due to complexity/messiness concerns |
+|                      login shells         | ~%Just Works~x        | [Specifying stratum requires special configuration](#login-shells) |
+| 3#Shell Completion | `bash`     | ~%Mostly Works~x           | Install `bash-completion` in all ~{strata~} |
+|                      `fish`     | ~%Mostly Works~x           | Install `zsh` in all ~{strata~} |
+|                      `zsh`      | ~%Just Works~x             | |
+| 5#Themes           | Cursor     | ~!Does Not Work~x          | Needs research |
+|                      Icon       | ~%Just Works~x             | |
+|                      GTK2       | ~^Minor Work-around~x      | [export `GTK2_RC_FILES`, install theme engine ](#gtk2-themes) |
+|                      GTK3       | ~^Minor Work-around~x      | Set `themes = /usr/share/themes` under `[cross-pass]` in `bedrock.conf` |
+|                      Qt         | ~^Needs Testing~x          | Needs research |
+
+## {id="any-stratum-features"} Any-Stratum Features
+
+Features you can install from any stratum and use system-wide.
+
+| Feature    | How well it works | Notes |
+| bootloader | ~%Mostly Works~x  | install over other copies; never uninstall; [GRUB+btrfs/zfs specific issue](#grub-btrfs-zfs) |
+| init       | ~%Mostly Works~x  | select init at init-selection menu during boot; [BSD style SysV notes](#bsd-style-sysv) |
+| kernel     | ~%Minor Issue~x   | [if non-bootloader stratum, manually update bootloader](#bootloader) |
+
+## {id="miscellaneous-feature-issues"} Miscellaneous Feature Issues
+
+Miscellaneous known feature-specific issues and limitations.
+
+| Feature                                         | How well it works        | Notes |
+| ACLs                                            | ~%Mostly Works~x         | Does not work in `/etc` |
+| AppArmor, TOMOYO, SMACK                         | ~^Needs Testing~x        | Default profiles unlikely to work |
+| BSD-style SysV init                             | ~!Major Issue~x          | [Freezes on shutdown](#bsd-style-sysv) |
+| build tools (e.g. make, configure scripts, etc) | ~^Minor Work-around~x    | Often confused without `strat -r` |
+| grubs+btrfs/zfs                                 | ~!Major Issue~x          | [GRUB miss-updates `grub.cfg` on btrfs/zfs in ~+Bedrock~x](#grub-btrfs-zfs) |
+| nVidia proprietary drivers                      | ~^Manual Work-around~x   | [Manually install drivers in relevant ~{strata~}](#nvidia-drivers) |
+| pamac/octpoi                                    | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
+| ptrace (e.g. gdb, strace)                       | ~^Minor Work-around~x    | Install in same ~{stratum~} as traced program, `strat -r` |
+| SELinux                                         | ~!Does Not Work~x        | ~+Bedrock~x disabled on hijack |
+| systemd-shim                                    | ~!Major Issue~x          | [logind access denied](#systemd-shim) |
+| timeshift                                       | ~!Major Issue~x          | Confused by filesystem layout; do not use with ~+Bedrock~x |
+
+## Details
 
 ### {id="application-launchers"} Application Launchers
 
@@ -150,12 +179,12 @@ this may require digging into `libfuse`'s code to see how it handles signals.
 
 ### {id="systemd-shim"} systemd-shim
 
-On MX Linux, the logged in user is expected to get certain permissions granted
+On ~+MX Linux~x, the logged in user is expected to get certain permissions granted
 from systemd-logind, such as the ability to use the desktop environment's menu
 to reboot the system.
 
 When running in ~+Bedrock~x, this does not appear to work.  This is likely due
-to MX Linux's use of SysV _and_ systemd-logind via systemd-shim.  The issue does
+to ~+MX Linux~x's use of SysV _and_ systemd-logind via systemd-shim.  The issue does
 not occur either on pure systemd systems nor on pure SysV systems.
 
 Investigation found some process was reading ~{local~} copies of what should
@@ -244,12 +273,59 @@ Many Linux distros provide the `man` executable via one of the following:
 - [mandoc](https://mandoc.bsd.lv/)
 - [busybox](https://www.busybox.net/)
 
-For the most part, any of those three can read man pages from any distro.  One may use Debian's `man` to read Void Linux's `xbps-install` man page and one may use Void Linux's `man` to read Debian's `apt` man page, for example, despite the fact that Debian uses `man-db` and Void uses `mandoc`.
+For the most part, any of those three can read man pages from any distro.  One may use Debian's `man` to read ~+Void Linux~x's `xbps-install` man page and one may use ~+Void Linux~x's `man` to read Debian's `apt` man page, for example, despite the fact that Debian uses `man-db` and ~+Void~x uses `mandoc`.
 
-There is one discovered exception: `mandoc` `man` executable, as provided by distros like Alpine Linux and Void Linux, cannot seem to read Gentoo's man pages.
+There is one discovered exception: `mandoc` `man` executable, as provided by distros like ~+Alpine Linux~x and ~+Void Linux~x, cannot seem to read ~+Gentoo~x's man pages.
 
 Work arounds include:
 
-- Manually call `strat gentoo man` when you want to read a Gentoo man page.
+- Manually call `strat gentoo man` when you want to read a ~+Gentoo~x man page.
 - [Pin a man-db or busybox `man`](https://bedrocklinux.org/0.7/workflows.html#pinning).
 - Uninstall all `mandoc` man executables and install at least one other `man`.
+
+### {id="gtk2-themes"} GTK2 themes
+
+#### GTK2\_RC\_FILES
+
+GTK2 themes provide a `gtkrc` file.  Export the `GTK2_RC_FILES` environment
+variable to a ~{cross path~} for this file.  For example, ~+Arch Linux~x's
+`materia-gtk-theme` package provides a `Materia-dark-compact` theme whose `gtkrc` file is at
+
+```
+/usr/share/themes/Materia-dark-compact/gtk-2.0/gtkrc
+```
+
+which is visible to all strata at
+
+```
+/bedrock/strata/arch/usr/share/themes/Materia-dark-compact/gtk-2.0/gtkrc
+```
+
+assuming `arch` is the stratum name.  To make this one's GTK2 theme, export
+`GTK2_RC_FILES` to this location in one's environment setup (e.g. `.bashrc`):
+
+```
+export GTK2_RC_FILES="/bedrock/strata/arch/usr/share/themes/Materia-dark-compact/gtk-2.0/gtkrc"
+```
+
+#### GTK2 engines
+
+GTK2 has a concept called "theme engines" which do not work cross-stratum.  These must be installed in all corresponding strata.  Running a GTK2 application without produce warnings such as
+
+```
+Gtk-WARNING **: 19:01:13.566: Unable to locate theme engine in module_path: "industrial",
+```
+
+These are trivially fixed by installing the corresponding engine package in the gtk2 application's stratum.
+
+#### R&D
+
+The GTK2 ecosystem does not appear to support `$XDG_DATA_DIRS`.  It looks like [NixOS explicitly patches support for `$XDG_DATA_DIRS` in](https://github.com/NixOS/nixpkgs/pull/25881), and [gtk2 documentation mentions only using it for _icon_ themes, not widget or cursor themes](https://developer.gnome.org/gtk2/stable/gtk-running.html).  Thus, we cannot simply point `$XDG_DATA_DIRS` to look into crossfs.
+
+However, GTK2 appears to follow `$GTK_DATA_PREFIX`.  It might be possible to point this to crossfs to make this feature just-work ~{cross~}-~{stratum~}.  More investigation is needed.
+
+### {id="bootloader"} Bootloader
+
+Most distros have hooks which will update bootloader configuration when a kernel is installed or updated.  If the kernel and bootloader providing strata are the same, should work as expected.  However, if they differ, the hook will not trigger upon kernel installation/update and the bootloader will not be automatically updated.
+
+If you would like to get your kernel and bootloader from different strata, either create such a hook yourself or manually update the bootloader configuration when the kernel updates.
