@@ -4,6 +4,11 @@ Nav:   home.nav
 Releases
 ========
 
+Upcoming Releases
+-----------------
+
+- [0.8 "Naga" (upcoming)](0.8/)
+
 Current Release
 ---------------
 
