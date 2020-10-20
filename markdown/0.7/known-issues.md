@@ -14,14 +14,6 @@ This issue appears to be specific https URLs.  For `brl update`, possible work-a
 
 There are no obvious work-arounds for `brl fetch`.
 
-## {id="x11-repeated"} /bedrock/cross/bin/X11/
-
-The `/bedrock/cross/bin/X11` directory recursively contains many `X11` directories.
-
-This is because many distros contain a symlink at `/usr/bin/X11` which points to `.` which `/bedrock/cross/bin` tries to expand.
-
-A possible fix for this would be for `cross-bin` to ignore directories.
-
 ## {id="unmount-warnings"} Unmount warnings on shutdown
 
 Bedrock uses a Linux kernel feature which propagates some mount and unmount operations.  When an init system performs an umount operation on shutdown, this may actually unmount multiple mount points.  Some init systems are confused by this, as it is not a commonly used feature, and print warnings about being unable to unmount directories because they already unmounted them.  These warnings are harmless aesthetic issues.  Note that this does not mean *all* warnings about mount difficulties on shutdown are harmless and only refers to a specific subset.

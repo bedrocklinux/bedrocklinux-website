@@ -35,7 +35,7 @@ If a given feature does not work ~{cross~}-~{stratum~}, you may be able to get t
 | 5#Themes           | Cursor     | ~!Does Not Work~x          | Needs research |
 |                      Icon       | ~%Just Works~x             | |
 |                      GTK2       | ~^Minor Work-around~x      | [export `GTK2_RC_FILES`, install theme engine ](#gtk2-themes) |
-|                      GTK3       | ~^Minor Work-around~x      | Set `themes = /usr/share/themes` under `[cross-pass]` in `bedrock.conf` |
+|                      GTK3       | ~%Just Works~x             | |
 |                      Qt         | ~^Needs Testing~x          | Needs research |
 
 ## {id="any-stratum-features"} Any-Stratum Features

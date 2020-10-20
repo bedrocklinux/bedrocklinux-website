@@ -8,9 +8,9 @@ distro is used in ~+Bedrock Linux~x community intended to provide a level of
 confidence in the "Known Issues" column's accuracy and recency.
 
 | Linux Distro          | Community Usage   | Known Issues | Fetch Support    | Maintainer   |
-| ~+Alpine Linux~x      | ~^Low~x           | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
+| ~+Alpine Linux~x      | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Arch Linux~x        | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
-| ~+Artix Linux~x       | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
+| ~+Artix Linux~x       | ~!Low~x           | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
 | ~+CentOS~x            | ~!Very Low~x      | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Clear Linux~x       | ~!Very Low~x      | ~!Many issues~x [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained~x | ~!N/A~x |
 | ~+CRUX~x              | ~!None~x          | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!N/A~x |
@@ -30,7 +30,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+NixOS~x             | ~!Very Low~x      | ~!many~x [†](#nixos) | ~!No~x   | ~!None~x     |
 | ~+OpenSUSE~x          | ~!Very Low~x      | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No~x | ~!None~x |
 | ~+OpenWRT~x           | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
-| ~+Pop!\_OS~x          | ~^Low~x           | ~^hidden init menu~x [†](#popos) | ~!No~x | ~!None~x |
+| ~+Pop!\_OS~x          | ~^Medium~x        | ~^hidden init menu~x [†](#popos) | ~!No~x | ~!None~x |
 | ~+QubesOS~x           | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x   |
 | ~+Raspbian~x          | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Slackware~x         | ~^Low~x           | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!None~x |
