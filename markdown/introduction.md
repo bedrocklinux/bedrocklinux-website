@@ -15,7 +15,7 @@ to compile and package all of their software directly from upstream all of the
 time.
 
 The various groups doing this packaging work do so without considering
-interoperation with other groups.  This forces end users to choose one distro
+interoperation with other groups.  This forces end-users to choose one distro
 ecosystem and forgo features provided by others.  Do I want something stable
 from ~+CentOS~x or ~+Debian~x?  Do I want something cutting-edge from
 ~+Arch~x?  ~+Ubuntu~x is quite popular and has a lot of desktop software tested
@@ -38,7 +38,7 @@ files directly.
 
 The files distributed by the ~+Bedrock Linux~x project are primarily glue for
 components from other Linux distributions.  Some, such as the hijack installer
-and `strat` command, are user facing.  Others, such as `crossfs`, operate
+and `strat` command, are user-facing.  Others, such as `crossfs`, operate
 largely behind the scenes to make as much as possible "just work."  ~+Bedrock~x
 also provides some quality of life utilities for managing a system composed of
 components from multiple other distros such as `brl fetch` and `pmm`.
