@@ -67,13 +67,13 @@ what is available at the time of writing includes:
 
 ## {id="examples"} Example use cases
 
-~+Bedrock~x's flexibility opens so many options it can difficult to provide a
+~+Bedrock~x's flexibility opens so many options it can be difficult to provide a
 comprehensive, concrete picture of how it may be useful to potential users.
 Some reported real-world use cases include:
 
 - Access to both "stable" features from distros such as ~+Debian~x and
   ~+CentOS~x
-- Access to features from cutting edge from ~+Arch~x or ~+Void~x.
+- Access to cutting edge features from ~+Arch~x or ~+Void~x.
 - A mix of source based packages, such as from ~+Gentoo~x, with binary
   packages.
 - Access to ~+Arch~x's AUR.

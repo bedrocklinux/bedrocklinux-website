@@ -204,7 +204,7 @@ that it, too, would require substantial R&D and is not currently being pursued.
 
 ## {id="supported-distros"} What distros do Bedrock Linux support as strata?
 
-See [the distro compatbility page](0.7/distro-compatibility.html)
+See [the distro compatbility page.](0.7/distro-compatibility.html)
 
 ## {id="when-start"} When did Bedrock Linux start?
 

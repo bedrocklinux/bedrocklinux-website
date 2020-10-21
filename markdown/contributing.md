@@ -16,7 +16,7 @@ TableOfContents
 ## {id="help-support-others"} Help support others
 
 The primary limiting factor for ~+Bedrock~x development is user support.
-Helping here would limited free up resources for research and development
+Helping here would free up limited resources for research and development
 efforts.
 
 Consider learning ~+Bedrock Linux~x well yourself, such as from using it and
@@ -65,7 +65,7 @@ The current list of distro-maintainer pairings can be found
 [here](0.7/distro-support.html).
 
 At the time of writing, no distro has multiple maintainers.  This is not a
-deliberate limitation.  If you can help out take pressure off an existing
+deliberate limitation.  If you can help out and take pressure off an existing
 distro maintainer, please do so.
 
 While there are no formal requirements, a history of "unofficially" maintaining
