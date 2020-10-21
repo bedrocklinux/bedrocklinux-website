@@ -19,7 +19,7 @@ Nyla supported two installation options:
 Poki's hijack option was sufficiently polished that the expectation was interest in the competing manual install option would be dropped.  However:
 
 - This resulted in more kickback from experienced Bedrock community members than expected.
-- Poki's hijack install is _so_ smooth users it causes them to misunderstand what is going on.
+- Poki's hijack install is _so_ smooth it causes users to misunderstand what is going on.
 - The manual install is easier to automate, which will be important for test automation.
 
 Thus, the manual option will be reintroduced in Naga.
