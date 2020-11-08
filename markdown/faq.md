@@ -27,7 +27,7 @@ Other meta Linux distributions include:
   which can compile the user's desired Linux system.  [Gentoo describes itself
   as a _metadistribution_](https://www.gentoo.org/get-started/about/).
 
-~+Bedrock~x provides a means to compose a target the user's desired system from a
+~+Bedrock~x provides a means to compose a target of the user's desired system from a
 potentially eclectic mix of parts of other distros.
 
 ## {id="on-top"} Does Bedrock install on top of other distros?
@@ -74,7 +74,7 @@ widely used strategy is to:
   boundaries via a FUSE filesystem called `crossfs` that alters files
   on-the-fly to make them portable across ~{stratum~} boundaries.
 - Resources producers - namely package managers - are not told about the
-  `crossfs`.  This way they usually cannot conflict with each other.
+  `crossfs`.  This way, they usually cannot conflict with each other.
 - Resource consumers are configured to consider `crossfs`.  For example, cross
   binary locations are added to the `$PATH` so that `bash` can find them.
 
@@ -114,7 +114,7 @@ provide a suitable means of getting the best of multiple worlds.
   noticeable disk overhead compared to traditional distros.
 - While it is not a problem in most work flows, ~+Bedrock~x does have some
   runtime overhead, such as in `/etc` access.  Workflows which access `/etc`
-  excessively (e.g. hundreds of times a second) may exhibit noticeable
+  excessively (e.g., hundreds of times a second) may exhibit noticeable
   slowdown.  Don't run a performance sensitive database out of `/etc`.
 
 ## {id="security"} How secure is Bedrock Linux?
@@ -137,7 +137,7 @@ couple theoretical potential weak points:
 
 Additionally, ~+Bedrock~x provides a `brl fetch` command which bootstraps
 minimal sets of files from other distros.  To get around a catch-22 of needing
-a distro's packages to bootstrap the distro, an early part this bootstrap
+a distro's packages to bootstrap the distro, an early part of this bootstrap
 process may occur without cryptographic signature checking.
 
 Moreover, ~+Bedrock~x's efforts to make things work cross-distro breaks
@@ -164,7 +164,7 @@ machine.
 
 ## {id="ready-status"} Is Bedrock Linux far enough along for me to use?
 
-While ~+Bedrock~x just work for many work flows, others require further
+While ~+Bedrock~x just works for many workflows, others require further
 development effort.  How things align for your particular workflow is difficult
 to predict without exercising it and finding out.
 
@@ -195,7 +195,7 @@ of Korra*.
 ## {id="other-os"} What about Bedrock BSD or Bedrock Android or Bedrock Something-Else?
 
 The techniques ~+Bedrock Linux~x utilizes are fairly specific to Linux.  While
-it may possible to create a similar meta-distro for other kernels, they would
+it may be possible to create a similar meta-distro for other kernels, they would
 require substantial new R&D and are not being pursued by anyone on the
 ~+Bedrock Linux~x team.
 
@@ -204,7 +204,7 @@ that it, too, would require substantial R&D and is not currently being pursued.
 
 ## {id="supported-distros"} What distros do Bedrock Linux support as strata?
 
-See [the distro compatbility page](0.7/distro-compatibility.html)
+See [the distro compatibility page.](0.7/distro-compatibility.html)
 
 ## {id="when-start"} When did Bedrock Linux start?
 
