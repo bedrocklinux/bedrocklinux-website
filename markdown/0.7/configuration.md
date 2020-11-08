@@ -41,7 +41,7 @@ For example:
 ~+Bedrock~x will attempt to detect this in a ~{hijack~} install and populate the field
 accordingly.
 
-### {id="locale-localgen"} localgen
+### {id="locale-localegen"} localegen
 
 Many distros use `/etc/local.gen` to manage their locale information.  If
 `[locale]/localegen` is populated, `brl fetch` will configure corresponding
