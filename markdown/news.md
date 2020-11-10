@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.19-released"} Bedrock Linux 0.7.19 released
+<small>2020-11-10</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add more global /etc items
+- Fix brl-fetch localegen logic issue in some situations
+- Improve brl-fetch `/etc/ssl` handling (fixes `brl fetch arch` for some users)
+- Improve non-local cwd handling in brl code
+
 ## {id="naga-plans"} Bedrock Linux 0.8 Naga development started
 <small>2020-10-20</small>
 
