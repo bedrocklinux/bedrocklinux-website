@@ -58,7 +58,7 @@ Miscellaneous known feature-specific issues and limitations.
 | build tools (e.g. make, configure scripts, etc) | ~^Minor Work-around~x    | Often confused without `strat -r` |
 | grubs+btrfs/zfs                                 | ~!Major Issue~x          | [GRUB miss-updates `grub.cfg` on btrfs/zfs in ~+Bedrock~x](#grub-btrfs-zfs) |
 | nVidia proprietary drivers                      | ~^Manual Work-around~x   | [Manually install drivers in relevant ~{strata~}](#nvidia-drivers) |
-| pamac/octpoi                                    | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
+| pamac/octopi                                    | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
 | ptrace (e.g. gdb, strace)                       | ~^Minor Work-around~x    | Install in same ~{stratum~} as traced program, `strat -r` |
 | SELinux                                         | ~!Does Not Work~x        | ~+Bedrock~x disabled on hijack |
 | systemd-shim                                    | ~!Major Issue~x          | [logind access denied](#systemd-shim) |
