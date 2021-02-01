@@ -210,7 +210,7 @@ For example:
 - {class="rcmd"}
 - brl rename ubuntu bionic
 
-`brl remove` also renames ~{aliases~}.
+`brl rename` also renames ~{aliases~}.
 
 The `bedrock` ~{stratum~} cannot be renamed, as it internally has hard-coded
 references to itself which are essential for the system to function.
