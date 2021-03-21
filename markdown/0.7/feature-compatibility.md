@@ -56,6 +56,7 @@ Miscellaneous known feature-specific issues and limitations.
 | AppArmor, TOMOYO, SMACK                         | ~^Needs Testing~x        | Default profiles unlikely to work |
 | BSD-style SysV init                             | ~!Major Issue~x          | [Freezes on shutdown](#bsd-style-sysv) |
 | build tools (e.g. make, configure scripts, etc) | ~^Minor Work-around~x    | Often confused without `strat -r` |
+| Firejail sandbox                                | ~^Needs Testing~x        | [Possible permission issues and incompatibilities with some programs and tools.](#firejail). |
 | grubs+btrfs/zfs                                 | ~!Major Issue~x          | [GRUB miss-updates `grub.cfg` on btrfs/zfs in ~+Bedrock~x](#grub-btrfs-zfs) |
 | nVidia proprietary drivers                      | ~^Manual Work-around~x   | [Manually install drivers in relevant ~{strata~}](#nvidia-drivers) |
 | pamac/octopi                                    | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
@@ -227,6 +228,16 @@ means `grub-mkrelpath` may grab the wrong one.
 Inconsistent reports have been provided for how well `pamac` and `octopi` work
 on ~+Bedrock~x, both on ~+Manjaro~x and ~+Arch~x via AUR.  Investigation may be
 needed.
+
+### {id="firejail"} Firejail
+
+Firejail's `firecfg` places new binaries under `/usr/local/bin`. Those binaries will refuse to run any packages that may be present in other stratums due to valid security reasons.
+
+In order to resolve this, you should reinstall the binaries that your application depends on in the stratum that you're currently using.
+
+Additionally, you can optionally allow some applications to use binaries that are present in other stratums by allowing them to access `chroot` environments and run binaries in them. You can do so by adding `caps.keep sys_chroot` and removing `caps.drop all` or `caps.drop sys_chroot`, if applicable, in the application's Firejail profile (located under `/etc/firejail`). However, this approach is **not recommended** as it will unnecessarily weaken the security level of your system and significantly increase your attack surface.
+
+Some of Firejail's tools (e.g. `firejail-ui`), as well as some other applications, may only work partially or not at all.
 
 ### {id="nvidia-drivers"} Nvidia proprietary drivers
 
