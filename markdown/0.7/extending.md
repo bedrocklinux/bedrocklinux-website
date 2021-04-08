@@ -69,7 +69,7 @@ before `brl fetch` calls most per-distro functions are called and are safe to
 utilize in most of the functions described below:
 
 - `${target_dir}`: the location the distro's files should be placed.  This is
-  usually `/bedrock/strata/~(new-stratum-name~).
+  usually `/bedrock/strata/~(new-stratum-name~)`.
 - `${bootstrap_dir}`: a location suitable for temporary tooling.  This is
   generally used with temporary files which bootstrap the final distro.
   Software `chroot`ed here will see the `${target_dir}` at `/target-root`.
