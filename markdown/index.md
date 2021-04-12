@@ -4,9 +4,9 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
-~+Bedrock Linux~x is a (multi-rooted) linux meta-collection.
-* It allows to run a linux system that is composed of different linux distributions.
-* It integrates their typically incompatible components into one largely cohesive system.
+~+Bedrock Linux~x lets users run their own meta-collection of linux distributions.
+* It allows to run a linux system that is composed of different linux distributions (multiple roots).
+* It integrates the typically incompatible components into one largely cohesive system.
 
 For example, one could have:
 
