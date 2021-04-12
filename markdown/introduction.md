@@ -7,7 +7,7 @@ TableOfContents
 
 ## {id="what"} What does it, in practice?
 
-What does it mean to "run a linux system that is assembled from multiple filesystem roots"?
+What does it mean to "run a linux system that gets assembled from multiple filesystem roots"?
 It means, there is a boot menu to choose a bootloader, a kernel and an init system from the available filesystem roots. After booting, all the other software should mostly run as if installed from a single distribution. (See current release limitations.)
 
 As the running system has roots in different linux distributions, bedrocklinux can be said to be a multi-rooted-linux. It runs by combining the rootfilesystems from different distros.
