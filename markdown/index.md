@@ -4,8 +4,9 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
-~+Bedrock Linux~x allows to run a linux system that is composed of different linux distributions.
-It integrates typically incompatible components into one largely cohesive system.
+~+Bedrock Linux~x is a multi-rooted meta-distribution.
+* It allows to run a linux system that is composed of different linux distributions.
+* It integrates the typically incompatible components into one largely cohesive system.
 
 For example, one could have:
 
