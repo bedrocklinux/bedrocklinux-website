@@ -7,7 +7,7 @@ TableOfContents
 
 ## {id="what"} What does it, really?
 
-Bedrocklinux allows to run a linux system that is composed of different linux distributions. The system boots with a bootloader, a kernel, and an init system independently selected from the installed distributions, and can freely run the userland packages from multiple distributions that can be installed side-by-side.
+Bedrocklinux allows to run a linux system that is composed of different linux distributions. The system boots with a bootloader, a kernel, and an init system independently selected from the installed distributions, and can freely run the userland packages which are installable side-by-side from multiple distributions.
 
 Consequently, the running system is rooted in different linux distributions.
 Therefore, a descriptive name for bedrocklinux could actually be multi-rooted-linux.
