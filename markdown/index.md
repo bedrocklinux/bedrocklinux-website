@@ -4,7 +4,7 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
-~+Bedrock Linux~x lets users manage their own linux blend on their computers, usually by installing packages from already existing linux distributions.
+~+Bedrock Linux~x lets users manage their own linux distro-blend on their computers, usually by installing packages from readily existing linux distributions.
 * Runs a linux system that gets assembled from multiple filesystem roots.
 * Integrates typically incompatible components into one largely cohesive system.
 
