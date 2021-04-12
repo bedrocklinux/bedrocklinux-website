@@ -14,7 +14,8 @@ Therefore, a descriptive name for bedrocklinux concept could actually be multi-r
 
 In a pretentious language it could also have been marketed as something like "distrosnip", because, in a way, a multi-rooted system takes to an end what appimages, flatpacks or snap packages had begun.
 
-However, instead of shipping static binary collections like the appimages, flatpacks and snap packages (the last two introducing third-party appstores) a multi-rooted system can avoid installing redundant, often outdated and not well maintained binary collections. In a multi-rooted-linux system the different roots are managed by the original distribution's package managers and security update mechanisms, and a tool called *pmm*, the "package manager manager",  allows to manage the different roots in a unified way. While sandboxing can be done by using standard tools like firejail in the roots.
+Compared to making packages portable by shipping mostly static binary collections like appimages, flatpacks and snap packages (the last two even slipping in third-party appstores) a multi-rooted bedrock linux system can often avoid installing redundant, and sometimes outdated binary collections. The different software roots are managed by their original package managers and security update mechanisms (if any), the software in the roots continues to be maintained collectively as good as in their original distribution. A tool called *pmm*, the "package manager manager",  allows to manage the different roots in a unified way. And sandboxing can be done by using standard tools like firejail in the roots.
+More generally than nix and guix package managers, bedrock allows to run unmodified legacy distro packages, not only within another distro, but within a fully customizable system, the user's bedrock meta-collection.
 
 
 ## {id="purpose"} Bedrock Linux's Purpose
