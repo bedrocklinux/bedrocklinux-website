@@ -10,7 +10,7 @@ TableOfContents
 Bedrocklinux allows to run a linux system that is composed of different linux distributions. The system can boot with a bootloader, a kernel, and an init system selecting from installed distributions, and run userland packages that can be installed freely from multiple distributions.
 
 Consequently, the running system is rooted in different linux distributions.
-As such a descriptive name for bedrocklinux could actually be multi-rooted-linux.
+Therefore, a descriptive name for bedrocklinux could actually be multi-rooted-linux.
 
 In a pretentious language it could also have been marketed as something like "distrosnip", because, in a way, a multi-rooted system takes to an end what appimages, flatpacks or snap packages had begun.
 
