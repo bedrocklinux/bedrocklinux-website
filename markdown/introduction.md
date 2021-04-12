@@ -8,15 +8,15 @@ TableOfContents
 ## {id="what"} What does it, in practice?
 
 What does it mean to "run a linux system that gets assembled from multiple filesystem roots"?
-It means, there is a boot menu to choose a bootloader, a kernel and an init system from the available filesystem roots. After booting, all the other software should mostly run as if installed from a single distribution. (See current release limitations.)
+It means, there is a boot menu to choose a bootloader, a kernel and an init system from the available filesystem roots. And after booting, all the other software should mostly work as if installed from a single distribution. (See current release limitations.)
 
 As the running system has roots in different linux distributions, bedrocklinux can be said to be a multi-rooted-linux. It runs by combining the rootfilesystems from different distros.
 
-In a pretentious language bedrock could also have been marketed as something like "distrosnip", because it allows software that has been packaged once, to also run within other distributions.
+In a pretentious language bedrock could also have been marketed as something like "distrosnip", because it allows software that has been packaged once, to also run within other distributions, with further advantages...
 
 Compared to making packages portable by shipping mostly static binary collections as in appimages, flatpacks and snap packages (the last two even slipping in third-party appstores) the multi-rooted bedrock linux system can often avoid installing redundant, and sometimes outdated binary collections. The different software roots continue to be managed by their original package managers and security update mechanisms (if any). The software in the roots continues to be maintained collectively as good or bad as in their original distribution. A bedrock tool called `pmm` (the "package manager manager") allows to manage the different roots in a unified, central way. And sandboxing can be done with standard tools like firejail in the roots.
 
-Compared to the next generation package managers (i.e. nix and guix), bedrock is a more general solution. Because it also allows any other legacy distro package format and even source based installs to run --unmodified-- not only within another distribution, but within a customizable blend of linux distributions. Namely, to run within the bedrock user's own linux distro-blend.
+Compared to the next generation package managers (i.e. nix and guix), bedrock is a more general solution. Because it also allows any other legacy distro package format and even source based installs to run --unmodified-- not only within another, plain distribution, but also within a customizable blend of linux distributions. Namely, to run within the bedrock user's own distro-blend.
 
 
 ## {id="purpose"} Bedrock Linux's Purpose
