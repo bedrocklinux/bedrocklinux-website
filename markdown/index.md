@@ -4,9 +4,9 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
-~+Bedrock Linux~x lets users run their own meta-collection of linux distributions.
-* It allows to run a linux system that is composed of different linux distributions (multiple roots).
-* It integrates the typically incompatible components into one largely cohesive system.
+~+Bedrock Linux~x lets users manage their own linux blend on their computers, usually by installing packages from already existing linux distributions.
+* Runs a linux system that is robustly assembled from multiple filesystem roots.
+* Integrates typically incompatible components into one largely cohesive system.
 
 For example, one could have:
 
