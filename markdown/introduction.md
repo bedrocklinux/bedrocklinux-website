@@ -7,10 +7,10 @@ TableOfContents
 
 ## {id="what"} What does it, really?
 
-What does it mean that "Bedrocklinux allows to run a linux system that is composed of different linux distributions"? It means, the system boots with a bootloader, a kernel, and an init system that can be independently selected from the "bedrocked" distributions, and can then freely run userland packages that are installable side-by-side from different distributions.
+What does it mean that "Bedrocklinux allows to run a linux system that is composed of different linux distributions"? It means, the system boots with a bootloader, a kernel, and an init system that can be independently selected from the "bedrocked" distributions, and can then freely run userland packages that are installable side-by-side from the different distributions.
 
 Consequently, the running system is rooted in different linux distributions.
-Therefore, a descriptive name for bedrocklinux could actually be multi-rooted-linux.
+Therefore, a descriptive name for bedrocklinux concept could actually be multi-rooted-linux.
 
 In a pretentious language it could also have been marketed as something like "distrosnip", because, in a way, a multi-rooted system takes to an end what appimages, flatpacks or snap packages had begun.
 
