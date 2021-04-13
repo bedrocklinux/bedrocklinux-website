@@ -7,12 +7,12 @@ TableOfContents
 
 ## {id="what"} What does Bedrock do?
 
-* Allows the whole system to run by combining separate rootfilesystems (called "strata") that are usually each managed by a different distro.
+* Allows the system to run by combining separate rootfilesystems (called "strata") that are usually each managed by a different distro.
 * Inserts a boot menu to choose the init system to boot with from the available rootfilesystems.
-* After booting, all the software should mostly work as if installed from a single distribution. (See current release limitations.)
-* Provides commands to manage and acccess the distro-roots (`brl` and `strat`) and distro-packages (`pmm`).
+* After booting, the installed software should mostly work as if installed from a single distribution. (See current release limitations.)
+* Provides commands to manage and acccess the distro-roots (`brl` and `strat`) and to ease managing distro-packages (`pmm`).
 
-For example, to activating the grub bootloader and kernel from a specific distro: `strat <distro> update-grub` (Thar distro needs to have a kernel and grub installed.)
+For example, to activate the grub bootloader and kernel from a specific distro: `strat <distro> update-grub` (That distro needs to have grub and a kernel installed.)
 
 ## {id="purpose"} Bedrock Linux's Purpose
 
