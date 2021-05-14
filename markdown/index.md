@@ -21,6 +21,16 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="arch-kernel-missing-crossfs"} Arch Linux kernel results in missing crossfs entries
+<small>2021-05-14</small>
+
+The latest Arch Linux kernel, 5.12.3, appears to break Bedrock Linux.  The
+symptoms appear to be missing `/bedrock/cross` entries.  The issue is currently
+being investigated.  For the time being, consider avoiding this kernel; either
+[use an older Arch Linux
+kernel](https://wiki.archlinux.org/title/Downgrading_packages), or get your
+kernel from another distro.
+
 ## {id="naga-plans"} Bedrock Linux 0.8 Naga development started
 <small>2020-10-20</small>
 

@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="arch-kernel-missing-crossfs"} Arch Linux kernel results in missing crossfs entries
+<small>2021-05-14</small>
+
+The latest Arch Linux kernel, 5.12.3, appears to break Bedrock Linux.  The
+symptoms appear to be missing `/bedrock/cross` entries.  The issue is currently
+being investigated.  For the time being, consider avoiding this kernel; either
+[use an older Arch Linux
+kernel](https://wiki.archlinux.org/title/Downgrading_packages), or get your
+kernel from another distro.
+
 ## {id="0.7.19-released"} Bedrock Linux 0.7.19 released
 <small>2020-11-10</small>
 
