@@ -21,6 +21,14 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="avoid-linux-5.12.3"} Apparent FUSE bug in Linux 5.12.3 and up
+<small>2021-05-14</small>
+
+The aforementioned Arch Linux kernel issue was traced to a narrow window of
+Linux kernel commits.  This cannot be cleanly worked around in Bedrock's code.
+Bedrock Linux users should avoid Linux 5.12.3 and up from all distros until a
+kernel fix is in place.
+
 ## {id="arch-kernel-missing-crossfs"} Arch Linux kernel results in missing crossfs entries
 <small>2021-05-14</small>
 
