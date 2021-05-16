@@ -21,6 +21,21 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.20-released"} Bedrock Linux 0.7.20 released
+<small>2021-05-16</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+This includes a work around for the aforementioned Linux 5.12.3 FUSE bug.
+
+- Added brl-import command
+- Fixed brl-fetch centos
+- Fixed brl-fetch localegen logic issue in some situations
+- Fixed brl-fetch solus
+- Fixed various pmm issues
+- Improved brl SSL handling portability
+- Worked around Linux kernel FUSE atomic write bug
+
 ## {id="avoid-linux-5.12.3"} Apparent FUSE bug in Linux 5.12.3 and up
 <small>2021-05-14</small>
 
