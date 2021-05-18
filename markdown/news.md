@@ -22,6 +22,8 @@ This includes a work around for the aforementioned Linux 5.12.3 FUSE bug.
 ## {id="avoid-linux-5.12.3"} Apparent FUSE bug in Linux 5.12.3 and up
 <small>2021-05-14</small>
 
+Update: Bedrock 0.7.20 resolves the concern described below
+
 The aforementioned Arch Linux kernel issue was traced to a narrow window of
 Linux kernel commits.  This cannot be cleanly worked around in Bedrock's code.
 Bedrock Linux users should avoid Linux 5.12.3 and up from all distros until a
@@ -29,6 +31,8 @@ kernel fix is in place.
 
 ## {id="arch-kernel-missing-crossfs"} Arch Linux kernel results in missing crossfs entries
 <small>2021-05-14</small>
+
+Update: Bedrock 0.7.20 resolves the concern described below
 
 The latest Arch Linux kernel, 5.12.3, appears to break Bedrock Linux.  The
 symptoms appear to be missing `/bedrock/cross` entries.  The issue is currently
