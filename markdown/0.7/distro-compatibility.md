@@ -22,7 +22,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+Fedora Silverblue~x | ~!None~x          | ~!Read-only root~x [†](#silverblue) | ~!No~x | ~!None~x |
 | ~+Gentoo Linux~x      | ~%High~x          | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+GoboLinux~x         | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x     |
-| ~+GuixSD~x            | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+GuixSD~x            | ~!None~x          | ~!many~x [†](#guix)     | ~!No~x           | ~!None~x     |
 | ~+KISS~x              | ~!Very Low~x      | ~!Escapes restriction~x [†](#kiss) | ~^Unmaintained~x | ~!None~x |
 | ~+Linux Mint~x        | ~^Low~x           | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+Manjaro~x           | ~!Very Low~x      | ~!pamac/octopi~x [†](feature-compatibility.html#pamac) | ~^Unmaintained~x | ~!None~x |
@@ -106,3 +106,11 @@ directory.  Investigation needs to be done to understand the ramifications of
 simply remounting the root directory read-write for the duration of the
 install.  Silverblue's non-traditional nature will likely raise other issues as
 well.
+
+## {id="guix"} GuixSD
+
+Guix is similar to NixOS, but the init in here is not `systemd`, but `shepherd`
+which gave hope about having NixOS-like configuration of systems on non-systemd distros.
+Sadly, `hijack` process is not working, because of design assumptions of Guix.
+Neither did an attempt to use `Guix` binaries to fetch what's needed.
+More investigation is needed.
