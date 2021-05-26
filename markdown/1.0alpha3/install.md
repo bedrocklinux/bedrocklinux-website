@@ -194,8 +194,8 @@ As was mentioned in the previous section, Bedrock Linux now has experimental
 support for using a pre-existing kernel from another Linux distribution.
 Kernels (along with their initrd and other files) from a number of Linux
 distributions have been tested, but potential remains for untested ones to have
-problems.  If you try this out with a kernel not mentioned below, jumping into [#bedrock on
-freenode](http://webchat.freenode.net/?channels=bedrock) or [the
+problems.  If you try this out with a kernel not mentioned below, jumping into
+[the IRC channel #bedrock on libera.chat](http://libera.chat) or [the
 subreddit](http://reddit.com/r/bedrocklinux) to report success or failure with
 any given Linux distribution's kernel would be appreciated.
 
@@ -307,9 +307,9 @@ continue reading here.
 
 Static busyboxes from a number of Linux distributions have been tested, but
 potential remains for untested ones to have problems.  If you try this out with
-a static Busybox not mentioned below, jumping into [#bedrock on
-freenode](http://webchat.freenode.net/?channels=bedrock) or [the
-subreddit](http://reddit.com/r/bedrocklinux) to report success or failure with
+a static Busybox not mentioned below, jumping into [the IRC channel #bedrock on
+libera.chat](https://libera.chat) or [the
+subreddit](https://reddit.com/r/bedrocklinux) to report success or failure with
 any given Linux distribution's static busybox would be appreciated.
 
 - **Works:**

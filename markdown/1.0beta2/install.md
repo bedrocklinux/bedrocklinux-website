@@ -1087,6 +1087,6 @@ and enjoy!
 
 If you run into any difficulties, try reviewing the relevant documentation
 pages for this release, and if that doesn't help sufficiently, don't hesitate
-to drop into the [IRC channel](https://webchat.freenode.net/?channels=bedrock),
-the [forums](http://www.linuxquestions.org/questions/bedrock-linux-118/), or
+to drop into the [IRC channel #bedrock on libera.chat](https://libera.chat),
+the [forums](https://www.linuxquestions.org/questions/bedrock-linux-118/), or
 [subreddit](https://www.reddit.com/r/bedrocklinux).

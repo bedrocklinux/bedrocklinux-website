@@ -575,4 +575,4 @@ and enjoy!
 
 If you run into any difficulties, try reviewing the relevant documentation
 pages for this release, and if that doesn't help sufficiently, don't hesitate
-to drop into the [IRC channel](https://webchat.freenode.net/?channels=bedrock).
+to drop into the [IRC channel #bedrock on libera.chat](https://libera.chat).
