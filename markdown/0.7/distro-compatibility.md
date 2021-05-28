@@ -30,7 +30,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+NixOS~x             | ~!Very Low~x      | ~!many~x [†](#nixos) | ~!No~x   | ~!None~x     |
 | ~+OpenSUSE~x          | ~!Very Low~x      | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No~x | ~!None~x |
 | ~+OpenWRT~x           | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |
-| ~+Pop!\_OS~x          | ~^Medium~x        | ~^hidden init menu~x [†](#popos) | ~!No~x | ~!None~x |
+| ~+Pop!\_OS~x          | ~%High~x          | ~%None~x      | ~!No~x          | ~!None~x |
 | ~+QubesOS~x           | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x   |
 | ~+Raspbian~x          | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Slackware~x         | ~^Low~x           | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!None~x |
@@ -70,17 +70,6 @@ locations.  If the required file is missing but another location has it,
 
 ~+Clear Linux~x also calls itself "stateless."  Efforts here should be tested
 against ~+Clear~x as well.
-
-## {id="popos"} Pop!\_OS
-
-Users have reported that on EFI systems Pop!\_OS's boot time splash screen
-hides the init selection menu.  To make the init selection menu visible, run
-
-	{class="rcmd"} kernelstub -d splash
-
-Ideally things should work without alterations to the bootloader.  Rather than
-disabling splash via configuration, the init selection menu should stop it at
-runtime to reveal the menu.  This is an open research item.
 
 ## {id="kiss"} KISS
 
