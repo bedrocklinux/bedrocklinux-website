@@ -170,6 +170,28 @@ Functionality for non-native ISA ~{strata~} is entirely provided by and
 constrained by `qemu-user-static`.  Should some newer executable attempt to
 perform some action `qemu-user-static` does not yet support, it will not work.
 
+#### {id="brl-import"} brl import
+
+~+Bedrock~x provides a `brl import` command to create strata from on-disk
+sources.   This may be useful for distros that `brl fetch` does not support or
+for for use with offline systems.
+
+To import a stratum, run
+
+	{class="rcmd"} brl import ~(name~) ~(/path/to/source~)
+
+where the ~(source~) is any of:
+
+- Directory
+- Tarball (`.tar`)
+- Qemu qcow/qcow2/qcow3 image (`.qcow`, `.qcow2`, `.qcow3`)
+- VirtualBox image (`.vdi`)
+- VMware image (`.vmdk`)
+
+If importing a VM, be sure the VM has one partition and that that partition is
+unencrypted.  Do not use separate `/boot` or `/home` partitions for the VM.  Do
+not use full disk encryption.
+
 #### {id="brl-remove"} brl remove
 
 ~{Strata~} may contain references to the rest of the system, such as bind
