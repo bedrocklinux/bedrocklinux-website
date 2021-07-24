@@ -366,7 +366,7 @@ disallowed.  For example:
 To dereference an ~{alias~}, one may use `brl deref`.  For example:
 
 - {class="rcmd"}
-- brl alias bionic ~## prints ubuntu~x
+- brl deref bionic ~## prints ubuntu~x
 
 ### {id="miscellaneous-commands"} Miscellaneous commands
 
