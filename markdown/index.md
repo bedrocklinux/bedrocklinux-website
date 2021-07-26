@@ -21,6 +21,16 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="zstd-modules"} PSA on new kernels, zstd, and inits
+<small>2021-07-26</small>
+
+Some distros are now distributing Linux kernels with zstd-compressed modules.
+For everything to work, these must be paired with inits (more specifically
+device managers such as udev) from distros which also support this
+functionality.  A zstd kernel, such as from Arch, paired with a pre-zstd
+init/udev, such as from Debian, may result in apparent hardware issues as
+modules fail to dynamically load.
+
 ## {id="0.7.21-released"} Bedrock Linux 0.7.21 released
 <small>2021-07-19</small>
 
@@ -67,34 +77,4 @@ Linux kernel commits.  This cannot be cleanly worked around in Bedrock's code.
 Bedrock Linux users should avoid Linux 5.12.3 and up from all distros until a
 kernel fix is in place.
 
-## {id="arch-kernel-missing-crossfs"} Arch Linux kernel results in missing crossfs entries
-<small>2021-05-14</small>
-
-Update: Bedrock 0.7.20 resolves the concern described below
-
-The latest Arch Linux kernel, 5.12.3, appears to break Bedrock Linux.  The
-symptoms appear to be missing `/bedrock/cross` entries.  The issue is currently
-being investigated.  For the time being, consider avoiding this kernel; either
-[use an older Arch Linux
-kernel](https://wiki.archlinux.org/title/Downgrading_packages), or get your
-kernel from another distro.
-
-## {id="naga-plans"} Bedrock Linux 0.8 Naga development started
-<small>2020-10-20</small>
-
-Development effort has shifted from improving 0.7 Poki toward a new major
-release, 0.8 Naga.  Poki will continue to be maintain with small bug fixes and
-`brl fetch` updates.  However, new features are unlikely or broad compatibility
-improvements are unlikely until Naga's release.
-
-Naga's tentative design plans can be found [here](0.8/plans.html).
-
-## {id="0.7.19-released"} Bedrock Linux 0.7.19 released
-<small>2020-11-10</small>
-
-A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
-
-- Add more global /etc items
-- Fix brl-fetch localegen logic issue in some situations
-- Improve brl-fetch `/etc/ssl` handling (fixes `brl fetch arch` for some users)
-- Improve non-local cwd handling in brl code
+[See older news items](news.html)

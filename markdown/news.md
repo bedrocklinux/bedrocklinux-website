@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="zstd-modules"} PSA on new kernels, zstd, and inits
+<small>2021-07-26</small>
+
+Some distros are now distributing Linux kernels with zstd-compressed modules.
+For everything to work, these must be paired with inits (more specifically
+device managers such as udev) from distros which also support this
+functionality.  A zstd kernel, such as from Arch, paired with a pre-zstd
+init/udev, such as from Debian, may result in apparent hardware issues as
+modules fail to dynamically load.
+
 ## {id="0.7.21-released"} Bedrock Linux 0.7.21 released
 <small>2021-07-19</small>
 
