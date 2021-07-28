@@ -4,6 +4,16 @@ Nav:   home.nav
 Bedrock Linux
 =============
 
+## {id="0.7.22-released"} Bedrock Linux 0.7.22 released
+<small>2021-07-28</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added code to handle errant program clearing modules.dep
+- Fixed brl-fetch debian for bullseye
+- Fixed hijacked GRUB theme handling
+- Fixed resolv.conf on some distros
+
 ~+Bedrock Linux~x is a meta Linux distribution which allows users to
 mix-and-match components from other, typically incompatible distributions.
 ~+Bedrock~x integrates these components into one largely cohesive system.
