@@ -4,6 +4,14 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.23-released"} Bedrock Linux 0.7.23 released
+<small>2021-08-26</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add support for s6
+- Security updates for openssl
+
 ## {id="0.7.22-released"} Bedrock Linux 0.7.22 released
 <small>2021-07-28</small>
 

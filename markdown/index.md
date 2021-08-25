@@ -21,6 +21,14 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.23-released"} Bedrock Linux 0.7.23 released
+<small>2021-08-26</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Add support for s6
+- Security updates for openssl
+
 ## {id="0.7.22-released"} Bedrock Linux 0.7.22 released
 <small>2021-07-28</small>
 
@@ -76,15 +84,5 @@ This includes a work around for the aforementioned Linux 5.12.3 FUSE bug.
 - Fixed various pmm issues
 - Improved brl SSL handling portability
 - Worked around Linux kernel FUSE atomic write bug
-
-## {id="avoid-linux-5.12.3"} Apparent FUSE bug in Linux 5.12.3 and up
-<small>2021-05-14</small>
-
-Update: Bedrock 0.7.20 resolves the concern described below
-
-The aforementioned Arch Linux kernel issue was traced to a narrow window of
-Linux kernel commits.  This cannot be cleanly worked around in Bedrock's code.
-Bedrock Linux users should avoid Linux 5.12.3 and up from all distros until a
-kernel fix is in place.
 
 [See older news items](news.html)
