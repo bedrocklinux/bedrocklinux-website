@@ -60,6 +60,16 @@ a low-friction method of converting that install into a ~+Bedrock~x install.
 This process is referred to as ~{hijacking~} to emphasize the forceful way
 ~+Bedrock~x takes control from the previous install.
 
+## {id="which-hijack-distro"} Which distro should I hijack?
+
+Whichever offers the install process you like the most.
+
+Once you've had ~+Bedrock~x hijack the install, you're no longer running that
+distro - you're running ~+Bedrock~x.  You can then can swap out everything
+specific to the hijacked distro with parts from other distros.  Once you've
+configured the system to your liking, the result is functionally the same
+irrelevant of which install process you happened to use to get there.
+
 ## {id="how-work"} How does Bedrock Linux Work?
 
 The exact details may change drastically from release-to-release.  A detailed
