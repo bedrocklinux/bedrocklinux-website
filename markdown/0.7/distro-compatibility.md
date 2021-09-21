@@ -17,6 +17,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+Debian~x            | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Devuan~x            | ~^Low~x           | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Elementary OS~x     | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
+| ~+EndeavorOS~x        | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+Exherbo~x           | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%Wulf C. Krueger~x |
 | ~+Fedora~x            | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Fedora Silverblue~x | ~!None~x          | ~!Read-only root~x [†](#silverblue) | ~!No~x | ~!None~x |
