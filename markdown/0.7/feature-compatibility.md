@@ -19,7 +19,7 @@ If a given feature does not work ~{cross~}-~{stratum~}, you may be able to get t
 | 3#Fonts            | vt         | ~!Does Not Work~x          | Needs research |
 |                      Wayland    | ~^Needs Testing~x          | Needs research |
 |                      Xorg       | ~^Reports of inconsistency | Deeper investigation needed |
-| 10#Misc            | applications         | ~^Minor Work-around~x | [Clear cache to update application menu](#application-launchers) |
+| 10#Misc            | applications         | ~^Minor Work-around~x | [Clear cache to update application menu](#application-launchers); [sometimes no icons](#application-icons) |
 |                      dbus                 | ~%Just Works~x        | |
 |                      desktop environments | ~!Major Issues~x      | [Requires hand-crafted, ~+Bedrock~x-aware configuation.](#desktop-environments) |
 |                      dkms                 | ~!Major issues~x      | [Must manually pair dkms and kernel](#dkms) |
@@ -79,6 +79,17 @@ back in).
 Application Launcher specific cache updating techniques:
 
 - KDE: Run `kbuildsycoca5` or `kbuildsycoca5 --nonincremental`
+
+### {id="application-icons"} Application Icons
+
+In some circumstances, application launchers do not show icons from
+cross-stratum applications.
+
+After some investigation, this is likely because `/bedrock/cross` is forwarding
+only one stratum's instance of `icon-theme.cache` files.  To make this
+just-work, it will need to merge such files from multiple strata.
+Architecturally this will be easier to resolve in 0.8 Naga than 0.7 Poki, and
+so efforts to make this just-work are delayed until then.
 
 ### {id="login-shells"} Login shells
 
