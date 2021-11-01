@@ -278,21 +278,13 @@ acceleration do not require the Nvidia drivers.
 
 ### {id="man"} Man pages
 
-Many Linux distros provide the `man` executable via one of the following:
-
-- [man-db](https://www.nongnu.org/man-db/)
-- [mandoc](https://mandoc.bsd.lv/)
-- [busybox](https://www.busybox.net/)
-
-For the most part, any of those three can read man pages from any distro.  One may use Debian's `man` to read ~+Void Linux~x's `xbps-install` man page and one may use ~+Void Linux~x's `man` to read Debian's `apt` man page, for example, despite the fact that Debian uses `man-db` and ~+Void~x uses `mandoc`.
-
-There is one discovered exception: `mandoc` `man` executable, as provided by distros like ~+Alpine Linux~x and ~+Void Linux~x, cannot seem to read ~+Gentoo~x's man pages.
-
-Work arounds include:
+Some distros, notably Gentoo, bzip2 their man pages.  Other distros, particularly mandoc distros such as Void and Alpine, cannot read such man pages.  Work arounds include:
 
 - Manually call `strat gentoo man` when you want to read a ~+Gentoo~x man page.
 - [Pin a man-db or busybox `man`](https://bedrocklinux.org/0.7/workflows.html#pinning).
 - Uninstall all `mandoc` man executables and install at least one other `man`.
+
+Having Bedrock's crossfs subsystem automatically un-bzip2 such man pages to ensure they just-work cross-stratum is planned for 0.8.0.
 
 ### {id="gtk2-themes"} GTK2 themes
 
