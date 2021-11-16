@@ -21,6 +21,19 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.24-released"} Bedrock Linux 0.7.24 released
+<small>2021-11-16</small>
+
+A point update has been released for 0.7.  To update to it, run `{class="rcmd"} brl update` as root.
+
+- Added pmm zsh completion
+- Fixed brl zsh completion
+- Fixed brl-fetch centos
+- Fixed brl-fetch fedora locale
+- Fixed brl-fetch ubuntu
+- Fixed resolve.conf handling with some distros/inits
+- Improved theoretical robustness of init selection menu
+
 ## {id="0.7.23-released"} Bedrock Linux 0.7.23 released
 <small>2021-08-26</small>
 
