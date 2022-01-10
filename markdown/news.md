@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.25-released"} Bedrock Linux 0.7.25 released
+<small>2022-01-10</small>
+
+- Fixed brl-fetch centos
+- Fixed brl-fetch fedora
+- Fixed brl-fetch gentoo
+- Improved brl-fetch error message
+- Improved systemd 250 shutdown performance
+- Increased hijack-time GRUB+BTRFS detection sensitivity
+
 ## {id="0.7.24-released"} Bedrock Linux 0.7.24 released
 <small>2021-11-16</small>
 
