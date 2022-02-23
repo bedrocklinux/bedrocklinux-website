@@ -151,13 +151,18 @@ is not broadly recommended.
 
 ### {id="dkms"} dkms
 
-~+Bedrock~x supports ~{cross~}-~{stratum~} `dkms` given the following constraints:
+~+Bedrock~x can support ~{cross~}-~{stratum~} `dkms` given the following constraints:
 
-- The `dkms` executable should come from the kernel-providing stratum.
-- The `dkms` module version plays nicely with the kernel version.
+- The `dkms` executable must come from the kernel-providing stratum.
+- The `dkms` module version plays nicely with the kernel version.  (Sometimes
+  newer kernel versions break older `dkms` module support.)
 
 ~+Bedrock~x does not enforce either of these constraints; the user must handle
-them manually.
+them manually.  To keep anyone unaware of these constraints from creating
+broken modules, the cross-stratum functionality is disabled by default.  If you
+read this documentation and are confident you understand the constraints, you
+can re-enable it by finding the commented-out `dkms/framework.conf` line in
+`/bedrock/etc/bedrock.conf`, uncommenting it, and running `brl apply`.
 
 The expected user workflow is to:
 
@@ -169,7 +174,7 @@ The expected user workflow is to:
 If package managers are not automating `dkms`, one may manually tell `dkms` to
 build and install a module:
 
-`strat -r ~(target-kernel-stratum~) dkms install ~(module~)/~(module-version~) -k ~(target-kernel-version~)`
+`strat ~(target-kernel-stratum~) dkms install ~(module~)/~(module-version~) -k ~(target-kernel-version~)`
 
 ### {id="bsd-style-sysv"} BSD Style SysV
 
