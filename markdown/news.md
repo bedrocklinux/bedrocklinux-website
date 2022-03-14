@@ -4,6 +4,16 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.27-released"} Bedrock Linux 0.7.27 released
+<small>2022-03-02</small>
+
+- Fixed brl-fetch arch
+
+## {id="0.7.26-released"} Bedrock Linux 0.7.26 released
+<small>2022-01-21</small>
+
+- Fixed GRUB+BTRFS check false-positives.
+
 ## {id="0.7.25-released"} Bedrock Linux 0.7.25 released
 <small>2022-01-10</small>
 
