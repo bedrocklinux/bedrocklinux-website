@@ -41,7 +41,7 @@ Many bootloaders allow users to alter the kernel line for a session.
 
 Bedrock is dependent on various runtime items being in placed, and thus one may not simply mount a Bedrock partition and `chroot` into it.
 
-One common need to `choot` into some system is to fix a broken `/boot`.  While a generalized `chroot` is not available, a limited one for this purpose is.  There are three main differences from a typical rescue `chroot`:
+One common need to `chroot` into some system is to fix a broken `/boot`.  While a generalized `chroot` is not available, a limited one for this purpose is.  There are three main differences from a typical rescue `chroot`:
 
 - Instead of setting up and `chroot`'ing directly into the mount, setup and `chroot` into `~(mount~)/bedrock/strata/~(stratum~)` for some ~{stratum~} which will perform the repair operation.
 - In addition to the typical `proc`, `dev`, etc setup, also bind-mount `~(mount~)/boot` to `~(mount~)/bedrock/strata/~(stratum~)/boot`.  This will make the ~{global~} `/boot` accessible for manipulation by the given ~{stratum~}.
