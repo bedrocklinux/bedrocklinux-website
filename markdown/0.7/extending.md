@@ -388,8 +388,8 @@ where:
   operation should apply to.  It may be overridden by `pmm` flags such as
 `--every` and `--newest`.  Valid values are:
 	- "first": Use first package manager which passes applicability-check.
-	- "every": Use every package manager which which passes
-	  applicability-check
+	- "every": Use every package manager which passes
+	  applicability-check.
 	- "none":  No package managers are applicable; used for `pmm` specific
 	  operations which do not correlate to individual package managers.
 

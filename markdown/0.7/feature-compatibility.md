@@ -139,7 +139,7 @@ The wiring between these components does not work automatically register across
   configuration also remains an open research problem](#init-configuration).
 - DMs learn about DEs via files in `/usr/share/xsessions/` and only in that
   location.  Unlike other resources, there does not appear to be a standard way
-  to to extend the list of resource look-up locations.  Consequently, there's
+  to extend the list of resource look-up locations.  Consequently, there's
   no obvious way to add cross-stratum DE registration without risking upsetting
   a package manager.
 

@@ -62,7 +62,7 @@ Nyla's development will shift documentation into a single source from which the 
 
 ## {id="fuse-fs-arch"} crossfs and etcfs modular architecture.
 
-Over Poki's life, crossfs and etcfs have not evolved quite as originally expected, and technical debt is slowing slowing further development.  They will be rewritten with the following architecture in order to expedite future development:
+Over Poki's life, crossfs and etcfs have not evolved quite as originally expected, and technical debt is slowing further development.  They will be rewritten with the following architecture in order to expedite future development:
 
 - A core that:
 	- Reads Bedrock configuration

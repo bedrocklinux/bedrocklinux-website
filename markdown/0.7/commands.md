@@ -174,7 +174,7 @@ perform some action `qemu-user-static` does not yet support, it will not work.
 
 ~+Bedrock~x provides a `brl import` command to create strata from on-disk
 sources.   This may be useful for distros that `brl fetch` does not support or
-for for use with offline systems.
+for use with offline systems.
 
 To import a stratum, run
 

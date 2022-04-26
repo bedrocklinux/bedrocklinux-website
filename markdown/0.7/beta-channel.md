@@ -39,7 +39,7 @@ When you next `brl update` it will look for the newest available update, stable 
 
 ## {id="reverting-to-stable"} Reverting to the stable channel
 
-To revert to the stable channel, first first change the `mirrors` field under either `[miscellaneous]` or `[brl-update]` in your `/bedrock/etc/bedrock.conf` to only check the stable channel:
+To revert to the stable channel, first change the `mirrors` field under either `[miscellaneous]` or `[brl-update]` in your `/bedrock/etc/bedrock.conf` to only check the stable channel:
 
 `mirrors = https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases`
 

@@ -20,7 +20,7 @@ Helping here would free up limited resources for research and development
 efforts.
 
 Consider learning ~+Bedrock Linux~x well yourself, such as from using it and
-watching others answer questions.  Then, once you are adequately knowledgable,
+watching others answer questions.  Then, once you are adequately knowledgeable,
 consider watching places such as:
 
 - [IRC: #bedrock on libera.chat](https://libera.chat)
