@@ -100,6 +100,8 @@ well.
 Hijacking the Fedora container image, inside toolbox isn't possible since it can't be restarted which
 makes the hijack process unable to finish.
 
+There is a chance when the root partition would be remounted as read-write `rpm-ostree` would break.
+
 ## {id="guix"} GuixSD
 
 Guix is similar to NixOS, but the init in here is not `systemd`, but `shepherd`
