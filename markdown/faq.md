@@ -65,7 +65,7 @@ This process is referred to as ~{hijacking~} to emphasize the forceful way
 Whichever offers the install process you like the most.
 
 Once you've had ~+Bedrock~x hijack the install, you're no longer running that
-distro - you're running ~+Bedrock~x.  You can then can swap out everything
+distro - you're running ~+Bedrock~x.  You can then swap out everything
 specific to the hijacked distro with parts from other distros.  Once you've
 configured the system to your liking, the result is functionally the same
 irrelevant of which install process you happened to use to get there.
