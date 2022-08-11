@@ -4,6 +4,13 @@ Nav: home.nav
 News Archive
 ============
 
+## {id="0.7.28-released"} Bedrock Linux 0.7.28 released
+<small>2022-08-11</small>
+
+- Improved brl-fetch handling of GPT and multi-partition images
+- Removed redundant Ubuntu vt.handoff hack handling
+- Fixed brl-fetch arch, artix, gentoo, exherbo
+
 ## {id="0.7.27-released"} Bedrock Linux 0.7.27 released
 <small>2022-03-02</small>
 
