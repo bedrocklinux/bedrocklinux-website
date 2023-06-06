@@ -24,7 +24,6 @@ watching others answer questions.  Then, once you are adequately knowledgable,
 consider watching places such as:
 
 - [IRC: #bedrock on libera.chat](https://libera.chat)
-- [Discord](https://invite.gg/bedrocklinux)
 - [LQ forum](http://www.linuxquestions.org/questions/bedrock-linux-118/)
 - [Reddit](http://reddit.com/r/bedrocklinux)
 - [Userland Github](https://github.com/bedrocklinux/bedrocklinux-userland)
