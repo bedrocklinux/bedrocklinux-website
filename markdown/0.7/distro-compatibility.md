@@ -10,7 +10,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | Linux Distro          | Community Usage   | Known Issues | Fetch Support    | Maintainer   |
 | ~+Alpine Linux~x      | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Arch Linux~x        | ~%Very High~x     | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
-| ~+Artix Linux~x       | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%unrooted~x |
+| ~+Artix Linux~x       | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~!None~x     |
 | ~+CentOS~x            | ~!Very Low~x      | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Clear Linux~x       | ~!Very Low~x      | ~!Many issues~x [†](https://github.com/bedrocklinux/bedrocklinux-userland/issues/124) | ~^Unmaintained~x | ~!N/A~x |
 | ~+CRUX~x              | ~!None~x          | ~!BSD-style SysV init~x [†](feature-compatibility.html#bsd-style-sysv) | ~^Unmaintained~x | ~!N/A~x |
@@ -18,7 +18,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+Devuan~x            | ~^Low~x           | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Elementary OS~x     | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+EndeavorOS~x        | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
-| ~+Exherbo~x           | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%Wulf C. Krueger~x |
+| ~+Exherbo~x           | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~!None~x     |
 | ~+Fedora~x            | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+Fedora Silverblue~x | ~!None~x          | ~!Read-only root~x [†](#silverblue) | ~!No~x | ~!None~x |
 | ~+Gentoo Linux~x      | ~%High~x          | ~%None~x     | ~%Yes~x          | ~%paradigm~x |

@@ -21,6 +21,18 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.29-released"} Bedrock Linux 0.7.29 released
+<small>2023-08-06</small>
+
+- Build system updates
+- Fixed brl-fetch Arch
+- Fixed brl-fetch Artix
+- Fixed brl-fetch Exherbo
+- Fixed brl-fetch Fedora
+- Improve build system dynamic link detection
+- Various dependency updates
+- Work-around systemd shutdown freeze
+
 ## {id="0.7.28-released"} Bedrock Linux 0.7.28 released
 <small>2022-08-11</small>
 
