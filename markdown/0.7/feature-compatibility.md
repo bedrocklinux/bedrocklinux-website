@@ -61,6 +61,7 @@ Miscellaneous known feature-specific issues and limitations.
 | pamac/octopi                                    | ~!Inconsistent Reports~x | [Inconsistent reports](#pamac) |
 | ptrace (e.g. gdb, strace)                       | ~^Minor Work-around~x    | Install in same ~{stratum~} as traced program, `strat -r` |
 | SELinux                                         | ~!Does Not Work~x        | ~+Bedrock~x disabled on hijack |
+| Shadow password hashing and login               | ~^Minor Work-around~x    | [Differing shadow versions(#shadow-login)]
 | systemd-shim                                    | ~!Major Issue~x          | [logind access denied](#systemd-shim) |
 | timeshift                                       | ~!Major Issue~x          | Confused by filesystem layout; do not use with ~+Bedrock~x |
 
@@ -192,6 +193,23 @@ Quick and dirty tests show `etcfs` _normally_ umounts on `SIGTERM` from root.
 It is not clear why this might not be happening during SysV shutdown.
 ~+Bedrock~x's `etcfs` code does not do any direct signal handling.  Debugging
 this may require digging into `libfuse`'s code to see how it handles signals.
+
+### {id="shadow-login"}
+On some ~{strata~}, certian hashing algorithms aren't supported due to differences
+in `shadow` versions. This can cause faliure to login with a `login incorrect`
+error or equivalent when using a ~{stratum~}'s init that didn't create the hash with
+`passwd`.
+
+The solution to this is to rehash your password using the `passwd` command from
+whichever ~{stratum~} you are having problems logging in with:
+```
+# strat void passwd myuser
+```
+In extreme cases, you may choose not to do this as newer hashing algortithms can
+improve upon security.
+
+Note: this only happens generally in a few specific cases, such as with a
+fetched ~+Void Linux~x ~{stratum~} with passwords created with ~+Fedora~x's `passwd`.
 
 ### {id="systemd-shim"} systemd-shim
 
