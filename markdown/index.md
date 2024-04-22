@@ -21,6 +21,14 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.30-released"} Bedrock Linux 0.7.30 released
+<small>2024-04-22</small>
+
+- Fixed brl-fetch Void
+- Fixed etcfs listxattr read-only requests
+- Fixed etcfs statfs on non-directories
+- Fixed handling of missing/erroring /etc/profiles
+
 ## {id="xz-5.6.0-compromise"} Security alert (xz, CVE-2024-3094)
 <small>2024-03-29</small>
 
@@ -65,12 +73,5 @@ and encourage beta channel users to update to it immediately.**
 - Improve build system dynamic link detection
 - Various dependency updates
 - Work-around systemd shutdown freeze
-
-## {id="0.7.28-released"} Bedrock Linux 0.7.28 released
-<small>2022-08-11</small>
-
-- Improved brl-fetch handling of GPT and multi-partition images
-- Removed redundant Ubuntu vt.handoff hack handling
-- Fixed brl-fetch arch, artix, gentoo, exherbo
 
 [See older news items](news.html)

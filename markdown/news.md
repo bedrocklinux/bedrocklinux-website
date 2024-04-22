@@ -37,6 +37,14 @@ channel users remain unaffected.**
 have pulled the release and push 0.7.30beta2 built against the older xz 5.4.6
 and encourage beta channel users to update to it immediately.**
 
+## {id="0.7.30-released"} Bedrock Linux 0.7.30 released
+<small>2024-04-22</small>
+
+- Fixed brl-fetch Void
+- Fixed etcfs listxattr read-only requests
+- Fixed etcfs statfs on non-directories
+- Fixed handling of missing/erroring /etc/profiles
+
 ## {id="0.7.29-released"} Bedrock Linux 0.7.29 released
 <small>2023-08-06</small>
 
