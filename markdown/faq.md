@@ -98,6 +98,11 @@ comprehensive and detailed explanation.
 If you have experience with a number of Linux distributions and find whenever
 you're on one distro you miss a feature provided by another, ~+Bedrock~x may
 provide a suitable means of getting the best of multiple worlds.
+Due to it's nature, bedrock can be many distros without the hassle of  
+  
+  - Virtualization
+  - Dual booting
+  - Containers (dockers) 
 
 ## {id="why-not-use-bedrock"} Why should I not use Bedrock?
 
