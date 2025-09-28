@@ -61,7 +61,7 @@ non-local components, such as `/etc` files, changing out from under it.
 over `/etc` file changes.
 
 ~+Solus~x _does_ provide default versions of these files, but outside of
-`/etc`.  The expectation might be that the user copies them over at his/her
+`/etc`.  The expectation might be that the user copies them over at their
 whim.
 
 This is likely removable with adequate effort.  ~+Bedrock~x could be configured
