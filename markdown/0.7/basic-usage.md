@@ -362,12 +362,13 @@ not support, you may use the `brl import` command to do so.
 Get the desired files in some format such as:
 
 - Directory containing desired files
-- Tarball containing desired files
-- Virtual Machine image (with one partition) (e.g. .qcow, .vdi, .vmdk)
+- Tarball (`.tar`, `.tar.gz`, `.tar.bz2`, `.tar.xz`, `.tar.zst`)
+- VM image (`.img`, `.qcow`, `.qcow2`, `.qcow3`, `.vdi`, `.vmdk`)
+- Container image (`docker:~(image~)`, `podman:~(image~)`)
 
 then run
 
-	{class="rcmd"} brl import ~(name~) ~(/path/to/source~)
+	{class="rcmd"} brl import ~(name~) ~(source~)
 
 ## {id="bedrock.conf"} bedrock.conf
 

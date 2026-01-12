@@ -21,6 +21,19 @@ For example, one could have:
 All at the same time and working together mostly as though they were packaged
 for the same distribution.
 
+## {id="0.7.31-released"} Bedrock Linux 0.7.31 released
+<small>2026-01-12</small>
+
+- Added brl-fetch opensuse
+- Added brl-import first-class support for docker/podman containers
+- Added brl-import support for multi-partition VM images
+- Added pmm support for cargo
+- Deprecate big-endian 32-bit mips
+- Deprecate brl-fetch clear
+- Fixed pmm handling of $PATH without Bedrock entries
+- Improved etcfs robustness
+- Many brl-fetch fixes
+
 ## {id="0.7.30-released"} Bedrock Linux 0.7.30 released
 <small>2024-04-22</small>
 
@@ -61,17 +74,3 @@ channel users remain unaffected.**
 **While we do not believe 0.7.30beta1 users are vulnerable, as a precaution we
 have pulled the release and push 0.7.30beta2 built against the older xz 5.4.6
 and encourage beta channel users to update to it immediately.**
-
-## {id="0.7.29-released"} Bedrock Linux 0.7.29 released
-<small>2023-08-06</small>
-
-- Build system updates
-- Fixed brl-fetch Arch
-- Fixed brl-fetch Artix
-- Fixed brl-fetch Exherbo
-- Fixed brl-fetch Fedora
-- Improve build system dynamic link detection
-- Various dependency updates
-- Work-around systemd shutdown freeze
-
-[See older news items](news.html)

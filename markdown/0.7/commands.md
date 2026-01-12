@@ -178,19 +178,18 @@ for for use with offline systems.
 
 To import a stratum, run
 
-	{class="rcmd"} brl import ~(name~) ~(/path/to/source~)
+	{class="rcmd"} brl import ~(name~) ~(source~)
 
 where the ~(source~) is any of:
 
 - Directory
-- Tarball (`.tar`)
-- Qemu qcow/qcow2/qcow3 image (`.qcow`, `.qcow2`, `.qcow3`)
-- VirtualBox image (`.vdi`)
-- VMware image (`.vmdk`)
+- Tarball (`.tar`, `.tar.gz`, `.tar.bz2`, `.tar.xz`, `.tar.zst`)
+- VM image (`.img`, `.qcow`, `.qcow2`, `.qcow3`, `.vdi`, `.vmdk`)
+- Container image (`docker:~(image~)`, `podman:~(image~)`)
 
-If importing a VM, be sure the VM has one partition and that that partition is
-unencrypted.  Do not use separate `/boot` or `/home` partitions for the VM.  Do
-not use full disk encryption.
+VM images may have multiple partitions; `brl import` will attempt to parse
+`/etc/fstab` to mount them.  LVM is also supported if the necessary utilities
+(`losetup`, `partx`, `pvscan`, `vgscan`, etc) are available.
 
 #### {id="brl-remove"} brl remove
 
