@@ -27,7 +27,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+KISS~x              | ~!Very Low~x      | ~!Escapes restriction~x [†](#kiss) | ~^Unmaintained~x | ~!None~x |
 | ~+Linux Mint~x        | ~^Low~x           | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+Manjaro~x           | ~!Very Low~x      | ~!pamac/octopi~x [†](feature-compatibility.html#pamac) | ~^Unmaintained~x | ~!None~x |
-| ~+MX Linux~x          | ~!None~x          | ~!systemd-shim~x [†](feature-compatibility.html#systemd-shim) | ~!No~x | ~!None~x |
+| ~+MX Linux~x          | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x |
 | ~+NixOS~x             | ~!Very Low~x      | ~!many~x [†](#nixos) | ~!No~x   | ~!None~x     |
 | ~+OpenSUSE~x          | ~!Very Low~x      | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~!No~x | ~!None~x |
 | ~+OpenWRT~x           | ~!Very Low~x      | ~%None~x     | ~^Unmaintained~x | ~!None~x     |

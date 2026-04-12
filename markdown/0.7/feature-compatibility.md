@@ -211,26 +211,6 @@ improve upon security.
 Note: this only happens generally in a few specific cases, such as with a
 fetched ~+Void Linux~x ~{stratum~} with passwords created with ~+Fedora~x's `passwd`.
 
-### {id="systemd-shim"} systemd-shim
-
-On ~+MX Linux~x, the logged in user is expected to get certain permissions granted
-from systemd-logind, such as the ability to use the desktop environment's menu
-to reboot the system.
-
-When running in ~+Bedrock~x, this does not appear to work.  This is likely due
-to ~+MX Linux~x's use of SysV _and_ systemd-logind via systemd-shim.  The issue does
-not occur either on pure systemd systems nor on pure SysV systems.
-
-Investigation found some process was reading ~{local~} copies of what should
-have been ~{global~} `/etc` files.  This process was somehow reading `/etc`
-content _under_ the `etcfs` mount.  It is not clear what process was doing
-this, nor how it was doing so.
-
-Manually writing through global `/etc` files to the init ~{stratum~} (and
-consequently, `systemd-logind`'s and `systemd-shim`'s ~{stratum~}) resolved the
-issue.  However, automating this is not suitable as a general solution due to
-both performance and implementation complexity concerns.
-
 ### {id="grub-btrfs-zfs"} Grub with BTRFS or ZFS
 
 When GRUB updates `grub.cfg` on BTRFS it adds a `subvol=` field.  Similarly, on
