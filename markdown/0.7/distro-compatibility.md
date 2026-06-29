@@ -19,7 +19,7 @@ confidence in the "Known Issues" column's accuracy and recency.
 | ~+Elementary OS~x     | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+EndeavorOS~x        | ~!Very Low~x      | ~%None~x     | ~!No~x           | ~!None~x     |
 | ~+Exherbo~x           | ~^Medium~x        | ~%None~x     | ~%Yes~x          | ~!None~x     |
-| ~+Fedora~x            | ~^Medium~x        | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) ~%Yes~x          | ~%paradigm~x |
+| ~+Fedora~x            | ~^Medium~x        | ~!defaults to grub+btrfs~x [†](feature-compatibility.html#grub-btrfs-zfs) | ~%Yes~x          | ~%paradigm~x |
 | ~+Fedora Silverblue~x | ~!None~x          | ~!Read-only root~x [†](#silverblue) | ~!No~x | ~!None~x |
 | ~+Gentoo Linux~x      | ~%High~x          | ~%None~x     | ~%Yes~x          | ~%paradigm~x |
 | ~+GoboLinux~x         | ~!None~x          | ~%None~x     | ~!No~x           | ~!None~x     |
